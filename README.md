@@ -1,2 +1,0 @@
-# Numbers
-Numbers Game
