@@ -1,0 +1,59 @@
+🎯 Next 7 predicted numbers:
+Day 1: 199485
+Day 2: 258822
+Day 3: 487649
+Day 4: 766367
+Day 5: 675194
+Day 6: 844910
+Day 7: 523558
+
+
+PS C:\Users\Pc\Downloads\Music\forth\server> python pySecond.py
+Probable cycles for next draw: [5, 6, 6, 5, 6, 6]
+Predicted next number: 633432
+PS C:\Users\Pc\Downloads\Music\forth\server> python pyThird.py 
+Top probable cycles per roller: [[9, 3, 6], [3, 9, 7], [2, 8, 9], [6, 7, 2], [9, 6, 5], [6, 4, 5]]
+
+Calculating predicted numbers with progress bar...
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 729/729 [00:00<00:00, 218809.76it/s]
+
+Top predicted next numbers:
+347842
+347841
+347845
+347832
+347831
+347835
+347802
+347801
+347805
+347642
+
+
+Top-20 pattern-ranked numbers for prize=5000 (as of 2025-10-01):
+ 1. 5816       score=0.9978 | 30d= 2  dec= 1.62  mom= 0.86  last_seen_days=   3  last_digit=6  dowBias=1.00
+ 2. 9036       score=0.9968 | 30d= 2  dec= 1.67  mom= 0.77  last_seen_days=   2  last_digit=6  dowBias=1.00
+ 3. 4216       score=0.9929 | 30d= 2  dec= 1.48  mom= 0.65  last_seen_days=  10  last_digit=6  dowBias=1.00
+ 4. 5646       score=0.9897 | 30d= 1  dec= 1.00  mom= 0.98  last_seen_days=   0  last_digit=6  dowBias=1.00
+ 5. 2046       score=0.9896 | 30d= 1  dec= 1.00  mom= 0.99  last_seen_days=   0  last_digit=6  dowBias=1.00
+ 6. 1706       score=0.9895 | 30d= 1  dec= 1.00  mom= 1.00  last_seen_days=   0  last_digit=6  dowBias=1.00
+ 7. 4506       score=0.9894 | 30d= 1  dec= 1.00  mom= 0.93  last_seen_days=   0  last_digit=6  dowBias=1.00
+ 8. 6746       score=0.9884 | 30d= 1  dec= 0.98  mom= 0.94  last_seen_days=   1  last_digit=6  dowBias=1.00
+ 9. 4236       score=0.9878 | 30d= 1  dec= 1.27  mom= 0.71  last_seen_days=   2  last_digit=6  dowBias=1.00
+10. 2356       score=0.9873 | 30d= 1  dec= 0.95  mom= 0.96  last_seen_days=   2  last_digit=6  dowBias=1.00
+11. 8236       score=0.9873 | 30d= 1  dec= 0.95  mom= 0.93  last_seen_days=   2  last_digit=6  dowBias=1.00
+12. 4926       score=0.9861 | 30d= 1  dec= 0.93  mom= 0.93  last_seen_days=   3  last_digit=6  dowBias=1.00
+13. 4066       score=0.9859 | 30d= 1  dec= 0.93  mom= 0.89  last_seen_days=   3  last_digit=6  dowBias=1.00
+14. 3976       score=0.9852 | 30d= 1  dec= 1.21  mom= 0.59  last_seen_days=   1  last_digit=6  dowBias=1.00
+15. 3626       score=0.9845 | 30d= 1  dec= 0.93  mom= 0.77  last_seen_days=   3  last_digit=6  dowBias=1.00
+16. 1196       score=0.9843 | 30d= 1  dec= 0.89  mom= 0.91  last_seen_days=   5  last_digit=6  dowBias=1.00
+17. 3337       score=0.9809 | 30d= 2  dec= 1.83  mom= 0.92  last_seen_days=   1  last_digit=7  dowBias=0.64
+18. 8706       score=0.9802 | 30d= 1  dec= 0.91  mom= 0.63  last_seen_days=   7  last_digit=6  dowBias=1.00
+19. 2546       score=0.9796 | 30d= 1  dec= 0.83  mom= 0.76  last_seen_days=   8  last_digit=6  dowBias=1.00
+20. 7856       score=0.9796 | 30d= 1  dec= 0.81  mom= 0.85  last_seen_days=   9  last_digit=6  dowBias=1.00
+
+
+
+
+
+

@@ -1,0 +1,2 @@
+total_numbers_inspected,numbers_with_any_5000,numbers_with_prior_lower_count,numbers_with_prior_lower_percent,gap_count,gap_mean_days,gap_median_days,gap_25pct_days,gap_75pct_days,gap_min_days,gap_max_days
+10000,9523,8756,91.9458,8756,625.8768844221106,556.0,266.75,893.0,1,1932

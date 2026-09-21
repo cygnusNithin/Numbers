@@ -1,0 +1,45 @@
+(Default) Predicting next 7 days from 2025-11-07
+Loaded pattern file: 9,514 numbers
+Loaded new-by-day file: 1,517 days
+pattern number len counts: {4: 9514}
+Verify counts from dates: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9514/9514 [00:00<00:00, 9532.88it/s]
+✓ All weekday/month counts match the dates in the pattern file.
+
+First-date alignment:
+  Numbers in pattern ∩ new: 9514
+  First-date mismatches: 0
+  New-numbers missing from pattern: 0
+  Numbers in pattern but never seen as 'new': 0
+Calendar-fit on new_numbers: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1517/1517 [00:00<00:00, 8355.42it/s]
+
+Calendar fit on new_numbers (only where pattern exists):
+  Rows checked: 9,514
+  Weekday in top-2: 83.06%
+  Month   in top-2: 78.67%
+  Both weekday & month in top-2: 67.82%
+→ Saved calendar_fit_new_numbers.csv
+
+Unseen pool size: 486 numbers
+→ Saved predicted_new_numbers.csv
+
+Sample predictions (first date):
+      date  rank number     score  expected_new_count       source
+2025-11-07     1   8159 -8.879082            7.904762 full-history
+2025-11-07     2   5159 -8.885344            7.904762 full-history
+2025-11-07     3   9159 -8.934061            7.904762 full-history
+2025-11-07     4   5156 -8.940831            7.904762 full-history
+2025-11-07     5   3115 -8.964597            7.904762 full-history
+2025-11-07     6   3177 -8.967010            7.904762 full-history
+2025-11-07     7   2179 -8.973137            7.904762 full-history
+2025-11-07     8   3257 -8.974196            7.904762 full-history
+2025-11-07     9   6156 -8.983280            7.904762 full-history
+2025-11-07    10   5172 -8.992083            7.904762 full-history
+2025-11-07    11   5137 -8.996506            7.904762 full-history
+2025-11-07    12   2055 -8.999661            7.904762 full-history
+2025-11-07    13   8552 -9.011787            7.904762 full-history
+2025-11-07    14   7275 -9.013328            7.904762 full-history
+2025-11-07    15   8335 -9.015489            7.904762 full-history
+
+
+
+

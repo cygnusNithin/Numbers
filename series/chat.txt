@@ -1,0 +1,432 @@
+Phase 1 (Current): 5 methods implemented ✅
+Phase 2: Add Markov Chain + Moving Average
+Phase 3: Add Bayesian + Clustering
+Phase 4: Train ML model (Random Forest/XGBoost)
+
+phase 1: import React, { useState, useEffect } from "react";
+import axios from "axios";
+
+export default function PredictionAnalysis() {
+  const [predictions, setPredictions] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [activeCategory, setActiveCategory] = useState('top_50');
+
+  const fetchPredictions = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get("http://localhost:5000/api/predictions");
+      setPredictions(res.data);
+    } catch (err) {
+      console.error("Failed to fetch predictions:", err);
+      alert("Failed to load predictions. Make sure the backend is running.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPredictions();
+  }, []);
+
+  if (loading) {
+    return (
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '1400px', 
+        margin: '0 auto', 
+        padding: '40px 20px',
+        backgroundColor: '#f8fafc',
+        minHeight: '100vh'
+      }}>
+        <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+          <div style={{ fontSize: '64px', marginBottom: '20px' }}>🔄</div>
+          <h2 style={{ fontSize: '28px', fontWeight: 'bold', color: '#1e293b' }}>Analyzing Predictions...</h2>
+          <p style={{ color: '#64748b', marginTop: '10px' }}>Running 5 prediction methods on all numbers</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!predictions) {
+    return (
+      <div style={{ 
+        width: '100%', 
+        maxWidth: '1400px', 
+        margin: '0 auto', 
+        padding: '40px 20px',
+        backgroundColor: '#f8fafc',
+        minHeight: '100vh'
+      }}>
+        <div style={{ textAlign: 'center', paddingTop: '100px' }}>
+          <div style={{ fontSize: '64px', marginBottom: '20px' }}>⚠️</div>
+          <h2 style={{ fontSize: '28px', fontWeight: 'bold', color: '#1e293b' }}>No Data Available</h2>
+          <p style={{ color: '#64748b', marginTop: '10px' }}>Please check if the backend server is running</p>
+          <button 
+            onClick={fetchPredictions}
+            style={{
+              marginTop: '20px',
+              padding: '12px 24px',
+              backgroundColor: '#667eea',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const currentData = predictions.categories?.[activeCategory] || [];
+
+  return (
+    <div style={{ 
+      width: '100%', 
+      maxWidth: '1400px', 
+      margin: '0 auto', 
+      padding: '20px',
+      backgroundColor: '#f8fafc',
+      minHeight: '100vh'
+    }}>
+      {/* Header */}
+      <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+        <h1 style={{ 
+          fontSize: '42px', 
+          fontWeight: 'bold',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          marginBottom: '10px'
+        }}>
+          Multi-Method Prediction Analysis
+        </h1>
+        <p style={{ color: '#64748b', fontSize: '18px', marginBottom: '15px' }}>
+          5 AI-Powered Prediction Methods Combined
+        </p>
+        <button 
+          onClick={fetchPredictions} 
+          disabled={loading}
+          style={{
+            padding: '12px 24px',
+            backgroundColor: loading ? '#cbd5e1' : '#667eea',
+            color: 'white',
+            border: 'none',
+            borderRadius: '8px',
+            fontSize: '16px',
+            fontWeight: '600',
+            cursor: loading ? 'not-allowed' : 'pointer'
+          }}
+        >
+          {loading ? "Analyzing..." : "🔄 Refresh Predictions"}
+        </button>
+      </div>
+
+      {/* Method Breakdown */}
+      <div style={{ 
+        backgroundColor: 'white', 
+        borderRadius: '12px', 
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        padding: '24px',
+        marginBottom: '24px'
+      }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#1e293b', marginBottom: '16px' }}>
+          Active Prediction Methods
+        </h3>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+          gap: '16px'
+        }}>
+          {[
+            { name: 'Gap-Based', weight: '25%', desc: 'Overdue Analysis', color: '#3b82f6' },
+            { name: 'Frequency', weight: '20%', desc: 'Hit Rate Analysis', color: '#10b981' },
+            { name: 'Hot Streak', weight: '20%', desc: 'Recent Momentum', color: '#f59e0b' },
+            { name: 'Tier Progress', weight: '20%', desc: 'Pattern Evolution', color: '#8b5cf6' },
+            { name: 'Seasonality', weight: '15%', desc: 'Day/Month Patterns', color: '#ec4899' }
+          ].map((method, idx) => (
+            <div key={idx} style={{ 
+              backgroundColor: `${method.color}15`,
+              padding: '16px',
+              borderRadius: '8px',
+              borderLeft: `4px solid ${method.color}`
+            }}>
+              <div style={{ fontSize: '14px', fontWeight: '600', color: method.color, marginBottom: '4px' }}>
+                {method.name}
+              </div>
+              <div style={{ fontSize: '24px', fontWeight: 'bold', color: method.color }}>
+                {method.weight}
+              </div>
+              <div style={{ fontSize: '12px', color: method.color, marginTop: '4px' }}>
+                {method.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Statistics */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+        gap: '16px',
+        marginBottom: '24px'
+      }}>
+        {[
+          { label: 'Total Analyzed', value: predictions.statistics?.total_analyzed || 0, color: '#667eea' },
+          { label: 'Avg Score', value: predictions.statistics?.avg_score || '0', color: '#f59e0b' },
+          { label: 'Strong Buy', value: predictions.statistics?.strong_buy_count || 0, color: '#10b981' },
+          { label: 'Buy Signals', value: predictions.statistics?.buy_count || 0, color: '#f97316' },
+          { label: 'Overdue', value: predictions.statistics?.overdue_count || 0, color: '#ef4444' },
+          { label: 'Hot Numbers', value: predictions.statistics?.hot_count || 0, color: '#8b5cf6' }
+        ].map((stat, idx) => (
+          <div key={idx} style={{ 
+            background: `linear-gradient(135deg, ${stat.color} 0%, ${stat.color}dd 100%)`,
+            color: 'white',
+            padding: '24px',
+            borderRadius: '12px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+          }}>
+            <div style={{ fontSize: '14px', opacity: 0.9, marginBottom: '4px' }}>{stat.label}</div>
+            <div style={{ fontSize: '32px', fontWeight: 'bold' }}>{stat.value}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* Category Tabs */}
+      <div style={{ 
+        display: 'flex', 
+        gap: '8px',
+        backgroundColor: 'white',
+        padding: '8px',
+        borderRadius: '12px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        marginBottom: '24px',
+        overflowX: 'auto'
+      }}>
+        {[
+          { key: 'top_50', label: '🏆 Top 50' },
+          { key: 'strong_buy', label: `🔥 Strong Buy (${predictions.categories?.strong_buy?.length || 0})` },
+          { key: 'buy', label: `✅ Buy (${predictions.categories?.buy?.length || 0})` },
+          { key: 'overdue', label: `⏰ Overdue (${predictions.categories?.overdue?.length || 0})` },
+          { key: 'hot_streak', label: `⚡ Hot Streak (${predictions.categories?.hot_streak?.length || 0})` },
+          { key: 'high_tier_potential', label: `👑 High Tier (${predictions.categories?.high_tier_potential?.length || 0})` }
+        ].map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveCategory(tab.key)}
+            style={{
+              padding: '12px 16px',
+              backgroundColor: activeCategory === tab.key ? '#667eea' : 'transparent',
+              color: activeCategory === tab.key ? 'white' : '#64748b',
+              border: 'none',
+              borderRadius: '8px',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              transition: 'all 0.3s'
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Predictions Table */}
+      <div style={{ 
+        backgroundColor: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        overflow: 'hidden'
+      }}>
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead>
+              <tr style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', color: 'white' }}>
+                <th style={{ padding: '16px 12px', textAlign: 'left', fontSize: '14px', fontWeight: '600' }}>Rank</th>
+                <th style={{ padding: '16px 12px', textAlign: 'left', fontSize: '14px', fontWeight: '600' }}>Number</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Final</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Gap</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Freq</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Hot</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Tier</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Season</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Days</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>Overdue</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>₹5K</th>
+                <th style={{ padding: '16px 12px', textAlign: 'center', fontSize: '14px', fontWeight: '600' }}>₹1K</th>
+                <th style={{ padding: '16px 12px', textAlign: 'left', fontSize: '14px', fontWeight: '600' }}>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData.map((pred, index) => (
+                <tr key={pred.number} style={{ 
+                  backgroundColor: index % 2 === 0 ? 'white' : '#f8fafc',
+                  borderBottom: '1px solid #e2e8f0'
+                }}>
+                  <td style={{ padding: '12px', fontWeight: 'bold', color: '#64748b' }}>#{index + 1}</td>
+                  <td style={{ padding: '12px' }}>
+                    <span style={{ fontFamily: 'monospace', fontSize: '18px', fontWeight: 'bold', color: '#667eea' }}>
+                      {pred.number}
+                    </span>
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center' }}>
+                    <span style={{
+                      display: 'inline-block',
+                      padding: '6px 12px',
+                      borderRadius: '20px',
+                      fontWeight: 'bold',
+                      fontSize: '14px',
+                      backgroundColor: 
+                        pred.finalScore >= 80 ? '#d1fae5' :
+                        pred.finalScore >= 60 ? '#fef3c7' :
+                        pred.finalScore >= 40 ? '#fed7aa' : '#f1f5f9',
+                      color:
+                        pred.finalScore >= 80 ? '#065f46' :
+                        pred.finalScore >= 60 ? '#92400e' :
+                        pred.finalScore >= 40 ? '#9a3412' : '#475569'
+                    }}>
+                      {pred.finalScore}
+                    </span>
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    color: pred.scores?.gap_based >= 70 ? '#10b981' : '#64748b'
+                  }}>
+                    {Math.round(pred.scores?.gap_based || 0)}
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    color: pred.scores?.frequency >= 70 ? '#3b82f6' : '#64748b'
+                  }}>
+                    {Math.round(pred.scores?.frequency || 0)}
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    color: pred.scores?.hot_streak >= 70 ? '#f59e0b' : '#64748b'
+                  }}>
+                    {Math.round(pred.scores?.hot_streak || 0)}
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    color: pred.scores?.tier_progression >= 70 ? '#8b5cf6' : '#64748b'
+                  }}>
+                    {Math.round(pred.scores?.tier_progression || 0)}
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: '600',
+                    color: '#64748b'
+                  }}>
+                    {Math.round(pred.scores?.seasonality || 0)}
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center', fontWeight: '600', color: '#1e293b' }}>
+                    {pred.days_since_last}d
+                  </td>
+                  <td style={{ 
+                    padding: '12px', 
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    color: pred.overdue_ratio >= 1.5 ? '#ef4444' : '#64748b'
+                  }}>
+                    {pred.overdue_ratio?.toFixed(2)}x
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#f59e0b' }}>
+                    {pred.tierCounts?.[5000] || 0}
+                  </td>
+                  <td style={{ padding: '12px', textAlign: 'center', fontWeight: 'bold', color: '#10b981' }}>
+                    {pred.tierCounts?.[1000] || 0}
+                  </td>
+                  <td style={{ padding: '12px' }}>
+                    <span style={{
+                      fontSize: '11px',
+                      padding: '4px 10px',
+                      borderRadius: '12px',
+                      fontWeight: 'bold',
+                      backgroundColor:
+                        pred.recommendation?.startsWith('STRONG BUY') ? '#fee2e2' :
+                        pred.recommendation?.startsWith('BUY') ? '#fed7aa' :
+                        pred.recommendation?.startsWith('CONSIDER') ? '#fef3c7' : '#f1f5f9',
+                      color:
+                        pred.recommendation?.startsWith('STRONG BUY') ? '#dc2626' :
+                        pred.recommendation?.startsWith('BUY') ? '#ea580c' :
+                        pred.recommendation?.startsWith('CONSIDER') ? '#d97706' : '#64748b'
+                    }}>
+                      {pred.recommendation?.split(' - ')[0] || 'N/A'}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Legend */}
+      <div style={{ 
+        backgroundColor: 'white',
+        borderRadius: '12px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        padding: '24px',
+        marginTop: '24px'
+      }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '16px', color: '#1e293b' }}>
+          📖 Understanding the Scores
+        </h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+          <div>
+            <strong style={{ color: '#1e293b' }}>Final Score (0-100):</strong>
+            <ul style={{ marginTop: '8px', listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • 80-100: <span style={{ color: '#10b981', fontWeight: '600' }}>Excellent opportunity</span>
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • 60-79: <span style={{ color: '#f59e0b', fontWeight: '600' }}>Good potential</span>
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • 40-59: <span style={{ color: '#f97316', fontWeight: '600' }}>Monitor closely</span>
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • 0-39: <span style={{ color: '#64748b', fontWeight: '600' }}>Low priority</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <strong style={{ color: '#1e293b' }}>Individual Method Scores:</strong>
+            <ul style={{ marginTop: '8px', listStyle: 'none', padding: 0 }}>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • <span style={{ color: '#3b82f6', fontWeight: '600' }}>Gap:</span> Based on overdue analysis
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • <span style={{ color: '#10b981', fontWeight: '600' }}>Frequency:</span> Hit rate & tier weights
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • <span style={{ color: '#f59e0b', fontWeight: '600' }}>Hot Streak:</span> Recent 6-month momentum
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • <span style={{ color: '#8b5cf6', fontWeight: '600' }}>Tier Progress:</span> 100→5000 pattern
+              </li>
+              <li style={{ marginBottom: '4px', color: '#475569' }}>
+                • <span style={{ color: '#ec4899', fontWeight: '600' }}>Seasonality:</span> Day/Month frequency
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

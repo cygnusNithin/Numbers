@@ -1,0 +1,420 @@
+{
+  "generatedAt": "2026-05-14T18:39:09.073Z",
+  "validation": {
+    "accuracy": 14.5,
+    "baseline": 14.3,
+    "improvement": 1.01
+  },
+  "remainingPredictions": [
+    {
+      "number": "0006",
+      "homeDOW": 5,
+      "homeDOWName": "Fri",
+      "lottery": "SK",
+      "predictedDate": "2026-05-15 (Fri - SK)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1326",
+      "homeDOW": 5,
+      "homeDOWName": "Fri",
+      "lottery": "SK",
+      "predictedDate": "2026-05-15 (Fri - SK)",
+      "predictedPrize": 100,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "5721",
+      "homeDOW": 6,
+      "homeDOWName": "Sat",
+      "lottery": "KR",
+      "predictedDate": "2026-05-16 (Sat - KR)",
+      "predictedPrize": 100,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "6567",
+      "homeDOW": 6,
+      "homeDOWName": "Sat",
+      "lottery": "KR",
+      "predictedDate": "2026-05-16 (Sat - KR)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "8126",
+      "homeDOW": 6,
+      "homeDOWName": "Sat",
+      "lottery": "KR",
+      "predictedDate": "2026-05-16 (Sat - KR)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "6004",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 1000,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "4948",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 500,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "9192",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 500,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "2574",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "3976",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "4328",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "4461",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "5225",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "5571",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "6839",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "7287",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1726",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 50,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "7783",
+      "homeDOW": 0,
+      "homeDOWName": "Sun",
+      "lottery": "SM",
+      "predictedDate": "2026-05-17 (Sun - SM)",
+      "predictedPrize": 50,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "0648",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1188",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": true
+    },
+    {
+      "number": "1647",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1772",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1991",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "4567",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "5986",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "9082",
+      "homeDOW": 1,
+      "homeDOWName": "Mon",
+      "lottery": "BT",
+      "predictedDate": "2026-05-18 (Mon - BT)",
+      "predictedPrize": 100,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "4182",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 500,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "6746",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 500,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1105",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "4356",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "5284",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "7731",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "8174",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "9483",
+      "homeDOW": 2,
+      "homeDOWName": "Tue",
+      "lottery": "SS",
+      "predictedDate": "2026-05-19 (Tue - SS)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "0443",
+      "homeDOW": 3,
+      "homeDOWName": "Wed",
+      "lottery": "DL",
+      "predictedDate": "2026-05-20 (Wed - DL)",
+      "predictedPrize": 500,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "3765",
+      "homeDOW": 3,
+      "homeDOWName": "Wed",
+      "lottery": "DL",
+      "predictedDate": "2026-05-20 (Wed - DL)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "0511",
+      "homeDOW": 3,
+      "homeDOWName": "Wed",
+      "lottery": "DL",
+      "predictedDate": "2026-05-20 (Wed - DL)",
+      "predictedPrize": 50,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "1331",
+      "homeDOW": 3,
+      "homeDOWName": "Wed",
+      "lottery": "DL",
+      "predictedDate": "2026-05-20 (Wed - DL)",
+      "predictedPrize": 50,
+      "isFixed": false,
+      "consistent": false
+    },
+    {
+      "number": "2739",
+      "homeDOW": 4,
+      "homeDOWName": "Thu",
+      "lottery": "KN",
+      "predictedDate": "2026-05-21 (Thu - KN)",
+      "predictedPrize": 500,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "2085",
+      "homeDOW": 4,
+      "homeDOWName": "Thu",
+      "lottery": "KN",
+      "predictedDate": "2026-05-21 (Thu - KN)",
+      "predictedPrize": 100,
+      "isFixed": true,
+      "consistent": false
+    },
+    {
+      "number": "6652",
+      "homeDOW": 4,
+      "homeDOWName": "Thu",
+      "lottery": "KN",
+      "predictedDate": "2026-05-21 (Thu - KN)",
+      "predictedPrize": 100,
+      "isFixed": false,
+      "consistent": false
+    }
+  ]
+}

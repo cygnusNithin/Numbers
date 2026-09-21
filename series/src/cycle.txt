@@ -1,0 +1,968 @@
+// src/CyclesPage.jsx
+import React, { useEffect, useState } from "react";
+
+export default function CyclesPage() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [selectedCycle, setSelectedCycle] = useState(null);
+
+  // which collection is active
+  const [source, setSource] = useState("new"); // "old" | "new"
+
+  const endpoints = {
+    old: "http://localhost:5000/api/cycles/lotterydata",
+    new: "http://localhost:5000/api/cycles/lotterydatanew",
+  };
+
+  function load(which) {
+    setSource(which); // ✅ add this
+    setLoading(true);
+    setError(null);
+
+    fetch(endpoints[which])
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    load("new"); // default load LotteryDataNew on page open
+  }, []);
+
+  if (loading)
+    return <p style={{ textAlign: "center" }}>⏳ Loading cycles...</p>;
+  if (error)
+    return <p style={{ textAlign: "center", color: "red" }}>❌ {error}</p>;
+  if (!data) return null;
+
+  const btnStyle = (active) => ({
+    padding: "8px 14px",
+    borderRadius: "10px",
+    border: active ? "2px solid #2196F3" : "1px solid #ccc",
+    background: active ? "#e3f2fd" : "#fff",
+    cursor: "pointer",
+    fontWeight: "bold",
+  });
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h2>🔄 Lottery Cycles</h2>
+
+      {/* TWO SEPARATE BUTTONS (collections) */}
+      <button style={btnStyle(source === "old")} onClick={() => load("old")}>
+        Check LotteryData
+      </button>
+      <button style={btnStyle(source === "new")} onClick={() => load("new")}>
+        Check LotteryDataNew
+      </button>
+
+      {/* Overall Summary */}
+      <div
+        style={{
+          display: "flex",
+          gap: "16px",
+          flexWrap: "wrap",
+          marginBottom: "24px",
+        }}
+      >
+        {[
+          { label: "Total Cycles", value: data.summary.totalCycles },
+          { label: "Completed", value: data.summary.completedCycles },
+          { label: "Incomplete", value: data.summary.incompleteCycles },
+          { label: "First Day", value: data.summary.firstDay },
+          { label: "Last Day", value: data.summary.lastDay },
+        ].map((item) => (
+          <div
+            key={item.label}
+            style={{
+              background: "#f0f4ff",
+              borderRadius: "10px",
+              padding: "14px 20px",
+              minWidth: "140px",
+              textAlign: "center",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+            }}
+          >
+            <div
+              style={{ fontSize: "22px", fontWeight: "bold", color: "#333" }}
+            >
+              {item.value}
+            </div>
+            <div style={{ fontSize: "12px", color: "#777", marginTop: "4px" }}>
+              {item.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Cycles List (your existing rendering) */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {data.cycles.map((cycle) => (
+          <div
+            key={cycle.cycleNumber}
+            style={{
+              border: cycle.isComplete
+                ? "2px solid #4CAF50"
+                : "2px solid #FF9800",
+              borderRadius: "12px",
+              padding: "16px",
+              background: cycle.isComplete ? "#f9fff9" : "#fffaf0",
+              boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+            }}
+          >
+            {/* header */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                flexWrap: "wrap",
+                gap: "10px",
+              }}
+            >
+              <h3 style={{ margin: 0 }}>
+                {cycle.isComplete ? "✅" : "🔄"} Cycle {cycle.cycleNumber}
+              </h3>
+
+              <span
+                style={{
+                  background: cycle.isComplete ? "#4CAF50" : "#FF9800",
+                  color: "white",
+                  padding: "4px 12px",
+                  borderRadius: "20px",
+                  fontSize: "12px",
+                  fontWeight: "bold",
+                }}
+              >
+                {cycle.isComplete ? "Complete" : "In Progress"}
+              </span>
+            </div>
+
+            {/* details */}
+            <div
+              style={{
+                display: "flex",
+                gap: "20px",
+                flexWrap: "wrap",
+                marginTop: "12px",
+              }}
+            >
+              <div>
+                <span style={{ color: "#777", fontSize: "12px" }}>
+                  Start Date
+                </span>
+                <div style={{ fontWeight: "bold" }}>
+                  {cycle.startDate || "—"}
+                </div>
+              </div>
+
+              <div>
+                <span style={{ color: "#777", fontSize: "12px" }}>
+                  End Date
+                </span>
+                <div style={{ fontWeight: "bold" }}>{cycle.endDate || "—"}</div>
+              </div>
+
+              <div>
+                <span style={{ color: "#777", fontSize: "12px" }}>
+                  Total Days
+                </span>
+                <div style={{ fontWeight: "bold" }}>{cycle.totalDays}</div>
+              </div>
+
+              <div>
+                <span style={{ color: "#777", fontSize: "12px" }}>
+                  Unique Numbers
+                </span>
+                <div style={{ fontWeight: "bold" }}>
+                  {cycle.totalUniqueNumbers} / 10000
+                </div>
+              </div>
+
+              {!cycle.isComplete && (
+                <div>
+                  <span style={{ color: "#777", fontSize: "12px" }}>
+                    Remaining
+                  </span>
+                  <div style={{ fontWeight: "bold", color: "#FF5722" }}>
+                    {cycle.remainingNumbers}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* progress bar */}
+            <div
+              style={{
+                marginTop: "12px",
+                background: "#e0e0e0",
+                borderRadius: "10px",
+                height: "10px",
+                overflow: "hidden",
+              }}
+            >
+              <div
+                style={{
+                  width: `${(cycle.totalUniqueNumbers / 10000) * 100}%`,
+                  background: cycle.isComplete ? "#4CAF50" : "#FF9800",
+                  height: "100%",
+                  borderRadius: "10px",
+                  transition: "width 0.5s ease",
+                }}
+              />
+            </div>
+
+            <div
+              style={{
+                fontSize: "12px",
+                color: "#777",
+                marginTop: "4px",
+                textAlign: "right",
+              }}
+            >
+              {((cycle.totalUniqueNumbers / 10000) * 100).toFixed(2)}% complete
+            </div>
+
+            {/* toggle daily progress */}
+            <button
+              onClick={() =>
+                setSelectedCycle(
+                  selectedCycle === cycle.cycleNumber
+                    ? null
+                    : cycle.cycleNumber,
+                )
+              }
+              style={{
+                marginTop: "12px",
+                padding: "6px 14px",
+                background: "#2196F3",
+                color: "white",
+                border: "none",
+                borderRadius: "6px",
+                cursor: "pointer",
+                fontSize: "13px",
+              }}
+            >
+              {selectedCycle === cycle.cycleNumber
+                ? "Hide Progress"
+                : "Show Daily Progress"}
+            </button>
+
+            {/* daily progress table */}
+            {selectedCycle === cycle.cycleNumber && (
+              <div style={{ marginTop: "16px", overflowX: "auto" }}>
+                <table
+                  style={{
+                    width: "100%",
+                    borderCollapse: "collapse",
+                    fontSize: "13px",
+                  }}
+                >
+                  <thead>
+                    <tr style={{ background: "#e3f2fd" }}>
+                      <th style={thStyle}>Date</th>
+                      <th style={thStyle}>New Unique</th>
+                      <th style={thStyle}>Total Unique</th>
+                      <th style={thStyle}>Progress</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cycle.dailyProgress.map((day, index) => (
+                      <tr
+                        key={index}
+                        style={{
+                          background: index % 2 === 0 ? "#fff" : "#f9f9f9",
+                        }}
+                      >
+                        <td style={tdStyle}>{day.date}</td>
+                        <td style={tdStyle}>+{day.newUnique}</td>
+                        <td style={tdStyle}>{day.totalUnique}</td>
+                        <td style={tdStyle}>
+                          <div
+                            style={{
+                              background: "#e0e0e0",
+                              borderRadius: "6px",
+                              height: "8px",
+                              width: "100%",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: `${(day.totalUnique / 10000) * 100}%`,
+                                background: "#2196F3",
+                                height: "100%",
+                                borderRadius: "6px",
+                              }}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const thStyle = {
+  padding: "8px 12px",
+  textAlign: "left",
+  borderBottom: "1px solid #ddd",
+  fontWeight: "bold",
+};
+
+const tdStyle = {
+  padding: "8px 12px",
+  borderBottom: "1px solid #eee",
+};
+
+
+
+
+//22-03-2026
+// src/CyclesPage.jsx
+import React, { useEffect, useState } from "react";
+
+export default function CyclesPage() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [source, setSource] = useState("new");
+
+  // which cycle's daily progress is open
+  const [selectedCycle, setSelectedCycle] = useState(null);
+
+  // which cycle's prize panel is open
+  const [selectedPrizeCycle, setSelectedPrizeCycle] = useState(null);
+
+  // which prize's daily progress is open: "cycleNumber-prize"
+  const [selectedPrizeProgress, setSelectedPrizeProgress] = useState(null);
+
+  const endpoints = {
+    old: "http://localhost:5000/api/cycles/lotterydata",
+    new: "http://localhost:5000/api/cycles/lotterydatanew",
+  };
+
+  function load(which) {
+    setSource(which);
+    setLoading(true);
+    setError(null);
+    setSelectedCycle(null);
+    setSelectedPrizeCycle(null);
+    setSelectedPrizeProgress(null);
+
+    fetch(endpoints[which])
+      .then((res) => res.json())
+      .then((json) => {
+        setData(json);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }
+
+  useEffect(() => {
+    load("new");
+  }, []);
+
+  if (loading)
+    return <p style={{ textAlign: "center" }}>⏳ Loading cycles...</p>;
+  if (error)
+    return <p style={{ textAlign: "center", color: "red" }}>❌ {error}</p>;
+  if (!data) return null;
+
+  const btnStyle = (active) => ({
+    padding: "8px 16px",
+    borderRadius: "10px",
+    border: active ? "2px solid #2196F3" : "1px solid #ccc",
+    background: active ? "#e3f2fd" : "#fff",
+    cursor: "pointer",
+    fontWeight: "bold",
+    fontSize: "13px",
+  });
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      <h2>🔄 Lottery Cycles</h2>
+
+      {/* TWO SEPARATE BUTTONS */}
+      <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
+        <button style={btnStyle(source === "old")} onClick={() => load("old")}>
+          📁 Check LotteryData
+        </button>
+        <button style={btnStyle(source === "new")} onClick={() => load("new")}>
+          📁 Check LotteryDataNew
+        </button>
+      </div>
+
+      {/* Summary Cards */}
+      <div
+        style={{
+          display: "flex",
+          gap: "12px",
+          flexWrap: "wrap",
+          marginBottom: "24px",
+        }}
+      >
+        {[
+          { label: "Total Cycles", value: data.summary.totalCycles },
+          { label: "Completed", value: data.summary.completedCycles },
+          { label: "Incomplete", value: data.summary.incompleteCycles },
+          { label: "First Day", value: data.summary.firstDay },
+          { label: "Last Day", value: data.summary.lastDay },
+        ].map((item) => (
+          <div
+            key={item.label}
+            style={{
+              background: "#f0f4ff",
+              borderRadius: "10px",
+              padding: "14px 20px",
+              minWidth: "140px",
+              textAlign: "center",
+              boxShadow: "0 2px 6px rgba(0,0,0,0.08)",
+            }}
+          >
+            <div
+              style={{ fontSize: "20px", fontWeight: "bold", color: "#333" }}
+            >
+              {item.value}
+            </div>
+            <div style={{ fontSize: "12px", color: "#777", marginTop: "4px" }}>
+              {item.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Cycles */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+        {data.cycles.map((cycle) => {
+          const prizeKey = `${cycle.cycleNumber}`;
+
+          return (
+            <div
+              key={cycle.cycleNumber}
+              style={{
+                border: cycle.isComplete
+                  ? "2px solid #4CAF50"
+                  : "2px solid #FF9800",
+                borderRadius: "12px",
+                padding: "16px",
+                background: cycle.isComplete ? "#f9fff9" : "#fffaf0",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+              }}
+            >
+              {/* Cycle Header */}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "10px",
+                }}
+              >
+                <h3 style={{ margin: 0 }}>
+                  {cycle.isComplete ? "✅" : "🔄"} Cycle {cycle.cycleNumber}
+                </h3>
+                <span
+                  style={{
+                    background: cycle.isComplete ? "#4CAF50" : "#FF9800",
+                    color: "white",
+                    padding: "4px 12px",
+                    borderRadius: "20px",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {cycle.isComplete ? "Complete" : "In Progress"}
+                </span>
+              </div>
+
+              {/* Cycle Details */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "20px",
+                  flexWrap: "wrap",
+                  marginTop: "12px",
+                }}
+              >
+                {[
+                  { label: "Start Date", value: cycle.startDate || "—" },
+                  { label: "End Date", value: cycle.endDate || "—" },
+                  { label: "Total Days", value: cycle.totalDays },
+                  {
+                    label: "Unique Numbers",
+                    value: `${cycle.totalUniqueNumbers} / 10000`,
+                  },
+                  ...(!cycle.isComplete
+                    ? [
+                        {
+                          label: "Remaining",
+                          value: cycle.remainingNumbers,
+                          color: "#FF5722",
+                        },
+                      ]
+                    : []),
+                ].map((d) => (
+                  <div key={d.label}>
+                    <span style={{ color: "#777", fontSize: "12px" }}>
+                      {d.label}
+                    </span>
+                    <div
+                      style={{ fontWeight: "bold", color: d.color || "#000" }}
+                    >
+                      {d.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Overall Progress Bar */}
+              <div
+                style={{
+                  marginTop: "12px",
+                  background: "#e0e0e0",
+                  borderRadius: "10px",
+                  height: "10px",
+                  overflow: "hidden",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${(cycle.totalUniqueNumbers / 10000) * 100}%`,
+                    background: cycle.isComplete ? "#4CAF50" : "#FF9800",
+                    height: "100%",
+                    borderRadius: "10px",
+                    transition: "width 0.5s ease",
+                  }}
+                />
+              </div>
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#777",
+                  marginTop: "4px",
+                  textAlign: "right",
+                }}
+              >
+                {((cycle.totalUniqueNumbers / 10000) * 100).toFixed(2)}%
+                complete
+              </div>
+
+              {/* Prize Leader Badge */}
+              {cycle.prizeLeader && (
+                <div
+                  style={{
+                    marginTop: "10px",
+                    fontSize: "13px",
+                    color: "#5c35bd",
+                    fontWeight: "bold",
+                  }}
+                >
+                  🏅 Leader: Prize {cycle.prizeLeader.prize} —{" "}
+                  {cycle.prizeLeader.totalUniqueNumbers}/10000 (
+                  {cycle.prizeLeader.percentComplete}%)
+                </div>
+              )}
+
+              {/* Completed Prizes */}
+              {cycle.completedPrizes?.length > 0 && (
+                <div style={{ marginTop: "6px", fontSize: "13px" }}>
+                  ✅ Completed prizes:{" "}
+                  <strong>{cycle.completedPrizes.join(", ")}</strong>
+                </div>
+              )}
+
+              {/* Action Buttons */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  marginTop: "14px",
+                  flexWrap: "wrap",
+                }}
+              >
+                {/* Toggle Prize Categories */}
+                <button
+                  onClick={() =>
+                    setSelectedPrizeCycle(
+                      selectedPrizeCycle === prizeKey ? null : prizeKey,
+                    )
+                  }
+                  style={{
+                    padding: "6px 14px",
+                    background: "#673ab7",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontSize: "13px",
+                  }}
+                >
+                  {selectedPrizeCycle === prizeKey
+                    ? "Hide Prizes"
+                    : "Show Prize Categories"}
+                </button>
+
+                {/* Toggle Daily Progress */}
+                <button
+                  onClick={() =>
+                    setSelectedCycle(
+                      selectedCycle === cycle.cycleNumber
+                        ? null
+                        : cycle.cycleNumber,
+                    )
+                  }
+                  style={{
+                    padding: "6px 14px",
+                    background: "#2196F3",
+                    color: "white",
+                    border: "none",
+                    borderRadius: "6px",
+                    cursor: "pointer",
+                    fontSize: "13px",
+                  }}
+                >
+                  {selectedCycle === cycle.cycleNumber
+                    ? "Hide Daily Progress"
+                    : "Show Daily Progress"}
+                </button>
+              </div>
+
+              {/* ─── PRIZE CATEGORIES PANEL ─── */}
+              {selectedPrizeCycle === prizeKey && cycle.prizes?.length > 0 && (
+                <div
+                  style={{
+                    marginTop: "16px",
+                    padding: "14px",
+                    background: "#faf5ff",
+                    borderRadius: "10px",
+                    border: "1px solid #d8b4fe",
+                  }}
+                >
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      marginBottom: "12px",
+                      fontSize: "14px",
+                      color: "#4a1d96",
+                    }}
+                  >
+                    🏆 Prize Categories — Unique Numbers Progress
+                  </div>
+
+                  {cycle.prizes.map((p) => {
+                    const ppKey = `${cycle.cycleNumber}-${p.prize}`;
+                    const ppOpen = selectedPrizeProgress === ppKey;
+
+                    return (
+                      <div
+                        key={p.prize}
+                        style={{
+                          marginBottom: "14px",
+                          paddingBottom: "14px",
+                          borderBottom: "1px solid #e9d5ff",
+                        }}
+                      >
+                        {/* Prize header row */}
+                        <div
+                          style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            fontSize: "13px",
+                            flexWrap: "wrap",
+                            gap: "4px",
+                          }}
+                        >
+                          <span style={{ fontWeight: "bold" }}>
+                            Prize {p.prize}{" "}
+                            {p.isComplete ? (
+                              <span style={{ color: "#16a34a" }}>
+                                ✅ Complete
+                              </span>
+                            ) : (
+                              <span style={{ color: "#d97706" }}>
+                                🔄 Running
+                              </span>
+                            )}
+                          </span>
+                          <span style={{ color: "#555" }}>
+                            {p.totalUniqueNumbers}/10000 — {p.percentComplete}%
+                            — {p.remainingNumbers} remaining
+                          </span>
+                        </div>
+
+                        {/* Prize progress bar */}
+                        <div
+                          style={{
+                            marginTop: "6px",
+                            background: "#e0e0e0",
+                            borderRadius: "8px",
+                            height: "8px",
+                            overflow: "hidden",
+                          }}
+                        >
+                          <div
+                            style={{
+                              width: `${p.percentComplete}%`,
+                              background: p.isComplete ? "#16a34a" : "#7c3aed",
+                              height: "100%",
+                              borderRadius: "8px",
+                              transition: "width 0.4s ease",
+                            }}
+                          />
+                        </div>
+
+                        {/* Prize date meta */}
+                        <div
+                          style={{
+                            fontSize: "12px",
+                            color: "#777",
+                            marginTop: "4px",
+                          }}
+                        >
+                          Start: {p.startDate || "—"} | End: {p.endDate || "—"}{" "}
+                          | Days: {p.totalDays}
+                        </div>
+
+                        {/* Toggle per-prize daily progress */}
+                        {p.dailyProgress?.length > 0 && (
+                          <>
+                            <button
+                              onClick={() =>
+                                setSelectedPrizeProgress(ppOpen ? null : ppKey)
+                              }
+                              style={{
+                                marginTop: "8px",
+                                padding: "4px 12px",
+                                background: "#7c3aed",
+                                color: "white",
+                                border: "none",
+                                borderRadius: "6px",
+                                cursor: "pointer",
+                                fontSize: "12px",
+                              }}
+                            >
+                              {ppOpen
+                                ? "Hide Numbers Added"
+                                : "Show Numbers Added per Day"}
+                            </button>
+
+                            {ppOpen && (
+                              <div
+                                style={{
+                                  marginTop: "10px",
+                                  overflowX: "auto",
+                                }}
+                              >
+                                <table
+                                  style={{
+                                    width: "100%",
+                                    borderCollapse: "collapse",
+                                    fontSize: "12px",
+                                  }}
+                                >
+                                  <thead>
+                                    <tr style={{ background: "#ede9fe" }}>
+                                      <th style={thStyle}>Date</th>
+                                      <th style={thStyle}>New Unique</th>
+                                      <th style={thStyle}>Total Unique</th>
+                                      <th style={thStyle}>Progress</th>
+                                      <th style={thStyle}>Numbers Added</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {p.dailyProgress.map((day, idx) => (
+                                      <tr
+                                        key={idx}
+                                        style={{
+                                          background:
+                                            idx % 2 === 0 ? "#fff" : "#f5f3ff",
+                                        }}
+                                      >
+                                        <td style={tdStyle}>{day.date}</td>
+                                        <td style={tdStyle}>
+                                          +{day.newUnique}
+                                        </td>
+                                        <td style={tdStyle}>
+                                          {day.totalUnique}
+                                        </td>
+                                        <td style={tdStyle}>
+                                          <div
+                                            style={{
+                                              background: "#e0e0e0",
+                                              borderRadius: "6px",
+                                              height: "7px",
+                                              width: "100%",
+                                            }}
+                                          >
+                                            <div
+                                              style={{
+                                                width: `${(day.totalUnique / 10000) * 100}%`,
+                                                background: "#7c3aed",
+                                                height: "100%",
+                                                borderRadius: "6px",
+                                              }}
+                                            />
+                                          </div>
+                                        </td>
+                                        <td style={tdStyle}>
+                                          <div
+                                            style={{
+                                              display: "flex",
+                                              flexWrap: "wrap",
+                                              gap: "4px",
+                                              maxHeight: "80px",
+                                              overflowY: "auto",
+                                            }}
+                                          >
+                                            {day.numbersAdded?.map((n) => (
+                                              <span
+                                                key={n}
+                                                style={{
+                                                  background: "#ede9fe",
+                                                  border: "1px solid #a78bfa",
+                                                  borderRadius: "4px",
+                                                  padding: "1px 5px",
+                                                  fontSize: "11px",
+                                                  fontFamily: "monospace",
+                                                }}
+                                              >
+                                                {n}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* ─── OVERALL DAILY PROGRESS TABLE ─── */}
+              {selectedCycle === cycle.cycleNumber && (
+                <div style={{ marginTop: "16px", overflowX: "auto" }}>
+                  <table
+                    style={{
+                      width: "100%",
+                      borderCollapse: "collapse",
+                      fontSize: "13px",
+                    }}
+                  >
+                    <thead>
+                      <tr style={{ background: "#e3f2fd" }}>
+                        <th style={thStyle}>Date</th>
+                        <th style={thStyle}>New Unique</th>
+                        <th style={thStyle}>Total Unique</th>
+                        <th style={thStyle}>Progress</th>
+                        <th style={thStyle}>Numbers Added</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cycle.dailyProgress.map((day, index) => (
+                        <tr
+                          key={index}
+                          style={{
+                            background: index % 2 === 0 ? "#fff" : "#f9f9f9",
+                          }}
+                        >
+                          <td style={tdStyle}>{day.date}</td>
+                          <td style={tdStyle}>+{day.newUnique}</td>
+                          <td style={tdStyle}>{day.totalUnique}</td>
+                          <td style={tdStyle}>
+                            <div
+                              style={{
+                                background: "#e0e0e0",
+                                borderRadius: "6px",
+                                height: "8px",
+                                width: "100%",
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: `${(day.totalUnique / 10000) * 100}%`,
+                                  background: "#2196F3",
+                                  height: "100%",
+                                  borderRadius: "6px",
+                                }}
+                              />
+                            </div>
+                          </td>
+                          <td style={tdStyle}>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: "4px",
+                                maxHeight: "80px",
+                                overflowY: "auto",
+                              }}
+                            >
+                              {day.numbersAdded?.map((n) => (
+                                <span
+                                  key={n}
+                                  style={{
+                                    background: "#e3f2fd",
+                                    border: "1px solid #90caf9",
+                                    borderRadius: "4px",
+                                    padding: "1px 5px",
+                                    fontSize: "11px",
+                                    fontFamily: "monospace",
+                                  }}
+                                >
+                                  {n}
+                                </span>
+                              ))}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+const thStyle = {
+  padding: "8px 12px",
+  textAlign: "left",
+  borderBottom: "1px solid #ddd",
+  fontWeight: "bold",
+  whiteSpace: "nowrap",
+};
+
+const tdStyle = {
+  padding: "8px 12px",
+  borderBottom: "1px solid #eee",
+  verticalAlign: "top",
+};

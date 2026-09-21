@@ -1,0 +1,603 @@
+KN-578, DL-7, BT-1 - BT-8,W-763 - W-819, SS-453 - SS-473,   1- 225(714) fine,  548 end of batch  , 774 batch,979 batch,1149 batch,1379 batch, 1416 batch,
+
+0562,1530,2214,5748,6717,7164,8652, - KN
+
+
+// const blocks = [
+    //   normalized.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i),
+    //   normalized.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i),
+    //   normalized.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i),
+    //   normalized.match(/6th\s*Prize[\s\S]*?(?=7th\s*Prize)/i),
+    //   normalized.match(/7th\s*Prize[\s\S]*?(?=8th\s*Prize)/i),
+    //   normalized.match(/8th\s*Prize[\s\S]*?(?=9th\s*Prize)/i),
+    //   //normalized.match(/9th\s*Prize[\s\S]*/i),
+    // ];
+    // // Conditional last prize block
+    // if (fileName.toLowerCase().startsWith("tmp")) {
+
+    //   blocks.push(normalized.match(/8th\s*Prize[\s\S]*/i));
+    // } else {
+    //   blocks.push(normalized.match(/9th\s*Prize[\s\S]*/i));
+    // }
+
+
+
+⚠️ Partial overlaps (≥2 rollers same):
+  number_id 1 and 2 share 2 rollers
+  number_id 1 and 4 share 2 rollers
+  number_id 1 and 5 share 2 rollers
+  number_id 1 and 6 share 2 rollers
+  number_id 1 and 8 share 2 rollers
+  number_id 1 and 9 share 2 rollers
+  number_id 1 and 10 share 2 rollers
+  number_id 1 and 11 share 2 rollers
+  number_id 1 and 17 share 2 rollers
+  number_id 2 and 3 share 3 rollers
+  number_id 2 and 4 share 3 rollers
+  number_id 2 and 5 share 3 rollers
+  number_id 2 and 6 share 3 rollers
+  number_id 2 and 16 share 2 rollers
+  number_id 2 and 18 share 2 rollers
+  number_id 3 and 4 share 3 rollers
+  number_id 3 and 5 share 2 rollers
+  number_id 3 and 6 share 3 rollers
+  number_id 3 and 14 share 2 rollers
+  number_id 3 and 16 share 3 rollers
+  number_id 3 and 18 share 3 rollers
+  number_id 4 and 5 share 2 rollers
+  number_id 4 and 6 share 4 rollers //important
+  number_id 4 and 11 share 2 rollers
+  number_id 4 and 16 share 2 rollers
+  number_id 4 and 18 share 2 rollers
+  number_id 5 and 6 share 2 rollers
+  number_id 5 and 10 share 2 rollers
+  number_id 5 and 16 share 2 rollers
+  number_id 5 and 17 share 2 rollers
+  number_id 5 and 18 share 3 rollers
+  number_id 6 and 11 share 2 rollers
+  number_id 6 and 16 share 2 rollers
+  number_id 6 and 18 share 2 rollers
+  number_id 7 and 17 share 2 rollers
+  number_id 8 and 9 share 3 rollers
+  number_id 8 and 10 share 2 rollers
+  number_id 8 and 11 share 3 rollers
+  number_id 8 and 12 share 2 rollers
+  number_id 8 and 13 share 2 rollers
+  number_id 8 and 15 share 2 rollers
+  number_id 9 and 10 share 2 rollers
+  number_id 9 and 11 share 3 rollers
+  number_id 9 and 12 share 3 rollers
+  number_id 9 and 13 share 2 rollers
+  number_id 10 and 12 share 3 rollers
+  number_id 10 and 13 share 2 rollers
+  number_id 10 and 14 share 2 rollers
+  number_id 10 and 15 share 2 rollers
+  number_id 10 and 17 share 3 rollers       
+  number_id 11 and 12 share 2 rollers
+  number_id 11 and 14 share 2 rollers
+  number_id 12 and 13 share 3 rollers
+  number_id 12 and 14 share 2 rollers
+  number_id 12 and 15 share 2 rollers
+  number_id 12 and 17 share 2 rollers
+  number_id 13 and 14 share 3 rollers
+  number_id 13 and 15 share 2 rollers
+  number_id 13 and 16 share 2 rollers
+  number_id 13 and 17 share 2 rollers
+  number_id 14 and 17 share 2 rollers
+  number_id 15 and 17 share 2 rollers
+  number_id 16 and 18 share 3 rollers
+  number_id 17 and 18 share 2 rollers
+
+  1277 7632
+  6178 0050
+
+  1|3|5|8|7|2|4|6|9|0 = 7
+  2|0|1|9|5|6|4|7|3|8 = 2
+  7|4|1|8|6|3|5|0|2|9 = 0
+  7|9|2|5|1|6|3|8|0|4 = 7
+
+Roller 1 Pos 1: 1 → 6 | steps = 4 | mod10 = 4
+Roller 1 Pos 2: 2 → 1 | steps = 2 | mod10 = 2
+Roller 1 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 1 Pos 4: 7 → 8 | steps = 3 | mod10 = 3
+
+Roller 2 Pos 1: 1 → 6 | steps = 7 | mod10 = 7
+Roller 2 Pos 2: 2 → 1 | steps = 2 | mod10 = 2
+Roller 2 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 2 Pos 4: 7 → 8 | steps = 1 | mod10 = 1
+
+Roller 3 Pos 1: 1 → 6 | steps = 3 | mod10 = 3
+Roller 3 Pos 2: 2 → 1 | steps = 5 | mod10 = 5
+Roller 3 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 3 Pos 4: 7 → 8 | steps = 3 | mod10 = 3
+
+Roller 4 Pos 1: 1 → 6 | steps = 7 | mod10 = 7
+Roller 4 Pos 2: 2 → 1 | steps = 2 | mod10 = 2
+Roller 4 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 4 Pos 4: 7 → 8 | steps = 7 | mod10 = 7
+
+Roller 5 Pos 1: 1 → 6 | steps = 7 | mod10 = 7
+Roller 5 Pos 2: 2 → 1 | steps = 2 | mod10 = 2
+Roller 5 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 5 Pos 4: 7 → 8 | steps = 1 | mod10 = 1
+
+Roller 6 Pos 1: 1 → 6 | steps = 7 | mod10 = 7
+Roller 6 Pos 2: 2 → 1 | steps = 2 | mod10 = 2
+Roller 6 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 6 Pos 4: 7 → 8 | steps = 3 | mod10 = 3
+
+Roller 7 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 7 Pos 2: 2 → 1 | steps = 9 | mod10 = 9
+Roller 7 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 7 Pos 4: 7 → 8 | steps = 5 | mod10 = 5
+
+Roller 8 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 8 Pos 2: 2 → 1 | steps = 4 | mod10 = 4
+Roller 8 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 8 Pos 4: 7 → 8 | steps = 2 | mod10 = 2
+
+Roller 9 Pos 1: 1 → 6 | steps = 1 | mod10 = 1
+Roller 9 Pos 2: 2 → 1 | steps = 6 | mod10 = 6
+Roller 9 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 9 Pos 4: 7 → 8 | steps = 1 | mod10 = 1
+
+Roller 10 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 10 Pos 2: 2 → 1 | steps = 1 | mod10 = 1
+Roller 10 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 10 Pos 4: 7 → 8 | steps = 2 | mod10 = 2
+
+Roller 11 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 11 Pos 2: 2 → 1 | steps = 4 | mod10 = 4
+Roller 11 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 11 Pos 4: 7 → 8 | steps = 3 | mod10 = 3
+
+Roller 12 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 12 Pos 2: 2 → 1 | steps = 4 | mod10 = 4
+Roller 12 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 12 Pos 4: 7 → 8 | steps = 1 | mod10 = 1
+
+Roller 13 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 13 Pos 2: 2 → 1 | steps = 1 | mod10 = 1
+Roller 13 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 13 Pos 4: 7 → 8 | steps = 5 | mod10 = 5
+
+Roller 14 Pos 1: 1 → 6 | steps = 5 | mod10 = 5
+Roller 14 Pos 2: 2 → 1 | steps = 5 | mod10 = 5
+Roller 14 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 14 Pos 4: 7 → 8 | steps = 3 | mod10 = 3
+
+Roller 15 Pos 1: 1 → 6 | steps = 4 | mod10 = 4
+Roller 15 Pos 2: 2 → 1 | steps = 1 | mod10 = 1
+Roller 15 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 15 Pos 4: 7 → 8 | steps = 6 | mod10 = 6
+
+Roller 16 Pos 1: 1 → 6 | steps = 2 | mod10 = 2
+Roller 16 Pos 2: 2 → 1 | steps = 5 | mod10 = 5
+Roller 16 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 16 Pos 4: 7 → 8 | steps = 2 | mod10 = 2
+
+Roller 17 Pos 1: 1 → 6 | steps = 5 | mod10 = 5
+Roller 17 Pos 2: 2 → 1 | steps = 9 | mod10 = 9
+Roller 17 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 17 Pos 4: 7 → 8 | steps = 5 | mod10 = 5
+
+Roller 18 Pos 1: 1 → 6 | steps = 4 | mod10 = 4
+Roller 18 Pos 2: 2 → 1 | steps = 5 | mod10 = 5
+Roller 18 Pos 3: 7 → 7 | steps = 0 | mod10 = 0
+Roller 18 Pos 4: 7 → 8 | steps = 2 | mod10 = 2
+
+
+Roller 0: 2.03  
+Roller 1: 1.97
+Roller 2: 1.75
+Roller 3: 1.41
+Roller 4: 1.56
+Roller 5: 1.23
+Roller 6: 1.49
+Roller 7: 1.43
+Roller 8: 1.55
+Roller 9: 1.45
+Roller 10: 1.78
+Roller 11: 1.31
+Roller 12: 1.75
+Roller 13: 1.78
+Roller 14: 1.84
+Roller 15: 1.77
+Roller 16: 1.39
+Roller 17: 2.06
+Roller 18: 1.81
+Roller 19: 1.57
+Roller 20: 1.15
+Roller 21: 1.04
+Roller 22: 1.05
+Roller 23: 1.02
+Roller 24: 2.16
+Roller 25: 2.25
+Roller 26: 2.19
+Roller 27: 2.13
+Roller 28: 1.72
+Roller 29: 1.50
+Roller 30: 1.46
+Roller 31: 1.65
+Roller 32: 1.45
+Roller 33: 1.32
+Roller 34: 1.46
+Roller 35: 1.72
+Roller 36: 1.58
+Roller 37: 1.24
+Roller 38: 1.46
+Roller 39: 1.64
+Roller 40: 1.26
+Roller 41: 1.27
+Roller 42: 1.50
+Roller 43: 1.42
+Roller 44: 1.21
+Roller 45: 1.20
+Roller 46: 1.24
+Roller 47: 1.79
+Roller 48: 1.12
+Roller 49: 1.45
+Roller 50: 1.12
+Roller 51: 1.03
+Roller 52: 1.63
+Roller 53: 1.78
+Roller 54: 1.86
+Roller 55: 1.67
+Roller 56: 1.21
+Roller 57: 1.29
+Roller 59: 1.27
+Roller 60: 1.62
+Roller 61: 1.74
+Roller 62: 1.51
+Roller 63: 1.68
+Roller 64: 1.55
+Roller 65: 1.61
+Roller 66: 1.53
+Roller 67: 1.91
+Roller 68: 1.41
+Roller 69: 1.30
+Roller 70: 1.05
+Roller 71: 1.27
+
+📊 Average Roller Speeds:
+Roller 0: 2.03
+Roller 1: 1.97
+Roller 2: 1.75
+Roller 3: 1.41
+Roller 4: 1.56
+Roller 5: 1.23
+Roller 6: 1.49
+Roller 7: 1.43
+Roller 8: 1.55
+Roller 9: 1.45
+Roller 10: 1.78
+Roller 11: 1.31
+Roller 12: 1.75
+Roller 13: 1.78
+Roller 14: 1.84
+Roller 15: 1.77
+Roller 16: 1.39
+Roller 17: 2.06
+Roller 18: 1.81
+Roller 19: 1.57
+Roller 20: 1.15
+Roller 21: 1.04
+Roller 22: 1.05
+Roller 23: 1.02
+Roller 24: 2.16
+Roller 25: 2.25
+Roller 26: 2.19
+Roller 27: 2.13
+Roller 28: 1.72
+Roller 29: 1.50
+Roller 30: 1.46
+Roller 31: 1.65
+Roller 32: 1.45
+Roller 33: 1.32
+Roller 34: 1.46
+Roller 35: 1.72
+Roller 36: 1.58
+Roller 37: 1.24
+Roller 38: 1.46
+Roller 39: 1.64
+Roller 40: 1.26
+Roller 41: 1.27
+Roller 42: 1.50
+Roller 43: 1.42
+Roller 44: 1.21
+Roller 45: 1.20
+Roller 46: 1.24
+Roller 47: 1.79
+Roller 48: 1.12
+Roller 49: 1.45
+Roller 50: 1.12
+Roller 51: 1.03
+Roller 52: 1.63
+Roller 53: 1.78
+Roller 54: 1.86
+Roller 55: 1.67
+Roller 56: 1.21
+Roller 57: 1.29
+Roller 58: 1.45
+Roller 59: 1.27
+Roller 60: 1.62
+Roller 61: 1.74
+Roller 62: 1.51
+Roller 63: 1.68
+Roller 64: 1.55
+Roller 65: 1.61
+Roller 66: 1.53
+Roller 67: 1.91
+Roller 68: 1.41
+Roller 69: 1.30
+Roller 70: 1.05
+Roller 71: 1.27
+
+
+
+legend Info: 
+Roller 1: 0
+Roller 2: 0
+Roller 3: 1
+Roller 4: 9
+Roller 5: 7
+Roller 6: 9
+
+📊 Roller Movement Frequency Summary:
+
+🔹 Roller 1: 7|4|2|1|3|9|5|8|6
+   Gap  0 → 396 times
+   Gap  5 → 355 times
+   Gap  4 → 334 times
+   Gap  2 → 315 times
+   Gap  1 → 312 times
+   Gap  6 → 307 times
+   Gap  8 → 307 times
+   Gap  7 → 298 times
+   Gap  3 → 279 times
+----------------------------------------
+🔹 Roller 2: 7|6|8|5|9|0|3|1|2|4
+   Gap  0 → 345 times
+   Gap  3 → 312 times
+   Gap  1 → 308 times
+   Gap  9 → 292 times
+   Gap  4 → 286 times
+   Gap  6 → 283 times
+   Gap  5 → 278 times
+   Gap  8 → 278 times
+   Gap  7 → 268 times
+   Gap  2 → 253 times
+----------------------------------------
+🔹 Roller 3: 7|8|9|0|1|2|3|4|5|6
+   Gap  1 → 313 times
+   Gap  0 → 311 times
+   Gap  3 → 309 times
+   Gap  5 → 303 times
+   Gap  2 → 294 times
+   Gap  7 → 294 times
+   Gap  4 → 275 times
+   Gap  6 → 270 times
+   Gap  9 → 268 times
+   Gap  8 → 266 times
+----------------------------------------
+🔹 Roller 4: 7|5|9|1|3|6|8|4|0|2
+   Gap  9 → 319 times
+   Gap  2 → 313 times
+   Gap  4 → 302 times
+   Gap  0 → 301 times
+   Gap  1 → 294 times
+   Gap  3 → 290 times
+   Gap  6 → 290 times
+   Gap  5 → 277 times
+   Gap  7 → 263 times
+   Gap  8 → 254 times
+----------------------------------------
+🔹 Roller 5: 7|5|1|9|6|4|2|8|3|0
+   Gap  4 → 304 times
+   Gap  5 → 304 times
+   Gap  7 → 304 times
+   Gap  8 → 298 times
+   Gap  0 → 294 times
+   Gap  1 → 287 times
+   Gap  2 → 280 times
+   Gap  6 → 279 times
+   Gap  3 → 278 times
+   Gap  9 → 275 times
+----------------------------------------
+🔹 Roller 6: 7|9|2|5|1|6|3|8|0|4
+   Gap  9 → 313 times
+   Gap  3 → 307 times
+   Gap  0 → 303 times
+   Gap  1 → 298 times
+   Gap  2 → 293 times
+   Gap  5 → 287 times
+   Gap  8 → 280 times
+   Gap  7 → 278 times
+   Gap  4 → 272 times
+   Gap  6 → 272 times
+----------------------------------------
+
+above data is wrong:
+this is correct: 
+
+📊 Roller Movement Frequency Summary:
+
+🔹 Roller 1
+   Gap  0 → 396 times
+   Gap  4 → 343 times
+   Gap  3 → 330 times
+   Gap  1 → 325 times
+   Gap  8 → 321 times
+   Gap  7 → 308 times
+   Gap  2 → 306 times
+   Gap  6 → 292 times
+   Gap  5 → 282 times
+----------------------------------------
+🔹 Roller 2
+   Gap  0 → 345 times
+   Gap  3 → 312 times
+   Gap  1 → 308 times
+   Gap  9 → 292 times
+   Gap  4 → 286 times
+   Gap  6 → 283 times
+   Gap  5 → 278 times
+   Gap  8 → 278 times
+   Gap  7 → 268 times
+   Gap  2 → 253 times
+----------------------------------------
+🔹 Roller 3
+   Gap  1 → 313 times
+   Gap  0 → 311 times
+   Gap  3 → 309 times
+   Gap  5 → 303 times
+   Gap  2 → 294 times
+   Gap  7 → 294 times
+   Gap  4 → 275 times
+   Gap  6 → 270 times
+   Gap  9 → 268 times
+   Gap  8 → 266 times
+----------------------------------------
+🔹 Roller 4
+   Gap  9 → 319 times
+   Gap  2 → 313 times
+   Gap  4 → 302 times
+   Gap  0 → 301 times
+   Gap  1 → 294 times
+   Gap  3 → 290 times
+   Gap  6 → 290 times
+   Gap  5 → 277 times
+   Gap  7 → 263 times
+   Gap  8 → 254 times
+----------------------------------------
+🔹 Roller 5
+   Gap  4 → 304 times
+   Gap  5 → 304 times
+   Gap  7 → 304 times
+   Gap  8 → 298 times
+   Gap  0 → 294 times
+   Gap  1 → 287 times
+   Gap  2 → 280 times
+   Gap  6 → 279 times
+   Gap  3 → 278 times
+   Gap  9 → 275 times
+----------------------------------------
+🔹 Roller 6
+   Gap  9 → 313 times
+   Gap  3 → 307 times
+   Gap  0 → 303 times
+   Gap  1 → 298 times
+   Gap  2 → 293 times
+   Gap  5 → 287 times
+   Gap  8 → 280 times
+   Gap  7 → 278 times
+   Gap  4 → 272 times
+   Gap  6 → 272 times
+----------------------------------------
+
+straight:
+📊 Clean, Aligned Roller Movement Frequency Table
+Gap	Roller 1	Roller 2	Roller 3	Roller 4	Roller 5	Roller 6
+0	396	345	311	301	294	303
+1	325	308	313	294	287	298
+2	306	253	294	313	280	293
+3	330	312	309	290	278	307
+4	343	286	275	302	304	272
+5	282	278	303	277	304	287
+6	292	283	270	290	279	272
+7	308	268	294	263	304	278
+8	321	278	266	254	298	280
+9	–	   292	268	319	275	313
+
+
+📊 Roller Movement Frequency Summary:
+
+🔹 Roller 1
+   Gap  7 → 13 times
+   Gap  5 → 12 times
+   Gap  1 → 9 times
+   Gap  0 → 8 times
+   Gap  4 → 7 times
+   Gap  8 → 7 times
+   Gap  3 → 5 times
+   Gap  6 → 4 times
+   Gap  2 → 3 times
+----------------------------------------
+🔹 Roller 2
+   Gap  0 → 9 times
+   Gap  5 → 9 times
+   Gap  2 → 8 times
+   Gap  3 → 8 times
+   Gap  9 → 8 times
+   Gap  1 → 7 times
+   Gap  6 → 6 times
+   Gap  8 → 5 times
+   Gap  4 → 4 times
+   Gap  7 → 4 times
+----------------------------------------
+🔹 Roller 3
+   Gap  0 → 13 times
+   Gap  1 → 11 times
+   Gap  7 → 9 times
+   Gap  2 → 7 times
+   Gap  5 → 6 times
+   Gap  6 → 6 times
+   Gap  9 → 5 times
+   Gap  3 → 4 times
+   Gap  8 → 4 times
+   Gap  4 → 3 times
+----------------------------------------
+🔹 Roller 4
+   Gap  5 → 12 times
+   Gap  0 → 8 times
+   Gap  8 → 8 times
+   Gap  2 → 7 times
+   Gap  9 → 7 times
+   Gap  3 → 6 times
+   Gap  4 → 6 times
+   Gap  6 → 6 times
+   Gap  7 → 5 times
+   Gap  1 → 3 times
+----------------------------------------
+🔹 Roller 5
+   Gap  0 → 10 times
+   Gap  1 → 9 times
+   Gap  2 → 9 times
+   Gap  7 → 8 times
+   Gap  6 → 7 times
+   Gap  4 → 6 times
+   Gap  8 → 6 times
+   Gap  3 → 5 times
+   Gap  9 → 5 times
+   Gap  5 → 3 times
+----------------------------------------
+🔹 Roller 6
+   Gap  4 → 10 times
+   Gap  5 → 9 times
+   Gap  8 → 9 times
+   Gap  0 → 8 times
+   Gap  1 → 7 times
+   Gap  2 → 6 times
+   Gap  3 → 6 times
+   Gap  6 → 5 times
+   Gap  7 → 4 times
+   Gap  9 → 4 times
+----------------------------------------
+
+
+
+5000 prediction results:-
+we have possible numbers based on rollers...
+we have max 12 table.......(461 less numbers)
+
+equals:-
+mainRoll1 :                                                       Commom gaps:- 7,5,1,0,4,8,3,6,2
+
+mainRoll2 and (1,1) (5,3) (8,4) (10,4) (15,1) (17,2) (18,1)       Commom gaps:- 0,5,2,3,9,1,6,8,4,7 
+
+mainRoll3 and (1,3) (2,4) (5,4) (7,2) (9,4) (10,3) (12,4) (17,1)  Commom gaps:- 0,1,7,2,5,6,9,3,8,4
+
+mainRoll4 and (8,2) (9,3) (11,2) (12,2) (13,1) (15,4) (16,1)      Commom gaps:- 5,0,8,2,9,3,4,6,7,1
+
+mainRoll5 and (8,1) (9,2) (10,1) (11,1) (12,1) (13,3) (14,3)      Commom gaps:- 0,1,2,7,6,4,8,3,9,5
+
+mainRoll6 and (1,2) (4,4) (6,3) (8,3) (9,1) (11,3)                Commom gaps:- 4,5,8,0,1,2,3,6,7,9

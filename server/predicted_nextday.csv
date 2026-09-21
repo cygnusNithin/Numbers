@@ -1,0 +1,7 @@
+base_date,next_date,base_number,roller_id,digit_from,common_gap,tries_skipped,applied_gap,new_digit,predicted_number
+31/12/2024,Predicted,124617,1,1,0,26,0,1,120261
+31/12/2024,Predicted,124617,2,2,0,26,0,2,120261
+31/12/2024,Predicted,124617,3,4,1,26,6,0,120261
+31/12/2024,Predicted,124617,4,6,9,26,4,2,120261
+31/12/2024,Predicted,124617,5,1,7,26,2,6,120261
+31/12/2024,Predicted,124617,6,7,9,26,4,1,120261

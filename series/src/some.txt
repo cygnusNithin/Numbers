@@ -1,0 +1,457 @@
+import { useState, useEffect } from "react";
+import "./App.css";
+import axios from "axios";
+
+function App() {
+  const [input, setInput] = useState("");
+  const [counts, setCounts] = useState({});
+  const [userId, setUserId] = useState("");
+  const [entries, setEntries] = useState([]);
+  const [date, setDate] = useState([]);
+  const [filterDay, setFilterDay] = useState(""); // for example, "25"
+  const [filterMonth, setFilterMonth] = useState(""); // for example, "6"
+
+  const [file, setFile] = useState(null);
+
+  useEffect(() => {
+    const matches = input.match(/\b\d{4}\b/g);
+    const newCounts = {};
+    if (matches) {
+      matches.forEach((num) => {
+        if (newCounts[num]) {
+          newCounts[num]++;
+        } else {
+          newCounts[num] = 1;
+        }
+      });
+    }
+    setCounts(newCounts);
+  }, [input]);
+
+  // const getColor = (count, maxCount) => {
+  //   if (count === 0) return "#ffcccc"; // light red
+  //   if (count === maxCount) return "#a0f0a0"; // light green
+  //   if (count === 1) return "#ffd699"; // soft orange
+  //   if (count === 2) return "#fff8b3"; // pale yellow
+  //   if (count === 3) return "#e4fcb4"; // lime yellow
+  //   if (count === 4) return "#c7fcb0"; // mint
+
+  //   // fallback gradient if > 4
+  //   const ratio = count / maxCount;
+  //   const red = Math.floor(255 - 100 * ratio);
+  //   const green = Math.floor(160 + (255 - 160) * ratio);
+  //   return `rgb(${red}, ${green}, ${red})`;
+  // };
+  const getColor = (count, minCount, maxCount) => {
+    if (count === 0) return "#ffcccc"; // light red for zero
+
+    // 20 fixed colors (covers counts up to 20 directly)
+    const palette = [
+      "#ff9999",
+      "#ffcc99",
+      "#ffff99",
+      "#ccff99",
+      "#99ff99",
+      "#99ffcc",
+      "#99ffff",
+      "#99ccff",
+      "#9999ff",
+      "#cc99ff",
+      "#ff99ff",
+      "#ff99cc",
+      "#ff6666",
+      "#ffb366",
+      "#ffff66",
+      "#b3ff66",
+      "#66ff66",
+      "#66ffb3",
+      "#66ffff",
+      "#66b3ff",
+    ];
+
+    if (count <= palette.length) {
+      return palette[count - 1]; // map 1→20
+    }
+
+    // Normalize count between min and max
+    const ratio = (count - minCount) / (maxCount - minCount || 1);
+
+    // Green intensity grows with ratio, red shrinks
+    const red = Math.floor(255 - 120 * ratio);
+    const green = Math.floor(160 + (255 - 160) * ratio);
+    return `rgb(${red}, ${green}, ${red})`;
+  };
+
+  // const loadAllData = async () => {
+  //   try {
+  //     const res = await axios.get("http://localhost:5000/all");
+  //     const allNums = res.data.numbers;
+
+  //     const newCounts = {};
+  //     allNums.forEach((num) => {
+  //       newCounts[num] = (newCounts[num] || 0) + 1;
+  //     });
+
+  //     setCounts(newCounts);
+  //     alert("Loaded all entries from all users.");
+  //   } catch (err) {
+  //     console.error("Failed to load all data", err);
+  //   }
+  // };
+
+  // const loadAllData = async () => {
+  //   try {
+  //     const res = await axios.get("http://localhost:5000/all");
+  //     const allEntries = res.data.entries;
+  //     setEntries(allEntries);
+
+  //     // Build full counts (no filter)
+  //     const newCounts = {};
+  //     allEntries.forEach((entry) => {
+  //       entry.numbers.forEach(({ number, count }) => {
+  //         newCounts[number] = (newCounts[number] || 0) + count;
+  //       });
+  //     });
+
+  //     const max = Math.max(...Object.values(newCounts), 1);
+  //     setCounts({ ...newCounts, _max: max });
+  //     setFilterDay(""); // reset filter
+  //     alert("Loaded all entries from all users.");
+  //   } catch (err) {
+  //     console.error("Failed to load all data", err);
+  //   }
+  // };
+
+  //main database loadAll
+  const loadAllData = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/mainall");
+      const allEntries = res.data.entries;
+      setEntries(allEntries);
+
+      // Build full counts (no filter)
+      const newCounts = {};
+
+      allEntries.forEach((entry) => {
+        if (entry.series && Array.isArray(entry.series)) {
+          entry.series.forEach((series) => {
+            if (series.numbers && Array.isArray(series.numbers)) {
+              series.numbers.forEach(({ number, count }) => {
+                newCounts[number] = (newCounts[number] || 0) + count;
+              });
+            }
+          });
+        }
+      });
+
+      const max = Math.max(...Object.values(newCounts), 1);
+      setCounts({ ...newCounts, _max: max });
+      setFilterDay(""); // reset filter
+      alert("Loaded all entries from all users.");
+    } catch (err) {
+      console.error("Failed to load all data", err);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (!userId || !date || Object.keys(counts).length === 0) {
+      alert("User ID, Date, and Numbers are required.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:5000/submit", {
+        userId,
+        date,
+        counts,
+      });
+      alert(response.data.message);
+    } catch (error) {
+      console.error("Error submitting data:", error);
+      alert("Error saving data");
+    }
+  };
+
+  const filterByDay = (dayStr) => {
+    setFilterDay(dayStr);
+
+    if (!dayStr || !entries.length) {
+      // Restore full counts
+      const newCounts = {};
+      entries.forEach((entry) => {
+        entry.numbers.forEach(({ number, count }) => {
+          newCounts[number] = (newCounts[number] || 0) + count;
+        });
+      });
+
+      const max = Math.max(...Object.values(newCounts), 1);
+      setCounts({ ...newCounts, _max: max });
+      return;
+    }
+
+    const selectedDay = parseInt(dayStr);
+    const filtered = entries.filter((entry) => {
+      const [d] = entry.date.split(".").map(Number);
+      return d === selectedDay;
+    });
+
+    const filteredCounts = {};
+    filtered.forEach((entry) => {
+      entry.numbers.forEach(({ number, count }) => {
+        filteredCounts[number] = (filteredCounts[number] || 0) + count;
+      });
+    });
+
+    const max = Math.max(...Object.values(filteredCounts), 1);
+    setCounts({ ...filteredCounts, _max: max });
+  };
+
+  const filterByMonth = (monthStr) => {
+    setFilterMonth(monthStr);
+
+    if (!monthStr || !entries.length) {
+      // Reset to full data if filter cleared
+      const newCounts = {};
+      entries.forEach((entry) => {
+        entry.numbers.forEach(({ number, count }) => {
+          newCounts[number] = (newCounts[number] || 0) + count;
+        });
+      });
+
+      const max = Math.max(...Object.values(newCounts), 1);
+      setCounts({ ...newCounts, _max: max });
+      return;
+    }
+
+    const selectedMonth = parseInt(monthStr);
+    const filtered = entries.filter((entry) => {
+      const [, m] = entry.date.split(".").map(Number);
+      return m === selectedMonth;
+    });
+
+    const filteredCounts = {};
+    filtered.forEach((entry) => {
+      entry.numbers.forEach(({ number, count }) => {
+        filteredCounts[number] = (filteredCounts[number] || 0) + count;
+      });
+    });
+
+    const max = Math.max(...Object.values(filteredCounts), 1);
+    setCounts({ ...filteredCounts, _max: max });
+  };
+
+  // const renderGrid = () => {
+  //   const rows = [];
+  //   for (let i = 0; i <= 9999; i++) {
+  //     const num = i.toString().padStart(4, "0");
+  //     const count = counts[num] || 0;
+  //     rows.push(
+  //       <div key={num} className={`cell ${count > 0 ? "highlight" : ""}`}>
+  //         <div>{num}</div>
+  //         {count > 0 && <div className="count">{count}</div>}
+  //       </div>
+  //     );
+  //   }
+  //   return rows;
+  // };
+
+  // const renderGrid = () => {
+  //   const rows = [];
+  //   const maxCount = counts._max || 1;
+
+  //   for (let i = 0; i <= 9999; i++) {
+  //     const num = i.toString().padStart(4, "0");
+  //     const count = counts[num] || 0;
+  //     const bgColor = getColor(count, maxCount);
+
+  //     rows.push(
+  //       <div key={num} className="cell" style={{ backgroundColor: bgColor }}>
+  //         <div>{num}</div>
+  //         {count > 0 && <div className="count">{count}</div>}
+  //       </div>
+  //     );
+  //   }
+  //   return rows;
+  // };
+  const renderGrid = () => {
+    const rows = [];
+    const maxCount = counts._max || 1;
+    const values = Object.values(counts).filter((v) => typeof v === "number");
+    const minCount = values.length ? Math.min(...values) : 0;
+
+    for (let i = 0; i <= 9999; i++) {
+      const num = i.toString().padStart(4, "0");
+      const count = counts[num] || 0;
+      const bgColor = getColor(count, minCount, maxCount);
+
+      rows.push(
+        <div key={num} className="cell" style={{ backgroundColor: bgColor }}>
+          <div>{num}</div>
+          {count > 0 && <div className="count">{count}</div>}
+        </div>
+      );
+    }
+    return rows;
+  };
+
+  const uploadFile = async () => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/upload",
+        formData
+      );
+      console.log("🎯 API Data:", res.data);
+
+      //window.location.reload();
+      const { lotteryNo, drawDate, numbers } = res.data;
+
+      // update your React states directly
+      setInput(numbers.join(" ") || "");
+      setUserId(lotteryNo || "");
+      setDate(drawDate || "");
+
+      // ✅ now: check if userId already exists
+      const checkRes = await axios.post(
+        "http://localhost:5000/api/check-userid",
+        {
+          userId: lotteryNo,
+        }
+      );
+
+      if (checkRes.data.exists) {
+        alert(
+          `❌ User ID / Lottery No ${lotteryNo} already exists. Choose another.`
+        );
+        return;
+      }
+
+      alert("File uploaded and data extracted!");
+    } catch (err) {
+      console.error("Upload failed:", err);
+      alert("Upload failed. Check console.");
+    }
+  };
+
+  const autoUpload = async () => {
+    try {
+      const res = await axios.get("http://localhost:5000/api/auto-upload");
+      console.log("📦 Auto Upload Results:", res.data);
+      //alert("Check console for parsed data. Not saved yet.");
+    } catch (err) {
+      console.error("Auto upload failed:", err);
+      alert("Auto upload failed. Check console.");
+    }
+  };
+  const allUpload = async () => {
+    try {
+      const res = await axios.get(
+        "http://localhost:5000/api/all-upload-folder"
+      );
+      console.log("📦 Auto Upload Results:", res.data);
+      //alert("Check console for parsed data. Not saved yet.");
+    } catch (err) {
+      console.error("Auto upload failed:", err);
+      alert("Auto upload failed. Check console.");
+    }
+  };
+
+  const oldUpload = async () => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/old-upload",
+        formData
+      );
+      console.log("📦 Old Upload Results:", res.data);
+    } catch (err) {
+      console.error("Old upload failed:", err);
+      alert("Old upload failed. Check console.");
+    }
+  };
+
+  return (
+    <div className="container">
+      <textarea
+        className="textbox"
+        placeholder="Enter 4-digit numbers like 0001 0234 9999..."
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+
+      <div className="action-bar">
+        <input
+          type="text"
+          className="userid-box"
+          placeholder="Enter User ID"
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
+        />
+        <input
+          type="text"
+          className="date-box"
+          placeholder="Enter the Date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+        ></input>
+        <button onClick={loadAllData} className="submit-btn blue">
+          Load All User Data
+        </button>
+        <button onClick={handleSubmit} className="submit-btn">
+          Save to Database
+        </button>
+        <select
+          value={filterDay}
+          onChange={(e) => {
+            const val = e.target.value;
+            setFilterDay(val);
+            filterByDay(val);
+          }}
+          className="sort-dropdown"
+        >
+          <option value="">Filter by Day</option>
+          {[...Array(31)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>{`Day ${i + 1}`}</option>
+          ))}
+        </select>
+        <select
+          value={filterMonth}
+          onChange={(e) => {
+            const val = e.target.value;
+            setFilterMonth(val);
+            filterByMonth(val);
+          }}
+          className="sort-dropdown"
+        >
+          <option value="">Filter by Month</option>
+          {[...Array(12)].map((_, i) => (
+            <option key={i + 1} value={i + 1}>
+              Month {i + 1}
+            </option>
+          ))}
+        </select>
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <button className="upload-btn" onClick={uploadFile}>
+          Upload
+        </button>
+        <button className="auto-btn" onClick={autoUpload}>
+          Auto
+        </button>
+        <button className="oldUpload-btn" onClick={oldUpload}>
+          OldData
+        </button>
+        <button className="all-Upload-btn" onClick={allUpload}>
+          AllData
+        </button>
+      </div>
+
+      <div className="grid">{renderGrid()}</div>
+    </div>
+  );
+}
+
+export default App;

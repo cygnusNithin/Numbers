@@ -1,0 +1,61 @@
+{
+  "summary": {
+    "total_results": 471802,
+    "unique_numbers": 10000,
+    "date_range": "2020-07-11 00:00:00 to 2026-01-30 00:00:00",
+    "fraud_score": 75,
+    "fraud_percentage": 75.0,
+    "verdict": "\ud83d\udea8 HIGHLY SUSPICIOUS - Strong evidence of manipulation",
+    "verdict_category": "CRITICAL"
+  },
+  "anomalies": [
+    {
+      "test": "chi_square",
+      "position": 1,
+      "severity": "CRITICAL",
+      "chi2": 522.2625084251446,
+      "p_value": 9.802493569945918e-107,
+      "message": "Position 1 is NOT random (p=0.000000)"
+    },
+    {
+      "test": "chi_square",
+      "position": 2,
+      "severity": "CRITICAL",
+      "chi2": 699.7189838110055,
+      "p_value": 7.948602061578223e-145,
+      "message": "Position 2 is NOT random (p=0.000000)"
+    },
+    {
+      "test": "chi_square",
+      "position": 3,
+      "severity": "CRITICAL",
+      "chi2": 568.0971594016135,
+      "p_value": 1.4650908010013737e-116,
+      "message": "Position 3 is NOT random (p=0.000000)"
+    },
+    {
+      "test": "chi_square",
+      "position": 4,
+      "severity": "CRITICAL",
+      "chi2": 236.6317989326031,
+      "p_value": 6.591620161694736e-46,
+      "message": "Position 4 is NOT random (p=0.000000)"
+    },
+    {
+      "test": "consecutive_duplicate",
+      "severity": "CRITICAL",
+      "number": "6308",
+      "dates": [
+        "06/02/2025",
+        "07/02/2025"
+      ],
+      "message": "Same number 6308 appeared on consecutive draws"
+    }
+  ],
+  "statistics": {
+    "total_anomalies": 5,
+    "critical_anomalies": 5,
+    "high_anomalies": 0,
+    "medium_anomalies": 0
+  }
+}

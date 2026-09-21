@@ -1,0 +1,8 @@
+cycle,start_date,end_date,unique_count,completed
+
+CURRENT_CYCLE_INCOMPLETE,,,,
+current_cycle,1,,,
+current_cycle_start_date,11/07/2020,,,
+last_seen_date_in_current_cycle,02/05/2026,,,
+present_count,7304,,,
+remaining_count,2696,,,

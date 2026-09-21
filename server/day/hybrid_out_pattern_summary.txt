@@ -1,0 +1,44 @@
+HYBRID PREDICTOR PATTERN SUMMARY
+===============================
+Date window: 11/07/2020 -> 14/11/2025
+Total unique numbers: 10000
+Numbers that ever appeared in ₹5000 in history: 9527
+
+Calibration:
+{
+  "mean_days_between_events": 41.92124146139159,
+  "daily_step_rate": 7.156276616385334,
+  "note": "Heuristic calibration \u2014 replace with EM for better fit"
+}
+
+Top 30 hybrid-ranked candidates:
+5492, hybrid_score=0.5796, sim_prob=0.0667, model_prob=0.9992
+3458, hybrid_score=0.5795, sim_prob=0.0658, model_prob=0.9998
+0604, hybrid_score=0.5795, sim_prob=0.0658, model_prob=0.9998
+3599, hybrid_score=0.5795, sim_prob=0.0658, model_prob=0.9998
+8415, hybrid_score=0.5795, sim_prob=0.0658, model_prob=0.9998
+7386, hybrid_score=0.5784, sim_prob=0.0633, model_prob=0.9998
+9895, hybrid_score=0.5780, sim_prob=0.0625, model_prob=0.9998
+0188, hybrid_score=0.5780, sim_prob=0.0625, model_prob=0.9998
+0415, hybrid_score=0.5777, sim_prob=0.0617, model_prob=0.9998
+1455, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+5867, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+2216, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+2941, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+1484, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+6223, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+9697, hybrid_score=0.5773, sim_prob=0.0608, model_prob=0.9998
+0119, hybrid_score=0.5769, sim_prob=0.0608, model_prob=0.9992
+9213, hybrid_score=0.5769, sim_prob=0.0608, model_prob=0.9992
+3589, hybrid_score=0.5769, sim_prob=0.0608, model_prob=0.9992
+0445, hybrid_score=0.5769, sim_prob=0.0608, model_prob=0.9992
+3906, hybrid_score=0.5769, sim_prob=0.0608, model_prob=0.9992
+0649, hybrid_score=0.5769, sim_prob=0.0600, model_prob=0.9998
+1953, hybrid_score=0.5769, sim_prob=0.0600, model_prob=0.9998
+7363, hybrid_score=0.5765, sim_prob=0.0592, model_prob=0.9998
+9211, hybrid_score=0.5765, sim_prob=0.0592, model_prob=0.9998
+6096, hybrid_score=0.5765, sim_prob=0.0592, model_prob=0.9998
+5542, hybrid_score=0.5765, sim_prob=0.0592, model_prob=0.9998
+4012, hybrid_score=0.5765, sim_prob=0.0592, model_prob=0.9998
+5963, hybrid_score=0.5762, sim_prob=0.0592, model_prob=0.9992
+4224, hybrid_score=0.5762, sim_prob=0.0592, model_prob=0.9992

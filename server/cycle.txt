@@ -1,0 +1,512 @@
+function makeCyclesHandler(Model) {
+  return async (req, res) => {
+    try {
+      const raw = await Model.find({}).lean();
+
+      // Always return a summary (even if empty) so UI doesn't explode
+      if (!raw.length) {
+        return res.json({
+          summary: {
+            totalCycles: 0,
+            completedCycles: 0,
+            incompleteCycles: 0,
+            firstDay: "Unknown",
+            lastDay: "Unknown",
+          },
+          cycles: [],
+        });
+      }
+
+      // ✅ STRICT DD/MM/YYYY (or with - or .), optional spaces, NO JS fallback for slash dates
+      function parseDateMs(str) {
+        if (!str || str === "Unknown") return null;
+
+        const s = String(str).trim();
+        const m = s.match(
+          /^(\d{1,2})\s*[\/\-\.]\s*(\d{1,2})\s*[\/\-\.]\s*(\d{2,4})$/,
+        );
+        if (!m) return null;
+
+        const dd = parseInt(m[1], 10);
+        const mm = parseInt(m[2], 10);
+        let yy = parseInt(m[3], 10);
+        if (m[3].length === 2) yy += 2000;
+
+        // Use UTC to avoid DST edge cases
+        const ms = Date.UTC(yy, mm - 1, dd);
+
+        // Validate (catches invalid dates)
+        const d = new Date(ms);
+        if (
+          d.getUTCFullYear() !== yy ||
+          d.getUTCMonth() !== mm - 1 ||
+          d.getUTCDate() !== dd
+        ) {
+          return null;
+        }
+
+        return ms;
+      }
+
+      // Build a clean sorted list (only valid dates)
+      const dated = raw
+        .map((r) => ({ r, ms: parseDateMs(r.date) }))
+        .filter((x) => x.ms !== null)
+        .sort((a, b) => a.ms - b.ms);
+
+      // Debug (optional): confirms you didn't filter everything out
+      // console.log("TOTAL:", raw.length, "VALID:", dated.length);
+      // console.log("FIRST 5:", dated.slice(0,5).map(x => x.r.date));
+
+      if (!dated.length) {
+        return res.json({
+          summary: {
+            totalCycles: 0,
+            completedCycles: 0,
+            incompleteCycles: 0,
+            firstDay: "Unknown",
+            lastDay: "Unknown",
+          },
+          cycles: [],
+        });
+      }
+
+      const allData = dated.map((x) => x.r);
+
+      // ---- your cycle logic (unchanged, but uses parseDateMs for differences) ----
+      const cycles = [];
+      let currentCycle = {
+        cycleNumber: 1,
+        startDate: null,
+        endDate: null,
+        totalDays: 0,
+        uniqueNumbers: new Set(),
+        numberFirstSeen: {},
+        dailyProgress: [],
+      };
+
+      const diffDays = (startStr, endStr) => {
+        const a = parseDateMs(startStr);
+        const b = parseDateMs(endStr);
+        if (a === null || b === null) return 0;
+        return Math.ceil((b - a) / (1000 * 60 * 60 * 24));
+      };
+
+      for (const record of allData) {
+        const date = record.date;
+        if (parseDateMs(date) === null) continue;
+
+        if (!currentCycle.startDate) currentCycle.startDate = date;
+
+        let newUniqueCount = 0;
+        let cycleCompleted = false;
+
+        for (const series of record.series || []) {
+          for (const numObj of series.numbers || []) {
+            const num = numObj.number;
+
+            if (!currentCycle.uniqueNumbers.has(num)) {
+              currentCycle.uniqueNumbers.add(num);
+              currentCycle.numberFirstSeen[num] = date;
+              newUniqueCount++;
+
+              if (currentCycle.uniqueNumbers.size === 10000) {
+                currentCycle.endDate = date;
+                currentCycle.totalDays = diffDays(currentCycle.startDate, date);
+
+                currentCycle.dailyProgress.push({
+                  date,
+                  newUnique: newUniqueCount,
+                  totalUnique: currentCycle.uniqueNumbers.size,
+                });
+
+                cycles.push({
+                  cycleNumber: currentCycle.cycleNumber,
+                  startDate: currentCycle.startDate,
+                  endDate: currentCycle.endDate,
+                  totalDays: currentCycle.totalDays,
+                  totalUniqueNumbers: currentCycle.uniqueNumbers.size,
+                  isComplete: true,
+                  remainingNumbers: 0,
+                  dailyProgress: currentCycle.dailyProgress,
+                });
+
+                currentCycle = {
+                  cycleNumber: cycles.length + 1,
+                  startDate: date,
+                  endDate: null,
+                  totalDays: 0,
+                  uniqueNumbers: new Set(),
+                  numberFirstSeen: {},
+                  dailyProgress: [],
+                };
+
+                newUniqueCount = 0;
+                cycleCompleted = true;
+                break;
+              }
+            }
+          }
+          if (cycleCompleted) break;
+        }
+
+        if (!cycleCompleted) {
+          currentCycle.dailyProgress.push({
+            date,
+            newUnique: newUniqueCount,
+            totalUnique: currentCycle.uniqueNumbers.size,
+          });
+        }
+      }
+
+      // Push last incomplete cycle
+      if (currentCycle.uniqueNumbers.size > 0) {
+        const lastDate =
+          currentCycle.dailyProgress[currentCycle.dailyProgress.length - 1]
+            ?.date || null;
+
+        cycles.push({
+          cycleNumber: currentCycle.cycleNumber,
+          startDate: currentCycle.startDate,
+          endDate: null,
+          totalDays: lastDate ? diffDays(currentCycle.startDate, lastDate) : 0,
+          totalUniqueNumbers: currentCycle.uniqueNumbers.size,
+          isComplete: false,
+          remainingNumbers: 10000 - currentCycle.uniqueNumbers.size,
+          dailyProgress: currentCycle.dailyProgress,
+        });
+      }
+
+      // ✅ Summary from properly sorted allData
+      const firstDay = allData[0]?.date || "Unknown"; // should be 11/07/2020
+      const lastDay = allData[allData.length - 1]?.date || "Unknown"; // should be 14/03/2026
+
+      const completedCycles = cycles.filter((c) => c.isComplete).length;
+      const incompleteCycles = cycles.filter((c) => !c.isComplete).length;
+
+      res.json({
+        summary: {
+          totalCycles: cycles.length,
+          completedCycles,
+          incompleteCycles,
+          firstDay,
+          lastDay,
+        },
+        cycles: cycles.map((c) => ({
+          cycleNumber: c.cycleNumber,
+          startDate: c.startDate,
+          endDate: c.endDate,
+          totalDays: c.totalDays,
+          totalUniqueNumbers: c.totalUniqueNumbers,
+          isComplete: c.isComplete,
+          remainingNumbers: c.remainingNumbers || 0,
+          dailyProgress: c.dailyProgress,
+        })),
+      });
+    } catch (err) {
+      console.error("❌ Cycle error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  };
+}
+
+// two endpoints, same logic
+app.get("/api/cycles/lotterydata", makeCyclesHandler(LotteryData));
+app.get("/api/cycles/lotterydatanew", makeCyclesHandler(LotteryDataNew));
+
+
+
+
+22-03-2026
+function makeCyclesHandler(Model) {
+  return async (req, res) => {
+    try {
+      const allData = await Model.find({}).lean();
+
+      if (!allData.length) {
+        return res.json({
+          summary: {
+            totalCycles: 0,
+            completedCycles: 0,
+            incompleteCycles: 0,
+            firstDay: "Unknown",
+            lastDay: "Unknown",
+          },
+          cycles: [],
+        });
+      }
+
+      function parseDate(str) {
+        if (!str || str === "Unknown") return new Date(0);
+        const parts = String(str)
+          .trim()
+          .match(/(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{2,4})/);
+        if (parts) {
+          return new Date(
+            parseInt(parts[3], 10),
+            parseInt(parts[2], 10) - 1,
+            parseInt(parts[1], 10),
+          );
+        }
+        return new Date(str);
+      }
+
+      allData.sort((a, b) => parseDate(a.date) - parseDate(b.date));
+
+      const cycles = [];
+
+      function freshCycle(num, startDate = null) {
+        return {
+          cycleNumber: num,
+          startDate,
+          endDate: null,
+          totalDays: 0,
+          uniqueNumbers: new Set(),
+          numberFirstSeen: {},
+          dailyProgress: [],
+          prizeStates: new Map(),
+        };
+      }
+
+      let currentCycle = freshCycle(1);
+
+      // build prize summaries for output
+      function buildPrizeSummaries(cycle, fallbackLastDate) {
+        const prizes = Array.from(cycle.prizeStates.entries()).map(
+          ([prize, ps]) => {
+            const totalUnique = ps.uniqueNumbers.size;
+            const isComplete = totalUnique === 10000;
+            const endForCalc = ps.endDate || fallbackLastDate;
+            const totalDays =
+              ps.startDate && endForCalc
+                ? Math.ceil(
+                    (parseDate(endForCalc) - parseDate(ps.startDate)) /
+                      (1000 * 60 * 60 * 24),
+                  )
+                : 0;
+
+            return {
+              prize,
+              startDate: ps.startDate || null,
+              endDate: ps.endDate || null,
+              totalDays,
+              totalUniqueNumbers: totalUnique,
+              remainingNumbers: Math.max(0, 10000 - totalUnique),
+              percentComplete: Number(((totalUnique / 10000) * 100).toFixed(2)),
+              isComplete,
+              // per-prize daily entries: date + which numbers were added
+              dailyProgress: ps.dailyProgress || [],
+            };
+          },
+        );
+
+        // sort prizes by most complete first
+        prizes.sort((a, b) => b.totalUniqueNumbers - a.totalUniqueNumbers);
+
+        const prizeLeader = prizes[0]
+          ? {
+              prize: prizes[0].prize,
+              totalUniqueNumbers: prizes[0].totalUniqueNumbers,
+              percentComplete: prizes[0].percentComplete,
+            }
+          : null;
+
+        const completedPrizes = prizes
+          .filter((p) => p.isComplete)
+          .map((p) => p.prize);
+
+        return { prizes, prizeLeader, completedPrizes };
+      }
+
+      for (const record of allData) {
+        const date = record.date;
+        const parsedDate = parseDate(date);
+        if (!parsedDate || parsedDate.getTime() === 0) continue;
+
+        if (!currentCycle.startDate) currentCycle.startDate = date;
+
+        // overall new uniques this day
+        let newUniqueCount = 0;
+        const newUniqueNumbersToday = []; // ✅ which numbers added overall today
+
+        // per-prize new uniques this day
+        const prizeNewToday = new Map(); // prize -> { count, numbers[] }
+
+        let cycleCompleted = false;
+
+        for (const series of record.series || []) {
+          const prize = series.prize;
+
+          if (!currentCycle.prizeStates.has(prize)) {
+            currentCycle.prizeStates.set(prize, {
+              uniqueNumbers: new Set(),
+              startDate: null,
+              endDate: null,
+              dailyProgress: [], // ✅ per-prize daily progress
+            });
+          }
+
+          const ps = currentCycle.prizeStates.get(prize);
+
+          if (!prizeNewToday.has(prize)) {
+            prizeNewToday.set(prize, { count: 0, numbers: [] });
+          }
+
+          const pToday = prizeNewToday.get(prize);
+
+          for (const numObj of series.numbers || []) {
+            const num = numObj.number;
+
+            // --- overall cycle tracking ---
+            if (!currentCycle.uniqueNumbers.has(num)) {
+              currentCycle.uniqueNumbers.add(num);
+              currentCycle.numberFirstSeen[num] = date;
+              newUniqueCount++;
+              newUniqueNumbersToday.push(num); // ✅ record which number
+            }
+
+            // --- per-prize tracking ---
+            if (!ps.uniqueNumbers.has(num)) {
+              ps.uniqueNumbers.add(num);
+              if (!ps.startDate) ps.startDate = date;
+              pToday.count++;
+              pToday.numbers.push(num); // ✅ record which number per prize
+
+              if (ps.uniqueNumbers.size === 10000 && !ps.endDate) {
+                ps.endDate = date;
+              }
+            }
+
+            // --- overall cycle completion ---
+            if (currentCycle.uniqueNumbers.size === 10000) {
+              currentCycle.endDate = date;
+              currentCycle.totalDays = Math.ceil(
+                (parseDate(date) - parseDate(currentCycle.startDate)) /
+                  (1000 * 60 * 60 * 24),
+              );
+
+              // flush today's prize daily entries before closing
+              for (const [p, pt] of prizeNewToday.entries()) {
+                const pstate = currentCycle.prizeStates.get(p);
+                if (pstate && pt.count > 0) {
+                  pstate.dailyProgress.push({
+                    date,
+                    newUnique: pt.count,
+                    totalUnique: pstate.uniqueNumbers.size,
+                    numbersAdded: pt.numbers,
+                  });
+                }
+              }
+
+              currentCycle.dailyProgress.push({
+                date,
+                newUnique: newUniqueCount,
+                totalUnique: currentCycle.uniqueNumbers.size,
+                numbersAdded: newUniqueNumbersToday, // ✅
+              });
+
+              const { prizes, prizeLeader, completedPrizes } =
+                buildPrizeSummaries(currentCycle, date);
+
+              cycles.push({
+                cycleNumber: currentCycle.cycleNumber,
+                startDate: currentCycle.startDate,
+                endDate: currentCycle.endDate,
+                totalDays: currentCycle.totalDays,
+                totalUniqueNumbers: currentCycle.uniqueNumbers.size,
+                isComplete: true,
+                remainingNumbers: 0,
+                dailyProgress: currentCycle.dailyProgress,
+                prizes,
+                prizeLeader,
+                completedPrizes,
+              });
+
+              currentCycle = freshCycle(cycles.length + 1, date);
+              newUniqueCount = 0;
+              cycleCompleted = true;
+              break;
+            }
+          }
+
+          if (cycleCompleted) break;
+        }
+
+        if (!cycleCompleted) {
+          // flush per-prize daily entries
+          for (const [p, pt] of prizeNewToday.entries()) {
+            const pstate = currentCycle.prizeStates.get(p);
+            if (pstate && pt.count > 0) {
+              pstate.dailyProgress.push({
+                date,
+                newUnique: pt.count,
+                totalUnique: pstate.uniqueNumbers.size,
+                numbersAdded: pt.numbers, // ✅
+              });
+            }
+          }
+
+          currentCycle.dailyProgress.push({
+            date,
+            newUnique: newUniqueCount,
+            totalUnique: currentCycle.uniqueNumbers.size,
+            numbersAdded: newUniqueNumbersToday, // ✅
+          });
+        }
+      }
+
+      // last incomplete cycle
+      if (currentCycle.uniqueNumbers.size > 0) {
+        const lastDate =
+          currentCycle.dailyProgress[currentCycle.dailyProgress.length - 1]
+            ?.date || null;
+
+        const { prizes, prizeLeader, completedPrizes } = buildPrizeSummaries(
+          currentCycle,
+          lastDate,
+        );
+
+        cycles.push({
+          cycleNumber: currentCycle.cycleNumber,
+          startDate: currentCycle.startDate,
+          endDate: null,
+          totalDays: lastDate
+            ? Math.ceil(
+                (parseDate(lastDate) - parseDate(currentCycle.startDate)) /
+                  (1000 * 60 * 60 * 24),
+              )
+            : 0,
+          totalUniqueNumbers: currentCycle.uniqueNumbers.size,
+          isComplete: false,
+          remainingNumbers: 10000 - currentCycle.uniqueNumbers.size,
+          dailyProgress: currentCycle.dailyProgress,
+          prizes,
+          prizeLeader,
+          completedPrizes,
+        });
+      }
+
+      const firstDay = allData[0]?.date || "Unknown";
+      const lastDay = allData[allData.length - 1]?.date || "Unknown";
+      const completedCycles = cycles.filter((c) => c.isComplete).length;
+      const incompleteCycles = cycles.filter((c) => !c.isComplete).length;
+
+      res.json({
+        summary: {
+          totalCycles: cycles.length,
+          completedCycles,
+          incompleteCycles,
+          firstDay,
+          lastDay,
+        },
+        cycles,
+      });
+    } catch (err) {
+      console.error("❌ Cycle error:", err);
+      res.status(500).json({ error: err.message });
+    }
+  };
+}
+
+app.get("/api/cycles/lotterydata", makeCyclesHandler(LotteryData));
+app.get("/api/cycles/lotterydatanew", makeCyclesHandler(LotteryDataNew));

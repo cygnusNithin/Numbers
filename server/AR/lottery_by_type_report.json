@@ -1,0 +1,129 @@
+{
+  "summary": {
+    "total_lottery_types": 11,
+    "analysis_date": "2026-02-06T14:56:44.034962"
+  },
+  "lottery_results": [
+    {
+      "lottery_type": "AK",
+      "total_results": 55777,
+      "unique_numbers": 9966,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "BT",
+      "total_results": 13861,
+      "unique_numbers": 7561,
+      "fraud_score": 45,
+      "fraud_percentage": 45.0,
+      "verdict": "\u26a0\ufe0f CONCERNING",
+      "bias_score": 0,
+      "chi_score": 45,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "DL",
+      "total_results": 13409,
+      "unique_numbers": 7460,
+      "fraud_score": 35,
+      "fraud_percentage": 35.0,
+      "verdict": "\u26a0\ufe0f CONCERNING",
+      "bias_score": 0,
+      "chi_score": 35,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "FF",
+      "total_results": 38494,
+      "unique_numbers": 9781,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "KN",
+      "total_results": 66768,
+      "unique_numbers": 9990,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "KR",
+      "total_results": 66862,
+      "unique_numbers": 9981,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "NR",
+      "total_results": 58351,
+      "unique_numbers": 9969,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "SK",
+      "total_results": 15296,
+      "unique_numbers": 7878,
+      "fraud_score": 30,
+      "fraud_percentage": 30.0,
+      "verdict": "\u26a0\ufe0f CONCERNING",
+      "bias_score": 0,
+      "chi_score": 30,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "SM",
+      "total_results": 14322,
+      "unique_numbers": 7721,
+      "fraud_score": 5,
+      "fraud_percentage": 5.0,
+      "verdict": "\u2705 APPEARS FAIR",
+      "bias_score": 0,
+      "chi_score": 5,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "SS",
+      "total_results": 72239,
+      "unique_numbers": 9990,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    },
+    {
+      "lottery_type": "W",
+      "total_results": 56423,
+      "unique_numbers": 9955,
+      "fraud_score": 60,
+      "fraud_percentage": 60.0,
+      "verdict": "\u26a0\ufe0f SUSPICIOUS",
+      "bias_score": 0,
+      "chi_score": 60,
+      "distribution_score": 0
+    }
+  ]
+}

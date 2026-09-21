@@ -1,0 +1,468 @@
+{
+  "generatedAt": "2026-05-14T03:44:23.223Z",
+  "verdict": "No mathematical formula found. Physical drum draw confirmed.",
+  "cycleStatus": {
+    "cycleNumber": 5,
+    "remaining": 41,
+    "numbersDrawn": 9959
+  },
+  "guaranteedRemaining": [
+    {
+      "number": "0006",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "0443",
+      "predictedPrize": 500,
+      "isFixed": false
+    },
+    {
+      "number": "0511",
+      "predictedPrize": 50,
+      "isFixed": false
+    },
+    {
+      "number": "0648",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "1105",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "1188",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "1326",
+      "predictedPrize": 100,
+      "isFixed": true
+    },
+    {
+      "number": "1331",
+      "predictedPrize": 50,
+      "isFixed": false
+    },
+    {
+      "number": "1647",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "1726",
+      "predictedPrize": 50,
+      "isFixed": false
+    },
+    {
+      "number": "1772",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "1991",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "2085",
+      "predictedPrize": 100,
+      "isFixed": true
+    },
+    {
+      "number": "2574",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "2739",
+      "predictedPrize": 500,
+      "isFixed": true
+    },
+    {
+      "number": "3765",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "3976",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "4182",
+      "predictedPrize": 500,
+      "isFixed": false
+    },
+    {
+      "number": "4328",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "4356",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "4461",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "4567",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "4948",
+      "predictedPrize": 500,
+      "isFixed": false
+    },
+    {
+      "number": "5225",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "5284",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "5571",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "5721",
+      "predictedPrize": 100,
+      "isFixed": true
+    },
+    {
+      "number": "5986",
+      "predictedPrize": 100,
+      "isFixed": true
+    },
+    {
+      "number": "6004",
+      "predictedPrize": 1000,
+      "isFixed": false
+    },
+    {
+      "number": "6567",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "6652",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "6746",
+      "predictedPrize": 500,
+      "isFixed": false
+    },
+    {
+      "number": "6839",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "7287",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "7731",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "7783",
+      "predictedPrize": 50,
+      "isFixed": false
+    },
+    {
+      "number": "8126",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "8174",
+      "predictedPrize": 100,
+      "isFixed": false
+    },
+    {
+      "number": "9082",
+      "predictedPrize": 100,
+      "isFixed": true
+    },
+    {
+      "number": "9192",
+      "predictedPrize": 500,
+      "isFixed": false
+    },
+    {
+      "number": "9483",
+      "predictedPrize": 100,
+      "isFixed": false
+    }
+  ],
+  "cycle6EarlyCandidates": [
+    {
+      "number": "3876",
+      "avgNormPos": 0.0030348044836629403,
+      "prize": 500
+    },
+    {
+      "number": "5689",
+      "avgNormPos": 0.004821169516639239,
+      "prize": 100
+    },
+    {
+      "number": "7920",
+      "avgNormPos": 0.005114499129694553,
+      "prize": 100
+    },
+    {
+      "number": "8474",
+      "avgNormPos": 0.0055285700696978525,
+      "prize": 100
+    },
+    {
+      "number": "8063",
+      "avgNormPos": 0.0057762793542705665,
+      "prize": 100
+    },
+    {
+      "number": "7434",
+      "avgNormPos": 0.007194193775726165,
+      "prize": 100
+    },
+    {
+      "number": "2926",
+      "avgNormPos": 0.00868722919564715,
+      "prize": 500
+    },
+    {
+      "number": "6323",
+      "avgNormPos": 0.00868722919564715,
+      "prize": 100
+    },
+    {
+      "number": "5124",
+      "avgNormPos": 0.008811083837933506,
+      "prize": 100
+    },
+    {
+      "number": "6106",
+      "avgNormPos": 0.008853590851077736,
+      "prize": 5000
+    },
+    {
+      "number": "2028",
+      "avgNormPos": 0.008859817481754477,
+      "prize": 100
+    },
+    {
+      "number": "9969",
+      "avgNormPos": 0.008977445493364091,
+      "prize": 500
+    },
+    {
+      "number": "8329",
+      "avgNormPos": 0.009277001737096148,
+      "prize": 100
+    },
+    {
+      "number": "3440",
+      "avgNormPos": 0.009645452348616848,
+      "prize": 100
+    },
+    {
+      "number": "3597",
+      "avgNormPos": 0.009811814004047435,
+      "prize": 100
+    },
+    {
+      "number": "6136",
+      "avgNormPos": 0.010183377930906505,
+      "prize": 100
+    },
+    {
+      "number": "7831",
+      "avgNormPos": 0.010352852901675461,
+      "prize": 100
+    },
+    {
+      "number": "9923",
+      "avgNormPos": 0.01051921455710605,
+      "prize": 100
+    },
+    {
+      "number": "4312",
+      "avgNormPos": 0.01052232787244442,
+      "prize": 100
+    },
+    {
+      "number": "7004",
+      "avgNormPos": 0.010643069199392405,
+      "prize": 1000
+    },
+    {
+      "number": "8332",
+      "avgNormPos": 0.01089077848396512,
+      "prize": 5000
+    },
+    {
+      "number": "6485",
+      "avgNormPos": 0.011014633126251477,
+      "prize": 100
+    },
+    {
+      "number": "4496",
+      "avgNormPos": 0.011057140139395705,
+      "prize": 100
+    },
+    {
+      "number": "5585",
+      "avgNormPos": 0.011060253454734076,
+      "prize": 100
+    },
+    {
+      "number": "8943",
+      "avgNormPos": 0.011063366770072447,
+      "prize": 100
+    },
+    {
+      "number": "0655",
+      "avgNormPos": 0.011262342410824189,
+      "prize": 100
+    },
+    {
+      "number": "3557",
+      "avgNormPos": 0.011480551025414119,
+      "prize": 500
+    },
+    {
+      "number": "4826",
+      "avgNormPos": 0.012217452248455517,
+      "prize": 500
+    },
+    {
+      "number": "6103",
+      "avgNormPos": 0.012311806220759091,
+      "prize": 100
+    },
+    {
+      "number": "6446",
+      "avgNormPos": 0.012755377830745172,
+      "prize": 100
+    },
+    {
+      "number": "4222",
+      "avgNormPos": 0.012849731803048747,
+      "prize": 100
+    },
+    {
+      "number": "6284",
+      "avgNormPos": 0.013022320089156074,
+      "prize": 200
+    },
+    {
+      "number": "9054",
+      "avgNormPos": 0.013091214456944717,
+      "prize": 100
+    },
+    {
+      "number": "6328",
+      "avgNormPos": 0.013384544070000032,
+      "prize": 100
+    },
+    {
+      "number": "0886",
+      "avgNormPos": 0.013759221312197473,
+      "prize": 100
+    },
+    {
+      "number": "6362",
+      "avgNormPos": 0.01392558296762806,
+      "prize": 100
+    },
+    {
+      "number": "9284",
+      "avgNormPos": 0.014215799265345002,
+      "prize": 100
+    },
+    {
+      "number": "6023",
+      "avgNormPos": 0.014264532909165975,
+      "prize": 100
+    },
+    {
+      "number": "1126",
+      "avgNormPos": 0.014382160920775587,
+      "prize": 100
+    },
+    {
+      "number": "9149",
+      "avgNormPos": 0.014665597506007828,
+      "prize": 100
+    },
+    {
+      "number": "6618",
+      "avgNormPos": 0.014681717164507646,
+      "prize": 100
+    },
+    {
+      "number": "4671",
+      "avgNormPos": 0.0147143311498288,
+      "prize": 100
+    },
+    {
+      "number": "1626",
+      "avgNormPos": 0.0147143311498288,
+      "prize": 100
+    },
+    {
+      "number": "4246",
+      "avgNormPos": 0.01480245849145563,
+      "prize": 500
+    },
+    {
+      "number": "7541",
+      "avgNormPos": 0.014831959161438417,
+      "prize": 100
+    },
+    {
+      "number": "6844",
+      "avgNormPos": 0.014883806120597759,
+      "prize": 500
+    },
+    {
+      "number": "6853",
+      "avgNormPos": 0.014920086503065248,
+      "prize": 100
+    },
+    {
+      "number": "9327",
+      "avgNormPos": 0.01493253976441873,
+      "prize": 100
+    },
+    {
+      "number": "1072",
+      "avgNormPos": 0.015092674789172575,
+      "prize": 100
+    },
+    {
+      "number": "3533",
+      "avgNormPos": 0.015098901419849315,
+      "prize": 100
+    }
+  ]
+}

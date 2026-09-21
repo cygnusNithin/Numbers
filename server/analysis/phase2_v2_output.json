@@ -1,0 +1,4574 @@
+{
+  "generatedAt": "2026-05-08T17:43:07.439Z",
+  "excludedCycle": 1,
+  "trainingCycles": [
+    2,
+    3,
+    4
+  ],
+  "cycle5Remaining": [
+    "0006",
+    "0018",
+    "0232",
+    "0443",
+    "0511",
+    "0648",
+    "1105",
+    "1188",
+    "1326",
+    "1331",
+    "1647",
+    "1726",
+    "1772",
+    "1991",
+    "2085",
+    "2220",
+    "2574",
+    "2739",
+    "3765",
+    "3976",
+    "4182",
+    "4328",
+    "4356",
+    "4461",
+    "4567",
+    "4948",
+    "4971",
+    "5225",
+    "5284",
+    "5571",
+    "5577",
+    "5721",
+    "5986",
+    "6004",
+    "6040",
+    "6478",
+    "6567",
+    "6584",
+    "6652",
+    "6746",
+    "6839",
+    "6976",
+    "7148",
+    "7256",
+    "7287",
+    "7731",
+    "7783",
+    "8126",
+    "8174",
+    "9082",
+    "9192",
+    "9483",
+    "9484"
+  ],
+  "cycle5RemainingCount": 53,
+  "cycle6Prediction": [
+    {
+      "number": "3876",
+      "score": 790.02296814,
+      "avgNormFirstDay": 0.00303,
+      "stdNormFirstDay": 0.00052,
+      "avgAppearances": 14.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6323",
+      "score": 753.50386331,
+      "avgNormFirstDay": 0.00869,
+      "stdNormFirstDay": 0.00102,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6362",
+      "score": 713.00861448,
+      "avgNormFirstDay": 0.01393,
+      "stdNormFirstDay": 0.00106,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8332",
+      "score": 689.0797884,
+      "avgNormFirstDay": 0.01089,
+      "stdNormFirstDay": 0.00065,
+      "avgAppearances": 12.67,
+      "predictedPrize": 5000,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4031",
+      "score": 633.36241619,
+      "avgNormFirstDay": 0.04909,
+      "stdNormFirstDay": 0.00055,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2926",
+      "score": 616.40926944,
+      "avgNormFirstDay": 0.00869,
+      "stdNormFirstDay": 0.00102,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3356",
+      "score": 608.90029353,
+      "avgNormFirstDay": 0.01601,
+      "stdNormFirstDay": 0.00194,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7643",
+      "score": 590.17374335,
+      "avgNormFirstDay": 0.02951,
+      "stdNormFirstDay": 0.00061,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7920",
+      "score": 579.9579329,
+      "avgNormFirstDay": 0.00511,
+      "stdNormFirstDay": 0.00189,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5124",
+      "score": 576.03359437,
+      "avgNormFirstDay": 0.00881,
+      "stdNormFirstDay": 0.00187,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7045",
+      "score": 570.96342778,
+      "avgNormFirstDay": 0.02041,
+      "stdNormFirstDay": 0.00154,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7557",
+      "score": 549.29721318,
+      "avgNormFirstDay": 0.0513,
+      "stdNormFirstDay": 0.00106,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "3577",
+      "score": 518.95258471,
+      "avgNormFirstDay": 0.03367,
+      "stdNormFirstDay": 0.0037,
+      "avgAppearances": 15.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8063",
+      "score": 517.32155513,
+      "avgNormFirstDay": 0.00578,
+      "stdNormFirstDay": 0.00206,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2614",
+      "score": 516.49425544,
+      "avgNormFirstDay": 0.02482,
+      "stdNormFirstDay": 0.00169,
+      "avgAppearances": 11,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6006",
+      "score": 508.6359168,
+      "avgNormFirstDay": 0.02535,
+      "stdNormFirstDay": 0.00254,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1923",
+      "score": 503.30204034,
+      "avgNormFirstDay": 0.05034,
+      "stdNormFirstDay": 0.00156,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6328",
+      "score": 492.95484494,
+      "avgNormFirstDay": 0.01338,
+      "stdNormFirstDay": 0.00288,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5689",
+      "score": 488.52901027,
+      "avgNormFirstDay": 0.00482,
+      "stdNormFirstDay": 0.00082,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2349",
+      "score": 476.2015729,
+      "avgNormFirstDay": 0.02261,
+      "stdNormFirstDay": 0.00022,
+      "avgAppearances": 7.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2887",
+      "score": 471.19562022,
+      "avgNormFirstDay": 0.04153,
+      "stdNormFirstDay": 0.0032,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7004",
+      "score": 467.97420149,
+      "avgNormFirstDay": 0.01064,
+      "stdNormFirstDay": 0.00379,
+      "avgAppearances": 12.67,
+      "predictedPrize": 1000,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8358",
+      "score": 459.07357849,
+      "avgNormFirstDay": 0.02428,
+      "stdNormFirstDay": 0.00224,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1438",
+      "score": 454.6175335,
+      "avgNormFirstDay": 0.01708,
+      "stdNormFirstDay": 0.00331,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7320",
+      "score": 444.93257802,
+      "avgNormFirstDay": 0.08451,
+      "stdNormFirstDay": 0.00305,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8474",
+      "score": 443.18807623,
+      "avgNormFirstDay": 0.00553,
+      "stdNormFirstDay": 0.00316,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7018",
+      "score": 440.02600975,
+      "avgNormFirstDay": 0.02552,
+      "stdNormFirstDay": 0.0019,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8930",
+      "score": 435.15563842,
+      "avgNormFirstDay": 0.01725,
+      "stdNormFirstDay": 0.0037,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3597",
+      "score": 427.4247857,
+      "avgNormFirstDay": 0.00981,
+      "stdNormFirstDay": 0.00293,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0071",
+      "score": 426.88252178,
+      "avgNormFirstDay": 0.04107,
+      "stdNormFirstDay": 0.00352,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "1499",
+      "score": 426.55722746,
+      "avgNormFirstDay": 0.02934,
+      "stdNormFirstDay": 0.0036,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6485",
+      "score": 421.17940375,
+      "avgNormFirstDay": 0.01101,
+      "stdNormFirstDay": 0.0028,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7831",
+      "score": 409.15490401,
+      "avgNormFirstDay": 0.01035,
+      "stdNormFirstDay": 0.0033,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "4841",
+      "score": 406.51431808,
+      "avgNormFirstDay": 0.03625,
+      "stdNormFirstDay": 0.00278,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2226",
+      "score": 405.66249871,
+      "avgNormFirstDay": 0.04552,
+      "stdNormFirstDay": 0.00237,
+      "avgAppearances": 9.67,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6626",
+      "score": 404.72505497,
+      "avgNormFirstDay": 0.02939,
+      "stdNormFirstDay": 0.00274,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6136",
+      "score": 404.3887342,
+      "avgNormFirstDay": 0.01018,
+      "stdNormFirstDay": 0.00388,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4496",
+      "score": 400.3166773,
+      "avgNormFirstDay": 0.01106,
+      "stdNormFirstDay": 0.00633,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "3075",
+      "score": 397.10070821,
+      "avgNormFirstDay": 0.01916,
+      "stdNormFirstDay": 0.00313,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9913",
+      "score": 395.77223315,
+      "avgNormFirstDay": 0.03488,
+      "stdNormFirstDay": 0.0035,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "1814",
+      "score": 393.84407951,
+      "avgNormFirstDay": 0.02993,
+      "stdNormFirstDay": 0.00366,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9284",
+      "score": 392.6130321,
+      "avgNormFirstDay": 0.01422,
+      "stdNormFirstDay": 0.00406,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9727",
+      "score": 391.73137155,
+      "avgNormFirstDay": 0.05712,
+      "stdNormFirstDay": 0.00392,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "1990",
+      "score": 391.33242283,
+      "avgNormFirstDay": 0.01547,
+      "stdNormFirstDay": 0.00497,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1822",
+      "score": 391.13422694,
+      "avgNormFirstDay": 0.0291,
+      "stdNormFirstDay": 0.00255,
+      "avgAppearances": 9,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9054",
+      "score": 389.57553809,
+      "avgNormFirstDay": 0.01309,
+      "stdNormFirstDay": 0.00416,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5951",
+      "score": 388.14680388,
+      "avgNormFirstDay": 0.01983,
+      "stdNormFirstDay": 0.00449,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6766",
+      "score": 387.21773977,
+      "avgNormFirstDay": 0.03018,
+      "stdNormFirstDay": 0.00334,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7434",
+      "score": 384.94886932,
+      "avgNormFirstDay": 0.00719,
+      "stdNormFirstDay": 0.00342,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7290",
+      "score": 384.69941731,
+      "avgNormFirstDay": 0.03517,
+      "stdNormFirstDay": 0.00464,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6107",
+      "score": 378.65280957,
+      "avgNormFirstDay": 0.02553,
+      "stdNormFirstDay": 0.00591,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2045",
+      "score": 374.27658647,
+      "avgNormFirstDay": 0.06838,
+      "stdNormFirstDay": 0.00427,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "5019",
+      "score": 372.77905412,
+      "avgNormFirstDay": 0.03071,
+      "stdNormFirstDay": 0.00615,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "3449",
+      "score": 372.38531971,
+      "avgNormFirstDay": 0.02403,
+      "stdNormFirstDay": 0.00525,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5585",
+      "score": 371.7376014,
+      "avgNormFirstDay": 0.01106,
+      "stdNormFirstDay": 0.00391,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7699",
+      "score": 370.62997978,
+      "avgNormFirstDay": 0.04976,
+      "stdNormFirstDay": 0.00527,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8407",
+      "score": 370.43883442,
+      "avgNormFirstDay": 0.03658,
+      "stdNormFirstDay": 0.00563,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3524",
+      "score": 369.29832429,
+      "avgNormFirstDay": 0.02481,
+      "stdNormFirstDay": 0.00462,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2071",
+      "score": 368.60282443,
+      "avgNormFirstDay": 0.01738,
+      "stdNormFirstDay": 0.00409,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1064",
+      "score": 366.7988459,
+      "avgNormFirstDay": 0.0301,
+      "stdNormFirstDay": 0.00591,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9265",
+      "score": 365.62074306,
+      "avgNormFirstDay": 0.03076,
+      "stdNormFirstDay": 0.0048,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1549",
+      "score": 365.49459372,
+      "avgNormFirstDay": 0.01762,
+      "stdNormFirstDay": 0.00716,
+      "avgAppearances": 14.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4023",
+      "score": 364.11848909,
+      "avgNormFirstDay": 0.02922,
+      "stdNormFirstDay": 0.00488,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5995",
+      "score": 363.66642345,
+      "avgNormFirstDay": 0.03629,
+      "stdNormFirstDay": 0.00352,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9969",
+      "score": 358.34358934,
+      "avgNormFirstDay": 0.00898,
+      "stdNormFirstDay": 0.00605,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2412",
+      "score": 355.74873087,
+      "avgNormFirstDay": 0.03512,
+      "stdNormFirstDay": 0.00565,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2593",
+      "score": 351.46371969,
+      "avgNormFirstDay": 0.01875,
+      "stdNormFirstDay": 0.00669,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6177",
+      "score": 351.28694213,
+      "avgNormFirstDay": 0.07802,
+      "stdNormFirstDay": 0.00442,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "0722",
+      "score": 350.01725108,
+      "avgNormFirstDay": 0.02332,
+      "stdNormFirstDay": 0.00469,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "1977",
+      "score": 347.14067028,
+      "avgNormFirstDay": 0.01708,
+      "stdNormFirstDay": 0.00331,
+      "avgAppearances": 8.33,
+      "predictedPrize": 200,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7421",
+      "score": 343.79827938,
+      "avgNormFirstDay": 0.02898,
+      "stdNormFirstDay": 0.00341,
+      "avgAppearances": 8.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "3847",
+      "score": 343.15826526,
+      "avgNormFirstDay": 0.01982,
+      "stdNormFirstDay": 0.00622,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7657",
+      "score": 342.26981545,
+      "avgNormFirstDay": 0.02678,
+      "stdNormFirstDay": 0.00765,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2835",
+      "score": 341.98461462,
+      "avgNormFirstDay": 0.08105,
+      "stdNormFirstDay": 0.0046,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3007",
+      "score": 341.2741558,
+      "avgNormFirstDay": 0.01534,
+      "stdNormFirstDay": 0.00566,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4289",
+      "score": 341.11826937,
+      "avgNormFirstDay": 0.03159,
+      "stdNormFirstDay": 0.00596,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4719",
+      "score": 339.27061146,
+      "avgNormFirstDay": 0.03837,
+      "stdNormFirstDay": 0.00487,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6012",
+      "score": 337.74171812,
+      "avgNormFirstDay": 0.03167,
+      "stdNormFirstDay": 0.00722,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6578",
+      "score": 335.87500998,
+      "avgNormFirstDay": 0.03147,
+      "stdNormFirstDay": 0.00773,
+      "avgAppearances": 14.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6653",
+      "score": 335.05683346,
+      "avgNormFirstDay": 0.06236,
+      "stdNormFirstDay": 0.00413,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2850",
+      "score": 335.03813988,
+      "avgNormFirstDay": 0.03209,
+      "stdNormFirstDay": 0.0073,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6023",
+      "score": 334.17645538,
+      "avgNormFirstDay": 0.01426,
+      "stdNormFirstDay": 0.00832,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7579",
+      "score": 334.0337837,
+      "avgNormFirstDay": 0.08651,
+      "stdNormFirstDay": 0.00654,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8897",
+      "score": 331.62836637,
+      "avgNormFirstDay": 0.02457,
+      "stdNormFirstDay": 0.00646,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0693",
+      "score": 331.31129273,
+      "avgNormFirstDay": 0.13901,
+      "stdNormFirstDay": 0.00235,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "4966",
+      "score": 330.01166353,
+      "avgNormFirstDay": 0.0764,
+      "stdNormFirstDay": 0.00241,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "1551",
+      "score": 329.5446258,
+      "avgNormFirstDay": 0.01995,
+      "stdNormFirstDay": 0.00666,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0655",
+      "score": 329.06480022,
+      "avgNormFirstDay": 0.01126,
+      "stdNormFirstDay": 0.00717,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3358",
+      "score": 328.4417872,
+      "avgNormFirstDay": 0.01879,
+      "stdNormFirstDay": 0.00518,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7711",
+      "score": 328.43519147,
+      "avgNormFirstDay": 0.06872,
+      "stdNormFirstDay": 0.00622,
+      "avgAppearances": 13.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "1963",
+      "score": 327.68931026,
+      "avgNormFirstDay": 0.04464,
+      "stdNormFirstDay": 0.00579,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4017",
+      "score": 327.62053366,
+      "avgNormFirstDay": 0.03667,
+      "stdNormFirstDay": 0.00852,
+      "avgAppearances": 15.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7345",
+      "score": 327.44715654,
+      "avgNormFirstDay": 0.04016,
+      "stdNormFirstDay": 0.00616,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2552",
+      "score": 326.86832747,
+      "avgNormFirstDay": 0.0195,
+      "stdNormFirstDay": 0.00797,
+      "avgAppearances": 13.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2989",
+      "score": 325.18568473,
+      "avgNormFirstDay": 0.04011,
+      "stdNormFirstDay": 0.0055,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3440",
+      "score": 324.67009901,
+      "avgNormFirstDay": 0.00965,
+      "stdNormFirstDay": 0.00526,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2853",
+      "score": 324.48284829,
+      "avgNormFirstDay": 0.0858,
+      "stdNormFirstDay": 0.00408,
+      "avgAppearances": 10.67,
+      "predictedPrize": 1000,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7700",
+      "score": 324.08114175,
+      "avgNormFirstDay": 0.02298,
+      "stdNormFirstDay": 0.00676,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9424",
+      "score": 323.91121497,
+      "avgNormFirstDay": 0.06207,
+      "stdNormFirstDay": 0.00679,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9320",
+      "score": 322.45357762,
+      "avgNormFirstDay": 0.03338,
+      "stdNormFirstDay": 0.00577,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0074",
+      "score": 321.84558423,
+      "avgNormFirstDay": 0.02403,
+      "stdNormFirstDay": 0.00525,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6879",
+      "score": 321.62209503,
+      "avgNormFirstDay": 0.03314,
+      "stdNormFirstDay": 0.00631,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "4231",
+      "score": 321.58692403,
+      "avgNormFirstDay": 0.02237,
+      "stdNormFirstDay": 0.00418,
+      "avgAppearances": 8.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8124",
+      "score": 320.39311707,
+      "avgNormFirstDay": 0.03047,
+      "stdNormFirstDay": 0.00617,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "0526",
+      "score": 319.6745662,
+      "avgNormFirstDay": 0.05142,
+      "stdNormFirstDay": 0.00297,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8467",
+      "score": 318.88143348,
+      "avgNormFirstDay": 0.02058,
+      "stdNormFirstDay": 0.00676,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9923",
+      "score": 318.70860952,
+      "avgNormFirstDay": 0.01052,
+      "stdNormFirstDay": 0.00598,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "0943",
+      "score": 317.93064465,
+      "avgNormFirstDay": 0.02498,
+      "stdNormFirstDay": 0.00535,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "8364",
+      "score": 315.75520671,
+      "avgNormFirstDay": 0.05707,
+      "stdNormFirstDay": 0.007,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "5325",
+      "score": 315.63644392,
+      "avgNormFirstDay": 0.01646,
+      "stdNormFirstDay": 0.008,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8500",
+      "score": 314.97257428,
+      "avgNormFirstDay": 0.01962,
+      "stdNormFirstDay": 0.00586,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5321",
+      "score": 314.50199115,
+      "avgNormFirstDay": 0.02736,
+      "stdNormFirstDay": 0.00747,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8267",
+      "score": 314.23266361,
+      "avgNormFirstDay": 0.07736,
+      "stdNormFirstDay": 0.00411,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6106",
+      "score": 312.33650313,
+      "avgNormFirstDay": 0.00885,
+      "stdNormFirstDay": 0.00785,
+      "avgAppearances": 12.33,
+      "predictedPrize": 5000,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4155",
+      "score": 312.08273191,
+      "avgNormFirstDay": 0.10533,
+      "stdNormFirstDay": 0.00273,
+      "avgAppearances": 9,
+      "predictedPrize": 5000,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4752",
+      "score": 308.78283864,
+      "avgNormFirstDay": 0.03512,
+      "stdNormFirstDay": 0.00565,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2827",
+      "score": 308.77785221,
+      "avgNormFirstDay": 0.05279,
+      "stdNormFirstDay": 0.00353,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "3758",
+      "score": 308.13453178,
+      "avgNormFirstDay": 0.06052,
+      "stdNormFirstDay": 0.00308,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5054",
+      "score": 307.8962022,
+      "avgNormFirstDay": 0.03042,
+      "stdNormFirstDay": 0.00687,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3843",
+      "score": 307.12180787,
+      "avgNormFirstDay": 0.05499,
+      "stdNormFirstDay": 0.00715,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6806",
+      "score": 306.71161817,
+      "avgNormFirstDay": 0.10254,
+      "stdNormFirstDay": 0.0074,
+      "avgAppearances": 15.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6137",
+      "score": 306.51608155,
+      "avgNormFirstDay": 0.0453,
+      "stdNormFirstDay": 0.00863,
+      "avgAppearances": 14.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7541",
+      "score": 304.24503948,
+      "avgNormFirstDay": 0.01483,
+      "stdNormFirstDay": 0.009,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0678",
+      "score": 303.06688034,
+      "avgNormFirstDay": 0.01808,
+      "stdNormFirstDay": 0.00486,
+      "avgAppearances": 8.67,
+      "predictedPrize": 5000,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "4246",
+      "score": 302.40994543,
+      "avgNormFirstDay": 0.0148,
+      "stdNormFirstDay": 0.00643,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0392",
+      "score": 300.86731542,
+      "avgNormFirstDay": 0.08284,
+      "stdNormFirstDay": 0.00585,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9513",
+      "score": 299.92798391,
+      "avgNormFirstDay": 0.01834,
+      "stdNormFirstDay": 0.01027,
+      "avgAppearances": 15.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "4961",
+      "score": 296.8651335,
+      "avgNormFirstDay": 0.03566,
+      "stdNormFirstDay": 0.00764,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2148",
+      "score": 296.81895374,
+      "avgNormFirstDay": 0.01558,
+      "stdNormFirstDay": 0.00718,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4826",
+      "score": 296.63230608,
+      "avgNormFirstDay": 0.01222,
+      "stdNormFirstDay": 0.00837,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4342",
+      "score": 294.38686123,
+      "avgNormFirstDay": 0.01588,
+      "stdNormFirstDay": 0.00641,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4222",
+      "score": 293.40012497,
+      "avgNormFirstDay": 0.01285,
+      "stdNormFirstDay": 0.00682,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1118",
+      "score": 293.33132909,
+      "avgNormFirstDay": 0.04011,
+      "stdNormFirstDay": 0.0055,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9657",
+      "score": 293.12100106,
+      "avgNormFirstDay": 0.14329,
+      "stdNormFirstDay": 0.00283,
+      "avgAppearances": 9.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2569",
+      "score": 292.78210389,
+      "avgNormFirstDay": 0.06223,
+      "stdNormFirstDay": 0.00748,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9889",
+      "score": 291.86974944,
+      "avgNormFirstDay": 0.02153,
+      "stdNormFirstDay": 0.00775,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7511",
+      "score": 291.60411504,
+      "avgNormFirstDay": 0.02356,
+      "stdNormFirstDay": 0.0063,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "4018",
+      "score": 291.22256059,
+      "avgNormFirstDay": 0.06368,
+      "stdNormFirstDay": 0.00626,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9146",
+      "score": 290.4466861,
+      "avgNormFirstDay": 0.02486,
+      "stdNormFirstDay": 0.00743,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6873",
+      "score": 290.33393329,
+      "avgNormFirstDay": 0.01962,
+      "stdNormFirstDay": 0.00586,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7390",
+      "score": 290.33008628,
+      "avgNormFirstDay": 0.02066,
+      "stdNormFirstDay": 0.00756,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "4716",
+      "score": 289.99755219,
+      "avgNormFirstDay": 0.08085,
+      "stdNormFirstDay": 0.00654,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8845",
+      "score": 288.85797696,
+      "avgNormFirstDay": 0.02432,
+      "stdNormFirstDay": 0.00751,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "4084",
+      "score": 288.82761186,
+      "avgNormFirstDay": 0.02614,
+      "stdNormFirstDay": 0.008,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "4312",
+      "score": 288.39577695,
+      "avgNormFirstDay": 0.01052,
+      "stdNormFirstDay": 0.00649,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6461",
+      "score": 287.99716706,
+      "avgNormFirstDay": 0.03338,
+      "stdNormFirstDay": 0.00673,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7407",
+      "score": 286.2707748,
+      "avgNormFirstDay": 0.03903,
+      "stdNormFirstDay": 0.00823,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6563",
+      "score": 285.47030496,
+      "avgNormFirstDay": 0.0182,
+      "stdNormFirstDay": 0.00919,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8943",
+      "score": 284.99202496,
+      "avgNormFirstDay": 0.01106,
+      "stdNormFirstDay": 0.00807,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1322",
+      "score": 284.87358337,
+      "avgNormFirstDay": 0.02117,
+      "stdNormFirstDay": 0.00912,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5209",
+      "score": 284.85389617,
+      "avgNormFirstDay": 0.04473,
+      "stdNormFirstDay": 0.00836,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7036",
+      "score": 284.66429341,
+      "avgNormFirstDay": 0.07636,
+      "stdNormFirstDay": 0.00664,
+      "avgAppearances": 12,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7024",
+      "score": 283.18034606,
+      "avgNormFirstDay": 0.02212,
+      "stdNormFirstDay": 0.00781,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6144",
+      "score": 282.60644128,
+      "avgNormFirstDay": 0.02129,
+      "stdNormFirstDay": 0.00758,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6609",
+      "score": 282.10674249,
+      "avgNormFirstDay": 0.03982,
+      "stdNormFirstDay": 0.01059,
+      "avgAppearances": 15.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6844",
+      "score": 279.34597371,
+      "avgNormFirstDay": 0.01488,
+      "stdNormFirstDay": 0.00732,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2772",
+      "score": 278.90334047,
+      "avgNormFirstDay": 0.08617,
+      "stdNormFirstDay": 0.00274,
+      "avgAppearances": 7.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1626",
+      "score": 278.37686582,
+      "avgNormFirstDay": 0.01471,
+      "stdNormFirstDay": 0.00881,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8755",
+      "score": 275.6005906,
+      "avgNormFirstDay": 0.0254,
+      "stdNormFirstDay": 0.00595,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "0317",
+      "score": 275.47161986,
+      "avgNormFirstDay": 0.02628,
+      "stdNormFirstDay": 0.01092,
+      "avgAppearances": 15,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2728",
+      "score": 273.69995421,
+      "avgNormFirstDay": 0.0163,
+      "stdNormFirstDay": 0.0098,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9311",
+      "score": 273.52250028,
+      "avgNormFirstDay": 0.02765,
+      "stdNormFirstDay": 0.01097,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3366",
+      "score": 272.03210518,
+      "avgNormFirstDay": 0.07154,
+      "stdNormFirstDay": 0.00424,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2858",
+      "score": 271.66993244,
+      "avgNormFirstDay": 0.0222,
+      "stdNormFirstDay": 0.0097,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2124",
+      "score": 271.41931003,
+      "avgNormFirstDay": 0.01759,
+      "stdNormFirstDay": 0.01119,
+      "avgAppearances": 14.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6649",
+      "score": 271.11485308,
+      "avgNormFirstDay": 0.07897,
+      "stdNormFirstDay": 0.00607,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3699",
+      "score": 271.02702829,
+      "avgNormFirstDay": 0.02257,
+      "stdNormFirstDay": 0.00917,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9487",
+      "score": 270.42198404,
+      "avgNormFirstDay": 0.04128,
+      "stdNormFirstDay": 0.00859,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0394",
+      "score": 268.50885722,
+      "avgNormFirstDay": 0.02362,
+      "stdNormFirstDay": 0.00722,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2793",
+      "score": 268.298963,
+      "avgNormFirstDay": 0.08342,
+      "stdNormFirstDay": 0.00709,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2028",
+      "score": 268.15259355,
+      "avgNormFirstDay": 0.00886,
+      "stdNormFirstDay": 0.00703,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9242",
+      "score": 268.12748515,
+      "avgNormFirstDay": 0.0163,
+      "stdNormFirstDay": 0.0098,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4179",
+      "score": 267.56295162,
+      "avgNormFirstDay": 0.04951,
+      "stdNormFirstDay": 0.00819,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4997",
+      "score": 267.06527899,
+      "avgNormFirstDay": 0.03862,
+      "stdNormFirstDay": 0.00772,
+      "avgAppearances": 11,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1831",
+      "score": 267.02754787,
+      "avgNormFirstDay": 0.03878,
+      "stdNormFirstDay": 0.00654,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5564",
+      "score": 266.74121065,
+      "avgNormFirstDay": 0.09593,
+      "stdNormFirstDay": 0.00548,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5649",
+      "score": 266.0593774,
+      "avgNormFirstDay": 0.01792,
+      "stdNormFirstDay": 0.0078,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2196",
+      "score": 265.65293641,
+      "avgNormFirstDay": 0.06377,
+      "stdNormFirstDay": 0.00885,
+      "avgAppearances": 13.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8329",
+      "score": 264.93990695,
+      "avgNormFirstDay": 0.00928,
+      "stdNormFirstDay": 0.00933,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3142",
+      "score": 264.93351396,
+      "avgNormFirstDay": 0.01671,
+      "stdNormFirstDay": 0.00758,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "3369",
+      "score": 264.60751089,
+      "avgNormFirstDay": 0.03396,
+      "stdNormFirstDay": 0.00678,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9446",
+      "score": 262.8104774,
+      "avgNormFirstDay": 0.05791,
+      "stdNormFirstDay": 0.00586,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "0231",
+      "score": 262.58109175,
+      "avgNormFirstDay": 0.02897,
+      "stdNormFirstDay": 0.00992,
+      "avgAppearances": 13,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1086",
+      "score": 262.07166269,
+      "avgNormFirstDay": 0.04319,
+      "stdNormFirstDay": 0.00662,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2351",
+      "score": 261.71449919,
+      "avgNormFirstDay": 0.03384,
+      "stdNormFirstDay": 0.00897,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4322",
+      "score": 261.68506575,
+      "avgNormFirstDay": 0.086,
+      "stdNormFirstDay": 0.00704,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3318",
+      "score": 261.44231265,
+      "avgNormFirstDay": 0.10213,
+      "stdNormFirstDay": 0.0068,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "1437",
+      "score": 259.48974745,
+      "avgNormFirstDay": 0.03878,
+      "stdNormFirstDay": 0.00654,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6103",
+      "score": 258.5504433,
+      "avgNormFirstDay": 0.01231,
+      "stdNormFirstDay": 0.00984,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7997",
+      "score": 258.38873421,
+      "avgNormFirstDay": 0.06463,
+      "stdNormFirstDay": 0.00866,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0830",
+      "score": 257.53559201,
+      "avgNormFirstDay": 0.03284,
+      "stdNormFirstDay": 0.01059,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8127",
+      "score": 255.71707843,
+      "avgNormFirstDay": 0.0165,
+      "stdNormFirstDay": 0.00864,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1311",
+      "score": 255.49064761,
+      "avgNormFirstDay": 0.02888,
+      "stdNormFirstDay": 0.01029,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7550",
+      "score": 254.98972996,
+      "avgNormFirstDay": 0.03808,
+      "stdNormFirstDay": 0.01054,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3331",
+      "score": 254.97331816,
+      "avgNormFirstDay": 0.03345,
+      "stdNormFirstDay": 0.00844,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9361",
+      "score": 254.44048558,
+      "avgNormFirstDay": 0.05255,
+      "stdNormFirstDay": 0.00871,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6352",
+      "score": 254.31735043,
+      "avgNormFirstDay": 0.03816,
+      "stdNormFirstDay": 0.00546,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "3288",
+      "score": 254.29521889,
+      "avgNormFirstDay": 0.05457,
+      "stdNormFirstDay": 0.00469,
+      "avgAppearances": 7.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "8837",
+      "score": 253.94336836,
+      "avgNormFirstDay": 0.10866,
+      "stdNormFirstDay": 0.00301,
+      "avgAppearances": 7.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8061",
+      "score": 253.88843197,
+      "avgNormFirstDay": 0.03512,
+      "stdNormFirstDay": 0.00903,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2515",
+      "score": 253.79364637,
+      "avgNormFirstDay": 0.03962,
+      "stdNormFirstDay": 0.00917,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8428",
+      "score": 253.54498024,
+      "avgNormFirstDay": 0.07092,
+      "stdNormFirstDay": 0.00557,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9409",
+      "score": 253.05127484,
+      "avgNormFirstDay": 0.0286,
+      "stdNormFirstDay": 0.01043,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5229",
+      "score": 252.92805792,
+      "avgNormFirstDay": 0.05191,
+      "stdNormFirstDay": 0.00989,
+      "avgAppearances": 13.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3567",
+      "score": 252.83160116,
+      "avgNormFirstDay": 0.0353,
+      "stdNormFirstDay": 0.01181,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "1946",
+      "score": 252.74477712,
+      "avgNormFirstDay": 0.12079,
+      "stdNormFirstDay": 0.00708,
+      "avgAppearances": 12.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2605",
+      "score": 252.30680782,
+      "avgNormFirstDay": 0.06979,
+      "stdNormFirstDay": 0.00714,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9594",
+      "score": 251.43537436,
+      "avgNormFirstDay": 0.02037,
+      "stdNormFirstDay": 0.00777,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8046",
+      "score": 249.69703932,
+      "avgNormFirstDay": 0.0683,
+      "stdNormFirstDay": 0.00611,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "5515",
+      "score": 249.44382632,
+      "avgNormFirstDay": 0.04256,
+      "stdNormFirstDay": 0.00687,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "1467",
+      "score": 249.09994935,
+      "avgNormFirstDay": 0.01646,
+      "stdNormFirstDay": 0.008,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8404",
+      "score": 248.68981865,
+      "avgNormFirstDay": 0.02697,
+      "stdNormFirstDay": 0.0077,
+      "avgAppearances": 9.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9576",
+      "score": 248.09157228,
+      "avgNormFirstDay": 0.03438,
+      "stdNormFirstDay": 0.00935,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6517",
+      "score": 247.50279148,
+      "avgNormFirstDay": 0.04834,
+      "stdNormFirstDay": 0.00862,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2095",
+      "score": 246.93193119,
+      "avgNormFirstDay": 0.03201,
+      "stdNormFirstDay": 0.00949,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3683",
+      "score": 246.65356187,
+      "avgNormFirstDay": 0.04821,
+      "stdNormFirstDay": 0.00651,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6234",
+      "score": 246.25474713,
+      "avgNormFirstDay": 0.01704,
+      "stdNormFirstDay": 0.00877,
+      "avgAppearances": 10.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6269",
+      "score": 245.72518337,
+      "avgNormFirstDay": 0.07815,
+      "stdNormFirstDay": 0.0066,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3249",
+      "score": 245.7079618,
+      "avgNormFirstDay": 0.03828,
+      "stdNormFirstDay": 0.00992,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8629",
+      "score": 245.07775526,
+      "avgNormFirstDay": 0.05147,
+      "stdNormFirstDay": 0.00864,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7602",
+      "score": 244.93721645,
+      "avgNormFirstDay": 0.02195,
+      "stdNormFirstDay": 0.00836,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "1436",
+      "score": 244.67074464,
+      "avgNormFirstDay": 0.01579,
+      "stdNormFirstDay": 0.00922,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1427",
+      "score": 244.59460424,
+      "avgNormFirstDay": 0.02394,
+      "stdNormFirstDay": 0.00799,
+      "avgAppearances": 9.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9608",
+      "score": 244.14932018,
+      "avgNormFirstDay": 0.19762,
+      "stdNormFirstDay": 0.002,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "1312",
+      "score": 243.79897085,
+      "avgNormFirstDay": 0.05134,
+      "stdNormFirstDay": 0.00812,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9676",
+      "score": 242.20246531,
+      "avgNormFirstDay": 0.03563,
+      "stdNormFirstDay": 0.00962,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6407",
+      "score": 242.11259795,
+      "avgNormFirstDay": 0.0303,
+      "stdNormFirstDay": 0.00824,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9023",
+      "score": 241.61345407,
+      "avgNormFirstDay": 0.05274,
+      "stdNormFirstDay": 0.00936,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1468",
+      "score": 241.30664344,
+      "avgNormFirstDay": 0.05617,
+      "stdNormFirstDay": 0.00809,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1623",
+      "score": 240.91125446,
+      "avgNormFirstDay": 0.02141,
+      "stdNormFirstDay": 0.00955,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8656",
+      "score": 240.76000227,
+      "avgNormFirstDay": 0.02327,
+      "stdNormFirstDay": 0.00853,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6930",
+      "score": 240.00602871,
+      "avgNormFirstDay": 0.05155,
+      "stdNormFirstDay": 0.01006,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4153",
+      "score": 239.83295894,
+      "avgNormFirstDay": 0.06564,
+      "stdNormFirstDay": 0.00462,
+      "avgAppearances": 7.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9995",
+      "score": 239.03636824,
+      "avgNormFirstDay": 0.06098,
+      "stdNormFirstDay": 0.00805,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2831",
+      "score": 238.41345718,
+      "avgNormFirstDay": 0.01579,
+      "stdNormFirstDay": 0.00922,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3214",
+      "score": 238.06604835,
+      "avgNormFirstDay": 0.02601,
+      "stdNormFirstDay": 0.01048,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5926",
+      "score": 237.95998852,
+      "avgNormFirstDay": 0.01717,
+      "stdNormFirstDay": 0.0111,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7701",
+      "score": 236.60259033,
+      "avgNormFirstDay": 0.04144,
+      "stdNormFirstDay": 0.00942,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3108",
+      "score": 236.50631391,
+      "avgNormFirstDay": 0.0357,
+      "stdNormFirstDay": 0.01023,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1487",
+      "score": 236.37679486,
+      "avgNormFirstDay": 0.03703,
+      "stdNormFirstDay": 0.00832,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1418",
+      "score": 236.07620486,
+      "avgNormFirstDay": 0.02723,
+      "stdNormFirstDay": 0.00962,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2776",
+      "score": 236.00628893,
+      "avgNormFirstDay": 0.06231,
+      "stdNormFirstDay": 0.00905,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2031",
+      "score": 235.82405097,
+      "avgNormFirstDay": 0.03649,
+      "stdNormFirstDay": 0.00804,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0277",
+      "score": 235.47171927,
+      "avgNormFirstDay": 0.02036,
+      "stdNormFirstDay": 0.00923,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8771",
+      "score": 235.02188338,
+      "avgNormFirstDay": 0.02266,
+      "stdNormFirstDay": 0.00885,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9462",
+      "score": 234.67430525,
+      "avgNormFirstDay": 0.03965,
+      "stdNormFirstDay": 0.00897,
+      "avgAppearances": 10.67,
+      "predictedPrize": 200,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6446",
+      "score": 233.18222191,
+      "avgNormFirstDay": 0.01276,
+      "stdNormFirstDay": 0.00927,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7563",
+      "score": 233.13692259,
+      "avgNormFirstDay": 0.0289,
+      "stdNormFirstDay": 0.01036,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8382",
+      "score": 233.075912,
+      "avgNormFirstDay": 0.01936,
+      "stdNormFirstDay": 0.01252,
+      "avgAppearances": 13.67,
+      "predictedPrize": 5000,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6605",
+      "score": 232.14120186,
+      "avgNormFirstDay": 0.08044,
+      "stdNormFirstDay": 0.00747,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9109",
+      "score": 231.99851444,
+      "avgNormFirstDay": 0.06372,
+      "stdNormFirstDay": 0.00801,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9407",
+      "score": 231.85251095,
+      "avgNormFirstDay": 0.03629,
+      "stdNormFirstDay": 0.00613,
+      "avgAppearances": 7.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2607",
+      "score": 231.71863831,
+      "avgNormFirstDay": 0.02798,
+      "stdNormFirstDay": 0.00952,
+      "avgAppearances": 10.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0081",
+      "score": 231.32470375,
+      "avgNormFirstDay": 0.07607,
+      "stdNormFirstDay": 0.00765,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1072",
+      "score": 230.38947166,
+      "avgNormFirstDay": 0.01509,
+      "stdNormFirstDay": 0.01003,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3557",
+      "score": 230.09551717,
+      "avgNormFirstDay": 0.01148,
+      "stdNormFirstDay": 0.0105,
+      "avgAppearances": 11,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "5537",
+      "score": 229.74996369,
+      "avgNormFirstDay": 0.01903,
+      "stdNormFirstDay": 0.01026,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "3304",
+      "score": 229.17399671,
+      "avgNormFirstDay": 0.01924,
+      "stdNormFirstDay": 0.01156,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7976",
+      "score": 229.10631864,
+      "avgNormFirstDay": 0.02715,
+      "stdNormFirstDay": 0.01066,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0283",
+      "score": 228.54368727,
+      "avgNormFirstDay": 0.03895,
+      "stdNormFirstDay": 0.00996,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6400",
+      "score": 228.4733237,
+      "avgNormFirstDay": 0.02726,
+      "stdNormFirstDay": 0.00872,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4671",
+      "score": 227.61111123,
+      "avgNormFirstDay": 0.01471,
+      "stdNormFirstDay": 0.00881,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8590",
+      "score": 227.36011448,
+      "avgNormFirstDay": 0.05619,
+      "stdNormFirstDay": 0.00913,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3450",
+      "score": 227.21445387,
+      "avgNormFirstDay": 0.01884,
+      "stdNormFirstDay": 0.01262,
+      "avgAppearances": 13.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6505",
+      "score": 227.14973504,
+      "avgNormFirstDay": 0.07824,
+      "stdNormFirstDay": 0.00718,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7887",
+      "score": 226.9331526,
+      "avgNormFirstDay": 0.03687,
+      "stdNormFirstDay": 0.00883,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0628",
+      "score": 226.91722031,
+      "avgNormFirstDay": 0.07105,
+      "stdNormFirstDay": 0.00804,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2529",
+      "score": 226.8192646,
+      "avgNormFirstDay": 0.03206,
+      "stdNormFirstDay": 0.01214,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "4469",
+      "score": 226.385572,
+      "avgNormFirstDay": 0.05632,
+      "stdNormFirstDay": 0.01125,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8813",
+      "score": 226.24613673,
+      "avgNormFirstDay": 0.0298,
+      "stdNormFirstDay": 0.01105,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9247",
+      "score": 226.18253864,
+      "avgNormFirstDay": 0.03791,
+      "stdNormFirstDay": 0.00982,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7500",
+      "score": 225.86520644,
+      "avgNormFirstDay": 0.02572,
+      "stdNormFirstDay": 0.01304,
+      "avgAppearances": 14,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8522",
+      "score": 225.27546157,
+      "avgNormFirstDay": 0.04779,
+      "stdNormFirstDay": 0.01016,
+      "avgAppearances": 11.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7503",
+      "score": 224.5093906,
+      "avgNormFirstDay": 0.02365,
+      "stdNormFirstDay": 0.00974,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5264",
+      "score": 224.26573104,
+      "avgNormFirstDay": 0.03828,
+      "stdNormFirstDay": 0.00992,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2466",
+      "score": 224.20352883,
+      "avgNormFirstDay": 0.05454,
+      "stdNormFirstDay": 0.01117,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3951",
+      "score": 223.98377815,
+      "avgNormFirstDay": 0.05536,
+      "stdNormFirstDay": 0.00997,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9252",
+      "score": 223.67710489,
+      "avgNormFirstDay": 0.03105,
+      "stdNormFirstDay": 0.00988,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9444",
+      "score": 223.59714214,
+      "avgNormFirstDay": 0.07756,
+      "stdNormFirstDay": 0.01144,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0531",
+      "score": 223.33907458,
+      "avgNormFirstDay": 0.07391,
+      "stdNormFirstDay": 0.00718,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2216",
+      "score": 221.90435033,
+      "avgNormFirstDay": 0.03645,
+      "stdNormFirstDay": 0.01512,
+      "avgAppearances": 16.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9761",
+      "score": 221.84940709,
+      "avgNormFirstDay": 0.02515,
+      "stdNormFirstDay": 0.00844,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "0557",
+      "score": 221.76973622,
+      "avgNormFirstDay": 0.02976,
+      "stdNormFirstDay": 0.01069,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6618",
+      "score": 221.23749654,
+      "avgNormFirstDay": 0.01468,
+      "stdNormFirstDay": 0.00954,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6949",
+      "score": 220.30065566,
+      "avgNormFirstDay": 0.04058,
+      "stdNormFirstDay": 0.00839,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6568",
+      "score": 219.99222753,
+      "avgNormFirstDay": 0.01758,
+      "stdNormFirstDay": 0.00987,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2551",
+      "score": 219.03995875,
+      "avgNormFirstDay": 0.08044,
+      "stdNormFirstDay": 0.00654,
+      "avgAppearances": 8.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7077",
+      "score": 218.63181724,
+      "avgNormFirstDay": 0.04102,
+      "stdNormFirstDay": 0.0095,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5630",
+      "score": 218.26981588,
+      "avgNormFirstDay": 0.02955,
+      "stdNormFirstDay": 0.01371,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0982",
+      "score": 217.81760506,
+      "avgNormFirstDay": 0.01958,
+      "stdNormFirstDay": 0.00562,
+      "avgAppearances": 6.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9502",
+      "score": 217.33069595,
+      "avgNormFirstDay": 0.06975,
+      "stdNormFirstDay": 0.00695,
+      "avgAppearances": 8.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "0736",
+      "score": 216.96398204,
+      "avgNormFirstDay": 0.07058,
+      "stdNormFirstDay": 0.00762,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7288",
+      "score": 216.43097824,
+      "avgNormFirstDay": 0.03994,
+      "stdNormFirstDay": 0.00638,
+      "avgAppearances": 7.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4600",
+      "score": 216.22506588,
+      "avgNormFirstDay": 0.04501,
+      "stdNormFirstDay": 0.01235,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9167",
+      "score": 216.15681,
+      "avgNormFirstDay": 0.02324,
+      "stdNormFirstDay": 0.01095,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0886",
+      "score": 215.87638659,
+      "avgNormFirstDay": 0.01376,
+      "stdNormFirstDay": 0.00798,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9498",
+      "score": 215.8026084,
+      "avgNormFirstDay": 0.05259,
+      "stdNormFirstDay": 0.00791,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3820",
+      "score": 215.35705372,
+      "avgNormFirstDay": 0.03231,
+      "stdNormFirstDay": 0.01166,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6249",
+      "score": 214.91543569,
+      "avgNormFirstDay": 0.0404,
+      "stdNormFirstDay": 0.0117,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "1126",
+      "score": 214.84605104,
+      "avgNormFirstDay": 0.01438,
+      "stdNormFirstDay": 0.01101,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8854",
+      "score": 214.84048776,
+      "avgNormFirstDay": 0.04548,
+      "stdNormFirstDay": 0.00924,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9329",
+      "score": 214.77063714,
+      "avgNormFirstDay": 0.15102,
+      "stdNormFirstDay": 0.00467,
+      "avgAppearances": 8.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9965",
+      "score": 214.55873808,
+      "avgNormFirstDay": 0.053,
+      "stdNormFirstDay": 0.00724,
+      "avgAppearances": 8.33,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6699",
+      "score": 214.404187,
+      "avgNormFirstDay": 0.08211,
+      "stdNormFirstDay": 0.01104,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4927",
+      "score": 214.31332002,
+      "avgNormFirstDay": 0.02919,
+      "stdNormFirstDay": 0.0128,
+      "avgAppearances": 13,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7866",
+      "score": 214.20487711,
+      "avgNormFirstDay": 0.0395,
+      "stdNormFirstDay": 0.00982,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0521",
+      "score": 213.75296514,
+      "avgNormFirstDay": 0.07565,
+      "stdNormFirstDay": 0.00987,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1571",
+      "score": 213.70728809,
+      "avgNormFirstDay": 0.02723,
+      "stdNormFirstDay": 0.01292,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8357",
+      "score": 213.57860193,
+      "avgNormFirstDay": 0.07536,
+      "stdNormFirstDay": 0.00958,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4154",
+      "score": 213.41006715,
+      "avgNormFirstDay": 0.06115,
+      "stdNormFirstDay": 0.0088,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6556",
+      "score": 213.39256223,
+      "avgNormFirstDay": 0.02223,
+      "stdNormFirstDay": 0.01468,
+      "avgAppearances": 14.67,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4311",
+      "score": 213.2293939,
+      "avgNormFirstDay": 0.07607,
+      "stdNormFirstDay": 0.00765,
+      "avgAppearances": 9.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "3980",
+      "score": 213.05371406,
+      "avgNormFirstDay": 0.02157,
+      "stdNormFirstDay": 0.01319,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9283",
+      "score": 212.69184072,
+      "avgNormFirstDay": 0.04917,
+      "stdNormFirstDay": 0.01057,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "5012",
+      "score": 212.48172704,
+      "avgNormFirstDay": 0.01716,
+      "stdNormFirstDay": 0.01035,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0500",
+      "score": 212.11389847,
+      "avgNormFirstDay": 0.02656,
+      "stdNormFirstDay": 0.0104,
+      "avgAppearances": 10.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9655",
+      "score": 211.28546257,
+      "avgNormFirstDay": 0.02253,
+      "stdNormFirstDay": 0.00797,
+      "avgAppearances": 8,
+      "predictedPrize": 1000,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "0185",
+      "score": 211.03702412,
+      "avgNormFirstDay": 0.03878,
+      "stdNormFirstDay": 0.01139,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6488",
+      "score": 210.97418464,
+      "avgNormFirstDay": 0.04065,
+      "stdNormFirstDay": 0.01033,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8560",
+      "score": 210.9396209,
+      "avgNormFirstDay": 0.02002,
+      "stdNormFirstDay": 0.01435,
+      "avgAppearances": 14,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "9529",
+      "score": 210.49604203,
+      "avgNormFirstDay": 0.02765,
+      "stdNormFirstDay": 0.0115,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9067",
+      "score": 210.27847208,
+      "avgNormFirstDay": 0.06214,
+      "stdNormFirstDay": 0.01058,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7297",
+      "score": 209.90624417,
+      "avgNormFirstDay": 0.0163,
+      "stdNormFirstDay": 0.0098,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "1666",
+      "score": 209.03290395,
+      "avgNormFirstDay": 0.04694,
+      "stdNormFirstDay": 0.00773,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2963",
+      "score": 209.00221411,
+      "avgNormFirstDay": 0.02917,
+      "stdNormFirstDay": 0.01051,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "6976",
+      "score": 208.87243487,
+      "avgNormFirstDay": 0.03824,
+      "stdNormFirstDay": 0.0102,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5203",
+      "score": 208.71280633,
+      "avgNormFirstDay": 0.0395,
+      "stdNormFirstDay": 0.00982,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9582",
+      "score": 208.66914131,
+      "avgNormFirstDay": 0.08688,
+      "stdNormFirstDay": 0.00822,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1834",
+      "score": 207.9578319,
+      "avgNormFirstDay": 0.03524,
+      "stdNormFirstDay": 0.00966,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9220",
+      "score": 207.67740272,
+      "avgNormFirstDay": 0.0247,
+      "stdNormFirstDay": 0.01281,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2187",
+      "score": 207.32762512,
+      "avgNormFirstDay": 0.02701,
+      "stdNormFirstDay": 0.00923,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5266",
+      "score": 207.23743063,
+      "avgNormFirstDay": 0.01521,
+      "stdNormFirstDay": 0.01219,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "1117",
+      "score": 207.13309074,
+      "avgNormFirstDay": 0.03288,
+      "stdNormFirstDay": 0.01015,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2193",
+      "score": 206.4604039,
+      "avgNormFirstDay": 0.03246,
+      "stdNormFirstDay": 0.0116,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7156",
+      "score": 205.68773397,
+      "avgNormFirstDay": 0.04739,
+      "stdNormFirstDay": 0.01077,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7250",
+      "score": 205.65781509,
+      "avgNormFirstDay": 0.02668,
+      "stdNormFirstDay": 0.00972,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2022",
+      "score": 205.6094869,
+      "avgNormFirstDay": 0.02693,
+      "stdNormFirstDay": 0.01353,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9875",
+      "score": 205.18425478,
+      "avgNormFirstDay": 0.05217,
+      "stdNormFirstDay": 0.00926,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "0672",
+      "score": 204.97266718,
+      "avgNormFirstDay": 0.02286,
+      "stdNormFirstDay": 0.00913,
+      "avgAppearances": 8.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3920",
+      "score": 204.80720477,
+      "avgNormFirstDay": 0.038,
+      "stdNormFirstDay": 0.01438,
+      "avgAppearances": 14.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "7195",
+      "score": 204.63041675,
+      "avgNormFirstDay": 0.02354,
+      "stdNormFirstDay": 0.01275,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6935",
+      "score": 204.60649781,
+      "avgNormFirstDay": 0.01813,
+      "stdNormFirstDay": 0.0089,
+      "avgAppearances": 8.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9372",
+      "score": 204.54816314,
+      "avgNormFirstDay": 0.02628,
+      "stdNormFirstDay": 0.01091,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8489",
+      "score": 204.29400236,
+      "avgNormFirstDay": 0.04266,
+      "stdNormFirstDay": 0.00964,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4116",
+      "score": 203.76993447,
+      "avgNormFirstDay": 0.02693,
+      "stdNormFirstDay": 0.01399,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4973",
+      "score": 203.39618365,
+      "avgNormFirstDay": 0.02449,
+      "stdNormFirstDay": 0.01142,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6817",
+      "score": 203.28528972,
+      "avgNormFirstDay": 0.03098,
+      "stdNormFirstDay": 0.01188,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5553",
+      "score": 203.10618291,
+      "avgNormFirstDay": 0.06561,
+      "stdNormFirstDay": 0.01421,
+      "avgAppearances": 15.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7599",
+      "score": 202.83007564,
+      "avgNormFirstDay": 0.05105,
+      "stdNormFirstDay": 0.01182,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0328",
+      "score": 202.79410865,
+      "avgNormFirstDay": 0.04931,
+      "stdNormFirstDay": 0.01056,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "6367",
+      "score": 202.69341609,
+      "avgNormFirstDay": 0.01991,
+      "stdNormFirstDay": 0.00976,
+      "avgAppearances": 9,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "1011",
+      "score": 202.68829481,
+      "avgNormFirstDay": 0.02188,
+      "stdNormFirstDay": 0.01296,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5698",
+      "score": 202.20015909,
+      "avgNormFirstDay": 0.01792,
+      "stdNormFirstDay": 0.0078,
+      "avgAppearances": 7.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3931",
+      "score": 202.01237318,
+      "avgNormFirstDay": 0.02744,
+      "stdNormFirstDay": 0.01176,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9617",
+      "score": 201.94569553,
+      "avgNormFirstDay": 0.04456,
+      "stdNormFirstDay": 0.01113,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7658",
+      "score": 201.75643498,
+      "avgNormFirstDay": 0.03193,
+      "stdNormFirstDay": 0.01054,
+      "avgAppearances": 10,
+      "predictedPrize": 1000,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9879",
+      "score": 201.72083698,
+      "avgNormFirstDay": 0.05882,
+      "stdNormFirstDay": 0.01095,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7895",
+      "score": 201.65737467,
+      "avgNormFirstDay": 0.02252,
+      "stdNormFirstDay": 0.01434,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "7906",
+      "score": 201.54279546,
+      "avgNormFirstDay": 0.03453,
+      "stdNormFirstDay": 0.01082,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2547",
+      "score": 201.5362407,
+      "avgNormFirstDay": 0.02331,
+      "stdNormFirstDay": 0.01797,
+      "avgAppearances": 17.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3425",
+      "score": 201.34464622,
+      "avgNormFirstDay": 0.11032,
+      "stdNormFirstDay": 0.00514,
+      "avgAppearances": 7.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2866",
+      "score": 201.25380208,
+      "avgNormFirstDay": 0.05109,
+      "stdNormFirstDay": 0.0099,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2219",
+      "score": 201.03981196,
+      "avgNormFirstDay": 0.11012,
+      "stdNormFirstDay": 0.01195,
+      "avgAppearances": 14.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7790",
+      "score": 201.00670456,
+      "avgNormFirstDay": 0.03424,
+      "stdNormFirstDay": 0.01227,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "2741",
+      "score": 200.9761729,
+      "avgNormFirstDay": 0.03662,
+      "stdNormFirstDay": 0.00893,
+      "avgAppearances": 8.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3533",
+      "score": 200.59653367,
+      "avgNormFirstDay": 0.0151,
+      "stdNormFirstDay": 0.01122,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6265",
+      "score": 200.52831204,
+      "avgNormFirstDay": 0.02051,
+      "stdNormFirstDay": 0.0158,
+      "avgAppearances": 14.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2342",
+      "score": 200.52482947,
+      "avgNormFirstDay": 0.05097,
+      "stdNormFirstDay": 0.01199,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5090",
+      "score": 200.38581855,
+      "avgNormFirstDay": 0.02312,
+      "stdNormFirstDay": 0.01239,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9295",
+      "score": 200.06781629,
+      "avgNormFirstDay": 0.02823,
+      "stdNormFirstDay": 0.01291,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6661",
+      "score": 199.81090309,
+      "avgNormFirstDay": 0.06862,
+      "stdNormFirstDay": 0.00904,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6099",
+      "score": 199.64115808,
+      "avgNormFirstDay": 0.04669,
+      "stdNormFirstDay": 0.01319,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6782",
+      "score": 199.61516804,
+      "avgNormFirstDay": 0.02735,
+      "stdNormFirstDay": 0.01085,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "4824",
+      "score": 199.53077165,
+      "avgNormFirstDay": 0.02597,
+      "stdNormFirstDay": 0.0127,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1332",
+      "score": 199.3036841,
+      "avgNormFirstDay": 0.02628,
+      "stdNormFirstDay": 0.01091,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9703",
+      "score": 199.15936308,
+      "avgNormFirstDay": 0.02436,
+      "stdNormFirstDay": 0.00904,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8729",
+      "score": 199.11114328,
+      "avgNormFirstDay": 0.03747,
+      "stdNormFirstDay": 0.01666,
+      "avgAppearances": 16.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "0507",
+      "score": 198.99306844,
+      "avgNormFirstDay": 0.01907,
+      "stdNormFirstDay": 0.01301,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9324",
+      "score": 198.5872926,
+      "avgNormFirstDay": 0.04572,
+      "stdNormFirstDay": 0.00916,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9947",
+      "score": 198.42555777,
+      "avgNormFirstDay": 0.05578,
+      "stdNormFirstDay": 0.0092,
+      "avgAppearances": 9.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0421",
+      "score": 198.37662598,
+      "avgNormFirstDay": 0.01813,
+      "stdNormFirstDay": 0.01164,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6853",
+      "score": 197.97587206,
+      "avgNormFirstDay": 0.01492,
+      "stdNormFirstDay": 0.01253,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9798",
+      "score": 197.92985858,
+      "avgNormFirstDay": 0.02033,
+      "stdNormFirstDay": 0.00884,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1319",
+      "score": 197.77878234,
+      "avgNormFirstDay": 0.01862,
+      "stdNormFirstDay": 0.01276,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3858",
+      "score": 197.71799867,
+      "avgNormFirstDay": 0.03607,
+      "stdNormFirstDay": 0.00992,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9029",
+      "score": 197.71799867,
+      "avgNormFirstDay": 0.03607,
+      "stdNormFirstDay": 0.00992,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "2659",
+      "score": 196.73610947,
+      "avgNormFirstDay": 0.02906,
+      "stdNormFirstDay": 0.01173,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7450",
+      "score": 196.58535775,
+      "avgNormFirstDay": 0.02919,
+      "stdNormFirstDay": 0.0128,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "8157",
+      "score": 196.54450722,
+      "avgNormFirstDay": 0.02395,
+      "stdNormFirstDay": 0.01404,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "8928",
+      "score": 196.26058359,
+      "avgNormFirstDay": 0.02436,
+      "stdNormFirstDay": 0.0137,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4590",
+      "score": 195.95499333,
+      "avgNormFirstDay": 0.05263,
+      "stdNormFirstDay": 0.01259,
+      "avgAppearances": 12.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1547",
+      "score": 195.88569631,
+      "avgNormFirstDay": 0.01717,
+      "stdNormFirstDay": 0.01471,
+      "avgAppearances": 13,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8253",
+      "score": 195.59068735,
+      "avgNormFirstDay": 0.04639,
+      "stdNormFirstDay": 0.01045,
+      "avgAppearances": 10,
+      "predictedPrize": 2000,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2909",
+      "score": 195.32195134,
+      "avgNormFirstDay": 0.07589,
+      "stdNormFirstDay": 0.01172,
+      "avgAppearances": 12.33,
+      "predictedPrize": 1000,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6263",
+      "score": 195.27578395,
+      "avgNormFirstDay": 0.03023,
+      "stdNormFirstDay": 0.01068,
+      "avgAppearances": 9.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7524",
+      "score": 195.17301572,
+      "avgNormFirstDay": 0.03002,
+      "stdNormFirstDay": 0.01322,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "3658",
+      "score": 195.15990665,
+      "avgNormFirstDay": 0.02805,
+      "stdNormFirstDay": 0.01151,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "5563",
+      "score": 194.89931367,
+      "avgNormFirstDay": 0.0318,
+      "stdNormFirstDay": 0.01212,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1755",
+      "score": 194.67966513,
+      "avgNormFirstDay": 0.02681,
+      "stdNormFirstDay": 0.01045,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2017",
+      "score": 194.62972964,
+      "avgNormFirstDay": 0.03399,
+      "stdNormFirstDay": 0.01133,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9987",
+      "score": 194.55446005,
+      "avgNormFirstDay": 0.03314,
+      "stdNormFirstDay": 0.011,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6017",
+      "score": 194.06027263,
+      "avgNormFirstDay": 0.0199,
+      "stdNormFirstDay": 0.01264,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6437",
+      "score": 193.66069746,
+      "avgNormFirstDay": 0.06945,
+      "stdNormFirstDay": 0.01482,
+      "avgAppearances": 15.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2886",
+      "score": 193.65935228,
+      "avgNormFirstDay": 0.03139,
+      "stdNormFirstDay": 0.01223,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5565",
+      "score": 193.53540424,
+      "avgNormFirstDay": 0.06556,
+      "stdNormFirstDay": 0.00845,
+      "avgAppearances": 8.67,
+      "predictedPrize": 1000,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7020",
+      "score": 192.31720273,
+      "avgNormFirstDay": 0.02271,
+      "stdNormFirstDay": 0.01643,
+      "avgAppearances": 14.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0412",
+      "score": 192.28045588,
+      "avgNormFirstDay": 0.05149,
+      "stdNormFirstDay": 0.0105,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "6258",
+      "score": 192.27881247,
+      "avgNormFirstDay": 0.11659,
+      "stdNormFirstDay": 0.00885,
+      "avgAppearances": 10.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "9164",
+      "score": 192.00562083,
+      "avgNormFirstDay": 0.02711,
+      "stdNormFirstDay": 0.01178,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7566",
+      "score": 191.62231614,
+      "avgNormFirstDay": 0.05162,
+      "stdNormFirstDay": 0.01297,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8987",
+      "score": 191.54248183,
+      "avgNormFirstDay": 0.03067,
+      "stdNormFirstDay": 0.01131,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "1080",
+      "score": 191.33991234,
+      "avgNormFirstDay": 0.03409,
+      "stdNormFirstDay": 0.01043,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7926",
+      "score": 190.99981735,
+      "avgNormFirstDay": 0.04847,
+      "stdNormFirstDay": 0.01381,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "1594",
+      "score": 190.85595287,
+      "avgNormFirstDay": 0.12682,
+      "stdNormFirstDay": 0.00558,
+      "avgAppearances": 7.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "3565",
+      "score": 190.82407218,
+      "avgNormFirstDay": 0.02211,
+      "stdNormFirstDay": 0.01354,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "5917",
+      "score": 190.31679991,
+      "avgNormFirstDay": 0.01672,
+      "stdNormFirstDay": 0.0123,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "4946",
+      "score": 189.86108517,
+      "avgNormFirstDay": 0.03137,
+      "stdNormFirstDay": 0.01429,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2478",
+      "score": 189.79016834,
+      "avgNormFirstDay": 0.0239,
+      "stdNormFirstDay": 0.01661,
+      "avgAppearances": 14.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5274",
+      "score": 189.32848366,
+      "avgNormFirstDay": 0.07579,
+      "stdNormFirstDay": 0.01218,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "4540",
+      "score": 189.31535127,
+      "avgNormFirstDay": 0.04598,
+      "stdNormFirstDay": 0.01271,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8395",
+      "score": 188.28443533,
+      "avgNormFirstDay": 0.06356,
+      "stdNormFirstDay": 0.01035,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9611",
+      "score": 188.1908559,
+      "avgNormFirstDay": 0.04981,
+      "stdNormFirstDay": 0.0101,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9642",
+      "score": 187.784022,
+      "avgNormFirstDay": 0.05014,
+      "stdNormFirstDay": 0.01124,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5442",
+      "score": 187.6601869,
+      "avgNormFirstDay": 0.02614,
+      "stdNormFirstDay": 0.008,
+      "avgAppearances": 7,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "0383",
+      "score": 187.6096701,
+      "avgNormFirstDay": 0.04407,
+      "stdNormFirstDay": 0.01148,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7395",
+      "score": 186.97039738,
+      "avgNormFirstDay": 0.05424,
+      "stdNormFirstDay": 0.01257,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7025",
+      "score": 186.82951154,
+      "avgNormFirstDay": 0.04123,
+      "stdNormFirstDay": 0.01274,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3006",
+      "score": 186.6114538,
+      "avgNormFirstDay": 0.0249,
+      "stdNormFirstDay": 0.01267,
+      "avgAppearances": 10.67,
+      "predictedPrize": 1000,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "8060",
+      "score": 186.57212531,
+      "avgNormFirstDay": 0.02503,
+      "stdNormFirstDay": 0.01228,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5413",
+      "score": 186.34523679,
+      "avgNormFirstDay": 0.07826,
+      "stdNormFirstDay": 0.01066,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7504",
+      "score": 186.29990505,
+      "avgNormFirstDay": 0.1005,
+      "stdNormFirstDay": 0.01081,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5139",
+      "score": 185.8389591,
+      "avgNormFirstDay": 0.05977,
+      "stdNormFirstDay": 0.01209,
+      "avgAppearances": 11.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9327",
+      "score": 185.72231425,
+      "avgNormFirstDay": 0.01493,
+      "stdNormFirstDay": 0.01351,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5104",
+      "score": 185.66894654,
+      "avgNormFirstDay": 0.04501,
+      "stdNormFirstDay": 0.01233,
+      "avgAppearances": 11,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "3316",
+      "score": 185.15046016,
+      "avgNormFirstDay": 0.04091,
+      "stdNormFirstDay": 0.01289,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "3023",
+      "score": 184.94451101,
+      "avgNormFirstDay": 0.02162,
+      "stdNormFirstDay": 0.01368,
+      "avgAppearances": 11.33,
+      "predictedPrize": 5000,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "8805",
+      "score": 184.6774866,
+      "avgNormFirstDay": 0.04228,
+      "stdNormFirstDay": 0.01393,
+      "avgAppearances": 12.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "2111",
+      "score": 184.39097501,
+      "avgNormFirstDay": 0.0525,
+      "stdNormFirstDay": 0.01067,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7527",
+      "score": 184.29628237,
+      "avgNormFirstDay": 0.02604,
+      "stdNormFirstDay": 0.01955,
+      "avgAppearances": 17.33,
+      "predictedPrize": 5000,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7100",
+      "score": 184.25514616,
+      "avgNormFirstDay": 0.02395,
+      "stdNormFirstDay": 0.0129,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7088",
+      "score": 184.14542156,
+      "avgNormFirstDay": 0.04019,
+      "stdNormFirstDay": 0.01152,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "2523",
+      "score": 184.03480082,
+      "avgNormFirstDay": 0.04085,
+      "stdNormFirstDay": 0.0137,
+      "avgAppearances": 12,
+      "predictedPrize": 500,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "0640",
+      "score": 183.90144008,
+      "avgNormFirstDay": 0.03761,
+      "stdNormFirstDay": 0.01085,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6270",
+      "score": 183.71880485,
+      "avgNormFirstDay": 0.02061,
+      "stdNormFirstDay": 0.00979,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "8687",
+      "score": 183.6191082,
+      "avgNormFirstDay": 0.07952,
+      "stdNormFirstDay": 0.00901,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5014",
+      "score": 183.60467395,
+      "avgNormFirstDay": 0.01957,
+      "stdNormFirstDay": 0.01273,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3568",
+      "score": 183.55218692,
+      "avgNormFirstDay": 0.09128,
+      "stdNormFirstDay": 0.00709,
+      "avgAppearances": 7.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9448",
+      "score": 183.41994232,
+      "avgNormFirstDay": 0.02436,
+      "stdNormFirstDay": 0.0137,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "1771",
+      "score": 183.03954523,
+      "avgNormFirstDay": 0.02271,
+      "stdNormFirstDay": 0.01305,
+      "avgAppearances": 10.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0078",
+      "score": 182.70410152,
+      "avgNormFirstDay": 0.03628,
+      "stdNormFirstDay": 0.01365,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7861",
+      "score": 182.69835622,
+      "avgNormFirstDay": 0.09884,
+      "stdNormFirstDay": 0.00913,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "0238",
+      "score": 182.67743519,
+      "avgNormFirstDay": 0.07399,
+      "stdNormFirstDay": 0.01213,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0232",
+      "score": 182.54081861,
+      "avgNormFirstDay": 0.04711,
+      "stdNormFirstDay": 0.01176,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6284",
+      "score": 182.47026284,
+      "avgNormFirstDay": 0.01302,
+      "stdNormFirstDay": 0.01463,
+      "avgAppearances": 11.67,
+      "predictedPrize": 200,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5821",
+      "score": 182.45968387,
+      "avgNormFirstDay": 0.05469,
+      "stdNormFirstDay": 0.01494,
+      "avgAppearances": 13.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "9546",
+      "score": 182.20105828,
+      "avgNormFirstDay": 0.03197,
+      "stdNormFirstDay": 0.01729,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "5064",
+      "score": 182.12257018,
+      "avgNormFirstDay": 0.02823,
+      "stdNormFirstDay": 0.01291,
+      "avgAppearances": 10.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "0391",
+      "score": 181.78567775,
+      "avgNormFirstDay": 0.03137,
+      "stdNormFirstDay": 0.01429,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "9679",
+      "score": 181.72771853,
+      "avgNormFirstDay": 0.10695,
+      "stdNormFirstDay": 0.00993,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7258",
+      "score": 181.44020855,
+      "avgNormFirstDay": 0.03733,
+      "stdNormFirstDay": 0.00896,
+      "avgAppearances": 7.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "6895",
+      "score": 181.28878611,
+      "avgNormFirstDay": 0.03026,
+      "stdNormFirstDay": 0.01647,
+      "avgAppearances": 14,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9684",
+      "score": 181.02783926,
+      "avgNormFirstDay": 0.02099,
+      "stdNormFirstDay": 0.01168,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4241",
+      "score": 181.0094815,
+      "avgNormFirstDay": 0.02669,
+      "stdNormFirstDay": 0.01666,
+      "avgAppearances": 14,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "6343",
+      "score": 180.61116613,
+      "avgNormFirstDay": 0.02009,
+      "stdNormFirstDay": 0.01412,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "0192",
+      "score": 180.55555992,
+      "avgNormFirstDay": 0.02265,
+      "stdNormFirstDay": 0.01402,
+      "avgAppearances": 11.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "4819",
+      "score": 180.09722984,
+      "avgNormFirstDay": 0.03483,
+      "stdNormFirstDay": 0.01243,
+      "avgAppearances": 10.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "0144",
+      "score": 180.06864398,
+      "avgNormFirstDay": 0.0293,
+      "stdNormFirstDay": 0.01145,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "6011",
+      "score": 179.98743953,
+      "avgNormFirstDay": 0.01961,
+      "stdNormFirstDay": 0.01458,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "2002",
+      "score": 179.55989806,
+      "avgNormFirstDay": 0.03882,
+      "stdNormFirstDay": 0.0099,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "3386",
+      "score": 179.42242056,
+      "avgNormFirstDay": 0.09045,
+      "stdNormFirstDay": 0.00613,
+      "avgAppearances": 6.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "9827",
+      "score": 179.32991381,
+      "avgNormFirstDay": 0.0308,
+      "stdNormFirstDay": 0.01595,
+      "avgAppearances": 13.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "0921",
+      "score": 178.85589688,
+      "avgNormFirstDay": 0.04887,
+      "stdNormFirstDay": 0.01199,
+      "avgAppearances": 10.33,
+      "predictedPrize": 500,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5183",
+      "score": 178.53615771,
+      "avgNormFirstDay": 0.04652,
+      "stdNormFirstDay": 0.00971,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "0138",
+      "score": 178.17147182,
+      "avgNormFirstDay": 0.05757,
+      "stdNormFirstDay": 0.01096,
+      "avgAppearances": 9.67,
+      "predictedPrize": 500,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "7596",
+      "score": 177.97461554,
+      "avgNormFirstDay": 0.06768,
+      "stdNormFirstDay": 0.01573,
+      "avgAppearances": 14.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "2323",
+      "score": 177.70515478,
+      "avgNormFirstDay": 0.03151,
+      "stdNormFirstDay": 0.01237,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5827",
+      "score": 177.55307331,
+      "avgNormFirstDay": 0.06165,
+      "stdNormFirstDay": 0.01636,
+      "avgAppearances": 15,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "8781",
+      "score": 177.52778968,
+      "avgNormFirstDay": 0.01954,
+      "stdNormFirstDay": 0.00889,
+      "avgAppearances": 7,
+      "predictedPrize": 1000,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "3092",
+      "score": 177.52346932,
+      "avgNormFirstDay": 0.03437,
+      "stdNormFirstDay": 0.01455,
+      "avgAppearances": 12,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "5998",
+      "score": 177.46954221,
+      "avgNormFirstDay": 0.07927,
+      "stdNormFirstDay": 0.01058,
+      "avgAppearances": 10,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "8581",
+      "score": 176.98512687,
+      "avgNormFirstDay": 0.05854,
+      "stdNormFirstDay": 0.01215,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "7236",
+      "score": 176.92331691,
+      "avgNormFirstDay": 0.18041,
+      "stdNormFirstDay": 0.00637,
+      "avgAppearances": 9.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "7086",
+      "score": 176.71469274,
+      "avgNormFirstDay": 0.02437,
+      "stdNormFirstDay": 0.01353,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "5358",
+      "score": 175.82904991,
+      "avgNormFirstDay": 0.02719,
+      "stdNormFirstDay": 0.01015,
+      "avgAppearances": 8,
+      "predictedPrize": 100,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "5260",
+      "score": 175.59944999,
+      "avgNormFirstDay": 0.02258,
+      "stdNormFirstDay": 0.01409,
+      "avgAppearances": 11,
+      "predictedPrize": 5000,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4603",
+      "score": 175.31637357,
+      "avgNormFirstDay": 0.0431,
+      "stdNormFirstDay": 0.01007,
+      "avgAppearances": 8.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5510",
+      "score": 175.28251761,
+      "avgNormFirstDay": 0.05985,
+      "stdNormFirstDay": 0.01333,
+      "avgAppearances": 11.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "5377",
+      "score": 175.02649691,
+      "avgNormFirstDay": 0.02242,
+      "stdNormFirstDay": 0.01376,
+      "avgAppearances": 10.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "6494",
+      "score": 174.66716496,
+      "avgNormFirstDay": 0.06601,
+      "stdNormFirstDay": 0.00974,
+      "avgAppearances": 8.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Sat"
+    },
+    {
+      "number": "5437",
+      "score": 174.63921823,
+      "avgNormFirstDay": 0.06488,
+      "stdNormFirstDay": 0.01018,
+      "avgAppearances": 9,
+      "predictedPrize": 100,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "9592",
+      "score": 174.15513972,
+      "avgNormFirstDay": 0.05156,
+      "stdNormFirstDay": 0.0162,
+      "avgAppearances": 14,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "4781",
+      "score": 174.01623005,
+      "avgNormFirstDay": 0.03759,
+      "stdNormFirstDay": 0.01205,
+      "avgAppearances": 9.67,
+      "predictedPrize": 1000,
+      "preferredDOW": "Tue"
+    },
+    {
+      "number": "4818",
+      "score": 173.94859444,
+      "avgNormFirstDay": 0.01875,
+      "stdNormFirstDay": 0.01278,
+      "avgAppearances": 9.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Mon"
+    },
+    {
+      "number": "1187",
+      "score": 173.90463976,
+      "avgNormFirstDay": 0.02461,
+      "stdNormFirstDay": 0.01171,
+      "avgAppearances": 9,
+      "predictedPrize": 200,
+      "preferredDOW": "Fri"
+    },
+    {
+      "number": "5077",
+      "score": 173.62073153,
+      "avgNormFirstDay": 0.04701,
+      "stdNormFirstDay": 0.01327,
+      "avgAppearances": 11,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "7016",
+      "score": 173.61729202,
+      "avgNormFirstDay": 0.0249,
+      "stdNormFirstDay": 0.01643,
+      "avgAppearances": 13,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    },
+    {
+      "number": "2502",
+      "score": 173.58170864,
+      "avgNormFirstDay": 0.05812,
+      "stdNormFirstDay": 0.01461,
+      "avgAppearances": 12.67,
+      "predictedPrize": 100,
+      "preferredDOW": "Wed"
+    },
+    {
+      "number": "9504",
+      "score": 173.44257695,
+      "avgNormFirstDay": 0.01866,
+      "stdNormFirstDay": 0.01324,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "3297",
+      "score": 173.44257695,
+      "avgNormFirstDay": 0.01866,
+      "stdNormFirstDay": 0.01324,
+      "avgAppearances": 10,
+      "predictedPrize": 500,
+      "preferredDOW": "Sun"
+    },
+    {
+      "number": "7856",
+      "score": 173.42130655,
+      "avgNormFirstDay": 0.03447,
+      "stdNormFirstDay": 0.01841,
+      "avgAppearances": 15.33,
+      "predictedPrize": 100,
+      "preferredDOW": "Thu"
+    }
+  ],
+  "projection": {
+    "trendSlope": 4.4,
+    "projectedNewPerDay": 39.1,
+    "projectedCycleDays": 256,
+    "cycle5ActualNewPerDay": 72.1,
+    "cycle5ProjDays": 139
+  }
+}
