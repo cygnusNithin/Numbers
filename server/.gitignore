@@ -1,4 +1,4 @@
-# Ignore node_modules folder
+# Ignore node_modules and data folders
 node_modules/
 files/
 Afiles/
@@ -10,7 +10,6 @@ Bumper Folder/
 trash/
 New folder/
 New folder (2)/
-
 
 # Ignore environment variables
 .env
