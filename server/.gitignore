@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Data & Archive Folders
+files/
+Afiles/
+All_Daily/
+All_ExBM/
+allfiles/
+BM_Folder/
+Bumper Folder/
+trash/
+New folder/
+New folder (2)/
+
+# Environment variables
+.env
+.env.local
+.env.development
+
+# Build & Output directories
+dist/
+build/
+
+# Generated CSV & Data Analytics Outputs
+*.csv
+
+# Logs
+*.log
+logs/
+
+# Operating System Files
+.DS_Store
+Thumbs.db
