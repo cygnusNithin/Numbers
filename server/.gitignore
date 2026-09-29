@@ -1,0 +1,27 @@
+# Ignore node_modules folder
+node_modules/
+files/
+Afiles/
+All_Daily/
+All_ExBM/
+allfiles/
+BM_Folder/
+Bumper Folder/
+trash/
+New folder/
+New folder (2)/
+
+
+# Ignore environment variables
+.env
+
+# Ignore build output folders
+dist/
+build/
+
+# Ignore log files
+*.log
+
+# Ignore OS system files
+.DS_Store
+Thumbs.db

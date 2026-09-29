@@ -1,30 +1,35 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import MainApp from "./MainApp";
-import GridPage from "./GridPage";
-import Roller from "./Roll";
-import PatternAnalysis from "./PatternAnalysis";
-import PredictionAnalysis from "./PredictionAnalysis";
+const GridPage = lazy(() => import("./GridPage"));
+const Roller = lazy(() => import("./Roll"));
+const PatternAnalysis = lazy(() => import("./PatternAnalysis"));
+const PredictionAnalysis = lazy(() => import("./PredictionAnalysis"));
 import "./App.css";
-import ValidationDashboard from "./ValidationDashboard";
-import CyclesPage from "./CyclesPage";
-import CycleComparisonPage from "./CycleComparisonPage";
-import DayComparisonPage from "./DayComparisonPage";
-import BalanceComparisonPage from "./BalanceComparisonPage";
-import BalancePage from "./BalancePage";
-import BacktrackPage from "./BacktrackPage";
-import AnalysisPage from "./AnalysisPage";
-import PrizeCyclesPage from "./PrizeCyclesPage";
-import Cycles3DbPage from "./Cycles3DbPage";
-import CompareThreeDBsPage from "./CompareThreeDBsPage";
-import FullCyclesPage from "./FullCyclesPage";
-import AllPrizeCyclesPage from "./AllPrizeCyclesPage";
-import GlobalUniqueCyclesPage from "./GlobalUniqueCyclesPage";
-import MergedCyclesPage from "./MergedCyclesPage";
-import CurrentCycleComparisonPage from "./CurrentCycleComparisonPage";
-import CompareNumbersPage from "./CompareNumbersPage";
-import ProveRemainingNumbersPage from "./ProveRemainingNumbersPage";
-import CyclesComparisonPage from "./CyclesComparisonPage";
-import ReverseCyclespage from "./reverseCyclespage";
+const ValidationDashboard = lazy(() => import("./ValidationDashboard"));
+const CyclesPage = lazy(() => import("./CyclesPage"));
+const CycleComparisonPage = lazy(() => import("./CycleComparisonPage"));
+const DayComparisonPage = lazy(() => import("./DayComparisonPage"));
+const BalanceComparisonPage = lazy(() => import("./BalanceComparisonPage"));
+const BalancePage = lazy(() => import("./BalancePage"));
+const BacktrackPage = lazy(() => import("./BacktrackPage"));
+const AnalysisPage = lazy(() => import("./AnalysisPage"));
+const PrizeCyclesPage = lazy(() => import("./PrizeCyclesPage"));
+const Cycles3DbPage = lazy(() => import("./Cycles3DbPage"));
+const CompareThreeDBsPage = lazy(() => import("./CompareThreeDBsPage"));
+const FullCyclesPage = lazy(() => import("./FullCyclesPage"));
+const AllPrizeCyclesPage = lazy(() => import("./AllPrizeCyclesPage"));
+const GlobalUniqueCyclesPage = lazy(() => import("./GlobalUniqueCyclesPage"));
+const MergedCyclesPage = lazy(() => import("./MergedCyclesPage"));
+const CurrentCycleComparisonPage = lazy(
+  () => import("./CurrentCycleComparisonPage"),
+);
+const CompareNumbersPage = lazy(() => import("./CompareNumbersPage"));
+const ProveRemainingNumbersPage = lazy(
+  () => import("./ProveRemainingNumbersPage"),
+);
+const CyclesComparisonPage = lazy(() => import("./CyclesComparisonPage"));
+const ReverseCyclespage = lazy(() => import("./reverseCyclespage"));
 
 export default function App() {
   return (
@@ -403,7 +408,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Global Analysis 
+          🎯 Global Analysis
         </Link>
         <Link
           to="/merged-cycles"
@@ -424,7 +429,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Merged Cycles 
+          🎯 Merged Cycles
         </Link>
         <Link
           to="/current-cycle-comparison"
@@ -445,7 +450,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Cycle Comparison 
+          🎯 Cycle Comparison
         </Link>
         <Link
           to="/compare-remaining-auto"
@@ -466,7 +471,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Compare Numbers 
+          🎯 Compare Numbers
         </Link>
         <Link
           to="/prove-numbers"
@@ -487,7 +492,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Prove Numbers 
+          🎯 Prove Numbers
         </Link>
         <Link
           to="/cycles-comparison"
@@ -508,7 +513,7 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Cycles Comparison 
+          🎯 Cycles Comparison
         </Link>
         <Link
           to="/allreverse-cycles"
@@ -529,37 +534,54 @@ export default function App() {
             (e.target.style.backgroundColor = "rgba(255,255,255,0.2)")
           }
         >
-          🎯 Forward-Reverse Cycles 
+          🎯 Forward-Reverse Cycles
         </Link>
       </div>
 
-      <Routes>
-        <Route path="/" element={<MainApp />} />
-        <Route path="/grid" element={<GridPage />} />
-        <Route path="/roller" element={<Roller />} />
-        <Route path="/pattern" element={<PatternAnalysis />} />
-        <Route path="/predictions" element={<PredictionAnalysis />} />
-        <Route path="/validate" element={<ValidationDashboard />} />
-        <Route path="/cycles" element={<CyclesPage />} />
-        <Route path="/cycle-comparison" element={<CycleComparisonPage />} />
-        <Route path="/day-comparison" element={<DayComparisonPage />} />
-        <Route path="/balance-comparison" element={<BalanceComparisonPage />} />
-        <Route path="/balance" element={<BalancePage />} />
-        <Route path="/backtrack" element={<BacktrackPage />} />
-        <Route path="/analysis" element={<AnalysisPage />} />
-        <Route path="/prize-cycles" element={<PrizeCyclesPage />} />
-        <Route path="/cycles-3db" element={<Cycles3DbPage />} />
-        <Route path="/compare-3-dbs" element={<CompareThreeDBsPage />} />
-        <Route path="/full-cycles" element={<FullCyclesPage />} />
-        <Route path="/all-prize-cycles" element={<AllPrizeCyclesPage />} />
-        <Route path="/global-unique-cycles" element={<GlobalUniqueCyclesPage />} />
-        <Route path="/merged-cycles" element={<MergedCyclesPage />} />
-        <Route path="/current-cycle-comparison" element={<CurrentCycleComparisonPage />} />
-        <Route path="/compare-remaining-auto" element={<CompareNumbersPage />} />
-        <Route path="/prove-numbers" element={<ProveRemainingNumbersPage />} />
-        <Route path="/cycles-comparison" element={<CyclesComparisonPage />} />
-        <Route path="/allreverse-cycles" element={<ReverseCyclespage />} />
-      </Routes>
+      <Suspense fallback={<p className="route-loading">Loading page...</p>}>
+        <Routes>
+          <Route path="/" element={<MainApp />} />
+          <Route path="/grid" element={<GridPage />} />
+          <Route path="/roller" element={<Roller />} />
+          <Route path="/pattern" element={<PatternAnalysis />} />
+          <Route path="/predictions" element={<PredictionAnalysis />} />
+          <Route path="/validate" element={<ValidationDashboard />} />
+          <Route path="/cycles" element={<CyclesPage />} />
+          <Route path="/cycle-comparison" element={<CycleComparisonPage />} />
+          <Route path="/day-comparison" element={<DayComparisonPage />} />
+          <Route
+            path="/balance-comparison"
+            element={<BalanceComparisonPage />}
+          />
+          <Route path="/balance" element={<BalancePage />} />
+          <Route path="/backtrack" element={<BacktrackPage />} />
+          <Route path="/analysis" element={<AnalysisPage />} />
+          <Route path="/prize-cycles" element={<PrizeCyclesPage />} />
+          <Route path="/cycles-3db" element={<Cycles3DbPage />} />
+          <Route path="/compare-3-dbs" element={<CompareThreeDBsPage />} />
+          <Route path="/full-cycles" element={<FullCyclesPage />} />
+          <Route path="/all-prize-cycles" element={<AllPrizeCyclesPage />} />
+          <Route
+            path="/global-unique-cycles"
+            element={<GlobalUniqueCyclesPage />}
+          />
+          <Route path="/merged-cycles" element={<MergedCyclesPage />} />
+          <Route
+            path="/current-cycle-comparison"
+            element={<CurrentCycleComparisonPage />}
+          />
+          <Route
+            path="/compare-remaining-auto"
+            element={<CompareNumbersPage />}
+          />
+          <Route
+            path="/prove-numbers"
+            element={<ProveRemainingNumbersPage />}
+          />
+          <Route path="/cycles-comparison" element={<CyclesComparisonPage />} />
+          <Route path="/allreverse-cycles" element={<ReverseCyclespage />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

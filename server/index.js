@@ -13,7 +13,7 @@ const LotteryDataNew = require("./models/LotteryDataNew");
 const FullLotteryData = require("./models/FullLotteryData");
 const AbsoluteData = require("./models/AbsoluteData");
 
-const { buildCycleAnalysisByDay } = require("./utils/cycleAnalysis");
+const { buildCycleAnalysisByDay } = require("./routes/utils/cycleAnalysis");
 const forwardCyclesRouter = require("./routes/forwardCycles");
 const reverseCyclesRouter = require("./routes/reverseCycles");
 
@@ -21,12 +21,12 @@ const reverseCyclesRouter = require("./routes/reverseCycles");
 const {
   extractSerialNumber,
   getPrizeNumbersByAmount,
-} = require("./utils/lotteryHelpers");
+} = require("./routes/utils/lotteryHelpers");
 
 const {
   extractDateFromText,
   ddmmyyyyToUTCDate,
-} = require("./utils/dateHelpers");
+} = require("./routes/utils/dateHelpers");
 
 const FILES_DIR = path.join(__dirname, "files"); // adjust if files are elsewhere
 
@@ -6153,7 +6153,7 @@ app.get(
 
 const PRIZE_AMOUNTS = ["5000", "2000", "1000", "500", "200", "100"];
 const REQUIRED_PRIZES = ["5000", "1000", "500", "100"];
-const REQUIRED_PRIZE_AMOUNTS = [5000, 1000, 500, 100];
+const REQUIRED_PRIZE_AMOUNTS = [5000, 1000, 500]; //100 deleted
 
 app.get("/api/full-upload-folder", async (req, res) => {
   try {

@@ -70,6 +70,8 @@ body,
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  content-visibility: auto;
+  contain-intrinsic-size: 40px;
 }
 
 .highlight {
