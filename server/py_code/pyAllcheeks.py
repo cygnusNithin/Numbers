@@ -129,5 +129,5 @@ out_df = out_df.sort_values(
 )
 
 # Save
-out_df.to_csv("all_prizes_number_patterns28.csv", index=False, encoding="utf-8")
-print("✅ Saved detailed number patterns to all_prizes_number_patterns28.csv")
+out_df.to_csv("all_prizes_number_patterns33.csv", index=False, encoding="utf-8")
+print("✅ Saved detailed number patterns to all_prizes_number_patterns33.csv")
