@@ -1,16 +1,9 @@
 // utils/cycleAnalysis.js
 
+const { ddmmyyyyToUTCDate } = require("./dateHelpers");
+
 function generateAll4DigitNumbers() {
   return Array.from({ length: 10000 }, (_, i) => String(i).padStart(4, "0"));
-}
-
-function parseDDMMYYYYToDate(dateStr = "") {
-  const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!match) return null;
-  const day = Number(match[1]);
-  const month = Number(match[2]);
-  const year = Number(match[3]);
-  return new Date(Date.UTC(year, month - 1, day));
 }
 
 function extractUniqueNumbersFromDoc(doc) {
@@ -29,10 +22,10 @@ function sortDocsChronologically(docs = []) {
   return [...docs].sort((a, b) => {
     const dateA = a.drawDate
       ? new Date(a.drawDate)
-      : parseDDMMYYYYToDate(a.date || "");
+      : ddmmyyyyToUTCDate(a.date || "");
     const dateB = b.drawDate
       ? new Date(b.drawDate)
-      : parseDDMMYYYYToDate(b.date || "");
+      : ddmmyyyyToUTCDate(b.date || "");
 
     if (dateA && dateB && dateA.getTime() !== dateB.getTime())
       return dateA - dateB;
@@ -62,8 +55,8 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
   }
 
   const dayKeys = Array.from(docsByDay.keys()).sort((a, b) => {
-    const da = parseDDMMYYYYToDate(a);
-    const db = parseDDMMYYYYToDate(b);
+    const da = ddmmyyyyToUTCDate(a);
+    const db = ddmmyyyyToUTCDate(b);
     if (!da || !db) return a.localeCompare(b);
     return da - db;
   });
