@@ -28,6 +28,8 @@ const {
   ddmmyyyyToUTCDate,
 } = require("./routes/utils/dateHelpers");
 
+const { parseDDMMYYYYToDate } = require("./utils/cycleAnalysis");
+
 const FILES_DIR = path.join(__dirname, "files"); // adjust if files are elsewhere
 
 const app = express();
@@ -173,11 +175,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     }
 
     // Extract draw date and replace / with .
-    let drawDate = "Unknown";
-    const dateMatch = text.match(/held on:-\s*([0-9/]+)/i);
-    if (dateMatch) {
-      drawDate = dateMatch[1].replace(/\//g, ".");
-    }
+    const drawDate = extractDateFromText(text);
 
     console.log("🎯 Extracted Prize Numbers:", numbers);
     console.log("📝 Lottery No:", lotteryNo);
@@ -196,63 +194,6 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 });
 
 app.get("/api/auto-upload", async (req, res) => {
-  // try {
-  //   const files = fs.readdirSync(FILES_DIR).filter((f) => f.endsWith(".pdf"));
-  //   const results = [];
-  //   for (const file of files) {
-  //     const buffer = fs.readFileSync(path.join(FILES_DIR, file));
-  //     const data = await PdfParse(buffer);
-  //     const text = data.text;
-  //     const thirdToFourth = text.match(/3rd\s*Prize[\s\S]*?4th\s*Prize/i);
-  //     const fourthToFifth = text.match(/4th\s*Prize[\s\S]*?5th\s*Prize/i);
-  //     const fifthToSixth = text.match(/5th\s*Prize[\s\S]*?6th\s*Prize/i);
-  //     const sixthToSeventh = text.match(/6th\s*Prize[\s\S]*?7th\s*Prize/i);
-  //     let block = null;
-  //     if (thirdToFourth && /5000\/-/.test(thirdToFourth[0]))
-  //       block = thirdToFourth[0];
-  //     else if (fourthToFifth && /5000\/-/.test(fourthToFifth[0]))
-  //       block = fourthToFifth[0];
-  //     else if (fifthToSixth && /5000\/-/.test(fifthToSixth[0]))
-  //       block = fifthToSixth[0];
-  //     else if (sixthToSeventh && /5000\/-/.test(sixthToSeventh[0]))
-  //       block = sixthToSeventh[0];
-  //     let numbers = [];
-  //     if (block) {
-  //       const cleanedBlock = cleanBlock(block);
-  //       numbers = cleanedBlock.match(/\d{4}/g) || [];
-  //       numbers = numbers.filter((n) => n !== "5000"); // filter only if needed
-  //     }
-  //     const lotteryMatch = text.match(
-  //       /LOTTERY NO\.([A-Z0-9-]+)(?:st|nd|rd|th)?/i,
-  //     );
-  //     let lotteryNo = lotteryMatch
-  //       ? lotteryMatch[1].replace(/(st|nd|rd|th)$/i, "")
-  //       : "Unknown";
-  //     const dateMatch = text.match(/held on:-\s*([0-9/]+)/i);
-  //     const drawDate = dateMatch ? dateMatch[1].replace(/\//g, ".") : "Unknown";
-  //     const exists = await UserData.findOne({ userId: lotteryNo });
-  //     results.push({
-  //       file,
-  //       lotteryNo,
-  //       drawDate,
-  //       numbers,
-  //       status: exists ? "Duplicate" : "New",
-  //     });
-  //     // Optional: save to MongoDB if not duplicate
-  //     if (!exists) {
-  //       await UserData.create({
-  //         userId: lotteryNo,
-  //         date: drawDate,
-  //         numbers: numbers.map((n) => ({ number: n, count: 1 })),
-  //       });
-  //     }
-  //   }
-  //   res.json({ results });
-  // } catch (err) {
-  //   console.error("Auto-upload error:", err);
-  //   res.status(500).json({ error: "Failed auto-upload" });
-  // }
-  //new code for all lotteryresults including onam,vishu,etc..
   try {
     const folderPath = path.join(__dirname, "allfiles");
     const files = fs.readdirSync(folderPath).filter((f) => f.endsWith(".pdf"));
@@ -334,10 +275,7 @@ app.get("/api/auto-upload", async (req, res) => {
 
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
-        const dateMatch = text.match(
-          /\b(\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}|\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},\s+\d{4})\b/i,
-        );
-        let date = dateMatch ? dateMatch[0] : "Unknown";
+        const date = extractDateFromText(text);
 
         const lotteryMatch = text.match(
           /LOTTERY\s+NO\.?\s*([A-Z0-9-]+)(?:st|nd|rd|th)?/i,
@@ -495,51 +433,6 @@ app.listen(5000, () => {
   console.log("Server running on http://localhost:5000");
 });
 
-// app.post("/api/old-upload", upload.single("file"), async (req, res) => {
-//   try {
-//     const buffer = req.file.buffer;
-//     const data = await PdfParse(buffer);
-
-//     const text = data.text;
-
-//     let block = null;
-
-//     const thirdToFourth = text.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i);
-//     const fourthToFifth = text.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i);
-//     const fifthToSixth = text.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i);
-
-//     if (thirdToFourth && /5,?0{3}\/-/.test(thirdToFourth[0])) {
-//       block = thirdToFourth[0];
-//       console.log("🏆 Using 3rd Prize block");
-//     } else if (fourthToFifth && /5,?0{3}\/-/.test(fourthToFifth[0])) {
-//       block = fourthToFifth[0];
-//       console.log("🏆 Using 4th Prize block");
-//     } else if (fifthToSixth && /5,?0{3}\/-/.test(fifthToSixth[0])) {
-//       block = fifthToSixth[0];
-//       console.log("🏆 Using 5th Prize block");
-//     }
-
-//     // Step 2: Extract numbers (remove 5000 if present as number)
-//     let numbers = [];
-//     if (block) {
-//       const cleanedBlock = block.replace(/[^\d\s]/g, " "); // Remove non-digit/non-space
-//       numbers = cleanedBlock.match(/\d{4,4}/g) || []; // Extract 4 digit numbers
-
-//       // If "5000" appears as a number, remove only the first occurrence
-//       const index = numbers.indexOf("5000");
-//       if (index !== -1) numbers.splice(index, 1);
-
-//       // Pad numbers to 4 digits
-//       numbers = numbers.map((num) => num.padStart(4, "0"));
-//     }
-//     res.json({ numbers });
-//     console.log("Extracted Numbers:", numbers);
-//   } catch (err) {
-//     console.error("❌ Error parsing PDF:", err);
-//     res.status(500).json({ error: "Failed to parse PDF" });
-//   }
-// });
-
 function normalize(text) {
   return text
     .replace(/\r?\n|\r/g, " ") // remove all line breaks
@@ -627,20 +520,14 @@ app.post("/api/old-upload", upload.single("file"), async (req, res) => {
     };
     extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
-    const dateMatch = text.match(
-      /\b(\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}|\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},\s+\d{4})\b/i,
-    );
-
     //let cleanedText = extractedSection;
     const normalized = normalize(extractedSection);
 
     //console.log("Datas: ", normalized);
 
-    let date = "";
-    if (dateMatch) {
-      date = dateMatch[0];
-      //console.log("📅 Date Found:", Date);
-    } else {
+    const date = extractDateFromText(text);
+
+    if (date === "Unknown") {
       console.log("❌ No date found in PDF text.");
     }
 
@@ -735,10 +622,6 @@ app.post("/api/old-upload", upload.single("file"), async (req, res) => {
     const duplicates = allNumbers.filter(
       (item, index) => allNumbers.indexOf(item) !== index,
     );
-    //console.log("Total numbers extracted:", allNumbers.length);
-    //console.log("Duplicate numbers found:", [...new Set(duplicates)]);
-    //console.log("Sorted numbers:", allNumbers);
-    //console.log("🏆 Extracted Numbers by Prize Amount:", result);
 
     // Convert result into schema structure
     const seriesArray = Object.entries(result).map(([prize, numbers]) => ({
@@ -780,12 +663,6 @@ app.post("/api/old-upload", upload.single("file"), async (req, res) => {
       date,
       series: seriesArray,
     });
-
-    // Save to MongoDB
-    // newLotteryData
-    //   .save()
-    //   .then((saved) => console.log("Saved:", saved))
-    //   .catch((err) => console.error("Error:", err));
 
     res.json({ extracted: result }); //, sort: allNumbers
   } catch (err) {
@@ -870,10 +747,7 @@ app.get("/api/all-upload-folder", async (req, res) => {
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
         // Date extraction
-        const dateMatch = text.match(
-          /\b(\d{1,2}[-/.]\d{1,2}[-/.]\d{2,4}|\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},\s+\d{4})\b/i,
-        );
-        let date = dateMatch ? dateMatch[0] : "Unknown";
+        const date = extractDateFromText(text);
 
         // Serial number
         const lotteryMatch = text.match(
@@ -7389,16 +7263,16 @@ app.get("/api/compare-3-dbs", async (req, res) => {
 //
 //Full Cycles
 //
-function parseDDMMYYYYToDate(dateStr = "") {
-  const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!match) return null;
+// function parseDDMMYYYYToDate(dateStr = "") {
+//   const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+//   if (!match) return null;
 
-  const day = Number(match[1]);
-  const month = Number(match[2]);
-  const year = Number(match[3]);
+//   const day = Number(match[1]);
+//   const month = Number(match[2]);
+//   const year = Number(match[3]);
 
-  return new Date(Date.UTC(year, month - 1, day));
-}
+//   return new Date(Date.UTC(year, month - 1, day));
+// }
 
 function generateAll4DigitNumbers() {
   return Array.from({ length: 10000 }, (_, i) => String(i).padStart(4, "0"));
@@ -9140,8 +9014,6 @@ app.get("/api/check-absolute-data-full", async (req, res) => {
       return res.json({ message: "No documents found in AbsoluteData" });
     }
 
-    const { parseDDMMYYYYToDate } = require("./utils/cycleAnalysis");
-
     const docsWithParsedDate = docs.map((doc) => ({
       ...doc,
       parsedDate: doc.drawDate
@@ -9480,14 +9352,14 @@ function calculateAverageGap(dates = []) {
 /**
  * Parse DD/MM/YYYY to Date
  */
-function parseDDMMYYYYToDate(dateStr = "") {
-  const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-  if (!match) return null;
-  const day = Number(match[1]);
-  const month = Number(match[2]);
-  const year = Number(match[3]);
-  return new Date(Date.UTC(year, month - 1, day));
-}
+// function parseDDMMYYYYToDate(dateStr = "") {
+//   const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+//   if (!match) return null;
+//   const day = Number(match[1]);
+//   const month = Number(match[2]);
+//   const year = Number(match[3]);
+//   return new Date(Date.UTC(year, month - 1, day));
+// }
 
 //
 //grid update
