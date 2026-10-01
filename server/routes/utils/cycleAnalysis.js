@@ -34,13 +34,16 @@ function sortDocsChronologically(docs = []) {
       ? new Date(b.drawDate)
       : parseDDMMYYYYToDate(b.date || "");
 
-    if (dateA && dateB && dateA.getTime() !== dateB.getTime()) return dateA - dateB;
+    if (dateA && dateB && dateA.getTime() !== dateB.getTime())
+      return dateA - dateB;
 
     const numA = a.recordNumber ?? a.entryNumber ?? 0;
     const numB = b.recordNumber ?? b.entryNumber ?? 0;
     if (numA !== numB) return numA - numB;
 
-    return String(a.serialNumber || "").localeCompare(String(b.serialNumber || ""));
+    return String(a.serialNumber || "").localeCompare(
+      String(b.serialNumber || ""),
+    );
   });
 }
 
@@ -108,7 +111,8 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
             number: num,
             firstSeenDate: dayKey,
             firstSeenSerialNumber: firstDocOfDay.serialNumber || "",
-            recordNumber: firstDocOfDay.recordNumber ?? firstDocOfDay.entryNumber ?? null,
+            recordNumber:
+              firstDocOfDay.recordNumber ?? firstDocOfDay.entryNumber ?? null,
             fileName: firstDocOfDay.fileName || "",
           });
         }
@@ -118,7 +122,9 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
     const uniqueNumbersInDayCount = dayUniqueNumbers.length;
     const newNumbersCount = newNumbers.length;
 
-    const progressPercent = Number(((seenInCycle.size / TOTAL_NUMBERS) * 100).toFixed(2));
+    const progressPercent = Number(
+      ((seenInCycle.size / TOTAL_NUMBERS) * 100).toFixed(2),
+    );
 
     dailyTimeline.push({
       cycleNumber,
@@ -155,7 +161,9 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
         remainingNumbers: [],
         firstSeenNumbers,
 
-        dailyTimeline: dailyTimeline.filter((d) => d.cycleNumber === cycleNumber),
+        dailyTimeline: dailyTimeline.filter(
+          (d) => d.cycleNumber === cycleNumber,
+        ),
       });
 
       cycleNumber += 1;
@@ -188,7 +196,9 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
 
       uniqueNumbersSeen: seenInCycle.size,
       remainingCount: remainingNumbers.length,
-      progressPercent: Number(((seenInCycle.size / TOTAL_NUMBERS) * 100).toFixed(2)),
+      progressPercent: Number(
+        ((seenInCycle.size / TOTAL_NUMBERS) * 100).toFixed(2),
+      ),
 
       remainingNumbers,
       firstSeenNumbers,
@@ -208,7 +218,6 @@ function buildCycleAnalysisByDay(docs = [], options = {}) {
 // Export all functions
 module.exports = {
   generateAll4DigitNumbers,
-  parseDDMMYYYYToDate,
   extractUniqueNumbersFromDoc,
   sortDocsChronologically,
   buildCycleAnalysisByDay,
