@@ -28,8 +28,6 @@ const {
   ddmmyyyyToUTCDate,
 } = require("./routes/utils/dateHelpers");
 
-const { parseDDMMYYYYToDate } = require("./utils/cycleAnalysis");
-
 const FILES_DIR = path.join(__dirname, "files"); // adjust if files are elsewhere
 
 const app = express();
@@ -7261,18 +7259,6 @@ app.get("/api/compare-3-dbs", async (req, res) => {
   }
 });
 //
-//Full Cycles
-//
-// function parseDDMMYYYYToDate(dateStr = "") {
-//   const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-//   if (!match) return null;
-
-//   const day = Number(match[1]);
-//   const month = Number(match[2]);
-//   const year = Number(match[3]);
-
-//   return new Date(Date.UTC(year, month - 1, day));
-// }
 
 function generateAll4DigitNumbers() {
   return Array.from({ length: 10000 }, (_, i) => String(i).padStart(4, "0"));
@@ -7297,10 +7283,10 @@ function sortDocsChronologically(docs = []) {
   return [...docs].sort((a, b) => {
     const dateA = a.drawDate
       ? new Date(a.drawDate)
-      : parseDDMMYYYYToDate(a.date || "");
+      : ddmmyyyyToUTCDate(a.date || "");
     const dateB = b.drawDate
       ? new Date(b.drawDate)
-      : parseDDMMYYYYToDate(b.date || "");
+      : ddmmyyyyToUTCDate(b.date || "");
 
     if (dateA && dateB && dateA.getTime() !== dateB.getTime()) {
       return dateA - dateB;
@@ -9018,7 +9004,7 @@ app.get("/api/check-absolute-data-full", async (req, res) => {
       ...doc,
       parsedDate: doc.drawDate
         ? new Date(doc.drawDate)
-        : parseDDMMYYYYToDate(doc.date || ""),
+        : ddmmyyyyToUTCDate(doc.date || ""),
     }));
 
     // Sort chronologically
@@ -9282,7 +9268,7 @@ function extractHitHistoryFromDBByPrize(docs) {
 
   for (const doc of docs) {
     const date = doc.date || "Unknown";
-    const dateObj = parseDDMMYYYYToDate(date);
+    const dateObj = ddmmyyyyToUTCDate(date);
 
     for (const series of doc.series || []) {
       const prize = series.prize || "All";
@@ -9349,18 +9335,6 @@ function calculateAverageGap(dates = []) {
   return Number((totalGap / (sortedDates.length - 1)).toFixed(2));
 }
 
-/**
- * Parse DD/MM/YYYY to Date
- */
-// function parseDDMMYYYYToDate(dateStr = "") {
-//   const match = String(dateStr).match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
-//   if (!match) return null;
-//   const day = Number(match[1]);
-//   const month = Number(match[2]);
-//   const year = Number(match[3]);
-//   return new Date(Date.UTC(year, month - 1, day));
-// }
-
 //
 //grid update
 //
@@ -9422,17 +9396,6 @@ app.get("/api/prize-numbers/:dbKey/:prize", async (req, res) => {
 const PRIZE = 5000;
 const TOTAL_NUMBERS = 10000;
 
-// const parseDDMMYYYYToDate = (ddmmyyyy) => {
-//   // ddmmyyyy like "01/02/2024"
-//   // return a valid Date for sorting
-//   const [dd, mm, yyyy] = (ddmmyyyy || "").split("/");
-//   const day = Number(dd);
-//   const monthIndex = Number(mm) - 1;
-//   const year = Number(yyyy);
-//   if (!day || !monthIndex && monthIndex !== 0 || !year) return new Date(0);
-//   return new Date(Date.UTC(year, monthIndex, day));
-// };
-
 const isValid4Digits = (s) => /^\d{4}$/.test(String(s || "").trim());
 
 // cache to avoid recomputing sets repeatedly
@@ -9467,7 +9430,7 @@ async function buildPrizeDateSets(Model) {
   }
 
   const dateKeysSorted = Array.from(dateToSet.keys()).sort(
-    (a, b) => parseDDMMYYYYToDate(a) - parseDDMMYYYYToDate(b),
+    (a, b) => ddmmyyyyToUTCDate(a) - ddmmyyyyToUTCDate(b),
   );
 
   return { dateKeysSorted, dateToSet };
