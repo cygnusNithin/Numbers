@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 
 const SeriesSchema = new mongoose.Schema({
-  prize: Number,
-  numbers: [
-    {
-      number: String,
-      count: { type: Number, default: 1 },
-    },
-  ],
+  prize: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 5000,
+  },
 });
 
 const DataSchema = new mongoose.Schema({
