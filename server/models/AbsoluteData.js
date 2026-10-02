@@ -9,6 +9,7 @@ const WinningNumberSchema = new mongoose.Schema(
       trim: true,
       match: /^\d{4}$/,
     },
+
     count: {
       type: Number,
       default: 1,
@@ -23,7 +24,10 @@ const SeriesSchema = new mongoose.Schema(
     prize: {
       type: Number,
       required: true,
+      min: 1,
+      max: 5000,
     },
+
     numbers: {
       type: [WinningNumberSchema],
       default: [],

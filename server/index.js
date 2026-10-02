@@ -253,24 +253,6 @@ app.get("/api/auto-upload", async (req, res) => {
           }
         }
 
-        const prizeAmounts = [
-          "5000",
-          "3000",
-          "2000",
-          "1000",
-          "500",
-          "400",
-          "300",
-          "250",
-          "200",
-          "100",
-          "50",
-        ];
-
-        const prizeNumbersByAmount = Object.fromEntries(
-          prizeAmounts.map((amount) => [amount, new Set()]),
-        );
-
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
         console.log("Auto:- Text Data:----- DB2");
@@ -285,6 +267,26 @@ app.get("/api/auto-upload", async (req, res) => {
           : "Unknown";
 
         const normalized = normalize(extractedSection);
+
+        const prizeNumbersByAmount = getPrizeNumbersByAmount(extractedSection);
+
+        const prizeAmounts = Object.keys(prizeNumbersByAmount)
+          .map(Number)
+          .filter((amount) => amount >= 1 && amount <= 5000)
+          .sort((a, b) => b - a);
+
+        if (prizeAmounts.length === 0) {
+          console.log(`⚠️ ${fileName}: no valid prize categories <= ₹5000`);
+
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "No valid prize categories <= 5000",
+          });
+
+          continue;
+        }
+
         let blocks;
 
         if (fileName.toLowerCase().startsWith("tmp")) {
@@ -348,10 +350,10 @@ app.get("/api/auto-upload", async (req, res) => {
           }
         }
 
-        const seriesArray = Object.entries(result).map(([prize, numbers]) => ({
-          prize: Number(prize),
-          numbers: numbers.map((num) => ({
-            number: num,
+        const seriesArray = prizeAmounts.map((prize) => ({
+          prize,
+          numbers: prizeNumbersByAmount[prize].map((number) => ({
+            number,
             count: 1,
           })),
         }));
@@ -734,16 +736,6 @@ app.get("/api/all-upload-folder", async (req, res) => {
           }
         }
 
-        // Prize extraction setup
-        const prizeAmounts = ["5000", "2000", "1000", "500", "200", "100"];
-        const prizeNumbersByAmount = {
-          5000: new Set(),
-          2000: new Set(),
-          1000: new Set(),
-          500: new Set(),
-          200: new Set(),
-          100: new Set(),
-        };
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
         console.log("Text Data:----- DB1");
@@ -761,6 +753,23 @@ app.get("/api/all-upload-folder", async (req, res) => {
 
         // Blocks
         const normalized = normalize(extractedSection);
+
+        const prizeNumbersByAmount = getPrizeNumbersByAmount(extractedSection);
+
+        const prizeAmounts = Object.keys(prizeNumbersByAmount)
+          .map(Number)
+          .filter((amount) => amount >= 1 && amount <= 5000)
+          .sort((a, b) => b - a);
+
+        if (prizeAmounts.length === 0) {
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "No valid prize categories <= 5000",
+          });
+
+          continue;
+        }
         let blocks;
         if (fileName.toLowerCase().startsWith("tmp")) {
           blocks = [
@@ -815,32 +824,32 @@ app.get("/api/all-upload-folder", async (req, res) => {
           result[amount] = Array.from(prizeNumbersByAmount[amount]);
         }
 
-        const seriesArray = Object.entries(result).map(([prize, numbers]) => ({
-          prize: Number(prize),
-          numbers: numbers.map((num) => ({
-            number: num,
+        const seriesArray = prizeAmounts.map((prize) => ({
+          prize,
+          numbers: prizeNumbersByAmount[prize].map((number) => ({
+            number,
             count: 1,
           })),
         }));
 
-        // ✅ Check essential prizes
-        const requiredPrizes = ["5000", "1000", "500", "100"];
-        let missing = requiredPrizes.find(
-          (p) => !result[p] || result[p].length === 0,
-        );
-        if (missing) {
-          console.warn(
-            `⚠️ Skipping ${fileName} (${serialNumber}) → Missing ${missing}`,
-          );
-          results.push({
-            fileName,
-            serialNumber,
-            date,
-            status: "Skipped",
-            reason: `Missing prize ${missing}`,
-          });
-          continue;
-        }
+        // // ✅ Check essential prizes
+        // const requiredPrizes = ["5000", "1000", "500", "100"];
+        // let missing = requiredPrizes.find(
+        //   (p) => !result[p] || result[p].length === 0,
+        // );
+        // if (missing) {
+        //   console.warn(
+        //     `⚠️ Skipping ${fileName} (${serialNumber}) → Missing ${missing}`,
+        //   );
+        //   results.push({
+        //     fileName,
+        //     serialNumber,
+        //     date,
+        //     status: "Skipped",
+        //     reason: `Missing prize ${missing}`,
+        //   });
+        //   continue;
+        // }
 
         // Check duplication before saving
         const exists = await LotteryData.findOne({ serialNumber });
@@ -853,6 +862,7 @@ app.get("/api/all-upload-folder", async (req, res) => {
             date,
             series: seriesArray,
           });
+
           await newLotteryData.save();
           console.log(`✅ Saved ${serialNumber}`);
           results.push({
@@ -6027,9 +6037,9 @@ app.get(
 // new route
 //
 
-const PRIZE_AMOUNTS = ["5000", "2000", "1000", "500", "200", "100"];
-const REQUIRED_PRIZES = ["5000", "1000", "500", "100"];
-const REQUIRED_PRIZE_AMOUNTS = [5000, 1000, 500]; //100 deleted
+// const PRIZE_AMOUNTS = ["5000", "2000", "1000", "500", "200", "100"];
+// const REQUIRED_PRIZES = ["5000", "1000", "500", "100"];
+// const REQUIRED_PRIZE_AMOUNTS = [5000, 1000, 500]; //100 deleted
 
 app.get("/api/full-upload-folder", async (req, res) => {
   try {
@@ -6130,20 +6140,6 @@ app.get("/api/full-upload-folder", async (req, res) => {
           }
         });
 
-        // --- 🛡️ VALIDATION CHECK ---
-        const missing = REQUIRED_PRIZE_AMOUNTS.filter(
-          (amt) => !prizeNumbers[amt] || prizeNumbers[amt].length === 0,
-        );
-        // ... rest of the save logic ...
-
-        if (missing.length > 0) {
-          const reason = `Missing required amounts: ${missing.join(", ")}`;
-          console.log(`   ⚠️ [VALIDATION] Skipped: ${reason}`);
-          summary.push({ fileName, status: "Skipped", reason });
-          continue;
-        }
-
-        // 4. Duplicate Check
         const exists = await FullLotteryData.findOne({ serialNumber }).lean();
         if (exists) {
           console.log(`   🚫 Duplicate record.`);
@@ -6151,21 +6147,43 @@ app.get("/api/full-upload-folder", async (req, res) => {
           continue;
         }
 
+        // 4. Validate Prizes
+        const prizeAmounts = Object.keys(prizeNumbers)
+          .map(Number)
+          .filter((amount) => amount >= 1 && amount <= 5000)
+          .sort((a, b) => b - a);
+
+        if (prizeAmounts.length === 0) {
+          console.log(
+            `   ⚠️ [VALIDATION] Skipped: No prize categories between ₹1 and ₹5000 found.`,
+          );
+
+          summary.push({
+            fileName,
+            status: "Skipped",
+            reason: "No valid prize categories <= 5000",
+          });
+
+          continue;
+        }
+
         // 5. Save to Database
-        const series = Object.entries(prizeNumbers).map(([amt, numbers]) => ({
-          prize: Number(amt),
-          numbers: numbers.map((n) => ({ number: n, count: 1 })),
+        const seriesArray = prizeAmounts.map((prize) => ({
+          prize,
+          numbers: prizeNumbers[prize].map((number) => ({
+            number,
+            count: 1,
+          })),
         }));
 
-        const newDoc = new FullLotteryData({
+        const newRecord = new FullLotteryData({
           serialNumber,
           date,
-          drawDate: ddmmyyyyToUTCDate(date),
           fileName,
-          series,
+          series: seriesArray,
         });
 
-        await newDoc.save();
+        await newRecord.save();
         console.log(`   ✅ Saved Successfully.`);
         summary.push({ fileName, status: "Saved", serialNumber });
       } catch (err) {
@@ -6852,20 +6870,6 @@ app.get("/api/full-upload", async (req, res) => {
           }
         });
 
-        // --- 🛡️ VALIDATION CHECK ---
-        const missing = REQUIRED_PRIZE_AMOUNTS.filter(
-          (amt) => !prizeNumbers[amt] || prizeNumbers[amt].length === 0,
-        );
-        // ... rest of the save logic ...
-
-        if (missing.length > 0) {
-          const reason = `Missing required amounts: ${missing.join(", ")}`;
-          console.log(`   ⚠️ [VALIDATION] Skipped: ${reason}`);
-          summary.push({ fileName, status: "Skipped", reason });
-          continue;
-        }
-
-        // 4. Duplicate Check
         const exists = await FullLotteryData.findOne({ serialNumber }).lean();
         if (exists) {
           console.log(`   🚫 Duplicate record.`);
@@ -8794,7 +8798,6 @@ app.get("/api/current-cycle-comparison", async (req, res) => {
 });
 
 //Absolute data
-const ABSOLUTE_PRIZE_AMOUNTS = [5000, 1000];
 app.get("/api/absolute-folder", async (req, res) => {
   try {
     const folderPath = path.join(process.cwd(), "files");
@@ -8887,14 +8890,22 @@ app.get("/api/absolute-folder", async (req, res) => {
           }
         });
 
-        const missing = ABSOLUTE_PRIZE_AMOUNTS.filter(
-          (amt) => !prizeNumbers[amt] || prizeNumbers[amt].length === 0,
-        );
+        const prizeAmounts = Object.keys(prizeNumbers)
+          .map(Number)
+          .filter((amount) => amount >= 1 && amount <= 5000)
+          .sort((a, b) => b - a);
 
-        if (missing.length > 0) {
-          const reason = `Missing required amounts: ${missing.join(", ")}`;
+        if (prizeAmounts.length === 0) {
+          const reason = "No valid prize categories between ₹1 and ₹5000";
+
           console.log(`   ⚠️ [VALIDATION] Skipped: ${reason}`);
-          summary.push({ fileName, status: "Skipped", reason });
+
+          summary.push({
+            fileName,
+            status: "Skipped",
+            reason,
+          });
+
           continue;
         }
 
@@ -8907,20 +8918,22 @@ app.get("/api/absolute-folder", async (req, res) => {
         }
 
         // 5. Save to AbsoluteData
-        const series = Object.entries(prizeNumbers).map(([amt, numbers]) => ({
-          prize: Number(amt),
-          numbers: numbers.map((n) => ({ number: n, count: 1 })),
+        const seriesArray = prizeAmounts.map((prize) => ({
+          prize,
+          numbers: prizeNumbers[prize].map((number) => ({
+            number,
+            count: 1,
+          })),
         }));
 
-        const newDoc = new AbsoluteData({
+        const newRecord = new AbsoluteData({
           serialNumber,
           date,
-          drawDate: ddmmyyyyToUTCDate(date),
           fileName,
-          series,
+          series: seriesArray,
         });
 
-        await newDoc.save();
+        await newRecord.save();
         console.log(`   ✅ Saved Successfully to AbsoluteData.`);
         summary.push({ fileName, status: "Saved", serialNumber });
       } catch (err) {

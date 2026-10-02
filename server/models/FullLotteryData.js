@@ -21,7 +21,6 @@ const WinningNumberSchema = new mongoose.Schema(
 
 const SeriesSchema = new mongoose.Schema(
   {
-    // Accept every prize category from 1 to 5000.
     prize: {
       type: Number,
       required: true,
@@ -93,7 +92,7 @@ const FullLotteryDataSchema = new mongoose.Schema(
 );
 
 FullLotteryDataSchema.plugin(AutoIncrement, {
-  id: "full_lottery_data_record_number_seq",
+  id: "full_lottery_data_record_number_seq_3",
   inc_field: "recordNumber",
   start_seq: 1,
 });
