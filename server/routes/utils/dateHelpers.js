@@ -52,9 +52,6 @@ function monthNameToNumber(monthName) {
  * Convert any supported date string into:
  *
  * DD/MM/YYYY
- *
- * Example:
- * 11/07/2020
  */
 function normalizeDateToDDMMYYYY(rawDate) {
   if (!rawDate || typeof rawDate !== "string") {
@@ -111,12 +108,18 @@ function normalizeDateToDDMMYYYY(rawDate) {
 /**
  * THE ONLY PDF DATE EXTRACTION FUNCTION
  *
- * Always returns:
+ * IMPORTANT:
  *
- * DD/MM/YYYY
+ * If a PDF contains:
  *
- * Example:
+ * DRAW scheduled on 11/07/2020 at 3:00 PM
+ * and held on:- 26/07/2020, 3:00 PM
+ *
+ * this function MUST return:
+ *
  * 11/07/2020
+ *
+ * The scheduled date has priority over the held date.
  */
 function extractDateFromText(text) {
   if (!text || typeof text !== "string") {
@@ -129,29 +132,37 @@ function extractDateFromText(text) {
     .trim();
 
   const datePattern =
-    "(\u005cd{1,2}[\\/.\\-]\u005cd{1,2}[\\/.\\-]\u005cd{2,4}|\u005cd{1,2}\u005cs+[A-Za-z]+\u005cs+\u005cd{4}|[A-Za-z]+\u005cs+\u005cd{1,2},\u005cs+\u005cd{4})";
+    "(\\d{1,2}[\\/\\.\\-]\\d{1,2}[\\/\\.\\-]\\d{2,4}|\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}|[A-Za-z]+\\s+\\d{1,2},\\s+\\d{4})";
 
   /*
-   * First priority:
-   * Find the date attached to an actual draw-date label.
+   * ============================================================
+   * 1. SCHEDULED DATE — HIGHEST PRIORITY
+   * ============================================================
    *
    * Examples:
-   * Held on:- 11/07/2020
-   * Held on: 11/07/2020
-   * Draw held on 11/07/2020
-   * Drawn on: 11/07/2020
-   * Draw Date: 11/07/2020
+   *
+   * DRAW scheduled on 11/07/2020 at 3:00 PM
+   * DRAW scheduled on:- 11/07/2020
+   * Draw scheduled on: 11/07/2020
+   * scheduled on 11/07/2020
+   * scheduled for 11/07/2020
+   *
+   * This MUST be checked before "held on".
    */
-  const labelledPatterns = [
-    new RegExp(`(?:draw\\s+)?held\\s+on\\s*[:\\-]*\\s*${datePattern}`, "i"),
+
+  const scheduledPatterns = [
+    new RegExp(
+      `(?:draw\\s+)?scheduled\\s+(?:on|for)\\s*[:\\-]*\\s*${datePattern}`,
+      "i",
+    ),
 
     new RegExp(
-      `(?:drawn\\s+on|draw\\s+date|date\\s+of\\s+draw)\\s*[:\\-]*\\s*${datePattern}`,
+      `scheduled\\s+draw\\s+(?:on|for)\\s*[:\\-]*\\s*${datePattern}`,
       "i",
     ),
   ];
 
-  for (const pattern of labelledPatterns) {
+  for (const pattern of scheduledPatterns) {
     const match = cleanText.match(pattern);
 
     if (match) {
@@ -164,10 +175,77 @@ function extractDateFromText(text) {
   }
 
   /*
-   * Remove common PDF footer dates.
+   * ============================================================
+   * 2. EXPLICIT DRAW DATE
+   * ============================================================
    *
-   * These dates are NOT the lottery draw date.
+   * Examples:
+   *
+   * Draw Date: 11/07/2020
+   * Drawn on: 11/07/2020
+   * Date of Draw: 11/07/2020
    */
+
+  const drawDatePatterns = [
+    new RegExp(
+      `(?:drawn\\s+on|draw\\s+date|date\\s+of\\s+draw)\\s*[:\\-]*\\s*${datePattern}`,
+      "i",
+    ),
+  ];
+
+  for (const pattern of drawDatePatterns) {
+    const match = cleanText.match(pattern);
+
+    if (match) {
+      const normalized = normalizeDateToDDMMYYYY(match[1]);
+
+      if (normalized !== "Unknown") {
+        return normalized;
+      }
+    }
+  }
+
+  /*
+   * ============================================================
+   * 3. HELD DATE — FALLBACK ONLY
+   * ============================================================
+   *
+   * Examples:
+   *
+   * held on:- 26/07/2020
+   * held on: 26/07/2020
+   * draw held on 26/07/2020
+   *
+   * We reach this section ONLY when no scheduled/draw date
+   * was found.
+   */
+
+  const heldPatterns = [
+    new RegExp(`(?:draw\\s+)?held\\s+on\\s*[:\\-]*\\s*${datePattern}`, "i"),
+
+    new RegExp(`held\\s+(?:on|at)\\s*[:\\-]*\\s*${datePattern}`, "i"),
+  ];
+
+  for (const pattern of heldPatterns) {
+    const match = cleanText.match(pattern);
+
+    if (match) {
+      const normalized = normalizeDateToDDMMYYYY(match[1]);
+
+      if (normalized !== "Unknown") {
+        return normalized;
+      }
+    }
+  }
+
+  /*
+   * ============================================================
+   * 4. REMOVE COMMON PDF FOOTER DATES
+   * ============================================================
+   *
+   * These dates are not lottery draw dates.
+   */
+
   const withoutFooterDates = cleanText
     .replace(
       /Page\s*\d+[^0-9]{0,120}?\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4}(?:\s+\d{1,2}:\d{2}:\d{2})?/gi,
@@ -179,9 +257,11 @@ function extractDateFromText(text) {
     );
 
   /*
-   * Last fallback:
-   * Find a remaining date-looking value.
+   * ============================================================
+   * 5. FINAL FALLBACK
+   * ============================================================
    */
+
   const fallbackPattern = new RegExp(`\\b${datePattern}\\b`, "i");
 
   const fallbackMatch = withoutFooterDates.match(fallbackPattern);
@@ -198,12 +278,7 @@ function extractDateFromText(text) {
  *
  * DD/MM/YYYY
  *
- * into a MongoDB Date for chronological sorting.
- *
- * Example:
- * 11/07/2020
- * ->
- * 2020-07-11T00:00:00.000Z
+ * into a MongoDB UTC Date.
  */
 function ddmmyyyyToUTCDate(dateStr) {
   if (!dateStr || dateStr === "Unknown") {

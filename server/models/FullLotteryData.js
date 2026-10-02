@@ -7,8 +7,9 @@ const WinningNumberSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      match: /^\d{4}$/, // keep leading zeros: 0100, 0200, etc.
+      match: /^\d{4}$/,
     },
+
     count: {
       type: Number,
       default: 1,
@@ -20,11 +21,14 @@ const WinningNumberSchema = new mongoose.Schema(
 
 const SeriesSchema = new mongoose.Schema(
   {
+    // Accept every prize category from 1 to 5000.
     prize: {
       type: Number,
       required: true,
-      // enum: [5000, 2000, 1000, 500, 200, 100],
+      min: 1,
+      max: 5000,
     },
+
     numbers: {
       type: [WinningNumberSchema],
       default: [],
@@ -33,9 +37,8 @@ const SeriesSchema = new mongoose.Schema(
   { _id: false },
 );
 
-const LotteryDataSchema = new mongoose.Schema(
+const FullLotteryDataSchema = new mongoose.Schema(
   {
-    // Changed from entryNumber -> recordNumber
     recordNumber: {
       type: Number,
       unique: true,
@@ -50,7 +53,6 @@ const LotteryDataSchema = new mongoose.Schema(
       index: true,
     },
 
-    // Exact document/display format
     date: {
       type: String,
       required: true,
@@ -62,7 +64,6 @@ const LotteryDataSchema = new mongoose.Schema(
       },
     },
 
-    // Safe backend date for sorting/filtering
     drawDate: {
       type: Date,
       default: null,
@@ -91,11 +92,10 @@ const LotteryDataSchema = new mongoose.Schema(
   },
 );
 
-// changed sequence id too, so old sequence is not reused
-LotteryDataSchema.plugin(AutoIncrement, {
-  id: "lottery_record_number_seq_v2",
+FullLotteryDataSchema.plugin(AutoIncrement, {
+  id: "full_lottery_data_record_number_seq",
   inc_field: "recordNumber",
   start_seq: 1,
 });
 
-module.exports = mongoose.model("FullLotteryData", LotteryDataSchema);
+module.exports = mongoose.model("FullLotteryData", FullLotteryDataSchema);

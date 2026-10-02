@@ -193,7 +193,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 
 app.get("/api/auto-upload", async (req, res) => {
   try {
-    const folderPath = path.join(__dirname, "allfiles");
+    const folderPath = path.join(__dirname, "files");
     const files = fs.readdirSync(folderPath).filter((f) => f.endsWith(".pdf"));
 
     let results = [];
@@ -272,6 +272,8 @@ app.get("/api/auto-upload", async (req, res) => {
         );
 
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
+
+        console.log("Auto:- Text Data:----- DB2");
 
         const date = extractDateFromText(text);
 
@@ -521,7 +523,7 @@ app.post("/api/old-upload", upload.single("file"), async (req, res) => {
     //let cleanedText = extractedSection;
     const normalized = normalize(extractedSection);
 
-    //console.log("Datas: ", normalized);
+    // console.log("Text Data:----- OLD", text);
 
     const date = extractDateFromText(text);
 
@@ -743,6 +745,8 @@ app.get("/api/all-upload-folder", async (req, res) => {
           100: new Set(),
         };
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
+
+        console.log("Text Data:----- DB1");
 
         // Date extraction
         const date = extractDateFromText(text);
@@ -6066,6 +6070,9 @@ app.get("/api/full-upload-folder", async (req, res) => {
         );
 
         const serialNumber = extractSerialNumber(upperSection);
+
+        console.log("Text Data:----- DB3");
+
         const date = extractDateFromText(upperSection);
 
         console.log(`   🆔 ${serialNumber} | 📅 ${date}`);
@@ -8790,7 +8797,7 @@ app.get("/api/current-cycle-comparison", async (req, res) => {
 const ABSOLUTE_PRIZE_AMOUNTS = [5000, 1000];
 app.get("/api/absolute-folder", async (req, res) => {
   try {
-    const folderPath = path.join(process.cwd(), "Afiles");
+    const folderPath = path.join(process.cwd(), "files");
     const files = fs
       .readdirSync(folderPath)
       .filter((f) => f.toLowerCase().endsWith(".pdf"));
@@ -8826,6 +8833,9 @@ app.get("/api/absolute-folder", async (req, res) => {
         );
 
         const serialNumber = extractSerialNumber(upperSection);
+
+        console.log("Text Data:----- AbsoluteDB");
+
         const date = extractDateFromText(upperSection);
 
         console.log(`   🆔 ${serialNumber} | 📅 ${date}`);
