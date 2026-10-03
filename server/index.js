@@ -194,32 +194,54 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
 app.get("/api/auto-upload", async (req, res) => {
   try {
     const folderPath = path.join(__dirname, "files");
-    const files = fs.readdirSync(folderPath).filter((f) => f.endsWith(".pdf"));
 
-    let results = [];
+    const files = fs
+      .readdirSync(folderPath)
+      .filter((f) => f.toLowerCase().endsWith(".pdf"));
+
+    console.log(`🚀 [AUTO-UPLOAD] Processing ${files.length} PDF files.`);
+
+    const results = [];
 
     for (const fileName of files) {
+      console.log(`\n--- 📄 AUTO FILE: ${fileName} ---`);
+
       try {
         const filePath = path.join(folderPath, fileName);
         const buffer = fs.readFileSync(filePath);
+
         const data = await PdfParse(buffer);
-        let text = data.text;
+        const text = data.text || "";
 
         let extractedSection = "";
+
+        /*
+         * ------------------------------------------------------------
+         * 1. EXTRACT PRIZE SECTION
+         * ------------------------------------------------------------
+         */
 
         if (fileName.toLowerCase().startsWith("tmp")) {
           const startPhrase =
             "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
+
           const endPhrase =
             "The  prize  winners  are  advised  to  verify  the  winning  numbers  with  the  results  published  in  the  Kerala  Government";
 
-          let startIndex = text.indexOf(startPhrase);
-          let endIndex = text.indexOf(endPhrase);
+          const startIndex = text
+            .toLowerCase()
+            .indexOf(startPhrase.toLowerCase());
 
-          if (startIndex !== -1 && endIndex !== -1) {
-            extractedSection = text
-              .substring(startIndex + startPhrase.length, endIndex)
-              .trim();
+          const endIndex = text.toLowerCase().indexOf(endPhrase.toLowerCase());
+
+          if (startIndex !== -1) {
+            const start = startIndex + startPhrase.length;
+
+            if (endIndex !== -1 && endIndex > start) {
+              extractedSection = text.substring(start, endIndex).trim();
+            } else {
+              extractedSection = text.substring(start).trim();
+            }
           }
         } else {
           let cleanText = text
@@ -239,34 +261,86 @@ app.get("/api/auto-upload", async (req, res) => {
 
           const startPoint =
             "for the tickets ending with the following numbers";
+
           const endPoint =
             "the prize winners are advised to verify the winning numbers with the results published in the kerala";
 
-          let lowerText = cleanText.toLowerCase();
-          let startIndex = lowerText.indexOf(startPoint);
-          let endIndex = lowerText.indexOf(endPoint);
+          const lowerText = cleanText.toLowerCase();
 
-          if (startIndex !== -1 && endIndex !== -1) {
-            extractedSection = cleanText
-              .substring(startIndex + startPoint.length, endIndex)
-              .trim();
+          const startIndex = lowerText.indexOf(startPoint);
+          const endIndex = lowerText.indexOf(endPoint);
+
+          if (startIndex !== -1) {
+            const start = startIndex + startPoint.length;
+
+            if (endIndex !== -1 && endIndex > start) {
+              extractedSection = cleanText.substring(start, endIndex).trim();
+            } else {
+              extractedSection = cleanText.substring(start).trim();
+            }
           }
         }
 
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
-        console.log("Auto:- Text Data:----- DB2");
+        if (!extractedSection) {
+          console.log(`   ❌ Skipped: Prize section not found.`);
+
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "Prize section not found",
+          });
+
+          continue;
+        }
+
+        /*
+         * ------------------------------------------------------------
+         * 2. EXTRACT DATE
+         * ------------------------------------------------------------
+         */
 
         const date = extractDateFromText(text);
 
-        const lotteryMatch = text.match(
+        /*
+         * ------------------------------------------------------------
+         * 3. EXTRACT SERIAL NUMBER
+         * ------------------------------------------------------------
+         */
+
+        const serialMatch = text.match(
           /LOTTERY\s+NO\.?\s*([A-Z0-9-]+)(?:st|nd|rd|th)?/i,
         );
-        let serialNumber = lotteryMatch
-          ? lotteryMatch[1].trim().replace(/(st|nd|rd|th)$/i, "")
+
+        const serialNumber = serialMatch
+          ? serialMatch[1].trim().replace(/(st|nd|rd|th)$/i, "")
           : "Unknown";
 
-        const normalized = normalize(extractedSection);
+        console.log(`   🆔 ${serialNumber} | 📅 ${date}`);
+
+        if (serialNumber === "Unknown" || date === "Unknown") {
+          console.log(`   ⚠️ Skipped: Metadata error.`);
+
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "Metadata error",
+            serialNumber,
+            date,
+          });
+
+          continue;
+        }
+
+        /*
+         * ------------------------------------------------------------
+         * 4. DYNAMIC PRIZE EXTRACTION
+         *
+         * getPrizeNumbersByAmount() now accepts every prize amount
+         * from ₹1 to ₹5000.
+         * ------------------------------------------------------------
+         */
 
         const prizeNumbersByAmount = getPrizeNumbersByAmount(extractedSection);
 
@@ -275,11 +349,27 @@ app.get("/api/auto-upload", async (req, res) => {
           .filter((amount) => amount >= 1 && amount <= 5000)
           .sort((a, b) => b - a);
 
+        console.log(
+          `   💰 Prize categories found: ${
+            prizeAmounts.length > 0 ? prizeAmounts.join(", ") : "NONE"
+          }`,
+        );
+
+        /*
+         * ------------------------------------------------------------
+         * 5. VALIDATE PRIZES
+         * ------------------------------------------------------------
+         */
+
         if (prizeAmounts.length === 0) {
-          console.log(`⚠️ ${fileName}: no valid prize categories <= ₹5000`);
+          console.log(
+            `   ⚠️ Skipped: No valid prize categories between ₹1 and ₹5000.`,
+          );
 
           results.push({
             fileName,
+            serialNumber,
+            date,
             status: "Skipped",
             reason: "No valid prize categories <= 5000",
           });
@@ -287,124 +377,117 @@ app.get("/api/auto-upload", async (req, res) => {
           continue;
         }
 
-        let blocks;
+        /*
+         * ------------------------------------------------------------
+         * 6. LOG EXTRACTION DETAILS
+         * ------------------------------------------------------------
+         */
 
-        if (fileName.toLowerCase().startsWith("tmp")) {
-          blocks = [
-            normalized.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i),
-            normalized.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i),
-            normalized.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i),
-            normalized.match(/6th\s*Prize[\s\S]*?(?=7th\s*Prize)/i),
-            normalized.match(/7th\s*Prize[\s\S]*?(?=8th\s*Prize)/i) ||
-              normalized.match(/7th\s*Prize[\s\S]*/i),
-            normalized.match(/8th\s*Prize[\s\S]*/i),
-          ].filter(Boolean);
-        } else {
-          blocks = [
-            normalized.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i),
-            normalized.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i),
-            normalized.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i),
-            normalized.match(/6th\s*Prize[\s\S]*?(?=7th\s*Prize)/i),
-            normalized.match(/7th\s*Prize[\s\S]*?(?=8th\s*Prize)/i) ||
-              normalized.match(/7th\s*Prize[\s\S]*/i),
-            normalized.match(/8th\s*Prize[\s\S]*?(?=9th\s*Prize)/i) ||
-              normalized.match(/8th\s*Prize[\s\S]*/i),
-            normalized.match(/9th\s*Prize[\s\S]*/i),
-          ].filter(Boolean);
-        }
+        for (const prize of prizeAmounts) {
+          const numbers = prizeNumbersByAmount[prize] || [];
 
-        for (const blockMatch of blocks) {
-          if (!blockMatch) continue;
-          const block = blockMatch[0];
+          console.log(`      💰 ₹${prize} → ${numbers.length} numbers`);
 
-          for (const amount of prizeAmounts) {
-            const amountPattern = new RegExp(
-              `(?:₹|Rs\\.?|\\b)\\s*${amount.replace(",", "")}\\s*/-`,
-              "i",
-            );
+          if (numbers.length > 0) {
+            const displayList =
+              numbers.length > 20
+                ? `${numbers.slice(0, 10).join(", ")} ... ${numbers
+                    .slice(-10)
+                    .join(", ")}`
+                : numbers.join(", ");
 
-            if (amountPattern.test(block)) {
-              let numbers = block.match(/\d{4}/g) || [];
-
-              if (numbers.length === 0 && /\d{8,}/.test(block)) {
-                numbers = block.replace(/[^0-9]/g, "").match(/.{1,4}/g) || [];
-              }
-
-              numbers = numbers.map((n) => n.padStart(4, "0"));
-
-              const paddedAmount = amount.padStart(4, "0");
-              const index = numbers.indexOf(paddedAmount);
-
-              if (index !== -1) numbers.splice(index, 1);
-
-              numbers.forEach((num) => prizeNumbersByAmount[amount].add(num));
-            }
+            console.log(`         🔢 ${displayList}`);
           }
         }
 
-        const result = {};
-        for (const amount in prizeNumbersByAmount) {
-          const nums = Array.from(prizeNumbersByAmount[amount]);
-          if (nums.length > 0) {
-            result[amount] = nums;
-          }
-        }
+        /*
+         * ------------------------------------------------------------
+         * 7. BUILD MONGOOSE SERIES
+         * ------------------------------------------------------------
+         */
 
         const seriesArray = prizeAmounts.map((prize) => ({
           prize,
-          numbers: prizeNumbersByAmount[prize].map((number) => ({
+          numbers: (prizeNumbersByAmount[prize] || []).map((number) => ({
             number,
             count: 1,
           })),
         }));
 
-        if (seriesArray.length === 0) {
-          console.warn(
-            `⚠️ Skipping ${fileName} (${serialNumber}) → No prize categories found`,
-          );
+        /*
+         * ------------------------------------------------------------
+         * 8. DUPLICATE CHECK
+         * ------------------------------------------------------------
+         */
+
+        const exists = await LotteryDataNew.findOne({
+          serialNumber,
+        }).lean();
+
+        if (exists) {
+          console.log(`   🚫 Duplicate entry for ${serialNumber}`);
+
           results.push({
             fileName,
             serialNumber,
             date,
-            status: "Skipped",
-            reason: "No prize categories found",
+            status: "Duplicate",
           });
+
           continue;
         }
 
-        const exists = await LotteryDataNew.findOne({ serialNumber });
+        /*
+         * ------------------------------------------------------------
+         * 9. SAVE TO LotteryDataNew
+         * ------------------------------------------------------------
+         */
 
-        if (exists) {
-          console.log(`🚫 Duplicate entry for ${serialNumber}`);
-          results.push({ fileName, serialNumber, date, status: "Duplicate" });
-        } else {
-          const newLotteryData = new LotteryDataNew({
-            serialNumber,
-            date,
-            series: seriesArray,
-          });
+        const newLotteryData = new LotteryDataNew({
+          serialNumber,
+          date,
+          series: seriesArray,
+        });
 
-          await newLotteryData.save();
+        await newLotteryData.save();
 
-          console.log(`✅ Saved ${serialNumber}`);
-          results.push({
-            fileName,
-            serialNumber,
-            date,
-            series: seriesArray,
-            status: "Saved",
-          });
-        }
+        console.log(`   ✅ Saved ${serialNumber} to LotteryDataNew.`);
+
+        results.push({
+          fileName,
+          serialNumber,
+          date,
+          series: seriesArray,
+          status: "Saved",
+        });
       } catch (err) {
-        console.error(`❌ Error processing ${fileName}:`, err);
-        results.push({ fileName, error: err.message });
+        console.error(`   ❌ Error processing ${fileName}:`, err);
+
+        results.push({
+          fileName,
+          status: "Error",
+          error: err.message,
+        });
       }
     }
 
-    res.json({ summary: results });
+    /*
+     * --------------------------------------------------------------
+     * FINAL RESPONSE
+     * --------------------------------------------------------------
+     */
+
+    res.json({
+      status: "Complete",
+      summary: results,
+    });
   } catch (err) {
-    console.error("❌ Error reading folder:", err);
-    res.status(500).json({ error: "Failed to process folder" });
+    console.error("❌ Error reading auto-upload folder:", err);
+
+    res.status(500).json({
+      error: "Failed to process auto-upload folder",
+      details: err.message,
+    });
   }
 });
 
@@ -675,34 +758,55 @@ app.post("/api/old-upload", upload.single("file"), async (req, res) => {
 
 app.get("/api/all-upload-folder", async (req, res) => {
   try {
-    const folderPath = path.join(__dirname, "files"); // your folder containing PDFs
-    const files = fs.readdirSync(folderPath).filter((f) => f.endsWith(".pdf"));
+    const folderPath = path.join(__dirname, "files");
 
-    let results = [];
+    const files = fs
+      .readdirSync(folderPath)
+      .filter((f) => f.toLowerCase().endsWith(".pdf"));
+
+    console.log(`🚀 [ALL-UPLOAD] Processing ${files.length} PDF files.`);
+
+    const results = [];
 
     for (const fileName of files) {
+      console.log(`\n--- 📄 ALL FILE: ${fileName} ---`);
+
       try {
         const filePath = path.join(folderPath, fileName);
         const buffer = fs.readFileSync(filePath);
-        const data = await PdfParse(buffer);
-        let text = data.text;
 
-        // --- SAME EXTRACTION LOGIC ---
+        const data = await PdfParse(buffer);
+        const text = data.text || "";
+
         let extractedSection = "";
+
+        /*
+         * ------------------------------------------------------------
+         * 1. EXTRACT PRIZE SECTION
+         * ------------------------------------------------------------
+         */
 
         if (fileName.toLowerCase().startsWith("tmp")) {
           const startPhrase =
             "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
+
           const endPhrase =
             "The  prize  winners  are  advised  to  verify  the  winning  numbers  with  the  results  published  in  the  Kerala  Government";
 
-          let startIndex = text.indexOf(startPhrase);
-          let endIndex = text.indexOf(endPhrase);
+          const startIndex = text
+            .toLowerCase()
+            .indexOf(startPhrase.toLowerCase());
 
-          if (startIndex !== -1 && endIndex !== -1) {
-            extractedSection = text
-              .substring(startIndex + startPhrase.length, endIndex)
-              .trim();
+          const endIndex = text.toLowerCase().indexOf(endPhrase.toLowerCase());
+
+          if (startIndex !== -1) {
+            const start = startIndex + startPhrase.length;
+
+            if (endIndex !== -1 && endIndex > start) {
+              extractedSection = text.substring(start, endIndex).trim();
+            } else {
+              extractedSection = text.substring(start).trim();
+            }
           }
         } else {
           let cleanText = text
@@ -722,37 +826,86 @@ app.get("/api/all-upload-folder", async (req, res) => {
 
           const startPoint =
             "for the tickets ending with the following numbers";
+
           const endPoint =
             "the prize winners are advised to verify the winning numbers with the results published in the kerala";
 
-          let lowerText = cleanText.toLowerCase();
-          let startIndex = lowerText.indexOf(startPoint);
-          let endIndex = lowerText.indexOf(endPoint);
+          const lowerText = cleanText.toLowerCase();
 
-          if (startIndex !== -1 && endIndex !== -1) {
-            extractedSection = cleanText
-              .substring(startIndex + startPoint.length, endIndex)
-              .trim();
+          const startIndex = lowerText.indexOf(startPoint);
+          const endIndex = lowerText.indexOf(endPoint);
+
+          if (startIndex !== -1) {
+            const start = startIndex + startPoint.length;
+
+            if (endIndex !== -1 && endIndex > start) {
+              extractedSection = cleanText.substring(start, endIndex).trim();
+            } else {
+              extractedSection = cleanText.substring(start).trim();
+            }
           }
         }
 
         extractedSection = extractedSection.replace(/\s+/g, " ").trim();
 
-        console.log("Text Data:----- DB1");
+        if (!extractedSection) {
+          console.log(`   ❌ Skipped: Prize section not found.`);
 
-        // Date extraction
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "Prize section not found",
+          });
+
+          continue;
+        }
+
+        /*
+         * ------------------------------------------------------------
+         * 2. DATE
+         * ------------------------------------------------------------
+         */
+
         const date = extractDateFromText(text);
 
-        // Serial number
-        const lotteryMatch = text.match(
+        /*
+         * ------------------------------------------------------------
+         * 3. SERIAL NUMBER
+         * ------------------------------------------------------------
+         */
+
+        const serialMatch = text.match(
           /LOTTERY\s+NO\.?\s*([A-Z0-9-]+)(?:st|nd|rd|th)?/i,
         );
-        let serialNumber = lotteryMatch
-          ? lotteryMatch[1].trim().replace(/(st|nd|rd|th)$/i, "")
+
+        const serialNumber = serialMatch
+          ? serialMatch[1].trim().replace(/(st|nd|rd|th)$/i, "")
           : "Unknown";
 
-        // Blocks
-        const normalized = normalize(extractedSection);
+        console.log(`   🆔 ${serialNumber} | 📅 ${date}`);
+
+        if (serialNumber === "Unknown" || date === "Unknown") {
+          console.log(`   ⚠️ Skipped: Metadata error.`);
+
+          results.push({
+            fileName,
+            status: "Skipped",
+            reason: "Metadata error",
+            serialNumber,
+            date,
+          });
+
+          continue;
+        }
+
+        /*
+         * ------------------------------------------------------------
+         * 4. DYNAMIC PRIZE EXTRACTION
+         *
+         * No hard-coded prize list.
+         * Every detected prize from ₹1 to ₹5000 is retained.
+         * ------------------------------------------------------------
+         */
 
         const prizeNumbersByAmount = getPrizeNumbersByAmount(extractedSection);
 
@@ -761,128 +914,145 @@ app.get("/api/all-upload-folder", async (req, res) => {
           .filter((amount) => amount >= 1 && amount <= 5000)
           .sort((a, b) => b - a);
 
+        console.log(
+          `   💰 Prize categories found: ${
+            prizeAmounts.length > 0 ? prizeAmounts.join(", ") : "NONE"
+          }`,
+        );
+
+        /*
+         * ------------------------------------------------------------
+         * 5. VALIDATE PRIZES
+         * ------------------------------------------------------------
+         */
+
         if (prizeAmounts.length === 0) {
+          console.log(
+            `   ⚠️ Skipped: No valid prize categories between ₹1 and ₹5000.`,
+          );
+
           results.push({
             fileName,
+            serialNumber,
+            date,
             status: "Skipped",
             reason: "No valid prize categories <= 5000",
           });
 
           continue;
         }
-        let blocks;
-        if (fileName.toLowerCase().startsWith("tmp")) {
-          blocks = [
-            normalized.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i),
-            normalized.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i),
-            normalized.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i),
-            normalized.match(/6th\s*Prize[\s\S]*?(?=7th\s*Prize)/i),
-            normalized.match(/7th\s*Prize[\s\S]*?(?=8th\s*Prize)/i) ||
-              normalized.match(/7th\s*Prize[\s\S]*/i),
-            normalized.match(/8th\s*Prize[\s\S]*/i),
-          ].filter(Boolean);
-        } else {
-          blocks = [
-            normalized.match(/3rd\s*Prize[\s\S]*?(?=4th\s*Prize)/i),
-            normalized.match(/4th\s*Prize[\s\S]*?(?=5th\s*Prize)/i),
-            normalized.match(/5th\s*Prize[\s\S]*?(?=6th\s*Prize)/i),
-            normalized.match(/6th\s*Prize[\s\S]*?(?=7th\s*Prize)/i),
-            normalized.match(/7th\s*Prize[\s\S]*?(?=8th\s*Prize)/i) ||
-              normalized.match(/7th\s*Prize[\s\S]*/i),
-            normalized.match(/8th\s*Prize[\s\S]*?(?=9th\s*Prize)/i) ||
-              normalized.match(/8th\s*Prize[\s\S]*/i),
-            normalized.match(/9th\s*Prize[\s\S]*/i),
-          ].filter(Boolean);
-        }
 
-        for (const blockMatch of blocks) {
-          if (!blockMatch) continue;
-          const block = blockMatch[0];
+        /*
+         * ------------------------------------------------------------
+         * 6. LOG EXTRACTION DETAILS
+         * ------------------------------------------------------------
+         */
 
-          for (const amount of prizeAmounts) {
-            const amountPattern = new RegExp(
-              `(?:₹|Rs\\.?|\\b)\\s*${amount.replace(",", "")}\\s*/-`,
-              "i",
-            );
-            if (amountPattern.test(block)) {
-              let numbers = block.match(/\d{4}/g) || [];
-              if (numbers.length === 0 && /\d{8,}/.test(block)) {
-                numbers = block.replace(/[^0-9]/g, "").match(/.{1,4}/g) || [];
-              }
-              numbers = numbers.map((n) => n.padStart(4, "0"));
-              const paddedAmount = amount.padStart(4, "0");
-              const index = numbers.indexOf(paddedAmount);
-              if (index !== -1) numbers.splice(index, 1);
-              numbers.forEach((num) => prizeNumbersByAmount[amount].add(num));
-            }
+        for (const prize of prizeAmounts) {
+          const numbers = prizeNumbersByAmount[prize] || [];
+
+          console.log(`      💰 ₹${prize} → ${numbers.length} numbers`);
+
+          if (numbers.length > 0) {
+            const displayList =
+              numbers.length > 20
+                ? `${numbers.slice(0, 10).join(", ")} ... ${numbers
+                    .slice(-10)
+                    .join(", ")}`
+                : numbers.join(", ");
+
+            console.log(`         🔢 ${displayList}`);
           }
         }
 
-        // Final results
-        const result = {};
-        for (const amount in prizeNumbersByAmount) {
-          result[amount] = Array.from(prizeNumbersByAmount[amount]);
-        }
+        /*
+         * ------------------------------------------------------------
+         * 7. BUILD MONGOOSE SERIES
+         * ------------------------------------------------------------
+         */
 
         const seriesArray = prizeAmounts.map((prize) => ({
           prize,
-          numbers: prizeNumbersByAmount[prize].map((number) => ({
+          numbers: (prizeNumbersByAmount[prize] || []).map((number) => ({
             number,
             count: 1,
           })),
         }));
 
-        // // ✅ Check essential prizes
-        // const requiredPrizes = ["5000", "1000", "500", "100"];
-        // let missing = requiredPrizes.find(
-        //   (p) => !result[p] || result[p].length === 0,
-        // );
-        // if (missing) {
-        //   console.warn(
-        //     `⚠️ Skipping ${fileName} (${serialNumber}) → Missing ${missing}`,
-        //   );
-        //   results.push({
-        //     fileName,
-        //     serialNumber,
-        //     date,
-        //     status: "Skipped",
-        //     reason: `Missing prize ${missing}`,
-        //   });
-        //   continue;
-        // }
+        /*
+         * ------------------------------------------------------------
+         * 8. DUPLICATE CHECK
+         * ------------------------------------------------------------
+         */
 
-        // Check duplication before saving
-        const exists = await LotteryData.findOne({ serialNumber });
+        const exists = await LotteryData.findOne({
+          serialNumber,
+        }).lean();
+
         if (exists) {
-          console.log(`🚫 Duplicate entry for ${serialNumber}`);
-          results.push({ fileName, serialNumber, date, status: "Duplicate" });
-        } else {
-          const newLotteryData = new LotteryData({
-            serialNumber,
-            date,
-            series: seriesArray,
-          });
+          console.log(`   🚫 Duplicate entry for ${serialNumber}`);
 
-          await newLotteryData.save();
-          console.log(`✅ Saved ${serialNumber}`);
           results.push({
             fileName,
             serialNumber,
             date,
-            series: seriesArray,
-            status: "Saved",
+            status: "Duplicate",
           });
+
+          continue;
         }
+
+        /*
+         * ------------------------------------------------------------
+         * 9. SAVE TO LotteryData
+         * ------------------------------------------------------------
+         */
+
+        const newLotteryData = new LotteryData({
+          serialNumber,
+          date,
+          series: seriesArray,
+        });
+
+        await newLotteryData.save();
+
+        console.log(`   ✅ Saved ${serialNumber} to LotteryData.`);
+
+        results.push({
+          fileName,
+          serialNumber,
+          date,
+          series: seriesArray,
+          status: "Saved",
+        });
       } catch (err) {
-        console.error(`❌ Error processing ${fileName}:`, err);
-        results.push({ fileName, error: err.message });
+        console.error(`   ❌ Error processing ${fileName}:`, err);
+
+        results.push({
+          fileName,
+          status: "Error",
+          error: err.message,
+        });
       }
     }
 
-    res.json({ summary: results });
+    /*
+     * --------------------------------------------------------------
+     * FINAL RESPONSE
+     * --------------------------------------------------------------
+     */
+
+    res.json({
+      status: "Complete",
+      summary: results,
+    });
   } catch (err) {
-    console.error("❌ Error reading folder:", err);
-    res.status(500).json({ error: "Failed to process folder" });
+    console.error("❌ Error reading all-upload folder:", err);
+
+    res.status(500).json({
+      error: "Failed to process all-upload folder",
+      details: err.message,
+    });
   }
 });
 
