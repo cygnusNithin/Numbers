@@ -28,6 +28,68 @@ const {
   ddmmyyyyToUTCDate,
 } = require("./routes/utils/dateHelpers");
 
+// ============================================================
+// LOTTERY CATEGORY CLASSIFICATION
+// ============================================================
+//
+// Category signatures discovered from the PDF data:
+//
+// BM:
+// 5000, 2000, 1000, 500, 300, 200, 100, 50
+//
+// BR:
+// 5000, 3000, 2000, 1000, 500, 400, 300, 250, 200, 100, 50
+//
+// OTHER:
+// 5000, 2000, 1000, 500, 200, 100, 50
+//
+// We compare the COMPLETE prize signature.
+// Unknown signatures are not silently classified.
+//
+
+const LOTTERY_CATEGORY_SIGNATURES = {
+  BM: [5000, 2000, 1000, 500, 300, 200, 100, 50],
+  BR: [5000, 3000, 2000, 1000, 500, 400, 300, 250, 200, 100, 50],
+  OTHER: [5000, 2000, 1000, 500, 200, 100, 50],
+};
+
+function getPrizeSignature(prizeNumbersByAmount = {}) {
+  return Object.keys(prizeNumbersByAmount)
+    .map(Number)
+    .filter((amount) => amount >= 1 && amount <= 5000)
+    .sort((a, b) => a - b);
+}
+
+function classifyLotteryCategory(prizeNumbersByAmount = {}) {
+  const actual = getPrizeSignature(prizeNumbersByAmount);
+
+  for (const [category, expectedValues] of Object.entries(
+    LOTTERY_CATEGORY_SIGNATURES,
+  )) {
+    const expected = [...expectedValues].sort((a, b) => a - b);
+
+    if (
+      actual.length === expected.length &&
+      actual.every((amount, index) => amount === expected[index])
+    ) {
+      return category;
+    }
+  }
+
+  return "UNKNOWN";
+}
+
+function isCategoryAllowedForDatabase(databaseName, category) {
+  const allowedCategories = {
+    AbsoluteData: new Set(["BM", "BR", "OTHER"]),
+    FullLotteryData: new Set(["BM", "OTHER"]),
+    LotteryDataNew: new Set(["BR", "OTHER"]),
+    LotteryData: new Set(["OTHER"]),
+  };
+
+  return allowedCategories[databaseName]?.has(category) === true;
+}
+
 const FILES_DIR = path.join(__dirname, "files"); // adjust if files are elsewhere
 
 const app = express();
@@ -349,6 +411,45 @@ app.get("/api/auto-upload", async (req, res) => {
           .filter((amount) => amount >= 1 && amount <= 5000)
           .sort((a, b) => b - a);
 
+        //update
+        const category = classifyLotteryCategory(prizeNumbersByAmount);
+
+        console.log(`   🏷️ Category: ${category}`);
+
+        if (category === "UNKNOWN") {
+          console.log(
+            `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
+          );
+
+          results.push({
+            fileName,
+            serialNumber,
+            date,
+            status: "Skipped",
+            reason: "Unknown lottery category",
+            prizeAmounts,
+          });
+
+          continue;
+        }
+
+        if (!isCategoryAllowedForDatabase("LotteryDataNew", category)) {
+          console.log(
+            `   🚫 Skipped: ${category} is not allowed in LotteryDataNew.`,
+          );
+
+          results.push({
+            fileName,
+            serialNumber,
+            date,
+            category,
+            status: "Filtered",
+            reason: `Category ${category} is not allowed in LotteryDataNew`,
+          });
+
+          continue;
+        }
+
         console.log(
           `   💰 Prize categories found: ${
             prizeAmounts.length > 0 ? prizeAmounts.join(", ") : "NONE"
@@ -446,6 +547,7 @@ app.get("/api/auto-upload", async (req, res) => {
         const newLotteryData = new LotteryDataNew({
           serialNumber,
           date,
+          category,
           series: seriesArray,
         });
 
@@ -914,6 +1016,45 @@ app.get("/api/all-upload-folder", async (req, res) => {
           .filter((amount) => amount >= 1 && amount <= 5000)
           .sort((a, b) => b - a);
 
+        //update
+        const category = classifyLotteryCategory(prizeNumbersByAmount);
+
+        console.log(`   🏷️ Category: ${category}`);
+
+        if (category === "UNKNOWN") {
+          console.log(
+            `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
+          );
+
+          results.push({
+            fileName,
+            serialNumber,
+            date,
+            status: "Skipped",
+            reason: "Unknown lottery category",
+            prizeAmounts,
+          });
+
+          continue;
+        }
+
+        if (!isCategoryAllowedForDatabase("LotteryData", category)) {
+          console.log(
+            `   🚫 Skipped: ${category} is not allowed in LotteryData.`,
+          );
+
+          results.push({
+            fileName,
+            serialNumber,
+            date,
+            category,
+            status: "Filtered",
+            reason: `Category ${category} is not allowed in LotteryData`,
+          });
+
+          continue;
+        }
+
         console.log(
           `   💰 Prize categories found: ${
             prizeAmounts.length > 0 ? prizeAmounts.join(", ") : "NONE"
@@ -1011,6 +1152,7 @@ app.get("/api/all-upload-folder", async (req, res) => {
         const newLotteryData = new LotteryData({
           serialNumber,
           date,
+          category,
           series: seriesArray,
         });
 
@@ -6271,6 +6413,44 @@ app.get("/api/full-upload-folder", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
+        const category = classifyLotteryCategory(prizeNumbers);
+
+        console.log(`   🏷️ Category: ${category}`);
+
+        if (category === "UNKNOWN") {
+          console.log(
+            `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
+          );
+
+          summary.push({
+            fileName,
+            serialNumber,
+            date,
+            status: "Skipped",
+            reason: "Unknown lottery category",
+            prizeAmounts,
+          });
+
+          continue;
+        }
+
+        if (!isCategoryAllowedForDatabase("FullLotteryData", category)) {
+          console.log(
+            `   🚫 Skipped: ${category} is not allowed in FullLotteryData.`,
+          );
+
+          summary.push({
+            fileName,
+            serialNumber,
+            date,
+            category,
+            status: "Filtered",
+            reason: `Category ${category} is not allowed in FullLotteryData`,
+          });
+
+          continue;
+        }
+
         // --- 🔍 DETAILED INSPECTION LOG ---
         console.log(`   📊 EXTRACTION SUMMARY FOR ${serialNumber}:`);
 
@@ -6350,6 +6530,7 @@ app.get("/api/full-upload-folder", async (req, res) => {
           serialNumber,
           date,
           fileName,
+          category,
           series: seriesArray,
         });
 
@@ -7001,6 +7182,43 @@ app.get("/api/full-upload", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
+        const category = classifyLotteryCategory(prizeNumbers);
+
+        console.log(`   🏷️ Category: ${category}`);
+
+        if (category === "UNKNOWN") {
+          console.log(
+            `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
+          );
+
+          summary.push({
+            fileName,
+            serialNumber,
+            date,
+            status: "Skipped",
+            reason: "Unknown lottery category",
+          });
+
+          continue;
+        }
+
+        if (!isCategoryAllowedForDatabase("FullLotteryData", category)) {
+          console.log(
+            `   🚫 Skipped: ${category} is not allowed in FullLotteryData.`,
+          );
+
+          summary.push({
+            fileName,
+            serialNumber,
+            date,
+            category,
+            status: "Filtered",
+            reason: `Category ${category} is not allowed in FullLotteryData`,
+          });
+
+          continue;
+        }
+
         // --- 🔍 DETAILED INSPECTION LOG ---
         console.log(`   📊 EXTRACTION SUMMARY FOR ${serialNumber}:`);
 
@@ -7058,6 +7276,7 @@ app.get("/api/full-upload", async (req, res) => {
           date,
           drawDate: ddmmyyyyToUTCDate(date),
           fileName,
+          category,
           series,
         });
 
@@ -9024,6 +9243,26 @@ app.get("/api/absolute-folder", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
+        const category = classifyLotteryCategory(prizeNumbers);
+
+        console.log(`   🏷️ Category: ${category}`);
+
+        if (category === "UNKNOWN") {
+          console.log(
+            `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
+          );
+
+          summary.push({
+            fileName,
+            serialNumber,
+            date,
+            status: "Skipped",
+            reason: "Unknown lottery category",
+          });
+
+          continue;
+        }
+
         // --- 🔍 DETAILED INSPECTION LOG ---
         console.log(`   📊 EXTRACTION SUMMARY FOR ${serialNumber}:`);
 
@@ -9100,6 +9339,7 @@ app.get("/api/absolute-folder", async (req, res) => {
           serialNumber,
           date,
           fileName,
+          category,
           series: seriesArray,
         });
 
