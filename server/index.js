@@ -32,64 +32,38 @@ const {
 // LOTTERY CATEGORY CLASSIFICATION
 // ============================================================
 //
-// Category signatures discovered from the PDF data:
+// Category is determined ONLY from serialNumber:
 //
-// BM:
-// 5000, 2000, 1000, 500, 300, 200, 100, 50
+// BM-... -> BM
+// BR-... -> BR
+// anything else -> OTHER
 //
-// BR:
-// 5000, 3000, 2000, 1000, 500, 400, 300, 250, 200, 100, 50
-//
-// OTHER:
-// 5000, 2000, 1000, 500, 200, 100, 50
-//
-// We compare the COMPLETE prize signature.
-// Unknown signatures are not silently classified.
+// Prize amounts are NOT used to determine the category.
+// Prize extraction remains independent and accepts amounts ₹1–₹5000.
 //
 
-const LOTTERY_CATEGORY_SIGNATURES = {
-  BM: [5000, 2000, 1000, 500, 300, 200, 100, 50],
-  BR: [5000, 3000, 2000, 1000, 500, 400, 300, 250, 200, 100, 50],
-  OTHER: [5000, 2000, 1000, 500, 200, 100, 50],
-};
+function classifyLotteryCategory(serialNumber = "") {
+  const serial = String(serialNumber).trim().toUpperCase();
 
-function getPrizeSignature(prizeNumbersByAmount = {}) {
-  return Object.keys(prizeNumbersByAmount)
-    .map(Number)
-    .filter((amount) => amount >= 1 && amount <= 5000)
-    .sort((a, b) => a - b);
-}
-
-function classifyLotteryCategory(prizeNumbersByAmount = {}) {
-  const actual = getPrizeSignature(prizeNumbersByAmount);
-
-  if (actual.length === 0) {
-    return "UNKNOWN";
-  }
-
-  const matchesSignature = (expectedValues) => {
-    const expected = [...expectedValues].sort((a, b) => a - b);
-
-    return (
-      actual.length === expected.length &&
-      actual.every((amount, index) => amount === expected[index])
-    );
-  };
-
-  // Known BM structure
-  if (matchesSignature(LOTTERY_CATEGORY_SIGNATURES.BM)) {
+  if (serial.startsWith("BM-")) {
     return "BM";
   }
 
-  // Known BR structure
-  if (matchesSignature(LOTTERY_CATEGORY_SIGNATURES.BR)) {
+  if (serial.startsWith("BR-")) {
     return "BR";
   }
 
-  // Any valid prize structure that is not BM or BR
-  // belongs to OTHER.
   return "OTHER";
 }
+
+const matchesSignature = (expectedValues) => {
+  const expected = [...expectedValues].sort((a, b) => a - b);
+
+  return (
+    actual.length === expected.length &&
+    actual.every((amount, index) => amount === expected[index])
+  );
+};
 
 function isCategoryAllowedForDatabase(databaseName, category) {
   const allowedCategories = {
@@ -424,7 +398,7 @@ app.get("/api/auto-upload", async (req, res) => {
           .sort((a, b) => b - a);
 
         //update
-        const category = classifyLotteryCategory(prizeNumbersByAmount);
+        const category = classifyLotteryCategory(serialNumber);
 
         console.log(`   🏷️ Category: ${category}`);
 
@@ -1040,7 +1014,7 @@ app.get("/api/all-upload-folder", async (req, res) => {
           console.log(`      ₹${prize}: ${numbers.length} numbers`);
         }
 
-        const category = classifyLotteryCategory(prizeNumbersByAmount);
+        const category = classifyLotteryCategory(serialNumber);
 
         console.log(`   🏷️ Category: ${category}`);
 
@@ -6438,7 +6412,7 @@ app.get("/api/full-upload-folder", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
-        const category = classifyLotteryCategory(prizeNumbers);
+        const category = classifyLotteryCategory(serialNumber);
 
         console.log(`   🏷️ Category: ${category}`);
 
@@ -7207,7 +7181,7 @@ app.get("/api/full-upload", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
-        const category = classifyLotteryCategory(prizeNumbers);
+        const category = classifyLotteryCategory(serialNumber);
 
         console.log(`   🏷️ Category: ${category}`);
 
@@ -9268,7 +9242,7 @@ app.get("/api/absolute-folder", async (req, res) => {
 
         const prizeNumbers = getPrizeNumbersByAmount(rawPrizeSection);
 
-        const category = classifyLotteryCategory(prizeNumbers);
+        const category = classifyLotteryCategory(serialNumber);
 
         console.log(`   🏷️ Category: ${category}`);
 
