@@ -63,20 +63,32 @@ function getPrizeSignature(prizeNumbersByAmount = {}) {
 function classifyLotteryCategory(prizeNumbersByAmount = {}) {
   const actual = getPrizeSignature(prizeNumbersByAmount);
 
-  for (const [category, expectedValues] of Object.entries(
-    LOTTERY_CATEGORY_SIGNATURES,
-  )) {
-    const expected = [...expectedValues].sort((a, b) => a - b);
-
-    if (
-      actual.length === expected.length &&
-      actual.every((amount, index) => amount === expected[index])
-    ) {
-      return category;
-    }
+  if (actual.length === 0) {
+    return "UNKNOWN";
   }
 
-  return "UNKNOWN";
+  const matchesSignature = (expectedValues) => {
+    const expected = [...expectedValues].sort((a, b) => a - b);
+
+    return (
+      actual.length === expected.length &&
+      actual.every((amount, index) => amount === expected[index])
+    );
+  };
+
+  // Known BM structure
+  if (matchesSignature(LOTTERY_CATEGORY_SIGNATURES.BM)) {
+    return "BM";
+  }
+
+  // Known BR structure
+  if (matchesSignature(LOTTERY_CATEGORY_SIGNATURES.BR)) {
+    return "BR";
+  }
+
+  // Any valid prize structure that is not BM or BR
+  // belongs to OTHER.
+  return "OTHER";
 }
 
 function isCategoryAllowedForDatabase(databaseName, category) {
@@ -1016,8 +1028,21 @@ app.get("/api/all-upload-folder", async (req, res) => {
           .filter((amount) => amount >= 1 && amount <= 5000)
           .sort((a, b) => b - a);
 
-        //update
+        console.log(
+          `   💰 Extracted prize signature: ${
+            prizeAmounts.length > 0 ? prizeAmounts.join(", ") : "NONE"
+          }`,
+        );
+
+        for (const prize of prizeAmounts) {
+          const numbers = prizeNumbersByAmount[prize] || [];
+
+          console.log(`      ₹${prize}: ${numbers.length} numbers`);
+        }
+
         const category = classifyLotteryCategory(prizeNumbersByAmount);
+
+        console.log(`   🏷️ Category: ${category}`);
 
         console.log(`   🏷️ Category: ${category}`);
 

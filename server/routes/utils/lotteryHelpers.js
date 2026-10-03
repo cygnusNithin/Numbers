@@ -132,17 +132,18 @@ function getPrizeNumbersByAmount(sectionText = "") {
       number.padStart(4, "0"),
     );
 
-    if (numbers.length === 0) {
-      continue;
-    }
-
     const amount = currentMatch.amount;
 
+    // Always keep the prize category even if number extraction
+    // produced zero numbers. This allows category detection to
+    // use the PDF's actual prize structure.
     if (!results[amount]) {
       results[amount] = [];
     }
 
-    results[amount] = [...new Set([...results[amount], ...numbers])];
+    if (numbers.length > 0) {
+      results[amount] = [...new Set([...results[amount], ...numbers])];
+    }
   }
 
   return results;
