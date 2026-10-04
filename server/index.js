@@ -1018,8 +1018,6 @@ app.get("/api/all-upload-folder", async (req, res) => {
 
         console.log(`   🏷️ Category: ${category}`);
 
-        console.log(`   🏷️ Category: ${category}`);
-
         if (category === "UNKNOWN") {
           console.log(
             `   ⚠️ Skipped: Unknown prize signature. Manual inspection required.`,
@@ -8999,7 +8997,7 @@ function buildPrizeCycleAnalysis(docs = [], targetPrize) {
 
 app.get("/api/merged-cycles", async (req, res) => {
   try {
-    const docs = await FullLotteryData.find({})
+    const docs = await AbsoluteData.find({})
       .sort({ drawDate: 1, recordNumber: 1 })
       .lean();
 
@@ -9081,7 +9079,7 @@ app.get("/api/merged-cycles/:cycleNumber", async (req, res) => {
       return res.status(400).json({ error: "Invalid cycle number" });
     }
 
-    const docs = await FullLotteryData.find({})
+    const docs = await AbsoluteData.find({})
       .sort({ drawDate: 1, recordNumber: 1 })
       .lean();
 
