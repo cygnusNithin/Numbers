@@ -1,0 +1,413 @@
+{
+  "pdfs": 1997,
+  "processed": 1997,
+  "metadataErrors": 0,
+  "extractionErrors": 0,
+  "database": {
+    "LotteryData": {
+      "checked": 1997,
+      "matched": 1997,
+      "mismatched": 0,
+      "missing": 0
+    },
+    "LotteryDataNew": {
+      "checked": 1997,
+      "matched": 1997,
+      "mismatched": 0,
+      "missing": 0
+    },
+    "FullLotteryData": {
+      "checked": 1997,
+      "matched": 1997,
+      "mismatched": 0,
+      "missing": 0
+    },
+    "AbsoluteData": {
+      "checked": 1997,
+      "matched": 1997,
+      "mismatched": 0,
+      "missing": 0
+    }
+  },
+  "collisions": [
+    {
+      "fileName": "draw-72055.pdf",
+      "serialNumber": "W-587",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-72067.pdf",
+      "serialNumber": "NR-198",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-72202.pdf",
+      "serialNumber": "NR-214",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-72561.pdf",
+      "serialNumber": "NR-221",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-72623.pdf",
+      "serialNumber": "KR-515",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-72626.pdf",
+      "serialNumber": "AK-515",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-72651.pdf",
+      "serialNumber": "KN-390",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-72779.pdf",
+      "serialNumber": "KN-393",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-72781.pdf",
+      "serialNumber": "KR-522",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-73054.pdf",
+      "serialNumber": "SS-302",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-73752.pdf",
+      "serialNumber": "SS-308",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-73840.pdf",
+      "serialNumber": "KR-556",
+      "category": "OTHER",
+      "prize": 1000,
+      "number": "1000"
+    },
+    {
+      "fileName": "draw-73870.pdf",
+      "serialNumber": "FF-10",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-73937.pdf",
+      "serialNumber": "FF-19",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-73985.pdf",
+      "serialNumber": "KR-577",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74011.pdf",
+      "serialNumber": "KN-451",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74020.pdf",
+      "serialNumber": "KR-582",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74062.pdf",
+      "serialNumber": "AK-587",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74073.pdf",
+      "serialNumber": "KN-458",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-74085.pdf",
+      "serialNumber": "W-709",
+      "category": "OTHER",
+      "prize": 1000,
+      "number": "1000"
+    },
+    {
+      "fileName": "draw-74135.pdf",
+      "serialNumber": "SS-361",
+      "category": "OTHER",
+      "prize": 200,
+      "number": "0200"
+    },
+    {
+      "fileName": "draw-74139.pdf",
+      "serialNumber": "KR-598",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74150.pdf",
+      "serialNumber": "KN-468",
+      "category": "OTHER",
+      "prize": 1000,
+      "number": "1000"
+    },
+    {
+      "fileName": "draw-74170.pdf",
+      "serialNumber": "W-719",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74264.pdf",
+      "serialNumber": "KN-484",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74341.pdf",
+      "serialNumber": "KR-627",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74350.pdf",
+      "serialNumber": "W-744",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-74376.pdf",
+      "serialNumber": "KR-632",
+      "category": "OTHER",
+      "prize": 1000,
+      "number": "1000"
+    },
+    {
+      "fileName": "draw-74435.pdf",
+      "serialNumber": "KR-638",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74503.pdf",
+      "serialNumber": "KN-516",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74517.pdf",
+      "serialNumber": "KN-518",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-74530.pdf",
+      "serialNumber": "KN-520",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-74553.pdf",
+      "serialNumber": "KR-655",
+      "category": "OTHER",
+      "prize": 2000,
+      "number": "2000"
+    },
+    {
+      "fileName": "draw-74612.pdf",
+      "serialNumber": "SS-425",
+      "category": "OTHER",
+      "prize": 200,
+      "number": "0200"
+    },
+    {
+      "fileName": "draw-74668.pdf",
+      "serialNumber": "KN-539",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74686.pdf",
+      "serialNumber": "SS-436",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74696.pdf",
+      "serialNumber": "NR-402",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-74792.pdf",
+      "serialNumber": "FF-126",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74797.pdf",
+      "serialNumber": "SS-452",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74809.pdf",
+      "serialNumber": "AK-688",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74824.pdf",
+      "serialNumber": "W-810",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-74881.pdf",
+      "serialNumber": "FF-137",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-74907.pdf",
+      "serialNumber": "SS-468",
+      "category": "OTHER",
+      "prize": 50,
+      "number": "0050"
+    },
+    {
+      "fileName": "draw-74975.pdf",
+      "serialNumber": "SM-13",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-75008.pdf",
+      "serialNumber": "KR-721",
+      "category": "OTHER",
+      "prize": 200,
+      "number": "0200"
+    },
+    {
+      "fileName": "draw-75023.pdf",
+      "serialNumber": "BT-20",
+      "category": "OTHER",
+      "prize": 5000,
+      "number": "5000"
+    },
+    {
+      "fileName": "draw-75024.pdf",
+      "serialNumber": "SS-485",
+      "category": "OTHER",
+      "prize": 200,
+      "number": "0200"
+    },
+    {
+      "fileName": "draw-75043.pdf",
+      "serialNumber": "BT-23",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-75082.pdf",
+      "serialNumber": "SK-27",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-75128.pdf",
+      "serialNumber": "DL-33",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    },
+    {
+      "fileName": "draw-75166.pdf",
+      "serialNumber": "SM-41",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-75255.pdf",
+      "serialNumber": "BT-53",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-75280.pdf",
+      "serialNumber": "SK-55",
+      "category": "OTHER",
+      "prize": 100,
+      "number": "0100"
+    },
+    {
+      "fileName": "draw-75294.pdf",
+      "serialNumber": "SK-57",
+      "category": "OTHER",
+      "prize": 500,
+      "number": "0500"
+    }
+  ],
+  "mismatches": []
+}

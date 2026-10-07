@@ -1,0 +1,6229 @@
+{
+  "17/07/2022": [
+    {
+      "_id": "6ac238ae8f87b61816632b52",
+      "serialNumber": "BR-86",
+      "date": "17/07/2022",
+      "drawDate": null,
+      "fileName": "draw-73855.pdf",
+      "series": [
+        {
+          "prize": 5000,
+          "numbers": [
+            {
+              "number": "0079",
+              "count": 1
+            },
+            {
+              "number": "0155",
+              "count": 1
+            },
+            {
+              "number": "0244",
+              "count": 1
+            },
+            {
+              "number": "0655",
+              "count": 1
+            },
+            {
+              "number": "0673",
+              "count": 1
+            },
+            {
+              "number": "0927",
+              "count": 1
+            },
+            {
+              "number": "0987",
+              "count": 1
+            },
+            {
+              "number": "1006",
+              "count": 1
+            },
+            {
+              "number": "1155",
+              "count": 1
+            },
+            {
+              "number": "1655",
+              "count": 1
+            },
+            {
+              "number": "1702",
+              "count": 1
+            },
+            {
+              "number": "1910",
+              "count": 1
+            },
+            {
+              "number": "2217",
+              "count": 1
+            },
+            {
+              "number": "2617",
+              "count": 1
+            },
+            {
+              "number": "2713",
+              "count": 1
+            },
+            {
+              "number": "3221",
+              "count": 1
+            },
+            {
+              "number": "3362",
+              "count": 1
+            },
+            {
+              "number": "3850",
+              "count": 1
+            },
+            {
+              "number": "4430",
+              "count": 1
+            },
+            {
+              "number": "4437",
+              "count": 1
+            },
+            {
+              "number": "4496",
+              "count": 1
+            },
+            {
+              "number": "4501",
+              "count": 1
+            },
+            {
+              "number": "4874",
+              "count": 1
+            },
+            {
+              "number": "5204",
+              "count": 1
+            },
+            {
+              "number": "5484",
+              "count": 1
+            },
+            {
+              "number": "5576",
+              "count": 1
+            },
+            {
+              "number": "5682",
+              "count": 1
+            },
+            {
+              "number": "5724",
+              "count": 1
+            },
+            {
+              "number": "6615",
+              "count": 1
+            },
+            {
+              "number": "6992",
+              "count": 1
+            },
+            {
+              "number": "7370",
+              "count": 1
+            },
+            {
+              "number": "7817",
+              "count": 1
+            },
+            {
+              "number": "8074",
+              "count": 1
+            },
+            {
+              "number": "8115",
+              "count": 1
+            },
+            {
+              "number": "8570",
+              "count": 1
+            },
+            {
+              "number": "9146",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 2000,
+          "numbers": [
+            {
+              "number": "0444",
+              "count": 1
+            },
+            {
+              "number": "0458",
+              "count": 1
+            },
+            {
+              "number": "0622",
+              "count": 1
+            },
+            {
+              "number": "0823",
+              "count": 1
+            },
+            {
+              "number": "1005",
+              "count": 1
+            },
+            {
+              "number": "1907",
+              "count": 1
+            },
+            {
+              "number": "2272",
+              "count": 1
+            },
+            {
+              "number": "2298",
+              "count": 1
+            },
+            {
+              "number": "2353",
+              "count": 1
+            },
+            {
+              "number": "2412",
+              "count": 1
+            },
+            {
+              "number": "2470",
+              "count": 1
+            },
+            {
+              "number": "2592",
+              "count": 1
+            },
+            {
+              "number": "2638",
+              "count": 1
+            },
+            {
+              "number": "2837",
+              "count": 1
+            },
+            {
+              "number": "2846",
+              "count": 1
+            },
+            {
+              "number": "2901",
+              "count": 1
+            },
+            {
+              "number": "3118",
+              "count": 1
+            },
+            {
+              "number": "3188",
+              "count": 1
+            },
+            {
+              "number": "3420",
+              "count": 1
+            },
+            {
+              "number": "3547",
+              "count": 1
+            },
+            {
+              "number": "3585",
+              "count": 1
+            },
+            {
+              "number": "3915",
+              "count": 1
+            },
+            {
+              "number": "4314",
+              "count": 1
+            },
+            {
+              "number": "4480",
+              "count": 1
+            },
+            {
+              "number": "4796",
+              "count": 1
+            },
+            {
+              "number": "4963",
+              "count": 1
+            },
+            {
+              "number": "5019",
+              "count": 1
+            },
+            {
+              "number": "5932",
+              "count": 1
+            },
+            {
+              "number": "6835",
+              "count": 1
+            },
+            {
+              "number": "6921",
+              "count": 1
+            },
+            {
+              "number": "7168",
+              "count": 1
+            },
+            {
+              "number": "7415",
+              "count": 1
+            },
+            {
+              "number": "7517",
+              "count": 1
+            },
+            {
+              "number": "7681",
+              "count": 1
+            },
+            {
+              "number": "7972",
+              "count": 1
+            },
+            {
+              "number": "8006",
+              "count": 1
+            },
+            {
+              "number": "8028",
+              "count": 1
+            },
+            {
+              "number": "8163",
+              "count": 1
+            },
+            {
+              "number": "8374",
+              "count": 1
+            },
+            {
+              "number": "8381",
+              "count": 1
+            },
+            {
+              "number": "8409",
+              "count": 1
+            },
+            {
+              "number": "8480",
+              "count": 1
+            },
+            {
+              "number": "8568",
+              "count": 1
+            },
+            {
+              "number": "8869",
+              "count": 1
+            },
+            {
+              "number": "9048",
+              "count": 1
+            },
+            {
+              "number": "9092",
+              "count": 1
+            },
+            {
+              "number": "9137",
+              "count": 1
+            },
+            {
+              "number": "9175",
+              "count": 1
+            },
+            {
+              "number": "9262",
+              "count": 1
+            },
+            {
+              "number": "9842",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 1000,
+          "numbers": [
+            {
+              "number": "0097",
+              "count": 1
+            },
+            {
+              "number": "0329",
+              "count": 1
+            },
+            {
+              "number": "0381",
+              "count": 1
+            },
+            {
+              "number": "0439",
+              "count": 1
+            },
+            {
+              "number": "0533",
+              "count": 1
+            },
+            {
+              "number": "0773",
+              "count": 1
+            },
+            {
+              "number": "0915",
+              "count": 1
+            },
+            {
+              "number": "1097",
+              "count": 1
+            },
+            {
+              "number": "1222",
+              "count": 1
+            },
+            {
+              "number": "1239",
+              "count": 1
+            },
+            {
+              "number": "1378",
+              "count": 1
+            },
+            {
+              "number": "1410",
+              "count": 1
+            },
+            {
+              "number": "1640",
+              "count": 1
+            },
+            {
+              "number": "1800",
+              "count": 1
+            },
+            {
+              "number": "1919",
+              "count": 1
+            },
+            {
+              "number": "1927",
+              "count": 1
+            },
+            {
+              "number": "2013",
+              "count": 1
+            },
+            {
+              "number": "2255",
+              "count": 1
+            },
+            {
+              "number": "2419",
+              "count": 1
+            },
+            {
+              "number": "2489",
+              "count": 1
+            },
+            {
+              "number": "2614",
+              "count": 1
+            },
+            {
+              "number": "2674",
+              "count": 1
+            },
+            {
+              "number": "2765",
+              "count": 1
+            },
+            {
+              "number": "2937",
+              "count": 1
+            },
+            {
+              "number": "3115",
+              "count": 1
+            },
+            {
+              "number": "3837",
+              "count": 1
+            },
+            {
+              "number": "3979",
+              "count": 1
+            },
+            {
+              "number": "4179",
+              "count": 1
+            },
+            {
+              "number": "4230",
+              "count": 1
+            },
+            {
+              "number": "4611",
+              "count": 1
+            },
+            {
+              "number": "4667",
+              "count": 1
+            },
+            {
+              "number": "4810",
+              "count": 1
+            },
+            {
+              "number": "5041",
+              "count": 1
+            },
+            {
+              "number": "5064",
+              "count": 1
+            },
+            {
+              "number": "5220",
+              "count": 1
+            },
+            {
+              "number": "5423",
+              "count": 1
+            },
+            {
+              "number": "5755",
+              "count": 1
+            },
+            {
+              "number": "5849",
+              "count": 1
+            },
+            {
+              "number": "5954",
+              "count": 1
+            },
+            {
+              "number": "6017",
+              "count": 1
+            },
+            {
+              "number": "6125",
+              "count": 1
+            },
+            {
+              "number": "6178",
+              "count": 1
+            },
+            {
+              "number": "6181",
+              "count": 1
+            },
+            {
+              "number": "6195",
+              "count": 1
+            },
+            {
+              "number": "6228",
+              "count": 1
+            },
+            {
+              "number": "6253",
+              "count": 1
+            },
+            {
+              "number": "6390",
+              "count": 1
+            },
+            {
+              "number": "6397",
+              "count": 1
+            },
+            {
+              "number": "6829",
+              "count": 1
+            },
+            {
+              "number": "6842",
+              "count": 1
+            },
+            {
+              "number": "7194",
+              "count": 1
+            },
+            {
+              "number": "7360",
+              "count": 1
+            },
+            {
+              "number": "7436",
+              "count": 1
+            },
+            {
+              "number": "7722",
+              "count": 1
+            },
+            {
+              "number": "8019",
+              "count": 1
+            },
+            {
+              "number": "8051",
+              "count": 1
+            },
+            {
+              "number": "8080",
+              "count": 1
+            },
+            {
+              "number": "8160",
+              "count": 1
+            },
+            {
+              "number": "8185",
+              "count": 1
+            },
+            {
+              "number": "8260",
+              "count": 1
+            },
+            {
+              "number": "8296",
+              "count": 1
+            },
+            {
+              "number": "8509",
+              "count": 1
+            },
+            {
+              "number": "8761",
+              "count": 1
+            },
+            {
+              "number": "8860",
+              "count": 1
+            },
+            {
+              "number": "8987",
+              "count": 1
+            },
+            {
+              "number": "9000",
+              "count": 1
+            },
+            {
+              "number": "9185",
+              "count": 1
+            },
+            {
+              "number": "9209",
+              "count": 1
+            },
+            {
+              "number": "9230",
+              "count": 1
+            },
+            {
+              "number": "9427",
+              "count": 1
+            },
+            {
+              "number": "9593",
+              "count": 1
+            },
+            {
+              "number": "9732",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 500,
+          "numbers": [
+            {
+              "number": "0028",
+              "count": 1
+            },
+            {
+              "number": "0116",
+              "count": 1
+            },
+            {
+              "number": "0175",
+              "count": 1
+            },
+            {
+              "number": "0191",
+              "count": 1
+            },
+            {
+              "number": "0311",
+              "count": 1
+            },
+            {
+              "number": "0385",
+              "count": 1
+            },
+            {
+              "number": "0471",
+              "count": 1
+            },
+            {
+              "number": "0555",
+              "count": 1
+            },
+            {
+              "number": "0595",
+              "count": 1
+            },
+            {
+              "number": "0653",
+              "count": 1
+            },
+            {
+              "number": "0719",
+              "count": 1
+            },
+            {
+              "number": "1011",
+              "count": 1
+            },
+            {
+              "number": "1020",
+              "count": 1
+            },
+            {
+              "number": "1044",
+              "count": 1
+            },
+            {
+              "number": "1053",
+              "count": 1
+            },
+            {
+              "number": "1163",
+              "count": 1
+            },
+            {
+              "number": "1501",
+              "count": 1
+            },
+            {
+              "number": "1512",
+              "count": 1
+            },
+            {
+              "number": "1524",
+              "count": 1
+            },
+            {
+              "number": "1670",
+              "count": 1
+            },
+            {
+              "number": "1853",
+              "count": 1
+            },
+            {
+              "number": "2121",
+              "count": 1
+            },
+            {
+              "number": "2244",
+              "count": 1
+            },
+            {
+              "number": "2512",
+              "count": 1
+            },
+            {
+              "number": "2566",
+              "count": 1
+            },
+            {
+              "number": "2659",
+              "count": 1
+            },
+            {
+              "number": "2709",
+              "count": 1
+            },
+            {
+              "number": "2740",
+              "count": 1
+            },
+            {
+              "number": "2767",
+              "count": 1
+            },
+            {
+              "number": "2779",
+              "count": 1
+            },
+            {
+              "number": "2819",
+              "count": 1
+            },
+            {
+              "number": "2868",
+              "count": 1
+            },
+            {
+              "number": "2951",
+              "count": 1
+            },
+            {
+              "number": "3071",
+              "count": 1
+            },
+            {
+              "number": "3110",
+              "count": 1
+            },
+            {
+              "number": "3123",
+              "count": 1
+            },
+            {
+              "number": "3145",
+              "count": 1
+            },
+            {
+              "number": "3163",
+              "count": 1
+            },
+            {
+              "number": "3269",
+              "count": 1
+            },
+            {
+              "number": "3364",
+              "count": 1
+            },
+            {
+              "number": "3415",
+              "count": 1
+            },
+            {
+              "number": "3432",
+              "count": 1
+            },
+            {
+              "number": "3491",
+              "count": 1
+            },
+            {
+              "number": "3505",
+              "count": 1
+            },
+            {
+              "number": "3545",
+              "count": 1
+            },
+            {
+              "number": "3591",
+              "count": 1
+            },
+            {
+              "number": "3755",
+              "count": 1
+            },
+            {
+              "number": "3814",
+              "count": 1
+            },
+            {
+              "number": "3819",
+              "count": 1
+            },
+            {
+              "number": "3937",
+              "count": 1
+            },
+            {
+              "number": "4034",
+              "count": 1
+            },
+            {
+              "number": "4076",
+              "count": 1
+            },
+            {
+              "number": "4209",
+              "count": 1
+            },
+            {
+              "number": "4253",
+              "count": 1
+            },
+            {
+              "number": "4349",
+              "count": 1
+            },
+            {
+              "number": "4399",
+              "count": 1
+            },
+            {
+              "number": "4493",
+              "count": 1
+            },
+            {
+              "number": "4500",
+              "count": 1
+            },
+            {
+              "number": "4690",
+              "count": 1
+            },
+            {
+              "number": "4783",
+              "count": 1
+            },
+            {
+              "number": "4845",
+              "count": 1
+            },
+            {
+              "number": "4857",
+              "count": 1
+            },
+            {
+              "number": "4907",
+              "count": 1
+            },
+            {
+              "number": "4995",
+              "count": 1
+            },
+            {
+              "number": "5115",
+              "count": 1
+            },
+            {
+              "number": "5124",
+              "count": 1
+            },
+            {
+              "number": "5146",
+              "count": 1
+            },
+            {
+              "number": "5297",
+              "count": 1
+            },
+            {
+              "number": "5482",
+              "count": 1
+            },
+            {
+              "number": "5512",
+              "count": 1
+            },
+            {
+              "number": "5550",
+              "count": 1
+            },
+            {
+              "number": "5589",
+              "count": 1
+            },
+            {
+              "number": "5899",
+              "count": 1
+            },
+            {
+              "number": "5949",
+              "count": 1
+            },
+            {
+              "number": "5978",
+              "count": 1
+            },
+            {
+              "number": "5988",
+              "count": 1
+            },
+            {
+              "number": "5994",
+              "count": 1
+            },
+            {
+              "number": "6238",
+              "count": 1
+            },
+            {
+              "number": "6409",
+              "count": 1
+            },
+            {
+              "number": "6434",
+              "count": 1
+            },
+            {
+              "number": "6443",
+              "count": 1
+            },
+            {
+              "number": "6477",
+              "count": 1
+            },
+            {
+              "number": "6560",
+              "count": 1
+            },
+            {
+              "number": "6735",
+              "count": 1
+            },
+            {
+              "number": "6759",
+              "count": 1
+            },
+            {
+              "number": "6824",
+              "count": 1
+            },
+            {
+              "number": "6853",
+              "count": 1
+            },
+            {
+              "number": "6911",
+              "count": 1
+            },
+            {
+              "number": "7002",
+              "count": 1
+            },
+            {
+              "number": "7162",
+              "count": 1
+            },
+            {
+              "number": "7196",
+              "count": 1
+            },
+            {
+              "number": "7309",
+              "count": 1
+            },
+            {
+              "number": "7438",
+              "count": 1
+            },
+            {
+              "number": "7472",
+              "count": 1
+            },
+            {
+              "number": "7491",
+              "count": 1
+            },
+            {
+              "number": "7499",
+              "count": 1
+            },
+            {
+              "number": "7529",
+              "count": 1
+            },
+            {
+              "number": "7551",
+              "count": 1
+            },
+            {
+              "number": "7814",
+              "count": 1
+            },
+            {
+              "number": "8000",
+              "count": 1
+            },
+            {
+              "number": "8101",
+              "count": 1
+            },
+            {
+              "number": "8176",
+              "count": 1
+            },
+            {
+              "number": "8290",
+              "count": 1
+            },
+            {
+              "number": "8389",
+              "count": 1
+            },
+            {
+              "number": "8400",
+              "count": 1
+            },
+            {
+              "number": "8424",
+              "count": 1
+            },
+            {
+              "number": "8555",
+              "count": 1
+            },
+            {
+              "number": "8626",
+              "count": 1
+            },
+            {
+              "number": "8692",
+              "count": 1
+            },
+            {
+              "number": "8710",
+              "count": 1
+            },
+            {
+              "number": "8790",
+              "count": 1
+            },
+            {
+              "number": "8800",
+              "count": 1
+            },
+            {
+              "number": "8960",
+              "count": 1
+            },
+            {
+              "number": "9044",
+              "count": 1
+            },
+            {
+              "number": "9346",
+              "count": 1
+            },
+            {
+              "number": "9402",
+              "count": 1
+            },
+            {
+              "number": "9408",
+              "count": 1
+            },
+            {
+              "number": "9414",
+              "count": 1
+            },
+            {
+              "number": "9459",
+              "count": 1
+            },
+            {
+              "number": "9527",
+              "count": 1
+            },
+            {
+              "number": "9599",
+              "count": 1
+            },
+            {
+              "number": "9628",
+              "count": 1
+            },
+            {
+              "number": "9751",
+              "count": 1
+            },
+            {
+              "number": "9759",
+              "count": 1
+            },
+            {
+              "number": "9832",
+              "count": 1
+            },
+            {
+              "number": "9906",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-04T11:29:50.149Z",
+      "recordNumber": 490
+    },
+    {
+      "_id": "6ac238ae8f87b61816632b57",
+      "serialNumber": "FF-8",
+      "date": "17/07/2022",
+      "drawDate": null,
+      "fileName": "draw-73856.pdf",
+      "series": [
+        {
+          "prize": 5000,
+          "numbers": [
+            {
+              "number": "0280",
+              "count": 1
+            },
+            {
+              "number": "0362",
+              "count": 1
+            },
+            {
+              "number": "0510",
+              "count": 1
+            },
+            {
+              "number": "1057",
+              "count": 1
+            },
+            {
+              "number": "2153",
+              "count": 1
+            },
+            {
+              "number": "2590",
+              "count": 1
+            },
+            {
+              "number": "2813",
+              "count": 1
+            },
+            {
+              "number": "2887",
+              "count": 1
+            },
+            {
+              "number": "3741",
+              "count": 1
+            },
+            {
+              "number": "4932",
+              "count": 1
+            },
+            {
+              "number": "5364",
+              "count": 1
+            },
+            {
+              "number": "6012",
+              "count": 1
+            },
+            {
+              "number": "6212",
+              "count": 1
+            },
+            {
+              "number": "6992",
+              "count": 1
+            },
+            {
+              "number": "7045",
+              "count": 1
+            },
+            {
+              "number": "7725",
+              "count": 1
+            },
+            {
+              "number": "7973",
+              "count": 1
+            },
+            {
+              "number": "8363",
+              "count": 1
+            },
+            {
+              "number": "8486",
+              "count": 1
+            },
+            {
+              "number": "9186",
+              "count": 1
+            },
+            {
+              "number": "9469",
+              "count": 1
+            },
+            {
+              "number": "9470",
+              "count": 1
+            },
+            {
+              "number": "9924",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 2000,
+          "numbers": [
+            {
+              "number": "0750",
+              "count": 1
+            },
+            {
+              "number": "1085",
+              "count": 1
+            },
+            {
+              "number": "1089",
+              "count": 1
+            },
+            {
+              "number": "1266",
+              "count": 1
+            },
+            {
+              "number": "1833",
+              "count": 1
+            },
+            {
+              "number": "5452",
+              "count": 1
+            },
+            {
+              "number": "5718",
+              "count": 1
+            },
+            {
+              "number": "6338",
+              "count": 1
+            },
+            {
+              "number": "6611",
+              "count": 1
+            },
+            {
+              "number": "7239",
+              "count": 1
+            },
+            {
+              "number": "7302",
+              "count": 1
+            },
+            {
+              "number": "9908",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 1000,
+          "numbers": [
+            {
+              "number": "0551",
+              "count": 1
+            },
+            {
+              "number": "1996",
+              "count": 1
+            },
+            {
+              "number": "2018",
+              "count": 1
+            },
+            {
+              "number": "2188",
+              "count": 1
+            },
+            {
+              "number": "2660",
+              "count": 1
+            },
+            {
+              "number": "3404",
+              "count": 1
+            },
+            {
+              "number": "3611",
+              "count": 1
+            },
+            {
+              "number": "3878",
+              "count": 1
+            },
+            {
+              "number": "4503",
+              "count": 1
+            },
+            {
+              "number": "4620",
+              "count": 1
+            },
+            {
+              "number": "4700",
+              "count": 1
+            },
+            {
+              "number": "4701",
+              "count": 1
+            },
+            {
+              "number": "4745",
+              "count": 1
+            },
+            {
+              "number": "5092",
+              "count": 1
+            },
+            {
+              "number": "5667",
+              "count": 1
+            },
+            {
+              "number": "6098",
+              "count": 1
+            },
+            {
+              "number": "6750",
+              "count": 1
+            },
+            {
+              "number": "6874",
+              "count": 1
+            },
+            {
+              "number": "6976",
+              "count": 1
+            },
+            {
+              "number": "7104",
+              "count": 1
+            },
+            {
+              "number": "8332",
+              "count": 1
+            },
+            {
+              "number": "8491",
+              "count": 1
+            },
+            {
+              "number": "9268",
+              "count": 1
+            },
+            {
+              "number": "9687",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 500,
+          "numbers": [
+            {
+              "number": "0032",
+              "count": 1
+            },
+            {
+              "number": "0355",
+              "count": 1
+            },
+            {
+              "number": "0666",
+              "count": 1
+            },
+            {
+              "number": "0721",
+              "count": 1
+            },
+            {
+              "number": "0933",
+              "count": 1
+            },
+            {
+              "number": "1015",
+              "count": 1
+            },
+            {
+              "number": "1040",
+              "count": 1
+            },
+            {
+              "number": "1158",
+              "count": 1
+            },
+            {
+              "number": "1256",
+              "count": 1
+            },
+            {
+              "number": "1369",
+              "count": 1
+            },
+            {
+              "number": "1501",
+              "count": 1
+            },
+            {
+              "number": "1770",
+              "count": 1
+            },
+            {
+              "number": "1773",
+              "count": 1
+            },
+            {
+              "number": "1848",
+              "count": 1
+            },
+            {
+              "number": "1866",
+              "count": 1
+            },
+            {
+              "number": "1888",
+              "count": 1
+            },
+            {
+              "number": "1895",
+              "count": 1
+            },
+            {
+              "number": "2035",
+              "count": 1
+            },
+            {
+              "number": "2149",
+              "count": 1
+            },
+            {
+              "number": "2189",
+              "count": 1
+            },
+            {
+              "number": "2353",
+              "count": 1
+            },
+            {
+              "number": "2400",
+              "count": 1
+            },
+            {
+              "number": "2455",
+              "count": 1
+            },
+            {
+              "number": "2577",
+              "count": 1
+            },
+            {
+              "number": "2625",
+              "count": 1
+            },
+            {
+              "number": "2775",
+              "count": 1
+            },
+            {
+              "number": "2821",
+              "count": 1
+            },
+            {
+              "number": "3136",
+              "count": 1
+            },
+            {
+              "number": "3334",
+              "count": 1
+            },
+            {
+              "number": "3360",
+              "count": 1
+            },
+            {
+              "number": "3579",
+              "count": 1
+            },
+            {
+              "number": "3653",
+              "count": 1
+            },
+            {
+              "number": "3733",
+              "count": 1
+            },
+            {
+              "number": "3791",
+              "count": 1
+            },
+            {
+              "number": "3896",
+              "count": 1
+            },
+            {
+              "number": "4001",
+              "count": 1
+            },
+            {
+              "number": "4057",
+              "count": 1
+            },
+            {
+              "number": "4298",
+              "count": 1
+            },
+            {
+              "number": "4350",
+              "count": 1
+            },
+            {
+              "number": "4433",
+              "count": 1
+            },
+            {
+              "number": "4528",
+              "count": 1
+            },
+            {
+              "number": "4547",
+              "count": 1
+            },
+            {
+              "number": "4637",
+              "count": 1
+            },
+            {
+              "number": "4679",
+              "count": 1
+            },
+            {
+              "number": "4694",
+              "count": 1
+            },
+            {
+              "number": "4719",
+              "count": 1
+            },
+            {
+              "number": "4873",
+              "count": 1
+            },
+            {
+              "number": "5130",
+              "count": 1
+            },
+            {
+              "number": "5216",
+              "count": 1
+            },
+            {
+              "number": "5253",
+              "count": 1
+            },
+            {
+              "number": "5318",
+              "count": 1
+            },
+            {
+              "number": "5376",
+              "count": 1
+            },
+            {
+              "number": "5465",
+              "count": 1
+            },
+            {
+              "number": "5476",
+              "count": 1
+            },
+            {
+              "number": "5763",
+              "count": 1
+            },
+            {
+              "number": "5913",
+              "count": 1
+            },
+            {
+              "number": "6161",
+              "count": 1
+            },
+            {
+              "number": "6221",
+              "count": 1
+            },
+            {
+              "number": "6228",
+              "count": 1
+            },
+            {
+              "number": "6296",
+              "count": 1
+            },
+            {
+              "number": "6431",
+              "count": 1
+            },
+            {
+              "number": "6500",
+              "count": 1
+            },
+            {
+              "number": "6596",
+              "count": 1
+            },
+            {
+              "number": "6620",
+              "count": 1
+            },
+            {
+              "number": "6626",
+              "count": 1
+            },
+            {
+              "number": "6669",
+              "count": 1
+            },
+            {
+              "number": "6929",
+              "count": 1
+            },
+            {
+              "number": "6997",
+              "count": 1
+            },
+            {
+              "number": "7270",
+              "count": 1
+            },
+            {
+              "number": "7345",
+              "count": 1
+            },
+            {
+              "number": "7348",
+              "count": 1
+            },
+            {
+              "number": "7494",
+              "count": 1
+            },
+            {
+              "number": "7548",
+              "count": 1
+            },
+            {
+              "number": "7768",
+              "count": 1
+            },
+            {
+              "number": "7792",
+              "count": 1
+            },
+            {
+              "number": "7922",
+              "count": 1
+            },
+            {
+              "number": "7945",
+              "count": 1
+            },
+            {
+              "number": "7995",
+              "count": 1
+            },
+            {
+              "number": "8145",
+              "count": 1
+            },
+            {
+              "number": "8149",
+              "count": 1
+            },
+            {
+              "number": "8242",
+              "count": 1
+            },
+            {
+              "number": "8307",
+              "count": 1
+            },
+            {
+              "number": "8319",
+              "count": 1
+            },
+            {
+              "number": "8349",
+              "count": 1
+            },
+            {
+              "number": "8580",
+              "count": 1
+            },
+            {
+              "number": "8595",
+              "count": 1
+            },
+            {
+              "number": "8656",
+              "count": 1
+            },
+            {
+              "number": "8813",
+              "count": 1
+            },
+            {
+              "number": "8973",
+              "count": 1
+            },
+            {
+              "number": "9000",
+              "count": 1
+            },
+            {
+              "number": "9035",
+              "count": 1
+            },
+            {
+              "number": "9069",
+              "count": 1
+            },
+            {
+              "number": "9212",
+              "count": 1
+            },
+            {
+              "number": "9256",
+              "count": 1
+            },
+            {
+              "number": "9321",
+              "count": 1
+            },
+            {
+              "number": "9512",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 100,
+          "numbers": [
+            {
+              "number": "0020",
+              "count": 1
+            },
+            {
+              "number": "0052",
+              "count": 1
+            },
+            {
+              "number": "0128",
+              "count": 1
+            },
+            {
+              "number": "0194",
+              "count": 1
+            },
+            {
+              "number": "0225",
+              "count": 1
+            },
+            {
+              "number": "0263",
+              "count": 1
+            },
+            {
+              "number": "0409",
+              "count": 1
+            },
+            {
+              "number": "0492",
+              "count": 1
+            },
+            {
+              "number": "0561",
+              "count": 1
+            },
+            {
+              "number": "0597",
+              "count": 1
+            },
+            {
+              "number": "0696",
+              "count": 1
+            },
+            {
+              "number": "0700",
+              "count": 1
+            },
+            {
+              "number": "0734",
+              "count": 1
+            },
+            {
+              "number": "0812",
+              "count": 1
+            },
+            {
+              "number": "1078",
+              "count": 1
+            },
+            {
+              "number": "1131",
+              "count": 1
+            },
+            {
+              "number": "1167",
+              "count": 1
+            },
+            {
+              "number": "1229",
+              "count": 1
+            },
+            {
+              "number": "1312",
+              "count": 1
+            },
+            {
+              "number": "1470",
+              "count": 1
+            },
+            {
+              "number": "1504",
+              "count": 1
+            },
+            {
+              "number": "1550",
+              "count": 1
+            },
+            {
+              "number": "1633",
+              "count": 1
+            },
+            {
+              "number": "1728",
+              "count": 1
+            },
+            {
+              "number": "1847",
+              "count": 1
+            },
+            {
+              "number": "1863",
+              "count": 1
+            },
+            {
+              "number": "1885",
+              "count": 1
+            },
+            {
+              "number": "1908",
+              "count": 1
+            },
+            {
+              "number": "1990",
+              "count": 1
+            },
+            {
+              "number": "2090",
+              "count": 1
+            },
+            {
+              "number": "2151",
+              "count": 1
+            },
+            {
+              "number": "2199",
+              "count": 1
+            },
+            {
+              "number": "2208",
+              "count": 1
+            },
+            {
+              "number": "2259",
+              "count": 1
+            },
+            {
+              "number": "2375",
+              "count": 1
+            },
+            {
+              "number": "2530",
+              "count": 1
+            },
+            {
+              "number": "2639",
+              "count": 1
+            },
+            {
+              "number": "2749",
+              "count": 1
+            },
+            {
+              "number": "2820",
+              "count": 1
+            },
+            {
+              "number": "3010",
+              "count": 1
+            },
+            {
+              "number": "3232",
+              "count": 1
+            },
+            {
+              "number": "3235",
+              "count": 1
+            },
+            {
+              "number": "3305",
+              "count": 1
+            },
+            {
+              "number": "3335",
+              "count": 1
+            },
+            {
+              "number": "3428",
+              "count": 1
+            },
+            {
+              "number": "3554",
+              "count": 1
+            },
+            {
+              "number": "3563",
+              "count": 1
+            },
+            {
+              "number": "3922",
+              "count": 1
+            },
+            {
+              "number": "3999",
+              "count": 1
+            },
+            {
+              "number": "4052",
+              "count": 1
+            },
+            {
+              "number": "4108",
+              "count": 1
+            },
+            {
+              "number": "4141",
+              "count": 1
+            },
+            {
+              "number": "4405",
+              "count": 1
+            },
+            {
+              "number": "4714",
+              "count": 1
+            },
+            {
+              "number": "4878",
+              "count": 1
+            },
+            {
+              "number": "4936",
+              "count": 1
+            },
+            {
+              "number": "5372",
+              "count": 1
+            },
+            {
+              "number": "5466",
+              "count": 1
+            },
+            {
+              "number": "5489",
+              "count": 1
+            },
+            {
+              "number": "5575",
+              "count": 1
+            },
+            {
+              "number": "5592",
+              "count": 1
+            },
+            {
+              "number": "5610",
+              "count": 1
+            },
+            {
+              "number": "5671",
+              "count": 1
+            },
+            {
+              "number": "5750",
+              "count": 1
+            },
+            {
+              "number": "5840",
+              "count": 1
+            },
+            {
+              "number": "5894",
+              "count": 1
+            },
+            {
+              "number": "5984",
+              "count": 1
+            },
+            {
+              "number": "6053",
+              "count": 1
+            },
+            {
+              "number": "6072",
+              "count": 1
+            },
+            {
+              "number": "6153",
+              "count": 1
+            },
+            {
+              "number": "6190",
+              "count": 1
+            },
+            {
+              "number": "6223",
+              "count": 1
+            },
+            {
+              "number": "6310",
+              "count": 1
+            },
+            {
+              "number": "6501",
+              "count": 1
+            },
+            {
+              "number": "6771",
+              "count": 1
+            },
+            {
+              "number": "6800",
+              "count": 1
+            },
+            {
+              "number": "6973",
+              "count": 1
+            },
+            {
+              "number": "7086",
+              "count": 1
+            },
+            {
+              "number": "7109",
+              "count": 1
+            },
+            {
+              "number": "7235",
+              "count": 1
+            },
+            {
+              "number": "7249",
+              "count": 1
+            },
+            {
+              "number": "7268",
+              "count": 1
+            },
+            {
+              "number": "7522",
+              "count": 1
+            },
+            {
+              "number": "7597",
+              "count": 1
+            },
+            {
+              "number": "7639",
+              "count": 1
+            },
+            {
+              "number": "7658",
+              "count": 1
+            },
+            {
+              "number": "7661",
+              "count": 1
+            },
+            {
+              "number": "7767",
+              "count": 1
+            },
+            {
+              "number": "7834",
+              "count": 1
+            },
+            {
+              "number": "7837",
+              "count": 1
+            },
+            {
+              "number": "7935",
+              "count": 1
+            },
+            {
+              "number": "7979",
+              "count": 1
+            },
+            {
+              "number": "7985",
+              "count": 1
+            },
+            {
+              "number": "8013",
+              "count": 1
+            },
+            {
+              "number": "8209",
+              "count": 1
+            },
+            {
+              "number": "8220",
+              "count": 1
+            },
+            {
+              "number": "8232",
+              "count": 1
+            },
+            {
+              "number": "8296",
+              "count": 1
+            },
+            {
+              "number": "8413",
+              "count": 1
+            },
+            {
+              "number": "8468",
+              "count": 1
+            },
+            {
+              "number": "8531",
+              "count": 1
+            },
+            {
+              "number": "8558",
+              "count": 1
+            },
+            {
+              "number": "8664",
+              "count": 1
+            },
+            {
+              "number": "8762",
+              "count": 1
+            },
+            {
+              "number": "8844",
+              "count": 1
+            },
+            {
+              "number": "8938",
+              "count": 1
+            },
+            {
+              "number": "8945",
+              "count": 1
+            },
+            {
+              "number": "8984",
+              "count": 1
+            },
+            {
+              "number": "9022",
+              "count": 1
+            },
+            {
+              "number": "9185",
+              "count": 1
+            },
+            {
+              "number": "9215",
+              "count": 1
+            },
+            {
+              "number": "9315",
+              "count": 1
+            },
+            {
+              "number": "9328",
+              "count": 1
+            },
+            {
+              "number": "9365",
+              "count": 1
+            },
+            {
+              "number": "9386",
+              "count": 1
+            },
+            {
+              "number": "9464",
+              "count": 1
+            },
+            {
+              "number": "9518",
+              "count": 1
+            },
+            {
+              "number": "9523",
+              "count": 1
+            },
+            {
+              "number": "9660",
+              "count": 1
+            },
+            {
+              "number": "9662",
+              "count": 1
+            },
+            {
+              "number": "9669",
+              "count": 1
+            },
+            {
+              "number": "9716",
+              "count": 1
+            },
+            {
+              "number": "9790",
+              "count": 1
+            },
+            {
+              "number": "9827",
+              "count": 1
+            },
+            {
+              "number": "9901",
+              "count": 1
+            },
+            {
+              "number": "9959",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-04T11:29:50.268Z",
+      "recordNumber": 491
+    }
+  ],
+  "04/10/2025": [
+    {
+      "_id": "6ac239338f87b618166341e6",
+      "serialNumber": "BR-105",
+      "date": "04/10/2025",
+      "drawDate": null,
+      "fileName": "draw-75040.pdf",
+      "series": [
+        {
+          "prize": 5000,
+          "numbers": [
+            {
+              "number": "0191",
+              "count": 1
+            },
+            {
+              "number": "0234",
+              "count": 1
+            },
+            {
+              "number": "0412",
+              "count": 1
+            },
+            {
+              "number": "0641",
+              "count": 1
+            },
+            {
+              "number": "1287",
+              "count": 1
+            },
+            {
+              "number": "1314",
+              "count": 1
+            },
+            {
+              "number": "1390",
+              "count": 1
+            },
+            {
+              "number": "1510",
+              "count": 1
+            },
+            {
+              "number": "1779",
+              "count": 1
+            },
+            {
+              "number": "1994",
+              "count": 1
+            },
+            {
+              "number": "2161",
+              "count": 1
+            },
+            {
+              "number": "2177",
+              "count": 1
+            },
+            {
+              "number": "2251",
+              "count": 1
+            },
+            {
+              "number": "2586",
+              "count": 1
+            },
+            {
+              "number": "2603",
+              "count": 1
+            },
+            {
+              "number": "2668",
+              "count": 1
+            },
+            {
+              "number": "2711",
+              "count": 1
+            },
+            {
+              "number": "2793",
+              "count": 1
+            },
+            {
+              "number": "2834",
+              "count": 1
+            },
+            {
+              "number": "2972",
+              "count": 1
+            },
+            {
+              "number": "3207",
+              "count": 1
+            },
+            {
+              "number": "3217",
+              "count": 1
+            },
+            {
+              "number": "3358",
+              "count": 1
+            },
+            {
+              "number": "3535",
+              "count": 1
+            },
+            {
+              "number": "3697",
+              "count": 1
+            },
+            {
+              "number": "4017",
+              "count": 1
+            },
+            {
+              "number": "4098",
+              "count": 1
+            },
+            {
+              "number": "4357",
+              "count": 1
+            },
+            {
+              "number": "4485",
+              "count": 1
+            },
+            {
+              "number": "4613",
+              "count": 1
+            },
+            {
+              "number": "4635",
+              "count": 1
+            },
+            {
+              "number": "4741",
+              "count": 1
+            },
+            {
+              "number": "5282",
+              "count": 1
+            },
+            {
+              "number": "5348",
+              "count": 1
+            },
+            {
+              "number": "5392",
+              "count": 1
+            },
+            {
+              "number": "5598",
+              "count": 1
+            },
+            {
+              "number": "5702",
+              "count": 1
+            },
+            {
+              "number": "5886",
+              "count": 1
+            },
+            {
+              "number": "5920",
+              "count": 1
+            },
+            {
+              "number": "5970",
+              "count": 1
+            },
+            {
+              "number": "6246",
+              "count": 1
+            },
+            {
+              "number": "6479",
+              "count": 1
+            },
+            {
+              "number": "6492",
+              "count": 1
+            },
+            {
+              "number": "6838",
+              "count": 1
+            },
+            {
+              "number": "7067",
+              "count": 1
+            },
+            {
+              "number": "7369",
+              "count": 1
+            },
+            {
+              "number": "7483",
+              "count": 1
+            },
+            {
+              "number": "7678",
+              "count": 1
+            },
+            {
+              "number": "7916",
+              "count": 1
+            },
+            {
+              "number": "8025",
+              "count": 1
+            },
+            {
+              "number": "8029",
+              "count": 1
+            },
+            {
+              "number": "8270",
+              "count": 1
+            },
+            {
+              "number": "8287",
+              "count": 1
+            },
+            {
+              "number": "8292",
+              "count": 1
+            },
+            {
+              "number": "8360",
+              "count": 1
+            },
+            {
+              "number": "8372",
+              "count": 1
+            },
+            {
+              "number": "8469",
+              "count": 1
+            },
+            {
+              "number": "9345",
+              "count": 1
+            },
+            {
+              "number": "9729",
+              "count": 1
+            },
+            {
+              "number": "9955",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 2000,
+          "numbers": [
+            {
+              "number": "0215",
+              "count": 1
+            },
+            {
+              "number": "0242",
+              "count": 1
+            },
+            {
+              "number": "0301",
+              "count": 1
+            },
+            {
+              "number": "0480",
+              "count": 1
+            },
+            {
+              "number": "0592",
+              "count": 1
+            },
+            {
+              "number": "0782",
+              "count": 1
+            },
+            {
+              "number": "0828",
+              "count": 1
+            },
+            {
+              "number": "0857",
+              "count": 1
+            },
+            {
+              "number": "1042",
+              "count": 1
+            },
+            {
+              "number": "1093",
+              "count": 1
+            },
+            {
+              "number": "1257",
+              "count": 1
+            },
+            {
+              "number": "1315",
+              "count": 1
+            },
+            {
+              "number": "1550",
+              "count": 1
+            },
+            {
+              "number": "1750",
+              "count": 1
+            },
+            {
+              "number": "2020",
+              "count": 1
+            },
+            {
+              "number": "2036",
+              "count": 1
+            },
+            {
+              "number": "2185",
+              "count": 1
+            },
+            {
+              "number": "2198",
+              "count": 1
+            },
+            {
+              "number": "2313",
+              "count": 1
+            },
+            {
+              "number": "2432",
+              "count": 1
+            },
+            {
+              "number": "2524",
+              "count": 1
+            },
+            {
+              "number": "2585",
+              "count": 1
+            },
+            {
+              "number": "2666",
+              "count": 1
+            },
+            {
+              "number": "2681",
+              "count": 1
+            },
+            {
+              "number": "2700",
+              "count": 1
+            },
+            {
+              "number": "3015",
+              "count": 1
+            },
+            {
+              "number": "3074",
+              "count": 1
+            },
+            {
+              "number": "3169",
+              "count": 1
+            },
+            {
+              "number": "3181",
+              "count": 1
+            },
+            {
+              "number": "3239",
+              "count": 1
+            },
+            {
+              "number": "3323",
+              "count": 1
+            },
+            {
+              "number": "3776",
+              "count": 1
+            },
+            {
+              "number": "3833",
+              "count": 1
+            },
+            {
+              "number": "3920",
+              "count": 1
+            },
+            {
+              "number": "4153",
+              "count": 1
+            },
+            {
+              "number": "4194",
+              "count": 1
+            },
+            {
+              "number": "4248",
+              "count": 1
+            },
+            {
+              "number": "4250",
+              "count": 1
+            },
+            {
+              "number": "4252",
+              "count": 1
+            },
+            {
+              "number": "4402",
+              "count": 1
+            },
+            {
+              "number": "4427",
+              "count": 1
+            },
+            {
+              "number": "4552",
+              "count": 1
+            },
+            {
+              "number": "4685",
+              "count": 1
+            },
+            {
+              "number": "4811",
+              "count": 1
+            },
+            {
+              "number": "4816",
+              "count": 1
+            },
+            {
+              "number": "4830",
+              "count": 1
+            },
+            {
+              "number": "4895",
+              "count": 1
+            },
+            {
+              "number": "4981",
+              "count": 1
+            },
+            {
+              "number": "5268",
+              "count": 1
+            },
+            {
+              "number": "5317",
+              "count": 1
+            },
+            {
+              "number": "5352",
+              "count": 1
+            },
+            {
+              "number": "5693",
+              "count": 1
+            },
+            {
+              "number": "5733",
+              "count": 1
+            },
+            {
+              "number": "5748",
+              "count": 1
+            },
+            {
+              "number": "5780",
+              "count": 1
+            },
+            {
+              "number": "5819",
+              "count": 1
+            },
+            {
+              "number": "6095",
+              "count": 1
+            },
+            {
+              "number": "6149",
+              "count": 1
+            },
+            {
+              "number": "6191",
+              "count": 1
+            },
+            {
+              "number": "6377",
+              "count": 1
+            },
+            {
+              "number": "6457",
+              "count": 1
+            },
+            {
+              "number": "6715",
+              "count": 1
+            },
+            {
+              "number": "6768",
+              "count": 1
+            },
+            {
+              "number": "6841",
+              "count": 1
+            },
+            {
+              "number": "7207",
+              "count": 1
+            },
+            {
+              "number": "7212",
+              "count": 1
+            },
+            {
+              "number": "7236",
+              "count": 1
+            },
+            {
+              "number": "7306",
+              "count": 1
+            },
+            {
+              "number": "7346",
+              "count": 1
+            },
+            {
+              "number": "7446",
+              "count": 1
+            },
+            {
+              "number": "7498",
+              "count": 1
+            },
+            {
+              "number": "7508",
+              "count": 1
+            },
+            {
+              "number": "7654",
+              "count": 1
+            },
+            {
+              "number": "7754",
+              "count": 1
+            },
+            {
+              "number": "7990",
+              "count": 1
+            },
+            {
+              "number": "8004",
+              "count": 1
+            },
+            {
+              "number": "8014",
+              "count": 1
+            },
+            {
+              "number": "8310",
+              "count": 1
+            },
+            {
+              "number": "8545",
+              "count": 1
+            },
+            {
+              "number": "8580",
+              "count": 1
+            },
+            {
+              "number": "8665",
+              "count": 1
+            },
+            {
+              "number": "9123",
+              "count": 1
+            },
+            {
+              "number": "9284",
+              "count": 1
+            },
+            {
+              "number": "9356",
+              "count": 1
+            },
+            {
+              "number": "9357",
+              "count": 1
+            },
+            {
+              "number": "9459",
+              "count": 1
+            },
+            {
+              "number": "9582",
+              "count": 1
+            },
+            {
+              "number": "9613",
+              "count": 1
+            },
+            {
+              "number": "9639",
+              "count": 1
+            },
+            {
+              "number": "9961",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 1000,
+          "numbers": [
+            {
+              "number": "0036",
+              "count": 1
+            },
+            {
+              "number": "0096",
+              "count": 1
+            },
+            {
+              "number": "0253",
+              "count": 1
+            },
+            {
+              "number": "0265",
+              "count": 1
+            },
+            {
+              "number": "0271",
+              "count": 1
+            },
+            {
+              "number": "0340",
+              "count": 1
+            },
+            {
+              "number": "0379",
+              "count": 1
+            },
+            {
+              "number": "0448",
+              "count": 1
+            },
+            {
+              "number": "0471",
+              "count": 1
+            },
+            {
+              "number": "0807",
+              "count": 1
+            },
+            {
+              "number": "1237",
+              "count": 1
+            },
+            {
+              "number": "1245",
+              "count": 1
+            },
+            {
+              "number": "1311",
+              "count": 1
+            },
+            {
+              "number": "1322",
+              "count": 1
+            },
+            {
+              "number": "1482",
+              "count": 1
+            },
+            {
+              "number": "1529",
+              "count": 1
+            },
+            {
+              "number": "1555",
+              "count": 1
+            },
+            {
+              "number": "1632",
+              "count": 1
+            },
+            {
+              "number": "1684",
+              "count": 1
+            },
+            {
+              "number": "1717",
+              "count": 1
+            },
+            {
+              "number": "1800",
+              "count": 1
+            },
+            {
+              "number": "1902",
+              "count": 1
+            },
+            {
+              "number": "2085",
+              "count": 1
+            },
+            {
+              "number": "2122",
+              "count": 1
+            },
+            {
+              "number": "2157",
+              "count": 1
+            },
+            {
+              "number": "2231",
+              "count": 1
+            },
+            {
+              "number": "2310",
+              "count": 1
+            },
+            {
+              "number": "2348",
+              "count": 1
+            },
+            {
+              "number": "2491",
+              "count": 1
+            },
+            {
+              "number": "2537",
+              "count": 1
+            },
+            {
+              "number": "2829",
+              "count": 1
+            },
+            {
+              "number": "2920",
+              "count": 1
+            },
+            {
+              "number": "3029",
+              "count": 1
+            },
+            {
+              "number": "3144",
+              "count": 1
+            },
+            {
+              "number": "3188",
+              "count": 1
+            },
+            {
+              "number": "3204",
+              "count": 1
+            },
+            {
+              "number": "3260",
+              "count": 1
+            },
+            {
+              "number": "3268",
+              "count": 1
+            },
+            {
+              "number": "3273",
+              "count": 1
+            },
+            {
+              "number": "3325",
+              "count": 1
+            },
+            {
+              "number": "3427",
+              "count": 1
+            },
+            {
+              "number": "3448",
+              "count": 1
+            },
+            {
+              "number": "3499",
+              "count": 1
+            },
+            {
+              "number": "3524",
+              "count": 1
+            },
+            {
+              "number": "3566",
+              "count": 1
+            },
+            {
+              "number": "3653",
+              "count": 1
+            },
+            {
+              "number": "3671",
+              "count": 1
+            },
+            {
+              "number": "3755",
+              "count": 1
+            },
+            {
+              "number": "3858",
+              "count": 1
+            },
+            {
+              "number": "3935",
+              "count": 1
+            },
+            {
+              "number": "4025",
+              "count": 1
+            },
+            {
+              "number": "4037",
+              "count": 1
+            },
+            {
+              "number": "4105",
+              "count": 1
+            },
+            {
+              "number": "4157",
+              "count": 1
+            },
+            {
+              "number": "4432",
+              "count": 1
+            },
+            {
+              "number": "4470",
+              "count": 1
+            },
+            {
+              "number": "4479",
+              "count": 1
+            },
+            {
+              "number": "4621",
+              "count": 1
+            },
+            {
+              "number": "4623",
+              "count": 1
+            },
+            {
+              "number": "4660",
+              "count": 1
+            },
+            {
+              "number": "4682",
+              "count": 1
+            },
+            {
+              "number": "4916",
+              "count": 1
+            },
+            {
+              "number": "5029",
+              "count": 1
+            },
+            {
+              "number": "5040",
+              "count": 1
+            },
+            {
+              "number": "5092",
+              "count": 1
+            },
+            {
+              "number": "5124",
+              "count": 1
+            },
+            {
+              "number": "5137",
+              "count": 1
+            },
+            {
+              "number": "5245",
+              "count": 1
+            },
+            {
+              "number": "5283",
+              "count": 1
+            },
+            {
+              "number": "5300",
+              "count": 1
+            },
+            {
+              "number": "5339",
+              "count": 1
+            },
+            {
+              "number": "5408",
+              "count": 1
+            },
+            {
+              "number": "5483",
+              "count": 1
+            },
+            {
+              "number": "5484",
+              "count": 1
+            },
+            {
+              "number": "5583",
+              "count": 1
+            },
+            {
+              "number": "5584",
+              "count": 1
+            },
+            {
+              "number": "5746",
+              "count": 1
+            },
+            {
+              "number": "5948",
+              "count": 1
+            },
+            {
+              "number": "6019",
+              "count": 1
+            },
+            {
+              "number": "6187",
+              "count": 1
+            },
+            {
+              "number": "6219",
+              "count": 1
+            },
+            {
+              "number": "6325",
+              "count": 1
+            },
+            {
+              "number": "6386",
+              "count": 1
+            },
+            {
+              "number": "6426",
+              "count": 1
+            },
+            {
+              "number": "6672",
+              "count": 1
+            },
+            {
+              "number": "6685",
+              "count": 1
+            },
+            {
+              "number": "6875",
+              "count": 1
+            },
+            {
+              "number": "6902",
+              "count": 1
+            },
+            {
+              "number": "6912",
+              "count": 1
+            },
+            {
+              "number": "7040",
+              "count": 1
+            },
+            {
+              "number": "7126",
+              "count": 1
+            },
+            {
+              "number": "7271",
+              "count": 1
+            },
+            {
+              "number": "7336",
+              "count": 1
+            },
+            {
+              "number": "7420",
+              "count": 1
+            },
+            {
+              "number": "7467",
+              "count": 1
+            },
+            {
+              "number": "7535",
+              "count": 1
+            },
+            {
+              "number": "7605",
+              "count": 1
+            },
+            {
+              "number": "7621",
+              "count": 1
+            },
+            {
+              "number": "7639",
+              "count": 1
+            },
+            {
+              "number": "7673",
+              "count": 1
+            },
+            {
+              "number": "7852",
+              "count": 1
+            },
+            {
+              "number": "7962",
+              "count": 1
+            },
+            {
+              "number": "7993",
+              "count": 1
+            },
+            {
+              "number": "8044",
+              "count": 1
+            },
+            {
+              "number": "8109",
+              "count": 1
+            },
+            {
+              "number": "8136",
+              "count": 1
+            },
+            {
+              "number": "8227",
+              "count": 1
+            },
+            {
+              "number": "8288",
+              "count": 1
+            },
+            {
+              "number": "8296",
+              "count": 1
+            },
+            {
+              "number": "8312",
+              "count": 1
+            },
+            {
+              "number": "8323",
+              "count": 1
+            },
+            {
+              "number": "8387",
+              "count": 1
+            },
+            {
+              "number": "8472",
+              "count": 1
+            },
+            {
+              "number": "8600",
+              "count": 1
+            },
+            {
+              "number": "8628",
+              "count": 1
+            },
+            {
+              "number": "8630",
+              "count": 1
+            },
+            {
+              "number": "8633",
+              "count": 1
+            },
+            {
+              "number": "8716",
+              "count": 1
+            },
+            {
+              "number": "8786",
+              "count": 1
+            },
+            {
+              "number": "8823",
+              "count": 1
+            },
+            {
+              "number": "8866",
+              "count": 1
+            },
+            {
+              "number": "9003",
+              "count": 1
+            },
+            {
+              "number": "9007",
+              "count": 1
+            },
+            {
+              "number": "9038",
+              "count": 1
+            },
+            {
+              "number": "9066",
+              "count": 1
+            },
+            {
+              "number": "9187",
+              "count": 1
+            },
+            {
+              "number": "9217",
+              "count": 1
+            },
+            {
+              "number": "9317",
+              "count": 1
+            },
+            {
+              "number": "9329",
+              "count": 1
+            },
+            {
+              "number": "9464",
+              "count": 1
+            },
+            {
+              "number": "9515",
+              "count": 1
+            },
+            {
+              "number": "9539",
+              "count": 1
+            },
+            {
+              "number": "9551",
+              "count": 1
+            },
+            {
+              "number": "9556",
+              "count": 1
+            },
+            {
+              "number": "9806",
+              "count": 1
+            },
+            {
+              "number": "9851",
+              "count": 1
+            },
+            {
+              "number": "9878",
+              "count": 1
+            },
+            {
+              "number": "9915",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 500,
+          "numbers": [
+            {
+              "number": "0014",
+              "count": 1
+            },
+            {
+              "number": "0064",
+              "count": 1
+            },
+            {
+              "number": "0095",
+              "count": 1
+            },
+            {
+              "number": "0131",
+              "count": 1
+            },
+            {
+              "number": "0147",
+              "count": 1
+            },
+            {
+              "number": "0176",
+              "count": 1
+            },
+            {
+              "number": "0189",
+              "count": 1
+            },
+            {
+              "number": "0195",
+              "count": 1
+            },
+            {
+              "number": "0224",
+              "count": 1
+            },
+            {
+              "number": "0270",
+              "count": 1
+            },
+            {
+              "number": "0368",
+              "count": 1
+            },
+            {
+              "number": "0427",
+              "count": 1
+            },
+            {
+              "number": "0452",
+              "count": 1
+            },
+            {
+              "number": "0513",
+              "count": 1
+            },
+            {
+              "number": "0567",
+              "count": 1
+            },
+            {
+              "number": "0674",
+              "count": 1
+            },
+            {
+              "number": "0697",
+              "count": 1
+            },
+            {
+              "number": "0714",
+              "count": 1
+            },
+            {
+              "number": "0750",
+              "count": 1
+            },
+            {
+              "number": "0785",
+              "count": 1
+            },
+            {
+              "number": "0811",
+              "count": 1
+            },
+            {
+              "number": "0833",
+              "count": 1
+            },
+            {
+              "number": "0848",
+              "count": 1
+            },
+            {
+              "number": "0871",
+              "count": 1
+            },
+            {
+              "number": "0908",
+              "count": 1
+            },
+            {
+              "number": "0942",
+              "count": 1
+            },
+            {
+              "number": "1003",
+              "count": 1
+            },
+            {
+              "number": "1021",
+              "count": 1
+            },
+            {
+              "number": "1067",
+              "count": 1
+            },
+            {
+              "number": "1139",
+              "count": 1
+            },
+            {
+              "number": "1187",
+              "count": 1
+            },
+            {
+              "number": "1192",
+              "count": 1
+            },
+            {
+              "number": "1248",
+              "count": 1
+            },
+            {
+              "number": "1359",
+              "count": 1
+            },
+            {
+              "number": "1467",
+              "count": 1
+            },
+            {
+              "number": "1516",
+              "count": 1
+            },
+            {
+              "number": "1520",
+              "count": 1
+            },
+            {
+              "number": "1538",
+              "count": 1
+            },
+            {
+              "number": "1592",
+              "count": 1
+            },
+            {
+              "number": "1636",
+              "count": 1
+            },
+            {
+              "number": "1655",
+              "count": 1
+            },
+            {
+              "number": "1672",
+              "count": 1
+            },
+            {
+              "number": "1743",
+              "count": 1
+            },
+            {
+              "number": "1745",
+              "count": 1
+            },
+            {
+              "number": "1823",
+              "count": 1
+            },
+            {
+              "number": "1838",
+              "count": 1
+            },
+            {
+              "number": "1842",
+              "count": 1
+            },
+            {
+              "number": "1845",
+              "count": 1
+            },
+            {
+              "number": "1892",
+              "count": 1
+            },
+            {
+              "number": "1894",
+              "count": 1
+            },
+            {
+              "number": "1914",
+              "count": 1
+            },
+            {
+              "number": "1991",
+              "count": 1
+            },
+            {
+              "number": "2049",
+              "count": 1
+            },
+            {
+              "number": "2067",
+              "count": 1
+            },
+            {
+              "number": "2100",
+              "count": 1
+            },
+            {
+              "number": "2125",
+              "count": 1
+            },
+            {
+              "number": "2167",
+              "count": 1
+            },
+            {
+              "number": "2205",
+              "count": 1
+            },
+            {
+              "number": "2263",
+              "count": 1
+            },
+            {
+              "number": "2305",
+              "count": 1
+            },
+            {
+              "number": "2317",
+              "count": 1
+            },
+            {
+              "number": "2359",
+              "count": 1
+            },
+            {
+              "number": "2405",
+              "count": 1
+            },
+            {
+              "number": "2413",
+              "count": 1
+            },
+            {
+              "number": "2539",
+              "count": 1
+            },
+            {
+              "number": "2594",
+              "count": 1
+            },
+            {
+              "number": "2611",
+              "count": 1
+            },
+            {
+              "number": "2623",
+              "count": 1
+            },
+            {
+              "number": "2650",
+              "count": 1
+            },
+            {
+              "number": "2685",
+              "count": 1
+            },
+            {
+              "number": "2817",
+              "count": 1
+            },
+            {
+              "number": "2844",
+              "count": 1
+            },
+            {
+              "number": "2865",
+              "count": 1
+            },
+            {
+              "number": "2887",
+              "count": 1
+            },
+            {
+              "number": "2910",
+              "count": 1
+            },
+            {
+              "number": "2958",
+              "count": 1
+            },
+            {
+              "number": "2967",
+              "count": 1
+            },
+            {
+              "number": "2998",
+              "count": 1
+            },
+            {
+              "number": "3002",
+              "count": 1
+            },
+            {
+              "number": "3028",
+              "count": 1
+            },
+            {
+              "number": "3050",
+              "count": 1
+            },
+            {
+              "number": "3064",
+              "count": 1
+            },
+            {
+              "number": "3104",
+              "count": 1
+            },
+            {
+              "number": "3113",
+              "count": 1
+            },
+            {
+              "number": "3121",
+              "count": 1
+            },
+            {
+              "number": "3174",
+              "count": 1
+            },
+            {
+              "number": "3183",
+              "count": 1
+            },
+            {
+              "number": "3192",
+              "count": 1
+            },
+            {
+              "number": "3232",
+              "count": 1
+            },
+            {
+              "number": "3271",
+              "count": 1
+            },
+            {
+              "number": "3297",
+              "count": 1
+            },
+            {
+              "number": "3302",
+              "count": 1
+            },
+            {
+              "number": "3315",
+              "count": 1
+            },
+            {
+              "number": "3319",
+              "count": 1
+            },
+            {
+              "number": "3328",
+              "count": 1
+            },
+            {
+              "number": "3332",
+              "count": 1
+            },
+            {
+              "number": "3365",
+              "count": 1
+            },
+            {
+              "number": "3408",
+              "count": 1
+            },
+            {
+              "number": "3530",
+              "count": 1
+            },
+            {
+              "number": "3551",
+              "count": 1
+            },
+            {
+              "number": "3607",
+              "count": 1
+            },
+            {
+              "number": "3609",
+              "count": 1
+            },
+            {
+              "number": "3641",
+              "count": 1
+            },
+            {
+              "number": "3642",
+              "count": 1
+            },
+            {
+              "number": "3727",
+              "count": 1
+            },
+            {
+              "number": "3775",
+              "count": 1
+            },
+            {
+              "number": "3877",
+              "count": 1
+            },
+            {
+              "number": "3940",
+              "count": 1
+            },
+            {
+              "number": "3967",
+              "count": 1
+            },
+            {
+              "number": "3975",
+              "count": 1
+            },
+            {
+              "number": "3984",
+              "count": 1
+            },
+            {
+              "number": "4015",
+              "count": 1
+            },
+            {
+              "number": "4053",
+              "count": 1
+            },
+            {
+              "number": "4055",
+              "count": 1
+            },
+            {
+              "number": "4110",
+              "count": 1
+            },
+            {
+              "number": "4174",
+              "count": 1
+            },
+            {
+              "number": "4190",
+              "count": 1
+            },
+            {
+              "number": "4197",
+              "count": 1
+            },
+            {
+              "number": "4237",
+              "count": 1
+            },
+            {
+              "number": "4347",
+              "count": 1
+            },
+            {
+              "number": "4374",
+              "count": 1
+            },
+            {
+              "number": "4424",
+              "count": 1
+            },
+            {
+              "number": "4491",
+              "count": 1
+            },
+            {
+              "number": "4527",
+              "count": 1
+            },
+            {
+              "number": "4548",
+              "count": 1
+            },
+            {
+              "number": "4631",
+              "count": 1
+            },
+            {
+              "number": "4691",
+              "count": 1
+            },
+            {
+              "number": "4758",
+              "count": 1
+            },
+            {
+              "number": "4763",
+              "count": 1
+            },
+            {
+              "number": "4778",
+              "count": 1
+            },
+            {
+              "number": "4809",
+              "count": 1
+            },
+            {
+              "number": "4846",
+              "count": 1
+            },
+            {
+              "number": "4852",
+              "count": 1
+            },
+            {
+              "number": "4855",
+              "count": 1
+            },
+            {
+              "number": "4857",
+              "count": 1
+            },
+            {
+              "number": "4909",
+              "count": 1
+            },
+            {
+              "number": "4993",
+              "count": 1
+            },
+            {
+              "number": "5093",
+              "count": 1
+            },
+            {
+              "number": "5127",
+              "count": 1
+            },
+            {
+              "number": "5133",
+              "count": 1
+            },
+            {
+              "number": "5166",
+              "count": 1
+            },
+            {
+              "number": "5298",
+              "count": 1
+            },
+            {
+              "number": "5310",
+              "count": 1
+            },
+            {
+              "number": "5331",
+              "count": 1
+            },
+            {
+              "number": "5345",
+              "count": 1
+            },
+            {
+              "number": "5358",
+              "count": 1
+            },
+            {
+              "number": "5377",
+              "count": 1
+            },
+            {
+              "number": "5378",
+              "count": 1
+            },
+            {
+              "number": "5422",
+              "count": 1
+            },
+            {
+              "number": "5537",
+              "count": 1
+            },
+            {
+              "number": "5548",
+              "count": 1
+            },
+            {
+              "number": "5575",
+              "count": 1
+            },
+            {
+              "number": "5675",
+              "count": 1
+            },
+            {
+              "number": "5685",
+              "count": 1
+            },
+            {
+              "number": "5696",
+              "count": 1
+            },
+            {
+              "number": "5698",
+              "count": 1
+            },
+            {
+              "number": "5734",
+              "count": 1
+            },
+            {
+              "number": "5750",
+              "count": 1
+            },
+            {
+              "number": "5764",
+              "count": 1
+            },
+            {
+              "number": "5844",
+              "count": 1
+            },
+            {
+              "number": "5883",
+              "count": 1
+            },
+            {
+              "number": "5888",
+              "count": 1
+            },
+            {
+              "number": "5893",
+              "count": 1
+            },
+            {
+              "number": "5903",
+              "count": 1
+            },
+            {
+              "number": "5929",
+              "count": 1
+            },
+            {
+              "number": "5995",
+              "count": 1
+            },
+            {
+              "number": "6007",
+              "count": 1
+            },
+            {
+              "number": "6011",
+              "count": 1
+            },
+            {
+              "number": "6030",
+              "count": 1
+            },
+            {
+              "number": "6063",
+              "count": 1
+            },
+            {
+              "number": "6065",
+              "count": 1
+            },
+            {
+              "number": "6069",
+              "count": 1
+            },
+            {
+              "number": "6085",
+              "count": 1
+            },
+            {
+              "number": "6088",
+              "count": 1
+            },
+            {
+              "number": "6107",
+              "count": 1
+            },
+            {
+              "number": "6117",
+              "count": 1
+            },
+            {
+              "number": "6154",
+              "count": 1
+            },
+            {
+              "number": "6269",
+              "count": 1
+            },
+            {
+              "number": "6304",
+              "count": 1
+            },
+            {
+              "number": "6332",
+              "count": 1
+            },
+            {
+              "number": "6336",
+              "count": 1
+            },
+            {
+              "number": "6391",
+              "count": 1
+            },
+            {
+              "number": "6475",
+              "count": 1
+            },
+            {
+              "number": "6519",
+              "count": 1
+            },
+            {
+              "number": "6525",
+              "count": 1
+            },
+            {
+              "number": "6547",
+              "count": 1
+            },
+            {
+              "number": "6620",
+              "count": 1
+            },
+            {
+              "number": "6625",
+              "count": 1
+            },
+            {
+              "number": "6639",
+              "count": 1
+            },
+            {
+              "number": "6712",
+              "count": 1
+            },
+            {
+              "number": "6734",
+              "count": 1
+            },
+            {
+              "number": "6745",
+              "count": 1
+            },
+            {
+              "number": "6760",
+              "count": 1
+            },
+            {
+              "number": "6791",
+              "count": 1
+            },
+            {
+              "number": "6801",
+              "count": 1
+            },
+            {
+              "number": "6822",
+              "count": 1
+            },
+            {
+              "number": "6827",
+              "count": 1
+            },
+            {
+              "number": "6840",
+              "count": 1
+            },
+            {
+              "number": "6869",
+              "count": 1
+            },
+            {
+              "number": "6877",
+              "count": 1
+            },
+            {
+              "number": "6887",
+              "count": 1
+            },
+            {
+              "number": "6893",
+              "count": 1
+            },
+            {
+              "number": "6897",
+              "count": 1
+            },
+            {
+              "number": "6981",
+              "count": 1
+            },
+            {
+              "number": "7007",
+              "count": 1
+            },
+            {
+              "number": "7117",
+              "count": 1
+            },
+            {
+              "number": "7218",
+              "count": 1
+            },
+            {
+              "number": "7221",
+              "count": 1
+            },
+            {
+              "number": "7222",
+              "count": 1
+            },
+            {
+              "number": "7284",
+              "count": 1
+            },
+            {
+              "number": "7288",
+              "count": 1
+            },
+            {
+              "number": "7300",
+              "count": 1
+            },
+            {
+              "number": "7316",
+              "count": 1
+            },
+            {
+              "number": "7339",
+              "count": 1
+            },
+            {
+              "number": "7343",
+              "count": 1
+            },
+            {
+              "number": "7347",
+              "count": 1
+            },
+            {
+              "number": "7403",
+              "count": 1
+            },
+            {
+              "number": "7417",
+              "count": 1
+            },
+            {
+              "number": "7423",
+              "count": 1
+            },
+            {
+              "number": "7455",
+              "count": 1
+            },
+            {
+              "number": "7589",
+              "count": 1
+            },
+            {
+              "number": "7653",
+              "count": 1
+            },
+            {
+              "number": "7731",
+              "count": 1
+            },
+            {
+              "number": "7779",
+              "count": 1
+            },
+            {
+              "number": "7791",
+              "count": 1
+            },
+            {
+              "number": "7798",
+              "count": 1
+            },
+            {
+              "number": "7799",
+              "count": 1
+            },
+            {
+              "number": "7816",
+              "count": 1
+            },
+            {
+              "number": "7881",
+              "count": 1
+            },
+            {
+              "number": "7895",
+              "count": 1
+            },
+            {
+              "number": "7912",
+              "count": 1
+            },
+            {
+              "number": "7977",
+              "count": 1
+            },
+            {
+              "number": "8006",
+              "count": 1
+            },
+            {
+              "number": "8007",
+              "count": 1
+            },
+            {
+              "number": "8032",
+              "count": 1
+            },
+            {
+              "number": "8059",
+              "count": 1
+            },
+            {
+              "number": "8097",
+              "count": 1
+            },
+            {
+              "number": "8115",
+              "count": 1
+            },
+            {
+              "number": "8125",
+              "count": 1
+            },
+            {
+              "number": "8126",
+              "count": 1
+            },
+            {
+              "number": "8165",
+              "count": 1
+            },
+            {
+              "number": "8193",
+              "count": 1
+            },
+            {
+              "number": "8208",
+              "count": 1
+            },
+            {
+              "number": "8218",
+              "count": 1
+            },
+            {
+              "number": "8221",
+              "count": 1
+            },
+            {
+              "number": "8317",
+              "count": 1
+            },
+            {
+              "number": "8324",
+              "count": 1
+            },
+            {
+              "number": "8346",
+              "count": 1
+            },
+            {
+              "number": "8359",
+              "count": 1
+            },
+            {
+              "number": "8436",
+              "count": 1
+            },
+            {
+              "number": "8467",
+              "count": 1
+            },
+            {
+              "number": "8477",
+              "count": 1
+            },
+            {
+              "number": "8568",
+              "count": 1
+            },
+            {
+              "number": "8598",
+              "count": 1
+            },
+            {
+              "number": "8603",
+              "count": 1
+            },
+            {
+              "number": "8610",
+              "count": 1
+            },
+            {
+              "number": "8768",
+              "count": 1
+            },
+            {
+              "number": "8784",
+              "count": 1
+            },
+            {
+              "number": "8804",
+              "count": 1
+            },
+            {
+              "number": "8831",
+              "count": 1
+            },
+            {
+              "number": "8913",
+              "count": 1
+            },
+            {
+              "number": "8947",
+              "count": 1
+            },
+            {
+              "number": "8959",
+              "count": 1
+            },
+            {
+              "number": "9004",
+              "count": 1
+            },
+            {
+              "number": "9016",
+              "count": 1
+            },
+            {
+              "number": "9045",
+              "count": 1
+            },
+            {
+              "number": "9047",
+              "count": 1
+            },
+            {
+              "number": "9058",
+              "count": 1
+            },
+            {
+              "number": "9077",
+              "count": 1
+            },
+            {
+              "number": "9124",
+              "count": 1
+            },
+            {
+              "number": "9153",
+              "count": 1
+            },
+            {
+              "number": "9159",
+              "count": 1
+            },
+            {
+              "number": "9190",
+              "count": 1
+            },
+            {
+              "number": "9193",
+              "count": 1
+            },
+            {
+              "number": "9214",
+              "count": 1
+            },
+            {
+              "number": "9215",
+              "count": 1
+            },
+            {
+              "number": "9216",
+              "count": 1
+            },
+            {
+              "number": "9243",
+              "count": 1
+            },
+            {
+              "number": "9262",
+              "count": 1
+            },
+            {
+              "number": "9278",
+              "count": 1
+            },
+            {
+              "number": "9289",
+              "count": 1
+            },
+            {
+              "number": "9292",
+              "count": 1
+            },
+            {
+              "number": "9296",
+              "count": 1
+            },
+            {
+              "number": "9320",
+              "count": 1
+            },
+            {
+              "number": "9330",
+              "count": 1
+            },
+            {
+              "number": "9346",
+              "count": 1
+            },
+            {
+              "number": "9347",
+              "count": 1
+            },
+            {
+              "number": "9370",
+              "count": 1
+            },
+            {
+              "number": "9372",
+              "count": 1
+            },
+            {
+              "number": "9403",
+              "count": 1
+            },
+            {
+              "number": "9518",
+              "count": 1
+            },
+            {
+              "number": "9574",
+              "count": 1
+            },
+            {
+              "number": "9600",
+              "count": 1
+            },
+            {
+              "number": "9629",
+              "count": 1
+            },
+            {
+              "number": "9679",
+              "count": 1
+            },
+            {
+              "number": "9685",
+              "count": 1
+            },
+            {
+              "number": "9705",
+              "count": 1
+            },
+            {
+              "number": "9727",
+              "count": 1
+            },
+            {
+              "number": "9804",
+              "count": 1
+            },
+            {
+              "number": "9816",
+              "count": 1
+            },
+            {
+              "number": "9849",
+              "count": 1
+            },
+            {
+              "number": "9850",
+              "count": 1
+            },
+            {
+              "number": "9855",
+              "count": 1
+            },
+            {
+              "number": "9926",
+              "count": 1
+            },
+            {
+              "number": "9952",
+              "count": 1
+            },
+            {
+              "number": "9993",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-04T11:32:03.456Z",
+      "recordNumber": 1646
+    },
+    {
+      "_id": "6ac239338f87b618166341eb",
+      "serialNumber": "KR-725",
+      "date": "04/10/2025",
+      "drawDate": null,
+      "fileName": "draw-75041.pdf",
+      "series": [
+        {
+          "prize": 5000,
+          "numbers": [
+            {
+              "number": "0609",
+              "count": 1
+            },
+            {
+              "number": "0821",
+              "count": 1
+            },
+            {
+              "number": "1215",
+              "count": 1
+            },
+            {
+              "number": "1501",
+              "count": 1
+            },
+            {
+              "number": "1952",
+              "count": 1
+            },
+            {
+              "number": "2520",
+              "count": 1
+            },
+            {
+              "number": "3915",
+              "count": 1
+            },
+            {
+              "number": "4092",
+              "count": 1
+            },
+            {
+              "number": "4890",
+              "count": 1
+            },
+            {
+              "number": "5020",
+              "count": 1
+            },
+            {
+              "number": "5365",
+              "count": 1
+            },
+            {
+              "number": "6385",
+              "count": 1
+            },
+            {
+              "number": "7535",
+              "count": 1
+            },
+            {
+              "number": "7544",
+              "count": 1
+            },
+            {
+              "number": "7704",
+              "count": 1
+            },
+            {
+              "number": "8675",
+              "count": 1
+            },
+            {
+              "number": "8929",
+              "count": 1
+            },
+            {
+              "number": "8948",
+              "count": 1
+            },
+            {
+              "number": "9257",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 2000,
+          "numbers": [
+            {
+              "number": "0211",
+              "count": 1
+            },
+            {
+              "number": "5534",
+              "count": 1
+            },
+            {
+              "number": "6670",
+              "count": 1
+            },
+            {
+              "number": "8750",
+              "count": 1
+            },
+            {
+              "number": "8811",
+              "count": 1
+            },
+            {
+              "number": "9506",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 1000,
+          "numbers": [
+            {
+              "number": "0098",
+              "count": 1
+            },
+            {
+              "number": "1126",
+              "count": 1
+            },
+            {
+              "number": "1324",
+              "count": 1
+            },
+            {
+              "number": "1340",
+              "count": 1
+            },
+            {
+              "number": "1436",
+              "count": 1
+            },
+            {
+              "number": "1840",
+              "count": 1
+            },
+            {
+              "number": "2317",
+              "count": 1
+            },
+            {
+              "number": "2562",
+              "count": 1
+            },
+            {
+              "number": "4706",
+              "count": 1
+            },
+            {
+              "number": "4707",
+              "count": 1
+            },
+            {
+              "number": "4810",
+              "count": 1
+            },
+            {
+              "number": "4851",
+              "count": 1
+            },
+            {
+              "number": "4918",
+              "count": 1
+            },
+            {
+              "number": "5209",
+              "count": 1
+            },
+            {
+              "number": "5773",
+              "count": 1
+            },
+            {
+              "number": "5799",
+              "count": 1
+            },
+            {
+              "number": "6839",
+              "count": 1
+            },
+            {
+              "number": "7028",
+              "count": 1
+            },
+            {
+              "number": "7190",
+              "count": 1
+            },
+            {
+              "number": "7809",
+              "count": 1
+            },
+            {
+              "number": "8176",
+              "count": 1
+            },
+            {
+              "number": "8888",
+              "count": 1
+            },
+            {
+              "number": "8927",
+              "count": 1
+            },
+            {
+              "number": "9697",
+              "count": 1
+            },
+            {
+              "number": "9840",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 500,
+          "numbers": [
+            {
+              "number": "0017",
+              "count": 1
+            },
+            {
+              "number": "0108",
+              "count": 1
+            },
+            {
+              "number": "0437",
+              "count": 1
+            },
+            {
+              "number": "0547",
+              "count": 1
+            },
+            {
+              "number": "0573",
+              "count": 1
+            },
+            {
+              "number": "0775",
+              "count": 1
+            },
+            {
+              "number": "0938",
+              "count": 1
+            },
+            {
+              "number": "1292",
+              "count": 1
+            },
+            {
+              "number": "1557",
+              "count": 1
+            },
+            {
+              "number": "1635",
+              "count": 1
+            },
+            {
+              "number": "1744",
+              "count": 1
+            },
+            {
+              "number": "1915",
+              "count": 1
+            },
+            {
+              "number": "1983",
+              "count": 1
+            },
+            {
+              "number": "2254",
+              "count": 1
+            },
+            {
+              "number": "2310",
+              "count": 1
+            },
+            {
+              "number": "2506",
+              "count": 1
+            },
+            {
+              "number": "2574",
+              "count": 1
+            },
+            {
+              "number": "2689",
+              "count": 1
+            },
+            {
+              "number": "2706",
+              "count": 1
+            },
+            {
+              "number": "2787",
+              "count": 1
+            },
+            {
+              "number": "3124",
+              "count": 1
+            },
+            {
+              "number": "3380",
+              "count": 1
+            },
+            {
+              "number": "3384",
+              "count": 1
+            },
+            {
+              "number": "3403",
+              "count": 1
+            },
+            {
+              "number": "3511",
+              "count": 1
+            },
+            {
+              "number": "3544",
+              "count": 1
+            },
+            {
+              "number": "3556",
+              "count": 1
+            },
+            {
+              "number": "3706",
+              "count": 1
+            },
+            {
+              "number": "3717",
+              "count": 1
+            },
+            {
+              "number": "3739",
+              "count": 1
+            },
+            {
+              "number": "3912",
+              "count": 1
+            },
+            {
+              "number": "4164",
+              "count": 1
+            },
+            {
+              "number": "4174",
+              "count": 1
+            },
+            {
+              "number": "4366",
+              "count": 1
+            },
+            {
+              "number": "4511",
+              "count": 1
+            },
+            {
+              "number": "4572",
+              "count": 1
+            },
+            {
+              "number": "4812",
+              "count": 1
+            },
+            {
+              "number": "4854",
+              "count": 1
+            },
+            {
+              "number": "5022",
+              "count": 1
+            },
+            {
+              "number": "5356",
+              "count": 1
+            },
+            {
+              "number": "5450",
+              "count": 1
+            },
+            {
+              "number": "5529",
+              "count": 1
+            },
+            {
+              "number": "5552",
+              "count": 1
+            },
+            {
+              "number": "5664",
+              "count": 1
+            },
+            {
+              "number": "5665",
+              "count": 1
+            },
+            {
+              "number": "5771",
+              "count": 1
+            },
+            {
+              "number": "5816",
+              "count": 1
+            },
+            {
+              "number": "5875",
+              "count": 1
+            },
+            {
+              "number": "5981",
+              "count": 1
+            },
+            {
+              "number": "6095",
+              "count": 1
+            },
+            {
+              "number": "6185",
+              "count": 1
+            },
+            {
+              "number": "6187",
+              "count": 1
+            },
+            {
+              "number": "6389",
+              "count": 1
+            },
+            {
+              "number": "6391",
+              "count": 1
+            },
+            {
+              "number": "6423",
+              "count": 1
+            },
+            {
+              "number": "6470",
+              "count": 1
+            },
+            {
+              "number": "6522",
+              "count": 1
+            },
+            {
+              "number": "6729",
+              "count": 1
+            },
+            {
+              "number": "7008",
+              "count": 1
+            },
+            {
+              "number": "7199",
+              "count": 1
+            },
+            {
+              "number": "7246",
+              "count": 1
+            },
+            {
+              "number": "7980",
+              "count": 1
+            },
+            {
+              "number": "8079",
+              "count": 1
+            },
+            {
+              "number": "8091",
+              "count": 1
+            },
+            {
+              "number": "8127",
+              "count": 1
+            },
+            {
+              "number": "8259",
+              "count": 1
+            },
+            {
+              "number": "8284",
+              "count": 1
+            },
+            {
+              "number": "8423",
+              "count": 1
+            },
+            {
+              "number": "8448",
+              "count": 1
+            },
+            {
+              "number": "8764",
+              "count": 1
+            },
+            {
+              "number": "9093",
+              "count": 1
+            },
+            {
+              "number": "9429",
+              "count": 1
+            },
+            {
+              "number": "9541",
+              "count": 1
+            },
+            {
+              "number": "9860",
+              "count": 1
+            },
+            {
+              "number": "9957",
+              "count": 1
+            },
+            {
+              "number": "9987",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 200,
+          "numbers": [
+            {
+              "number": "0057",
+              "count": 1
+            },
+            {
+              "number": "0078",
+              "count": 1
+            },
+            {
+              "number": "0224",
+              "count": 1
+            },
+            {
+              "number": "0475",
+              "count": 1
+            },
+            {
+              "number": "0505",
+              "count": 1
+            },
+            {
+              "number": "0616",
+              "count": 1
+            },
+            {
+              "number": "0657",
+              "count": 1
+            },
+            {
+              "number": "0671",
+              "count": 1
+            },
+            {
+              "number": "0848",
+              "count": 1
+            },
+            {
+              "number": "0849",
+              "count": 1
+            },
+            {
+              "number": "0897",
+              "count": 1
+            },
+            {
+              "number": "1200",
+              "count": 1
+            },
+            {
+              "number": "1273",
+              "count": 1
+            },
+            {
+              "number": "1398",
+              "count": 1
+            },
+            {
+              "number": "1651",
+              "count": 1
+            },
+            {
+              "number": "1790",
+              "count": 1
+            },
+            {
+              "number": "1850",
+              "count": 1
+            },
+            {
+              "number": "1883",
+              "count": 1
+            },
+            {
+              "number": "1893",
+              "count": 1
+            },
+            {
+              "number": "1894",
+              "count": 1
+            },
+            {
+              "number": "2026",
+              "count": 1
+            },
+            {
+              "number": "2031",
+              "count": 1
+            },
+            {
+              "number": "2130",
+              "count": 1
+            },
+            {
+              "number": "2323",
+              "count": 1
+            },
+            {
+              "number": "2449",
+              "count": 1
+            },
+            {
+              "number": "2478",
+              "count": 1
+            },
+            {
+              "number": "2519",
+              "count": 1
+            },
+            {
+              "number": "2606",
+              "count": 1
+            },
+            {
+              "number": "2764",
+              "count": 1
+            },
+            {
+              "number": "2821",
+              "count": 1
+            },
+            {
+              "number": "2910",
+              "count": 1
+            },
+            {
+              "number": "3161",
+              "count": 1
+            },
+            {
+              "number": "3551",
+              "count": 1
+            },
+            {
+              "number": "3710",
+              "count": 1
+            },
+            {
+              "number": "3725",
+              "count": 1
+            },
+            {
+              "number": "3916",
+              "count": 1
+            },
+            {
+              "number": "4056",
+              "count": 1
+            },
+            {
+              "number": "4075",
+              "count": 1
+            },
+            {
+              "number": "4247",
+              "count": 1
+            },
+            {
+              "number": "4331",
+              "count": 1
+            },
+            {
+              "number": "4394",
+              "count": 1
+            },
+            {
+              "number": "4539",
+              "count": 1
+            },
+            {
+              "number": "4569",
+              "count": 1
+            },
+            {
+              "number": "4633",
+              "count": 1
+            },
+            {
+              "number": "4636",
+              "count": 1
+            },
+            {
+              "number": "4703",
+              "count": 1
+            },
+            {
+              "number": "4805",
+              "count": 1
+            },
+            {
+              "number": "4861",
+              "count": 1
+            },
+            {
+              "number": "5277",
+              "count": 1
+            },
+            {
+              "number": "5295",
+              "count": 1
+            },
+            {
+              "number": "5625",
+              "count": 1
+            },
+            {
+              "number": "5720",
+              "count": 1
+            },
+            {
+              "number": "5837",
+              "count": 1
+            },
+            {
+              "number": "6071",
+              "count": 1
+            },
+            {
+              "number": "6214",
+              "count": 1
+            },
+            {
+              "number": "6240",
+              "count": 1
+            },
+            {
+              "number": "6331",
+              "count": 1
+            },
+            {
+              "number": "6392",
+              "count": 1
+            },
+            {
+              "number": "6448",
+              "count": 1
+            },
+            {
+              "number": "6518",
+              "count": 1
+            },
+            {
+              "number": "6548",
+              "count": 1
+            },
+            {
+              "number": "6662",
+              "count": 1
+            },
+            {
+              "number": "6920",
+              "count": 1
+            },
+            {
+              "number": "7088",
+              "count": 1
+            },
+            {
+              "number": "7090",
+              "count": 1
+            },
+            {
+              "number": "7091",
+              "count": 1
+            },
+            {
+              "number": "7164",
+              "count": 1
+            },
+            {
+              "number": "7184",
+              "count": 1
+            },
+            {
+              "number": "7272",
+              "count": 1
+            },
+            {
+              "number": "7338",
+              "count": 1
+            },
+            {
+              "number": "7654",
+              "count": 1
+            },
+            {
+              "number": "7722",
+              "count": 1
+            },
+            {
+              "number": "7875",
+              "count": 1
+            },
+            {
+              "number": "8095",
+              "count": 1
+            },
+            {
+              "number": "8186",
+              "count": 1
+            },
+            {
+              "number": "8337",
+              "count": 1
+            },
+            {
+              "number": "8373",
+              "count": 1
+            },
+            {
+              "number": "8386",
+              "count": 1
+            },
+            {
+              "number": "8501",
+              "count": 1
+            },
+            {
+              "number": "8545",
+              "count": 1
+            },
+            {
+              "number": "8832",
+              "count": 1
+            },
+            {
+              "number": "8839",
+              "count": 1
+            },
+            {
+              "number": "9044",
+              "count": 1
+            },
+            {
+              "number": "9102",
+              "count": 1
+            },
+            {
+              "number": "9201",
+              "count": 1
+            },
+            {
+              "number": "9243",
+              "count": 1
+            },
+            {
+              "number": "9320",
+              "count": 1
+            },
+            {
+              "number": "9354",
+              "count": 1
+            },
+            {
+              "number": "9380",
+              "count": 1
+            },
+            {
+              "number": "9543",
+              "count": 1
+            },
+            {
+              "number": "9600",
+              "count": 1
+            },
+            {
+              "number": "9645",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "prize": 100,
+          "numbers": [
+            {
+              "number": "0055",
+              "count": 1
+            },
+            {
+              "number": "0142",
+              "count": 1
+            },
+            {
+              "number": "0210",
+              "count": 1
+            },
+            {
+              "number": "0240",
+              "count": 1
+            },
+            {
+              "number": "0321",
+              "count": 1
+            },
+            {
+              "number": "0474",
+              "count": 1
+            },
+            {
+              "number": "0506",
+              "count": 1
+            },
+            {
+              "number": "0508",
+              "count": 1
+            },
+            {
+              "number": "0575",
+              "count": 1
+            },
+            {
+              "number": "0607",
+              "count": 1
+            },
+            {
+              "number": "0789",
+              "count": 1
+            },
+            {
+              "number": "0966",
+              "count": 1
+            },
+            {
+              "number": "1055",
+              "count": 1
+            },
+            {
+              "number": "1072",
+              "count": 1
+            },
+            {
+              "number": "1116",
+              "count": 1
+            },
+            {
+              "number": "1125",
+              "count": 1
+            },
+            {
+              "number": "1159",
+              "count": 1
+            },
+            {
+              "number": "1193",
+              "count": 1
+            },
+            {
+              "number": "1213",
+              "count": 1
+            },
+            {
+              "number": "1214",
+              "count": 1
+            },
+            {
+              "number": "1294",
+              "count": 1
+            },
+            {
+              "number": "1309",
+              "count": 1
+            },
+            {
+              "number": "1312",
+              "count": 1
+            },
+            {
+              "number": "1316",
+              "count": 1
+            },
+            {
+              "number": "1370",
+              "count": 1
+            },
+            {
+              "number": "1519",
+              "count": 1
+            },
+            {
+              "number": "1588",
+              "count": 1
+            },
+            {
+              "number": "1645",
+              "count": 1
+            },
+            {
+              "number": "1649",
+              "count": 1
+            },
+            {
+              "number": "1739",
+              "count": 1
+            },
+            {
+              "number": "1802",
+              "count": 1
+            },
+            {
+              "number": "1818",
+              "count": 1
+            },
+            {
+              "number": "1904",
+              "count": 1
+            },
+            {
+              "number": "2100",
+              "count": 1
+            },
+            {
+              "number": "2199",
+              "count": 1
+            },
+            {
+              "number": "2369",
+              "count": 1
+            },
+            {
+              "number": "2466",
+              "count": 1
+            },
+            {
+              "number": "2482",
+              "count": 1
+            },
+            {
+              "number": "2488",
+              "count": 1
+            },
+            {
+              "number": "2494",
+              "count": 1
+            },
+            {
+              "number": "2534",
+              "count": 1
+            },
+            {
+              "number": "2867",
+              "count": 1
+            },
+            {
+              "number": "2874",
+              "count": 1
+            },
+            {
+              "number": "2877",
+              "count": 1
+            },
+            {
+              "number": "3078",
+              "count": 1
+            },
+            {
+              "number": "3081",
+              "count": 1
+            },
+            {
+              "number": "3200",
+              "count": 1
+            },
+            {
+              "number": "3227",
+              "count": 1
+            },
+            {
+              "number": "3266",
+              "count": 1
+            },
+            {
+              "number": "3292",
+              "count": 1
+            },
+            {
+              "number": "3299",
+              "count": 1
+            },
+            {
+              "number": "3311",
+              "count": 1
+            },
+            {
+              "number": "3390",
+              "count": 1
+            },
+            {
+              "number": "3561",
+              "count": 1
+            },
+            {
+              "number": "3962",
+              "count": 1
+            },
+            {
+              "number": "4028",
+              "count": 1
+            },
+            {
+              "number": "4103",
+              "count": 1
+            },
+            {
+              "number": "4107",
+              "count": 1
+            },
+            {
+              "number": "4169",
+              "count": 1
+            },
+            {
+              "number": "4218",
+              "count": 1
+            },
+            {
+              "number": "4227",
+              "count": 1
+            },
+            {
+              "number": "4283",
+              "count": 1
+            },
+            {
+              "number": "4315",
+              "count": 1
+            },
+            {
+              "number": "4352",
+              "count": 1
+            },
+            {
+              "number": "4369",
+              "count": 1
+            },
+            {
+              "number": "4489",
+              "count": 1
+            },
+            {
+              "number": "4502",
+              "count": 1
+            },
+            {
+              "number": "4595",
+              "count": 1
+            },
+            {
+              "number": "4597",
+              "count": 1
+            },
+            {
+              "number": "4614",
+              "count": 1
+            },
+            {
+              "number": "4615",
+              "count": 1
+            },
+            {
+              "number": "4627",
+              "count": 1
+            },
+            {
+              "number": "4702",
+              "count": 1
+            },
+            {
+              "number": "4779",
+              "count": 1
+            },
+            {
+              "number": "5092",
+              "count": 1
+            },
+            {
+              "number": "5114",
+              "count": 1
+            },
+            {
+              "number": "5257",
+              "count": 1
+            },
+            {
+              "number": "5305",
+              "count": 1
+            },
+            {
+              "number": "5316",
+              "count": 1
+            },
+            {
+              "number": "5429",
+              "count": 1
+            },
+            {
+              "number": "5506",
+              "count": 1
+            },
+            {
+              "number": "5518",
+              "count": 1
+            },
+            {
+              "number": "5663",
+              "count": 1
+            },
+            {
+              "number": "5839",
+              "count": 1
+            },
+            {
+              "number": "6145",
+              "count": 1
+            },
+            {
+              "number": "6163",
+              "count": 1
+            },
+            {
+              "number": "6386",
+              "count": 1
+            },
+            {
+              "number": "6463",
+              "count": 1
+            },
+            {
+              "number": "6482",
+              "count": 1
+            },
+            {
+              "number": "6488",
+              "count": 1
+            },
+            {
+              "number": "6516",
+              "count": 1
+            },
+            {
+              "number": "6523",
+              "count": 1
+            },
+            {
+              "number": "6578",
+              "count": 1
+            },
+            {
+              "number": "6682",
+              "count": 1
+            },
+            {
+              "number": "6694",
+              "count": 1
+            },
+            {
+              "number": "6715",
+              "count": 1
+            },
+            {
+              "number": "6718",
+              "count": 1
+            },
+            {
+              "number": "6749",
+              "count": 1
+            },
+            {
+              "number": "6857",
+              "count": 1
+            },
+            {
+              "number": "6995",
+              "count": 1
+            },
+            {
+              "number": "7000",
+              "count": 1
+            },
+            {
+              "number": "7194",
+              "count": 1
+            },
+            {
+              "number": "7212",
+              "count": 1
+            },
+            {
+              "number": "7263",
+              "count": 1
+            },
+            {
+              "number": "7381",
+              "count": 1
+            },
+            {
+              "number": "7418",
+              "count": 1
+            },
+            {
+              "number": "7438",
+              "count": 1
+            },
+            {
+              "number": "7591",
+              "count": 1
+            },
+            {
+              "number": "7608",
+              "count": 1
+            },
+            {
+              "number": "7707",
+              "count": 1
+            },
+            {
+              "number": "7927",
+              "count": 1
+            },
+            {
+              "number": "7974",
+              "count": 1
+            },
+            {
+              "number": "8055",
+              "count": 1
+            },
+            {
+              "number": "8109",
+              "count": 1
+            },
+            {
+              "number": "8155",
+              "count": 1
+            },
+            {
+              "number": "8162",
+              "count": 1
+            },
+            {
+              "number": "8193",
+              "count": 1
+            },
+            {
+              "number": "8256",
+              "count": 1
+            },
+            {
+              "number": "8296",
+              "count": 1
+            },
+            {
+              "number": "8303",
+              "count": 1
+            },
+            {
+              "number": "8312",
+              "count": 1
+            },
+            {
+              "number": "8342",
+              "count": 1
+            },
+            {
+              "number": "8389",
+              "count": 1
+            },
+            {
+              "number": "8400",
+              "count": 1
+            },
+            {
+              "number": "8438",
+              "count": 1
+            },
+            {
+              "number": "8458",
+              "count": 1
+            },
+            {
+              "number": "8554",
+              "count": 1
+            },
+            {
+              "number": "8707",
+              "count": 1
+            },
+            {
+              "number": "8783",
+              "count": 1
+            },
+            {
+              "number": "8817",
+              "count": 1
+            },
+            {
+              "number": "8841",
+              "count": 1
+            },
+            {
+              "number": "8913",
+              "count": 1
+            },
+            {
+              "number": "8967",
+              "count": 1
+            },
+            {
+              "number": "9062",
+              "count": 1
+            },
+            {
+              "number": "9339",
+              "count": 1
+            },
+            {
+              "number": "9344",
+              "count": 1
+            },
+            {
+              "number": "9347",
+              "count": 1
+            },
+            {
+              "number": "9401",
+              "count": 1
+            },
+            {
+              "number": "9516",
+              "count": 1
+            },
+            {
+              "number": "9577",
+              "count": 1
+            },
+            {
+              "number": "9666",
+              "count": 1
+            },
+            {
+              "number": "9684",
+              "count": 1
+            },
+            {
+              "number": "9710",
+              "count": 1
+            },
+            {
+              "number": "9932",
+              "count": 1
+            }
+          ]
+        }
+      ],
+      "createdAt": "2026-10-04T11:32:03.575Z",
+      "recordNumber": 1647
+    }
+  ]
+}
