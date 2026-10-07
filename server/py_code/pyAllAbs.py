@@ -11,7 +11,7 @@ from tqdm.auto import tqdm
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "numbergrid"
 COLLECTION = "absolute_data"  # Updated to match Mongoose schema collection
-OUTPUT_FILE = "absolute_data_number_patterns.csv"
+OUTPUT_FILE = "absolute_data_number_patterns1.csv"
 SORT_DESC = True  # Total hits descending
 
 client = MongoClient(MONGO_URI)
