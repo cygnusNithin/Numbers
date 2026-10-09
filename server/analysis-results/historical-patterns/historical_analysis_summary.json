@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-10-07T18:39:13.589Z",
+  "source": "AbsoluteData / absolute_data",
+  "database": "numbergrid",
+  "documentsLoaded": 1997,
+  "uniqueSerialNumbers": 1997,
+  "duplicateSerialNumbers": 0,
+  "uniqueCalendarDates": 1995,
+  "duplicateCalendarDateCount": 4,
+  "dateGroupsWithMultipleDraws": 2,
+  "firstDraw": {
+    "drawIndex": 1,
+    "serialNumber": "KR-456",
+    "category": "OTHER",
+    "date": "11/07/2020"
+  },
+  "lastDraw": {
+    "drawIndex": 1997,
+    "serialNumber": "BR-111",
+    "category": "BR",
+    "date": "26/09/2026"
+  },
+  "globalWeekdayCounts": {
+    "0": 238,
+    "1": 299,
+    "2": 288,
+    "3": 301,
+    "4": 277,
+    "5": 301,
+    "6": 293
+  },
+  "globalMonthCounts": {
+    "1": 167,
+    "2": 161,
+    "3": 181,
+    "4": 170,
+    "5": 157,
+    "6": 150,
+    "7": 162,
+    "8": 172,
+    "9": 183,
+    "10": 160,
+    "11": 161,
+    "12": 173
+  },
+  "categoryCounts": {
+    "BM": 6,
+    "BR": 34,
+    "OTHER": 1957
+  },
+  "numberUniverse": {
+    "expected": 10000,
+    "actual": 10000,
+    "missing": []
+  },
+  "outputFiles": {
+    "frequencyCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\frequency_analysis.csv",
+    "gapCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\gap_analysis.csv",
+    "monthCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\month_analysis.csv",
+    "weekdayCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\weekday_analysis.csv",
+    "digitCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\digit_analysis.csv",
+    "recentCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\recent_activity_analysis.csv",
+    "duplicateDateCsv": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\duplicate_calendar_dates.csv",
+    "drawSequenceJson": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\draw_sequence.json",
+    "detailedJson": "J:\\Reset\\downloads\\Music\\forth\\server\\analysis-results\\historical-patterns\\number_historical_details.json"
+  }
+}

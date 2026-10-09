@@ -1,100 +1,172 @@
 const fs = require("fs");
 const path = require("path");
 
-/* ============================================================
-   PATHS
-============================================================ */
-
-const SERVER_DIR = path.join(__dirname, "..");
+const SERVER_ROOT = path.resolve(__dirname, "..");
 
 const CANONICAL_CSV = path.join(
-  SERVER_DIR,
+  SERVER_ROOT,
   "analysis-results",
   "absolute_data_canonical.csv",
 );
 
-const EXISTING_CSV = path.join(SERVER_DIR, "absolute_data_number_patterns.csv");
+const EXISTING_CSV = path.join(
+  SERVER_ROOT,
+  "absolute_data_number_patterns.csv",
+);
 
-const OUTPUT_DIR = path.join(SERVER_DIR, "analysis-results");
-
-const OUTPUT_JSON = path.join(
-  OUTPUT_DIR,
+const REPORT_PATH = path.join(
+  SERVER_ROOT,
+  "analysis-results",
   "canonical_vs_existing_comparison.json",
 );
 
-/* ============================================================
-   CSV PARSER
-============================================================ */
+const MONTH_NAME_TO_NUMBER = {
+  January: "1",
+  February: "2",
+  March: "3",
+  April: "4",
+  May: "5",
+  June: "6",
+  July: "7",
+  August: "8",
+  September: "9",
+  October: "10",
+  November: "11",
+  December: "12",
+};
 
-function parseCsvLine(line) {
-  const values = [];
+const CORE_FIELDS = [
+  "number",
+  "total_hits",
+  "last_seen_date",
+  "days_since_last_hit",
+  "avg_gap_days",
+  "min_gap_days",
+  "max_gap_days",
+  "dates",
+  "prize_breakdown",
+  "weekday_counts",
+  "month_counts",
+  "d1",
+  "d2",
+  "d3",
+  "d4",
+  "digit_sum",
+  "even_digit_count",
+];
 
-  let current = "";
-  let insideQuotes = false;
+const NUMERIC_FIELDS = new Set([
+  "total_hits",
+  "days_since_last_hit",
+  "avg_gap_days",
+  "min_gap_days",
+  "max_gap_days",
+  "d1",
+  "d2",
+  "d3",
+  "d4",
+  "digit_sum",
+  "even_digit_count",
+]);
 
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
+const JSON_FIELDS = new Set([
+  "prize_breakdown",
+  "weekday_counts",
+  "month_counts",
+]);
 
-    if (char === '"') {
-      if (insideQuotes && line[i + 1] === '"') {
-        current += '"';
-        i++;
-      } else {
-        insideQuotes = !insideQuotes;
-      }
+const DATE_LIST_FIELDS = new Set(["dates"]);
 
-      continue;
-    }
+const NUMERIC_TOLERANCE = 1e-9;
 
-    if (char === "," && !insideQuotes) {
-      values.push(current);
-      current = "";
-      continue;
-    }
-
-    current += char;
-  }
-
-  values.push(current);
-
-  return values;
-}
+// ------------------------------------------------------------
+// CSV parser
+// ------------------------------------------------------------
 
 function parseCsv(text) {
-  const lines = text
-    .replace(/^\uFEFF/, "")
-    .split(/\r?\n/)
-    .filter((line) => line.trim() !== "");
-
-  if (lines.length === 0) {
-    return [];
-  }
-
-  const headers = parseCsvLine(lines[0]);
-
   const rows = [];
 
-  for (let i = 1; i < lines.length; i++) {
-    const values = parseCsvLine(lines[i]);
+  let row = [];
+  let field = "";
+  let inQuotes = false;
 
-    const row = {};
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const next = text[i + 1];
 
-    for (let j = 0; j < headers.length; j++) {
-      row[headers[j]] = values[j] !== undefined ? values[j] : "";
+    if (inQuotes) {
+      if (char === '"' && next === '"') {
+        field += '"';
+        i++;
+        continue;
+      }
+
+      if (char === '"') {
+        inQuotes = false;
+        continue;
+      }
+
+      field += char;
+      continue;
     }
 
+    if (char === '"') {
+      inQuotes = true;
+      continue;
+    }
+
+    if (char === ",") {
+      row.push(field);
+      field = "";
+      continue;
+    }
+
+    if (char === "\n") {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = "";
+      continue;
+    }
+
+    if (char === "\r") {
+      continue;
+    }
+
+    field += char;
+  }
+
+  if (field.length > 0 || row.length > 0) {
+    row.push(field);
     rows.push(row);
   }
 
-  return rows;
+  if (rows.length === 0) {
+    return [];
+  }
+
+  const headers = rows[0];
+
+  return rows
+    .slice(1)
+    .filter((row) => row.some((value) => value !== ""))
+    .map((row) => {
+      const object = {};
+
+      for (let i = 0; i < headers.length; i++) {
+        object[headers[i]] = row[i] ?? "";
+      }
+
+      return object;
+    });
 }
 
-/* ============================================================
-   JSON HELPERS
-============================================================ */
+// ------------------------------------------------------------
+// Generic helpers
+// ------------------------------------------------------------
 
-function parseJson(value, fallback = {}) {
-  if (value === null || value === undefined || value === "") {
+function safeJsonParse(value, fallback = {}) {
+  if (value === null || value === undefined) {
     return fallback;
   }
 
@@ -102,62 +174,17 @@ function parseJson(value, fallback = {}) {
     return value;
   }
 
-  try {
-    return JSON.parse(value);
-  } catch (error) {
+  const text = String(value).trim();
+
+  if (!text) {
     return fallback;
   }
-}
 
-/* ============================================================
-   NORMALIZATION
-============================================================ */
-
-/*
- * Month counts have two valid representations:
- *
- * Canonical:
- *
- * {
- *   "1": 5,
- *   "2": 3,
- *   "3": 7
- * }
- *
- * Existing:
- *
- * {
- *   "1": 5,
- *   "2": 3,
- *   "3": 7,
- *   "4": 0
- * }
- *
- * These are semantically identical.
- *
- * Remove zero-valued months before comparison.
- */
-
-function normalizeMonthCounts(value) {
-  const parsed = parseJson(value, {});
-
-  const normalized = {};
-
-  for (let month = 1; month <= 12; month++) {
-    const key = String(month);
-
-    const count = Number(parsed[key] || 0);
-
-    if (count > 0) {
-      normalized[key] = count;
-    }
+  try {
+    return JSON.parse(text);
+  } catch {
+    return fallback;
   }
-
-  return normalized;
-}
-
-function normalizeJsonObject(value) {
-  return parseJson(value, {});
 }
 
 function normalizeNumber(value) {
@@ -170,574 +197,460 @@ function normalizeNumber(value) {
   return Number.isFinite(number) ? number : null;
 }
 
-/* ============================================================
-   DEEP EQUALITY
-============================================================ */
+function numbersEqual(a, b) {
+  const x = normalizeNumber(a);
+  const y = normalizeNumber(b);
 
-function stableObject(value) {
-  if (value === null || typeof value !== "object") {
-    return value;
+  if (x === null || y === null) {
+    return x === y;
   }
 
+  return Math.abs(x - y) <= NUMERIC_TOLERANCE;
+}
+
+// ------------------------------------------------------------
+// Dates
+// ------------------------------------------------------------
+
+function normalizeDateString(value) {
+  return String(value || "").trim();
+}
+
+function normalizeDates(value) {
   if (Array.isArray(value)) {
-    return value.map(stableObject);
+    return [...new Set(value.map(normalizeDateString).filter(Boolean))];
+  }
+
+  const text = String(value || "");
+
+  if (!text.trim()) {
+    return [];
+  }
+
+  return [...new Set(text.split("|").map(normalizeDateString).filter(Boolean))];
+}
+
+// ------------------------------------------------------------
+// Month counts
+//
+// Canonical:
+//   {"1":6,"2":1,"3":6}
+//
+// Existing:
+//   {"April":5,"August":10,...}
+//
+// Normalize both to:
+//   {"1":6,"2":1,...}
+// ------------------------------------------------------------
+
+function normalizeMonthCounts(value) {
+  const parsed = safeJsonParse(value, {});
+
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return {};
   }
 
   const result = {};
 
-  for (const key of Object.keys(value).sort()) {
-    result[key] = stableObject(value[key]);
+  for (const [rawKey, rawValue] of Object.entries(parsed)) {
+    let monthNumber = null;
+
+    if (/^(1[0-2]|[1-9])$/.test(String(rawKey).trim())) {
+      monthNumber = String(Number(rawKey));
+    } else if (MONTH_NAME_TO_NUMBER[rawKey]) {
+      monthNumber = MONTH_NAME_TO_NUMBER[rawKey];
+    } else {
+      const normalizedName = String(rawKey).trim().replace(/\s+/g, " ");
+
+      if (MONTH_NAME_TO_NUMBER[normalizedName]) {
+        monthNumber = MONTH_NAME_TO_NUMBER[normalizedName];
+      }
+    }
+
+    if (!monthNumber) {
+      continue;
+    }
+
+    const count = Number(rawValue);
+
+    if (!Number.isFinite(count)) {
+      continue;
+    }
+
+    result[monthNumber] = count;
   }
 
-  return result;
+  return Object.fromEntries(
+    Object.entries(result).sort(([a], [b]) => Number(a) - Number(b)),
+  );
 }
 
-function objectsEqual(a, b) {
-  return JSON.stringify(stableObject(a)) === JSON.stringify(stableObject(b));
-}
+// ------------------------------------------------------------
+// Prize / weekday objects
+// ------------------------------------------------------------
 
-/* ============================================================
-   FIELD COMPARISON
-============================================================ */
+function normalizeObject(value) {
+  const parsed = safeJsonParse(value, {});
 
-const CORE_FIELDS = [
-  "number",
-  "total_hits",
-  "last_seen_date",
-  "days_since_last_hit",
-  "avg_gap_days",
-  "min_gap_days",
-  "max_gap_days",
-  "d1",
-  "d2",
-  "d3",
-  "d4",
-  "digit_sum",
-  "even_digit_count",
-  "dates",
-  "prize_breakdown",
-  "weekday_counts",
-  "month_counts",
-];
-
-function compareField(canonical, existing, field) {
-  switch (field) {
-    case "number":
-    case "last_seen_date":
-      return String(canonical[field] ?? "") === String(existing[field] ?? "");
-
-    case "total_hits":
-    case "days_since_last_hit":
-    case "avg_gap_days":
-    case "min_gap_days":
-    case "max_gap_days":
-    case "d1":
-    case "d2":
-    case "d3":
-    case "d4":
-    case "digit_sum":
-    case "even_digit_count":
-      return (
-        normalizeNumber(canonical[field]) === normalizeNumber(existing[field])
-      );
-
-    case "dates": {
-      const a = parseJson(canonical[field], []);
-
-      const b = parseJson(existing[field], []);
-
-      return objectsEqual(a, b);
-    }
-
-    case "prize_breakdown":
-    case "weekday_counts": {
-      const a = normalizeJsonObject(canonical[field]);
-
-      const b = normalizeJsonObject(existing[field]);
-
-      return objectsEqual(a, b);
-    }
-
-    case "month_counts": {
-      const a = normalizeMonthCounts(canonical[field]);
-
-      const b = normalizeMonthCounts(existing[field]);
-
-      return objectsEqual(a, b);
-    }
-
-    default:
-      return String(canonical[field] ?? "") === String(existing[field] ?? "");
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    return {};
   }
-}
-
-/* ============================================================
-   DATE-DERIVED MONTH DIAGNOSTIC
-============================================================ */
-
-function deriveMonthCountsFromDates(value) {
-  const dates = parseJson(value, []);
 
   const result = {};
+
+  for (const [key, rawValue] of Object.entries(parsed)) {
+    const numericValue = Number(rawValue);
+
+    result[String(key)] = Number.isFinite(numericValue)
+      ? numericValue
+      : rawValue;
+  }
+
+  return Object.fromEntries(
+    Object.entries(result).sort(([a], [b]) => a.localeCompare(b)),
+  );
+}
+
+// ------------------------------------------------------------
+// Semantic normalization
+// ------------------------------------------------------------
+
+function normalizeField(field, value) {
+  if (field === "dates") {
+    return normalizeDates(value);
+  }
+
+  if (field === "month_counts") {
+    return normalizeMonthCounts(value);
+  }
+
+  if (field === "prize_breakdown" || field === "weekday_counts") {
+    return normalizeObject(value);
+  }
+
+  if (NUMERIC_FIELDS.has(field)) {
+    return normalizeNumber(value);
+  }
+
+  return String(value ?? "").trim();
+}
+
+function semanticEqual(field, canonicalValue, existingValue) {
+  const a = normalizeField(field, canonicalValue);
+  const b = normalizeField(field, existingValue);
+
+  if (field === "avg_gap_days") {
+    return numbersEqual(a, b);
+  }
+
+  if (NUMERIC_FIELDS.has(field)) {
+    return numbersEqual(a, b);
+  }
+
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+// ------------------------------------------------------------
+// Main
+// ------------------------------------------------------------
+
+console.log("");
+console.log("==============================================");
+console.log("CANONICAL vs EXISTING DATASET");
+console.log("SEMANTIC COMPARISON");
+console.log("==============================================");
+console.log("");
+
+if (!fs.existsSync(CANONICAL_CSV)) {
+  throw new Error(`Canonical CSV not found: ${CANONICAL_CSV}`);
+}
+
+if (!fs.existsSync(EXISTING_CSV)) {
+  throw new Error(`Existing CSV not found: ${EXISTING_CSV}`);
+}
+
+const canonicalRows = parseCsv(fs.readFileSync(CANONICAL_CSV, "utf8"));
+
+const existingRows = parseCsv(fs.readFileSync(EXISTING_CSV, "utf8"));
+
+console.log(`Canonical CSV rows: ${canonicalRows.length}`);
+console.log(`Existing CSV rows : ${existingRows.length}`);
+console.log("");
+
+const canonicalByNumber = new Map();
+const existingByNumber = new Map();
+
+for (const row of canonicalRows) {
+  canonicalByNumber.set(String(row.number).padStart(4, "0"), row);
+}
+
+for (const row of existingRows) {
+  existingByNumber.set(String(row.number).padStart(4, "0"), row);
+}
+
+const allNumbers = [
+  ...new Set([...canonicalByNumber.keys(), ...existingByNumber.keys()]),
+].sort();
+
+const fieldStats = {};
+
+for (const field of CORE_FIELDS) {
+  fieldStats[field] = {
+    matched: 0,
+    different: 0,
+  };
+}
+
+const coreDifferences = [];
+const dateDifferences = [];
+const monthDifferences = [];
+
+for (const number of allNumbers) {
+  const canonical = canonicalByNumber.get(number);
+  const existing = existingByNumber.get(number);
+
+  if (!canonical || !existing) {
+    coreDifferences.push({
+      number,
+      reason: !canonical ? "missing_from_canonical" : "missing_from_existing",
+    });
+
+    continue;
+  }
+
+  for (const field of CORE_FIELDS) {
+    const same = semanticEqual(field, canonical[field], existing[field]);
+
+    if (same) {
+      fieldStats[field].matched++;
+    } else {
+      fieldStats[field].different++;
+
+      if (field === "dates") {
+        dateDifferences.push({
+          number,
+          canonical: normalizeDates(canonical[field]),
+          existing: normalizeDates(existing[field]),
+        });
+      }
+
+      if (field === "month_counts") {
+        monthDifferences.push({
+          number,
+          derived: normalizeMonthCounts(existing.month_counts),
+          canonical: normalizeMonthCounts(canonical.month_counts),
+          existingRaw: existing.month_counts,
+        });
+      }
+    }
+  }
+}
+
+// ------------------------------------------------------------
+// Core match
+// ------------------------------------------------------------
+
+const coreMatchedNumbers = allNumbers.filter((number) => {
+  const canonical = canonicalByNumber.get(number);
+  const existing = existingByNumber.get(number);
+
+  if (!canonical || !existing) {
+    return false;
+  }
+
+  return CORE_FIELDS.every((field) =>
+    semanticEqual(field, canonical[field], existing[field]),
+  );
+});
+
+const coreDifferentCount = allNumbers.length - coreMatchedNumbers.length;
+
+console.log("CORE DATA");
+console.log("----------------------------------------------");
+console.log(`Numbers compared : ${allNumbers.length}`);
+console.log(`Core matched     : ${coreMatchedNumbers.length}`);
+console.log(`Core different   : ${coreDifferentCount}`);
+console.log("");
+
+console.log("FIELD COMPARISON");
+console.log("----------------------------------------------");
+
+for (const field of CORE_FIELDS) {
+  const stats = fieldStats[field];
+
+  console.log(
+    `${field.padEnd(20)} matched=${String(stats.matched).padStart(5)} different=${String(stats.different).padStart(5)}`,
+  );
+}
+
+console.log("");
+
+const canonicalOnlyFields = Object.keys(canonicalRows[0] || {}).filter(
+  (field) =>
+    !Object.prototype.hasOwnProperty.call(existingRows[0] || {}, field),
+);
+
+const existingOnlyFields = Object.keys(existingRows[0] || {}).filter(
+  (field) =>
+    !Object.prototype.hasOwnProperty.call(canonicalRows[0] || {}, field),
+);
+
+console.log("SCHEMA DIFFERENCES");
+console.log("----------------------------------------------");
+console.log(
+  `Canonical-only: ${
+    canonicalOnlyFields.length ? canonicalOnlyFields.join(", ") : "None"
+  }`,
+);
+console.log(
+  `Existing-only : ${
+    existingOnlyFields.length ? existingOnlyFields.join(", ") : "None"
+  }`,
+);
+
+console.log("");
+
+console.log("DATE DIAGNOSTIC");
+console.log("----------------------------------------------");
+
+const canonicalDateCount = canonicalRows.reduce(
+  (sum, row) => sum + normalizeDates(row.dates).length,
+  0,
+);
+
+const existingDateCount = existingRows.reduce(
+  (sum, row) => sum + normalizeDates(row.dates).length,
+  0,
+);
+
+console.log(`Date mismatches : ${dateDifferences.length}`);
+console.log(`Canonical dates : ${canonicalDateCount}`);
+console.log(`Existing dates  : ${existingDateCount}`);
+
+console.log("");
+
+console.log("MONTH DIAGNOSTIC");
+console.log("----------------------------------------------");
+
+let canonicalMonthMatchesDates = 0;
+let existingMonthMatchesDates = 0;
+
+for (const number of allNumbers) {
+  const canonical = canonicalByNumber.get(number);
+  const existing = existingByNumber.get(number);
+
+  if (!canonical || !existing) {
+    continue;
+  }
+
+  const dates = normalizeDates(canonical.dates);
+
+  const derived = {};
 
   for (const dateString of dates) {
-    const match = String(dateString).match(/^\d{2}\/(\d{2})\/\d{4}$/);
+    const match = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(dateString);
 
     if (!match) {
       continue;
     }
 
-    const month = String(Number(match[1]));
+    const month = String(Number(match[2]));
 
-    result[month] = (result[month] || 0) + 1;
+    derived[month] = (derived[month] || 0) + 1;
   }
 
-  return result;
+  const canonicalMonths = normalizeMonthCounts(canonical.month_counts);
+
+  const existingMonths = normalizeMonthCounts(existing.month_counts);
+
+  if (JSON.stringify(derived) === JSON.stringify(canonicalMonths)) {
+    canonicalMonthMatchesDates++;
+  }
+
+  if (JSON.stringify(derived) === JSON.stringify(existingMonths)) {
+    existingMonthMatchesDates++;
+  }
 }
 
-/* ============================================================
-   MAIN
-============================================================ */
+console.log(`Month mismatches: ${monthDifferences.length}`);
+console.log(`Canonical matches dates: ${canonicalMonthMatchesDates}`);
+console.log(`Existing matches dates : ${existingMonthMatchesDates}`);
 
-function main() {
+if (monthDifferences.length > 0) {
   console.log("");
-  console.log("==============================================");
-  console.log("CANONICAL vs EXISTING DATASET");
-  console.log("SEMANTIC COMPARISON");
-  console.log("==============================================");
-  console.log("");
-
-  if (!fs.existsSync(CANONICAL_CSV)) {
-    throw new Error(`Canonical CSV not found:\n${CANONICAL_CSV}`);
-  }
-
-  if (!fs.existsSync(EXISTING_CSV)) {
-    throw new Error(`Existing CSV not found:\n${EXISTING_CSV}`);
-  }
-
-  const canonicalRows = parseCsv(fs.readFileSync(CANONICAL_CSV, "utf8"));
-
-  const existingRows = parseCsv(fs.readFileSync(EXISTING_CSV, "utf8"));
-
-  console.log(`Canonical CSV rows: ${canonicalRows.length}`);
-
-  console.log(`Existing CSV rows : ${existingRows.length}`);
-
-  console.log("");
-
-  /*
-   * Index existing rows by number.
-   */
-
-  const existingByNumber = new Map();
-
-  for (const row of existingRows) {
-    existingByNumber.set(String(row.number).padStart(4, "0"), row);
-  }
-
-  const canonicalByNumber = new Map();
-
-  for (const row of canonicalRows) {
-    canonicalByNumber.set(String(row.number).padStart(4, "0"), row);
-  }
-
-  /* ==========================================================
-     CORE DATA
-  ========================================================== */
-
-  let numbersCompared = 0;
-  let coreMatched = 0;
-  let coreDifferent = 0;
-
-  const coreDifferences = [];
-
-  for (const canonical of canonicalRows) {
-    const number = String(canonical.number).padStart(4, "0");
-
-    const existing = existingByNumber.get(number);
-
-    if (!existing) {
-      coreDifferent++;
-
-      coreDifferences.push({
-        number,
-        reason: "missing_from_existing",
-      });
-
-      continue;
-    }
-
-    numbersCompared++;
-
-    let matched = true;
-
-    for (const field of CORE_FIELDS) {
-      if (!compareField(canonical, existing, field)) {
-        matched = false;
-        break;
-      }
-    }
-
-    if (matched) {
-      coreMatched++;
-    } else {
-      coreDifferent++;
-
-      coreDifferences.push({
-        number,
-        reason: "core_field_difference",
-      });
-    }
-  }
-
-  console.log("CORE DATA");
-
+  console.log("FIRST 10 MONTH DIFFERENCES");
   console.log("----------------------------------------------");
 
-  console.log(`Numbers compared : ${numbersCompared}`);
-
-  console.log(`Core matched     : ${coreMatched}`);
-
-  console.log(`Core different   : ${coreDifferent}`);
-
-  console.log("");
-
-  /* ==========================================================
-     FIELD COMPARISON
-  ========================================================== */
-
-  console.log("FIELD COMPARISON");
-
-  console.log("----------------------------------------------");
-
-  const fieldResults = {};
-
-  for (const field of CORE_FIELDS) {
-    let matched = 0;
-    let different = 0;
-
-    for (const canonical of canonicalRows) {
-      const number = String(canonical.number).padStart(4, "0");
-
-      const existing = existingByNumber.get(number);
-
-      if (!existing) {
-        different++;
-        continue;
-      }
-
-      if (compareField(canonical, existing, field)) {
-        matched++;
-      } else {
-        different++;
-      }
-    }
-
-    fieldResults[field] = {
-      matched,
-      different,
-    };
-
-    console.log(
-      `${field.padEnd(20)} matched=${String(matched).padStart(
-        5,
-      )} different=${String(different).padStart(5)}`,
-    );
+  for (const diff of monthDifferences.slice(0, 10)) {
+    console.log("");
+    console.log(`Number: ${diff.number}`);
+    console.log(`Canonical: ${JSON.stringify(diff.canonical)}`);
+    console.log(`Existing : ${JSON.stringify(diff.derived)}`);
+    console.log(`Existing raw: ${diff.existingRaw}`);
   }
-
-  console.log("");
-
-  /* ==========================================================
-     SCHEMA DIFFERENCES
-  ========================================================== */
-
-  const canonicalFields = canonicalRows.length
-    ? Object.keys(canonicalRows[0])
-    : [];
-
-  const existingFields = existingRows.length
-    ? Object.keys(existingRows[0])
-    : [];
-
-  const canonicalOnly = canonicalFields.filter(
-    (field) => !existingFields.includes(field),
-  );
-
-  const existingOnly = existingFields.filter(
-    (field) => !canonicalFields.includes(field),
-  );
-
-  console.log("SCHEMA DIFFERENCES");
-
-  console.log("----------------------------------------------");
-
-  console.log(
-    `Canonical-only: ${
-      canonicalOnly.length ? canonicalOnly.join(", ") : "none"
-    }`,
-  );
-
-  console.log(
-    `Existing-only : ${existingOnly.length ? existingOnly.join(", ") : "none"}`,
-  );
-
-  console.log("");
-
-  /* ==========================================================
-     MONTH DIAGNOSTIC
-  ========================================================== */
-
-  let monthMismatches = 0;
-  let canonicalMatchesDates = 0;
-  let existingMatchesDates = 0;
-  let bothMatchDates = 0;
-  let neitherMatchesDates = 0;
-
-  const monthDifferences = [];
-
-  for (const canonical of canonicalRows) {
-    const number = String(canonical.number).padStart(4, "0");
-
-    const existing = existingByNumber.get(number);
-
-    if (!existing) {
-      continue;
-    }
-
-    const derived = deriveMonthCountsFromDates(canonical.dates);
-
-    const canonicalMonth = normalizeMonthCounts(canonical.month_counts);
-
-    const existingMonth = normalizeMonthCounts(existing.month_counts);
-
-    const canonicalMatches = objectsEqual(canonicalMonth, derived);
-
-    const existingMatches = objectsEqual(existingMonth, derived);
-
-    if (canonicalMatches) {
-      canonicalMatchesDates++;
-    }
-
-    if (existingMatches) {
-      existingMatchesDates++;
-    }
-
-    if (canonicalMatches && existingMatches) {
-      bothMatchDates++;
-    }
-
-    if (!canonicalMatches && !existingMatches) {
-      neitherMatchesDates++;
-    }
-
-    if (!objectsEqual(canonicalMonth, existingMonth)) {
-      monthMismatches++;
-
-      monthDifferences.push({
-        number,
-        dates: JSON.parse(canonical.dates || "[]"),
-        derived,
-        canonical: canonicalMonth,
-        existing: existingMonth,
-        canonicalMatchesDates,
-        existingMatchesDates,
-      });
-    }
-  }
-
-  console.log("MONTH DIAGNOSTIC");
-
-  console.log("----------------------------------------------");
-
-  console.log(`Month mismatches: ${monthMismatches}`);
-
-  console.log(`Canonical matches dates: ${canonicalMatchesDates}`);
-
-  console.log(`Existing matches dates : ${existingMatchesDates}`);
-
-  console.log(`Both match dates       : ${bothMatchDates}`);
-
-  console.log(`Neither matches dates  : ${neitherMatchesDates}`);
-
-  console.log("");
-
-  if (monthDifferences.length > 0) {
-    console.log("FIRST 10 MONTH DIFFERENCES");
-
-    console.log("----------------------------------------------");
-
-    for (const difference of monthDifferences.slice(0, 10)) {
-      console.log("");
-
-      console.log(`Number: ${difference.number}`);
-
-      console.log(`Dates: ${difference.dates.length}`);
-
-      console.log(`Derived : ${JSON.stringify(difference.derived)}`);
-
-      console.log(`Canonical: ${JSON.stringify(difference.canonical)}`);
-
-      console.log(`Existing : ${JSON.stringify(difference.existing)}`);
-
-      console.log(
-        `Canonical matches dates: ${objectsEqual(
-          difference.canonical,
-          difference.derived,
-        )}`,
-      );
-
-      console.log(
-        `Existing matches dates : ${objectsEqual(
-          difference.existing,
-          difference.derived,
-        )}`,
-      );
-    }
-  }
-
-  console.log("");
-
-  /* ==========================================================
-     MISSING NUMBERS
-  ========================================================== */
-
-  const missingFromExisting = [];
-
-  for (const canonical of canonicalRows) {
-    const number = String(canonical.number).padStart(4, "0");
-
-    if (!existingByNumber.has(number)) {
-      missingFromExisting.push(number);
-    }
-  }
-
-  const missingFromCanonical = [];
-
-  for (const existing of existingRows) {
-    const number = String(existing.number).padStart(4, "0");
-
-    if (!canonicalByNumber.has(number)) {
-      missingFromCanonical.push(number);
-    }
-  }
-
-  /* ==========================================================
-     FINAL VERDICT
-  ========================================================== */
-
-  /*
-   * The raw month representation is intentionally ignored
-   * here because {"4":0} and an absent "4" are equivalent.
-   *
-   * CORE DATA is already using semantic month comparison.
-   */
-
-  const passed =
-    coreDifferent === 0 &&
-    missingFromExisting.length === 0 &&
-    missingFromCanonical.length === 0;
-
-  console.log("==============================================");
-
-  if (passed) {
-    console.log("✅ SEMANTIC COMPARISON PASSED");
-
-    console.log("Canonical and existing datasets contain");
-
-    console.log("the same historical data.");
-  } else {
-    console.log("❌ REAL CORE DATA DIFFERENCES FOUND");
-
-    if (missingFromExisting.length > 0) {
-      console.log(`Missing from existing: ${missingFromExisting.length}`);
-    }
-
-    if (missingFromCanonical.length > 0) {
-      console.log(`Missing from canonical: ${missingFromCanonical.length}`);
-    }
-
-    if (coreDifferent > 0) {
-      console.log(`Core differences: ${coreDifferent}`);
-    }
-  }
-
-  console.log("==============================================");
-
-  /* ==========================================================
-     REPORT
-  ========================================================== */
-
-  fs.mkdirSync(OUTPUT_DIR, {
-    recursive: true,
-  });
-
-  const report = {
-    generatedAt: new Date().toISOString(),
-
-    files: {
-      canonical: CANONICAL_CSV,
-      existing: EXISTING_CSV,
-    },
-
-    rowCounts: {
-      canonical: canonicalRows.length,
-      existing: existingRows.length,
-    },
-
-    core: {
-      numbersCompared,
-      matched: coreMatched,
-      different: coreDifferent,
-    },
-
-    fields: fieldResults,
-
-    schema: {
-      canonicalOnly,
-      existingOnly,
-    },
-
-    monthDiagnostic: {
-      mismatches: monthMismatches,
-      canonicalMatchesDates,
-      existingMatchesDates,
-      bothMatchDates,
-      neitherMatchesDates,
-    },
-
-    missing: {
-      fromExisting: missingFromExisting,
-      fromCanonical: missingFromCanonical,
-    },
-
-    coreDifferences,
-
-    firstMonthDifferences: monthDifferences.slice(0, 100),
-
-    passed,
-  };
-
-  fs.writeFileSync(OUTPUT_JSON, JSON.stringify(report, null, 2), "utf8");
-
-  console.log("");
-
-  console.log(`Report: ${OUTPUT_JSON}`);
-
-  console.log("");
 }
 
-/* ============================================================
-   RUN
-============================================================ */
+console.log("");
+console.log("==============================================");
 
-try {
-  main();
-} catch (error) {
-  console.error("");
-  console.error("❌ COMPARISON FAILED");
-  console.error("");
-  console.error(error);
-  console.error("");
-
-  process.exit(1);
+if (coreDifferentCount === 0) {
+  console.log("✅ CANONICAL CORE DATA MATCHES EXISTING DATA");
+} else {
+  console.log("❌ REAL CORE DATA DIFFERENCES FOUND");
 }
+
+console.log("");
+console.log(`Core differences: ${coreDifferentCount}`);
+console.log(`Date mismatches : ${dateDifferences.length}`);
+console.log(`Month mismatches: ${monthDifferences.length}`);
+console.log("==============================================");
+console.log("");
+
+const report = {
+  generatedAt: new Date().toISOString(),
+
+  files: {
+    canonical: CANONICAL_CSV,
+    existing: EXISTING_CSV,
+  },
+
+  rowCounts: {
+    canonical: canonicalRows.length,
+    existing: existingRows.length,
+  },
+
+  core: {
+    numbersCompared: allNumbers.length,
+    matched: coreMatchedNumbers.length,
+    different: coreDifferentCount,
+  },
+
+  fieldStats,
+
+  schema: {
+    canonicalOnly: canonicalOnlyFields,
+    existingOnly: existingOnlyFields,
+  },
+
+  dateDiagnostic: {
+    mismatches: dateDifferences.length,
+    canonicalDates: canonicalDateCount,
+    existingDates: existingDateCount,
+  },
+
+  monthDiagnostic: {
+    mismatches: monthDifferences.length,
+    canonicalMatchesDates: canonicalMonthMatchesDates,
+    existingMatchesDates: existingMonthMatchesDates,
+  },
+
+  differences: {
+    core: coreDifferences,
+    dates: dateDifferences.slice(0, 100),
+    months: monthDifferences.slice(0, 100),
+  },
+};
+
+fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2), "utf8");
+
+console.log(`Report: ${REPORT_PATH}`);
