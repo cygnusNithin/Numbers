@@ -1,0 +1,29 @@
+{
+  "draw_events": 1997,
+  "training_fraction": 0.7,
+  "split_event_order": 1398,
+  "first_test_serial": "FF-126",
+  "last_test_serial": "BR-111",
+  "number_universe": 10000,
+  "target": "Number appears at least once among exported prize rows in the next draw",
+  "negative_sampling_ratio": 5,
+  "random_seed": 20261010,
+  "model": "StandardScaler + SGDClassifier(log_loss)",
+  "features": [
+    "log_total_historical_hits",
+    "log_events_since_last_hit",
+    "appearance_rate_last_10_events",
+    "appearance_rate_last_25_events",
+    "appearance_rate_last_50_events",
+    "log_mean_historical_gap",
+    "digit_sum",
+    "even_digit_count"
+  ],
+  "limitations": [
+    "This is an exploratory experiment, not evidence of predictability.",
+    "The model is trained once and is not updated during the test period.",
+    "Negative examples are sampled during training.",
+    "Predictions cover number appearance, not exact prize tier.",
+    "Results depend on the event ordering in the source CSV."
+  ]
+}
