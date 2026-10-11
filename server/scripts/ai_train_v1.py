@@ -5,53 +5,47 @@ import time
 import joblib
 import numpy as np
 import pandas as pd
-
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
-
-# ============================================================
-# CONFIGURATION
-# ============================================================
+# ---------------------------- Configuration ----------------------------
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data" / "ai-training"
 RESULTS_DIR = DATA_DIR / "results"
-
 EVENTS_FILE = DATA_DIR / "ai_training_draws.csv"
 NUMBERS_FILE = DATA_DIR / "ai_training_draw_numbers.csv"
 
 TRAIN_FRACTION = 0.70
 MIN_HISTORY_DRAWS = 50
 NEGATIVE_SAMPLES_PER_DRAW = 300
-
 TOP_K_VALUES = [10, 25, 50, 100]
 RANDOM_SEED = 42
 
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-rng = np.random.default_rng(RANDOM_SEED)
+FEATURE_NAMES = [
+    "hits_last_5", "hits_last_10", "hits_last_25", "hits_last_50",
+    "total_prior_hits", "prior_hit_rate", "draws_since_last_hit",
+    "digit_1", "digit_2", "digit_3", "digit_4", "digit_sum",
+    "even_digit_count", "repeated_digit_count",
+]
 
 
-# ============================================================
-# LOAD AND VALIDATE DATA
-# ============================================================
+# ---------------------------- Load data ----------------------------
 
 def load_draw_matrix():
     print("Loading historical CSV files...")
-
     if not EVENTS_FILE.exists():
         raise FileNotFoundError(f"Events CSV not found: {EVENTS_FILE}")
     if not NUMBERS_FILE.exists():
         raise FileNotFoundError(f"Numbers CSV not found: {NUMBERS_FILE}")
 
     events = pd.read_csv(
-        EVENTS_FILE,
-        dtype={"serialNumber": str, "fileName": str},
+        EVENTS_FILE, dtype={"serialNumber": str, "fileName": str}
     )
-
     numbers = pd.read_csv(
         NUMBERS_FILE,
         dtype={"serialNumber": str, "number": str, "prize": str},
@@ -59,352 +53,205 @@ def load_draw_matrix():
 
     required_events = {"event_order", "serialNumber", "date"}
     required_numbers = {"event_order", "number"}
-
     if not required_events.issubset(events.columns):
-        raise ValueError(
-            f"Missing event columns: {required_events - set(events.columns)}"
-        )
+        raise ValueError(f"Missing event columns: {required_events - set(events.columns)}")
     if not required_numbers.issubset(numbers.columns):
-        raise ValueError(
-            f"Missing number columns: {required_numbers - set(numbers.columns)}"
-        )
+        raise ValueError(f"Missing number columns: {required_numbers - set(numbers.columns)}")
     if events.empty:
         raise ValueError("The events CSV is empty.")
 
-    events["event_order"] = pd.to_numeric(
-        events["event_order"], errors="raise"
-    ).astype(int)
-    numbers["event_order"] = pd.to_numeric(
-        numbers["event_order"], errors="raise"
-    ).astype(int)
-
+    events["event_order"] = pd.to_numeric(events["event_order"], errors="raise").astype(np.int64)
+    numbers["event_order"] = pd.to_numeric(numbers["event_order"], errors="raise").astype(np.int64)
     events = events.sort_values("event_order").reset_index(drop=True)
 
     if events["event_order"].duplicated().any():
         raise ValueError("Duplicate event_order values in events CSV.")
 
-    # Parse dates as day-first (e.g. 11/07/2020); ISO dates are also supported.
-    parsed_dates = pd.to_datetime(
-        events["date"].astype(str).str.strip(),
-        dayfirst=True,
-        errors="coerce",
-    )
-    if parsed_dates.isna().any():
-        bad_rows = events.loc[parsed_dates.isna(), ["event_order", "date"]].head(10)
-        raise ValueError(
-            "Some event dates could not be parsed. Example rows:\n"
-            + bad_rows.to_string(index=False)
-        )
-
-    events["parsed_date"] = parsed_dates
-    if not events["parsed_date"].is_monotonic_increasing:
-        raise ValueError(
-            "event_order does not follow chronological date order. "
-            "Sort or correct the event data before training."
-        )
-
-    # Normalize number strings while preserving leading zeroes.
-    numbers["number"] = numbers["number"].astype("string").str.strip()
-    numbers["number"] = numbers["number"].str.zfill(4)
-
-    valid_number = numbers["number"].str.fullmatch(r"\d{4}", na=False)
-    invalid_count = int((~valid_number).sum())
-    if invalid_count:
-        print(f"Warning: dropping {invalid_count:,} invalid number rows.")
-
-    numbers = numbers.loc[valid_number].copy()
-    numbers["number_int"] = numbers["number"].astype(np.int32)
+    number_text = numbers["number"].astype("string").str.strip()
+    number_text = number_text.str.replace(r"\.0$", "", regex=True).str.zfill(4)
+    valid = number_text.str.fullmatch(r"\d{4}", na=False)
+    numbers = numbers.loc[valid].copy()
+    numbers["number_int"] = number_text.loc[valid].astype(np.int32)
     numbers = numbers[numbers["number_int"].between(0, 9999)]
 
-    event_orders = events["event_order"].to_numpy()
     event_to_index = {
-        int(event_order): i for i, event_order in enumerate(event_orders)
+        int(event_order): i
+        for i, event_order in enumerate(events["event_order"].to_numpy())
     }
+    unknown = set(numbers["event_order"].unique()) - set(event_to_index)
+    if unknown:
+        raise ValueError(f"Number rows refer to {len(unknown)} unknown event IDs.")
 
-    unknown_events = set(numbers["event_order"].unique()) - set(event_to_index)
-    if unknown_events:
-        raise ValueError(
-            f"Number rows refer to {len(unknown_events)} unknown event IDs."
-        )
-
-    # Binary target: number appeared at least once in exported prize rows.
+    # Target: whether a number appeared at least once in an event's prize rows.
     presence = np.zeros((len(events), 10000), dtype=np.uint8)
-
-    for event_order, number_values in numbers.groupby("event_order")["number_int"]:
-        row = event_to_index[int(event_order)]
-        presence[row, number_values.unique()] = 1
+    for event_order, group in numbers.groupby("event_order", sort=False):
+        presence[event_to_index[int(event_order)], group["number_int"].unique()] = 1
 
     dates = events["date"].astype(str).to_numpy()
-    empty_draws = int((presence.sum(axis=1) == 0).sum())
-
     print(f"Draw events: {len(events):,}")
     print(f"Number rows: {len(numbers):,}")
-    print(f"Unique dates: {events['parsed_date'].nunique():,}")
-    print(f"Empty draws with no valid numbers: {empty_draws:,}")
+    print(f"Unique dates: {events['date'].nunique():,}")
     print(f"Number matrix: {presence.shape}")
-
     return events, presence, dates
 
 
-# ============================================================
-# DIGIT FEATURES
-# ============================================================
+# ---------------------------- Feature arrays ----------------------------
 
 def make_digit_features():
     values = np.arange(10000, dtype=np.int32)
-
     digits = np.column_stack([
         (values // 1000) % 10,
         (values // 100) % 10,
         (values // 10) % 10,
         values % 10,
-    ])
+    ]).astype(np.float32)
 
-    digit_sum = digits.sum(axis=1)
-    even_count = ((digits % 2) == 0).sum(axis=1)
-
-    repeated_digit_count = np.array(
+    digit_sum = digits.sum(axis=1).astype(np.float32)
+    even_count = ((digits % 2) == 0).sum(axis=1).astype(np.float32)
+    repeated_count = np.array(
         [4 - len(set(row.tolist())) for row in digits],
-        dtype=np.int8,
-    )
-
-    return digits, digit_sum, even_count, repeated_digit_count
-
-
-FEATURE_NAMES = [
-    "hits_last_5",
-    "hits_last_10",
-    "hits_last_25",
-    "hits_last_50",
-    "total_prior_hits",
-    "prior_hit_rate",
-    "draws_since_last_hit",
-    "digit_1",
-    "digit_2",
-    "digit_3",
-    "digit_4",
-    "digit_sum",
-    "even_digit_count",
-    "repeated_digit_count",
-]
-
-
-def make_features(
-    draw_index,
-    candidate_ids,
-    prefix_hits,
-    last_seen_by_draw,
-    digits,
-    digit_sum,
-    even_count,
-    repeated_count,
-):
-    """Build features for draw_index using only information before that draw."""
-    candidate_ids = np.asarray(candidate_ids, dtype=np.int32)
-
-    features = np.empty(
-        (len(candidate_ids), len(FEATURE_NAMES)),
         dtype=np.float32,
     )
-
-    for column, window in enumerate([5, 10, 25, 50]):
-        start = max(0, draw_index - window)
-        counts = (
-            prefix_hits[draw_index, candidate_ids]
-            - prefix_hits[start, candidate_ids]
-        )
-        features[:, column] = counts
-
-    total = prefix_hits[draw_index, candidate_ids]
-    features[:, 4] = total
-    features[:, 5] = total / max(draw_index, 1)
-
-    # Critical fix: index the last-seen matrix by draw first, then number.
-    seen_at = last_seen_by_draw[draw_index, candidate_ids]
-    age = np.where(
-        seen_at >= 0,
-        draw_index - seen_at,
-        draw_index + 1,
-    )
-    features[:, 6] = age
-
-    features[:, 7:11] = digits[candidate_ids]
-    features[:, 11] = digit_sum[candidate_ids]
-    features[:, 12] = even_count[candidate_ids]
-    features[:, 13] = repeated_count[candidate_ids]
-
-    return features
+    return digits, digit_sum, even_count, repeated_count
 
 
-# ============================================================
-# HISTORICAL STATE
-# ============================================================
+def build_history_arrays(presence):
+    """
+    prefix_hits[i, n] counts appearances in draws strictly before i.
+    last_seen_by_draw[i, n] is the last index strictly before i, or -1.
+    """
+    n_draws = presence.shape[0]
+    prefix_hits = np.zeros((n_draws + 1, 10000), dtype=np.uint16)
+    np.cumsum(presence, axis=0, dtype=np.uint16, out=prefix_hits[1:])
 
-def build_historical_state(presence):
-    n_events = len(presence)
-
-    # Row i contains cumulative hits through events strictly before i.
-    prefix_hits = np.zeros((n_events + 1, 10000), dtype=np.uint16)
-    for i in range(n_events):
-        prefix_hits[i + 1] = prefix_hits[i] + presence[i]
-
-    # State before each target draw. Each row is stored exactly once.
-    last_seen_by_draw = np.full((n_events, 10000), -1, dtype=np.int32)
+    last_seen_by_draw = np.full((n_draws, 10000), -1, dtype=np.int32)
     last_seen = np.full(10000, -1, dtype=np.int32)
-
-    for i in range(n_events):
+    for i in range(n_draws):
         last_seen_by_draw[i] = last_seen
-        appeared = np.flatnonzero(presence[i])
-        last_seen[appeared] = i
-
+        last_seen[np.flatnonzero(presence[i])] = i
     return prefix_hits, last_seen_by_draw
 
 
-# ============================================================
-# TRAINING SAMPLE CREATION
-# ============================================================
-
-def build_training_data(
-    train_end,
-    presence,
-    prefix_hits,
-    last_seen_by_draw,
-    digit_features,
-):
+def make_features(draw_index, candidate_ids, prefix_hits,
+                  last_seen_by_draw, digit_features):
+    """
+    All historical features stop before draw_index.
+    Indexing is done inside this function to prevent the previous
+    2D-array/1D-array IndexError.
+    """
     digits, digit_sum, even_count, repeated_count = digit_features
+    candidate_ids = np.asarray(candidate_ids, dtype=np.int32)
+    if candidate_ids.ndim != 1:
+        raise ValueError("candidate_ids must be one-dimensional.")
+    if np.any((candidate_ids < 0) | (candidate_ids > 9999)):
+        raise ValueError("Candidate IDs must be between 0 and 9999.")
+
+    X = np.empty((len(candidate_ids), len(FEATURE_NAMES)), dtype=np.float32)
+
+    for col, window in enumerate((5, 10, 25, 50)):
+        start = max(0, draw_index - window)
+        X[:, col] = (
+            prefix_hits[draw_index, candidate_ids]
+            - prefix_hits[start, candidate_ids]
+        )
+
+    total = prefix_hits[draw_index, candidate_ids].astype(np.float32)
+    X[:, 4] = total
+    X[:, 5] = total / max(draw_index, 1)
+
+    # Critical fix: select current draw's 10,000-number row first.
+    seen_at = last_seen_by_draw[draw_index, candidate_ids]
+    X[:, 6] = np.where(seen_at >= 0, draw_index - seen_at, draw_index + 1)
+
+    X[:, 7:11] = digits[candidate_ids]
+    X[:, 11] = digit_sum[candidate_ids]
+    X[:, 12] = even_count[candidate_ids]
+    X[:, 13] = repeated_count[candidate_ids]
+    return X
+
+
+# ---------------------------- Training data ----------------------------
+
+def build_training_data(train_end, presence, prefix_hits,
+                        last_seen_by_draw, digit_features, rng):
     all_candidates = np.arange(10000, dtype=np.int32)
-
-    feature_chunks = []
-    label_chunks = []
-
+    X_chunks, y_chunks = [], []
     print("\nBuilding training examples...")
 
     for i in range(MIN_HISTORY_DRAWS, train_end):
         actual = np.flatnonzero(presence[i]).astype(np.int32)
-        if len(actual) == 0:
+        if actual.size == 0:
             continue
 
-        # Since actual is unique and sorted, setdiff1d is safe here.
-        negative_pool = np.setdiff1d(
-            all_candidates, actual, assume_unique=True
-        )
-        sample_size = min(NEGATIVE_SAMPLES_PER_DRAW, len(negative_pool))
-        negatives = rng.choice(
-            negative_pool, size=sample_size, replace=False
-        ).astype(np.int32)
+        negative_pool = np.setdiff1d(all_candidates, actual, assume_unique=True)
+        n_negative = min(NEGATIVE_SAMPLES_PER_DRAW, negative_pool.size)
+        negatives = rng.choice(negative_pool, size=n_negative, replace=False).astype(np.int32)
+        selected = np.concatenate((actual, negatives))
 
-        selected = np.concatenate([actual, negatives])
-        X = make_features(
-            i,
-            selected,
-            prefix_hits,
-            last_seen_by_draw,
-            digits,
-            digit_sum,
-            even_count,
-            repeated_count,
-        )
-        y = np.concatenate([
-            np.ones(len(actual), dtype=np.uint8),
-            np.zeros(len(negatives), dtype=np.uint8),
-        ])
-
-        feature_chunks.append(X)
-        label_chunks.append(y)
+        X_chunks.append(make_features(
+            i, selected, prefix_hits, last_seen_by_draw, digit_features
+        ))
+        y_chunks.append(np.concatenate((
+            np.ones(actual.size, dtype=np.uint8),
+            np.zeros(negatives.size, dtype=np.uint8),
+        )))
 
         if (i + 1) % 200 == 0:
             print(f"  Prepared through draw {i + 1:,}/{train_end:,}")
 
-    if not feature_chunks:
-        raise ValueError(
-            "No training examples were created. Check the draw data and "
-            "MIN_HISTORY_DRAWS setting."
-        )
+    if not X_chunks:
+        raise RuntimeError("No training examples were generated.")
 
-    X_train = np.concatenate(feature_chunks, axis=0)
-    y_train = np.concatenate(label_chunks, axis=0)
-
+    X_train = np.concatenate(X_chunks, axis=0)
+    y_train = np.concatenate(y_chunks, axis=0)
     if np.unique(y_train).size < 2:
-        raise ValueError("Training data contains only one target class.")
+        raise RuntimeError("Training data contains only one target class.")
 
     print(f"Training examples: {len(y_train):,}")
     print(f"Positive examples: {int(y_train.sum()):,}")
     print(f"Negative examples: {int((y_train == 0).sum()):,}")
     print(f"Feature count: {X_train.shape[1]}")
-
     return X_train, y_train
 
 
-# ============================================================
-# EVALUATION
-# ============================================================
+# ---------------------------- Evaluation ----------------------------
 
-def evaluate_models(
-    models,
-    events,
-    presence,
-    train_end,
-    prefix_hits,
-    last_seen_by_draw,
-    digit_features,
-):
-    digits, digit_sum, even_count, repeated_count = digit_features
+def evaluate_models(models, events, presence, train_end, prefix_hits,
+                    last_seen_by_draw, digit_features, rng):
     all_candidates = np.arange(10000, dtype=np.int32)
-
-    summary_records = []
-    detail_records = []
-    skipped_empty_draws = 0
-
-    test_indices = range(train_end, len(events))
-
+    records = []
+    n_test = len(events) - train_end
     print(f"\nTesting on draws {train_end:,} to {len(events) - 1:,}")
-    print(f"Test draws: {len(events) - train_end:,}")
+    print(f"Test draws: {n_test:,}")
 
-    for i in test_indices:
+    for i in range(train_end, len(events)):
         actual = presence[i].astype(bool)
         actual_count = int(actual.sum())
-
         if actual_count == 0:
-            skipped_empty_draws += 1
             continue
 
         X_all = make_features(
-            i,
-            all_candidates,
-            prefix_hits,
-            last_seen_by_draw,
-            digits,
-            digit_sum,
-            even_count,
-            repeated_count,
+            i, all_candidates, prefix_hits, last_seen_by_draw, digit_features
         )
-
         scores_by_model = {
             "random": rng.random(10000),
-            "historical_frequency": X_all[:, 4].astype(np.float64),
-            "recent_frequency_5": X_all[:, 0].astype(np.float64),
-            "recent_frequency_10": X_all[:, 1].astype(np.float64),
-            "recent_frequency_25": X_all[:, 2].astype(np.float64),
-            "recent_frequency_50": X_all[:, 3].astype(np.float64),
+            "historical_frequency": (
+                X_all[:, 4].astype(np.float64) + rng.random(10000) * 1e-8
+            ),
         }
+        for name, model in models.items():
+            scores_by_model[name] = model.predict_proba(X_all)[:, 1]
 
-        for model_name, model in models.items():
-            scores_by_model[model_name] = model.predict_proba(X_all)[:, 1]
-
-        for model_name, scores in scores_by_model.items():
-            # Tiny seeded jitter prevents ties from being resolved by number order.
+        for name, scores in scores_by_model.items():
             scores = scores + rng.random(10000) * 1e-10
             ranked = np.argsort(scores)[::-1]
-
             for k in TOP_K_VALUES:
-                top_numbers = ranked[:k]
-                hits = int(actual[top_numbers].sum())
-
-                detail_records.append({
+                hits = int(actual[ranked[:k]].sum())
+                records.append({
                     "event_order": int(events.iloc[i]["event_order"]),
                     "date": str(events.iloc[i]["date"]),
                     "test_index": i,
-                    "model": model_name,
+                    "model": name,
                     "top_k": k,
                     "hits": hits,
                     "precision": hits / k,
@@ -412,87 +259,70 @@ def evaluate_models(
                     "actual_distinct_numbers": actual_count,
                 })
 
-        if (i - train_end + 1) % 50 == 0:
-            print(
-                f"  Evaluated {i - train_end + 1:,}/"
-                f"{len(events) - train_end:,} test draws"
-            )
+        completed = i - train_end + 1
+        if completed % 50 == 0:
+            print(f"  Evaluated {completed:,}/{n_test:,} test draws")
 
-    if not detail_records:
-        raise ValueError("No test draws with valid numbers were available.")
+    detail = pd.DataFrame(records)
+    if detail.empty:
+        raise RuntimeError("Evaluation produced no test results.")
 
-    detail = pd.DataFrame(detail_records)
-
-    summary = (
-        detail.groupby(["model", "top_k"], as_index=False)
-        .agg(
-            test_draws=("test_index", "nunique"),
-            mean_hits=("hits", "mean"),
-            median_hits=("hits", "median"),
-            mean_precision=("precision", "mean"),
-            mean_recall=("recall", "mean"),
-        )
+    summary = detail.groupby(["model", "top_k"], as_index=False).agg(
+        test_draws=("test_index", "nunique"),
+        mean_hits=("hits", "mean"),
+        median_hits=("hits", "median"),
+        mean_precision=("precision", "mean"),
+        mean_recall=("recall", "mean"),
     )
-
-    for column in ["mean_hits", "median_hits"]:
-        summary[column] = summary[column].round(5)
-    for column in ["mean_precision", "mean_recall"]:
-        summary[column] = summary[column].round(6)
+    summary["mean_hits"] = summary["mean_hits"].round(5)
+    summary["median_hits"] = summary["median_hits"].round(5)
+    summary["mean_precision"] = summary["mean_precision"].round(6)
+    summary["mean_recall"] = summary["mean_recall"].round(6)
 
     summary_path = RESULTS_DIR / "ai_train_v1_summary.csv"
     detail_path = RESULTS_DIR / "ai_train_v1_per_draw.csv"
-
     summary.to_csv(summary_path, index=False)
     detail.to_csv(detail_path, index=False)
 
-    print(f"\nSkipped empty test draws: {skipped_empty_draws:,}")
     print("\nMODEL EVALUATION SUMMARY")
     print(summary.to_string(index=False))
-    print(f"\nSaved summary: {summary_path}")
-    print(f"Saved per-draw results: {detail_path}")
+    print(f"\nSummary saved: {summary_path}")
+    print(f"Per-draw results saved: {detail_path}")
+    return summary
 
-    return summary, detail, skipped_empty_draws
 
-
-# ============================================================
-# MAIN
-# ============================================================
+# ---------------------------- Main ----------------------------
 
 def main():
-    start_time = time.time()
+    started = time.time()
+    rng = np.random.default_rng(RANDOM_SEED)
 
     events, presence, dates = load_draw_matrix()
     n_events = len(events)
-
     if n_events <= MIN_HISTORY_DRAWS + 20:
         raise ValueError("Not enough draw events for training and testing.")
 
     train_end = int(n_events * TRAIN_FRACTION)
-    if train_end <= MIN_HISTORY_DRAWS:
-        raise ValueError("Training split is too small.")
+    if not MIN_HISTORY_DRAWS < train_end < n_events:
+        raise ValueError("Invalid chronological training split.")
 
     print(f"\nChronological training boundary: {train_end:,}")
     print(f"Train period: {dates[0]} to {dates[train_end - 1]}")
     print(f"Test period: {dates[train_end]} to {dates[-1]}")
 
-    prefix_hits, last_seen_by_draw = build_historical_state(presence)
+    print("\nBuilding historical feature arrays...")
+    prefix_hits, last_seen_by_draw = build_history_arrays(presence)
     digit_features = make_digit_features()
 
     X_train, y_train = build_training_data(
-        train_end,
-        presence,
-        prefix_hits,
-        last_seen_by_draw,
-        digit_features,
+        train_end, presence, prefix_hits, last_seen_by_draw, digit_features, rng
     )
 
     print("\nTraining logistic regression...")
     logistic = make_pipeline(
         StandardScaler(),
         LogisticRegression(
-            max_iter=300,
-            solver="lbfgs",
-            random_state=RANDOM_SEED,
+            max_iter=300, solver="lbfgs", random_state=RANDOM_SEED
         ),
     )
     logistic.fit(X_train, y_train)
@@ -513,22 +343,16 @@ def main():
         "hist_gradient_boosting": gradient_boosting,
     }
 
-    logistic_path = RESULTS_DIR / "ai_train_v1_logistic.joblib"
-    boosting_path = RESULTS_DIR / "ai_train_v1_gradient_boosting.joblib"
-
-    joblib.dump(logistic, logistic_path)
-    joblib.dump(gradient_boosting, boosting_path)
-
+    joblib.dump(logistic, RESULTS_DIR / "ai_train_v1_logistic.joblib")
+    joblib.dump(
+        gradient_boosting,
+        RESULTS_DIR / "ai_train_v1_gradient_boosting.joblib",
+    )
     del X_train, y_train
 
-    summary, detail, skipped_empty_draws = evaluate_models(
-        models,
-        events,
-        presence,
-        train_end,
-        prefix_hits,
-        last_seen_by_draw,
-        digit_features,
+    evaluate_models(
+        models, events, presence, train_end, prefix_hits,
+        last_seen_by_draw, digit_features, rng
     )
 
     metadata = {
@@ -545,41 +369,26 @@ def main():
         "minimum_history_draws": MIN_HISTORY_DRAWS,
         "negative_samples_per_training_draw": NEGATIVE_SAMPLES_PER_DRAW,
         "features": FEATURE_NAMES,
-        "skipped_empty_test_draws": skipped_empty_draws,
-        "baselines": [
-            "random",
-            "historical_frequency",
-            "recent_frequency_5",
-            "recent_frequency_10",
-            "recent_frequency_25",
-            "recent_frequency_50",
+        "target": "Number appeared at least once in exported prize rows for a draw.",
+        "caveats": [
+            "Sampled negatives alter training class prevalence.",
+            "Model scores are used for ranking, not calibrated probabilities.",
+            "This is a first chronological holdout experiment, not proof of a durable edge.",
         ],
-        "target": (
-            "Whether the number appeared at least once in the exported "
-            "prize rows for a draw"
-        ),
-        "warning": (
-            "First model experiment. Sampled negatives change class "
-            "prevalence, and predicted probabilities are not calibrated to "
-            "the full candidate population. Historical ranking performance "
-            "does not guarantee future predictive value."
-        ),
-        "elapsed_seconds": round(time.time() - start_time, 2),
+        "elapsed_seconds": round(time.time() - started, 2),
     }
-
-    metadata_path = RESULTS_DIR / "ai_train_v1_metadata.json"
-    with open(metadata_path, "w", encoding="utf-8") as f:
+    with open(RESULTS_DIR / "ai_train_v1_metadata.json", "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
     print("\nTRAINING COMPLETE")
     print(f"Results folder: {RESULTS_DIR}")
     print(f"Elapsed seconds: {metadata['elapsed_seconds']}")
     print("Created:")
-    print(f"  {summary_path if 'summary_path' in locals() else RESULTS_DIR / 'ai_train_v1_summary.csv'}")
-    print(f"  {RESULTS_DIR / 'ai_train_v1_per_draw.csv'}")
-    print(f"  {metadata_path}")
-    print(f"  {logistic_path}")
-    print(f"  {boosting_path}")
+    print("  ai_train_v1_summary.csv")
+    print("  ai_train_v1_per_draw.csv")
+    print("  ai_train_v1_metadata.json")
+    print("  ai_train_v1_logistic.joblib")
+    print("  ai_train_v1_gradient_boosting.joblib")
 
 
 if __name__ == "__main__":

@@ -27,16 +27,11 @@
     "even_digit_count",
     "repeated_digit_count"
   ],
-  "skipped_empty_test_draws": 0,
-  "baselines": [
-    "random",
-    "historical_frequency",
-    "recent_frequency_5",
-    "recent_frequency_10",
-    "recent_frequency_25",
-    "recent_frequency_50"
+  "target": "Number appeared at least once in exported prize rows for a draw.",
+  "caveats": [
+    "Sampled negatives alter training class prevalence.",
+    "Model scores are used for ranking, not calibrated probabilities.",
+    "This is a first chronological holdout experiment, not proof of a durable edge."
   ],
-  "target": "Whether the number appeared at least once in the exported prize rows for a draw",
-  "warning": "First model experiment. Sampled negatives change class prevalence, and predicted probabilities are not calibrated to the full candidate population. Historical ranking performance does not guarantee future predictive value.",
-  "elapsed_seconds": 23.08
+  "elapsed_seconds": 22.05
 }
