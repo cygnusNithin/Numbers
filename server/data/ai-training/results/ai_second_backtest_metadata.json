@@ -1,0 +1,46 @@
+{
+  "draw_events": 1997,
+  "first_test_fraction": 0.5,
+  "test_block_fraction": 0.1,
+  "fold_count": 6,
+  "number_universe": 10000,
+  "top_k_values": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "negative_sampling_ratio": 5,
+  "random_seed": 20261011,
+  "model": "StandardScaler + SGDClassifier(log_loss)",
+  "features": [
+    "log_total_historical_hits",
+    "log_events_since_last_hit",
+    "appearance_rate_last_10_events",
+    "appearance_rate_last_25_events",
+    "appearance_rate_last_50_events",
+    "log_mean_historical_gap",
+    "digit_sum",
+    "even_digit_count"
+  ],
+  "methods": [
+    "ml_model",
+    "historical_frequency",
+    "empirical_random"
+  ],
+  "methodology": [
+    "Each fold trains only on events preceding its test block.",
+    "The trained model remains fixed within each test block.",
+    "Observed history advances after each evaluated event.",
+    "Ranking ties are broken randomly with a fixed seed.",
+    "The empirical random baseline randomly ranks all 10000 numbers.",
+    "Repeated prize rows for a number within one event count once."
+  ],
+  "limitations": [
+    "Exploratory analysis; not evidence that lottery results are predictable.",
+    "The model predicts number appearance, not exact prize tier.",
+    "Negative training examples are sampled.",
+    "Results depend on the ordering in the source CSV.",
+    "Random baseline results have simulation variance."
+  ]
+}

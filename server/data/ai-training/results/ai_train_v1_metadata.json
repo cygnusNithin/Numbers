@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "seed": 42,
+  "events": 1997,
+  "numbers": 10000,
+  "train_fraction": 0.7,
+  "train_end_index_exclusive": 1397,
+  "train_first_date": "11/07/2020",
+  "train_last_date": "21/01/2025",
+  "test_first_date": "22/01/2025",
+  "test_last_date": "26/09/2026",
+  "minimum_history_draws": 50,
+  "negative_samples_per_training_draw": 300,
+  "features": [
+    "hits_last_5",
+    "hits_last_10",
+    "hits_last_25",
+    "hits_last_50",
+    "total_prior_hits",
+    "prior_hit_rate",
+    "draws_since_last_hit",
+    "digit_1",
+    "digit_2",
+    "digit_3",
+    "digit_4",
+    "digit_sum",
+    "even_digit_count",
+    "repeated_digit_count"
+  ],
+  "skipped_empty_test_draws": 0,
+  "baselines": [
+    "random",
+    "historical_frequency",
+    "recent_frequency_5",
+    "recent_frequency_10",
+    "recent_frequency_25",
+    "recent_frequency_50"
+  ],
+  "target": "Whether the number appeared at least once in the exported prize rows for a draw",
+  "warning": "First model experiment. Sampled negatives change class prevalence, and predicted probabilities are not calibrated to the full candidate population. Historical ranking performance does not guarantee future predictive value.",
+  "elapsed_seconds": 23.08
+}

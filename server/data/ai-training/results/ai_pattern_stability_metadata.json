@@ -1,0 +1,43 @@
+{
+  "events": 1997,
+  "join_key": "serialNumber",
+  "minimum_history": 50,
+  "period_boundaries": [
+    0,
+    499,
+    998,
+    1497,
+    1997
+  ],
+  "baseline_by_period": [
+    {
+      "period": "Period 1",
+      "target_events": 449,
+      "baseline_hits": 113729,
+      "baseline_opportunities": 4490000,
+      "baseline": 0.025329398663697104
+    },
+    {
+      "period": "Period 2",
+      "target_events": 499,
+      "baseline_hits": 130891,
+      "baseline_opportunities": 4990000,
+      "baseline": 0.02623066132264529
+    },
+    {
+      "period": "Period 3",
+      "target_events": 499,
+      "baseline_hits": 132524,
+      "baseline_opportunities": 4990000,
+      "baseline": 0.026557915831663326
+    },
+    {
+      "period": "Period 4",
+      "target_events": 500,
+      "baseline_hits": 193929,
+      "baseline_opportunities": 5000000,
+      "baseline": 0.0387858
+    }
+  ],
+  "note": "Exploratory associations, not proof of predictive edge. Approximate p-values may overstate evidence because numbers and events are not necessarily independent."
+}

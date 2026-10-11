@@ -1,0 +1,20 @@
+{
+  "draw_events": 1997,
+  "minimum_history_events": 50,
+  "target": "A number appears at least once among exported prize rows in a target draw",
+  "number_universe": 10000,
+  "evaluated_target_events": 1947,
+  "conditional_baseline_hit_rate": 0.029330919363122755,
+  "files": [
+    "ai_pattern_conditional_hit_rates.csv",
+    "ai_pattern_digit_positions.csv",
+    "ai_pattern_number_frequencies.csv"
+  ],
+  "interpretation_warning": [
+    "These are descriptive historical associations.",
+    "A higher historical hit rate does not prove future predictability.",
+    "Many buckets and digits are examined, so some apparent differences can occur by chance.",
+    "The digit uniformity ratio is descriptive and does not account for statistical uncertainty.",
+    "The analysis uses event order from the exported CSV files."
+  ]
+}
