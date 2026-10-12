@@ -1,0 +1,333 @@
+{
+  "dataset": {
+    "draw_count": 1997,
+    "unique_dates": 1995,
+    "first_date": "11/07/2020",
+    "last_date": "26/09/2026",
+    "invalid_number_rows_ignored": 0,
+    "total_distinct_number_draw_appearances": 583232,
+    "mean_distinct_numbers_per_draw": 292.05408112168254,
+    "overall_number_draw_hit_rate": 0.029205408112168253
+  },
+  "number_frequency": {
+    "chi_square": 11997.1712388895,
+    "degrees_of_freedom": 9999,
+    "p_value": 1.3264872529049284e-40,
+    "expected_per_category": 58.3232,
+    "mean_hits_per_number": 58.3232,
+    "variance_hits_per_number": 69.9783395939594,
+    "variance_to_mean_ratio": 1.19983710759971,
+    "most_frequent_numbers": [
+      {
+        "number": "7396",
+        "total_hits": 91,
+        "hit_rate": 0.04556835252879319
+      },
+      {
+        "number": "2524",
+        "total_hits": 88,
+        "hit_rate": 0.04406609914872309
+      },
+      {
+        "number": "6023",
+        "total_hits": 88,
+        "hit_rate": 0.04406609914872309
+      },
+      {
+        "number": "7527",
+        "total_hits": 88,
+        "hit_rate": 0.04406609914872309
+      },
+      {
+        "number": "3028",
+        "total_hits": 87,
+        "hit_rate": 0.04356534802203305
+      },
+      {
+        "number": "8014",
+        "total_hits": 87,
+        "hit_rate": 0.04356534802203305
+      },
+      {
+        "number": "8729",
+        "total_hits": 87,
+        "hit_rate": 0.04356534802203305
+      },
+      {
+        "number": "2047",
+        "total_hits": 86,
+        "hit_rate": 0.04306459689534301
+      },
+      {
+        "number": "7162",
+        "total_hits": 86,
+        "hit_rate": 0.04306459689534301
+      },
+      {
+        "number": "7323",
+        "total_hits": 86,
+        "hit_rate": 0.04306459689534301
+      },
+      {
+        "number": "7924",
+        "total_hits": 86,
+        "hit_rate": 0.04306459689534301
+      },
+      {
+        "number": "3469",
+        "total_hits": 85,
+        "hit_rate": 0.04256384576865298
+      },
+      {
+        "number": "3497",
+        "total_hits": 85,
+        "hit_rate": 0.04256384576865298
+      },
+      {
+        "number": "6806",
+        "total_hits": 85,
+        "hit_rate": 0.04256384576865298
+      },
+      {
+        "number": "8846",
+        "total_hits": 85,
+        "hit_rate": 0.04256384576865298
+      },
+      {
+        "number": "0317",
+        "total_hits": 84,
+        "hit_rate": 0.04206309464196294
+      },
+      {
+        "number": "0848",
+        "total_hits": 84,
+        "hit_rate": 0.04206309464196294
+      },
+      {
+        "number": "2547",
+        "total_hits": 84,
+        "hit_rate": 0.04206309464196294
+      },
+      {
+        "number": "5862",
+        "total_hits": 84,
+        "hit_rate": 0.04206309464196294
+      },
+      {
+        "number": "6929",
+        "total_hits": 84,
+        "hit_rate": 0.04206309464196294
+      }
+    ],
+    "least_frequent_numbers": [
+      {
+        "number": "5721",
+        "total_hits": 36,
+        "hit_rate": 0.018027040560841263
+      },
+      {
+        "number": "9640",
+        "total_hits": 36,
+        "hit_rate": 0.018027040560841263
+      },
+      {
+        "number": "9748",
+        "total_hits": 36,
+        "hit_rate": 0.018027040560841263
+      },
+      {
+        "number": "9955",
+        "total_hits": 36,
+        "hit_rate": 0.018027040560841263
+      },
+      {
+        "number": "0245",
+        "total_hits": 35,
+        "hit_rate": 0.017526289434151226
+      },
+      {
+        "number": "0567",
+        "total_hits": 35,
+        "hit_rate": 0.017526289434151226
+      },
+      {
+        "number": "9760",
+        "total_hits": 35,
+        "hit_rate": 0.017526289434151226
+      },
+      {
+        "number": "9951",
+        "total_hits": 35,
+        "hit_rate": 0.017526289434151226
+      },
+      {
+        "number": "0745",
+        "total_hits": 34,
+        "hit_rate": 0.01702553830746119
+      },
+      {
+        "number": "1766",
+        "total_hits": 34,
+        "hit_rate": 0.01702553830746119
+      },
+      {
+        "number": "1775",
+        "total_hits": 34,
+        "hit_rate": 0.01702553830746119
+      },
+      {
+        "number": "2957",
+        "total_hits": 34,
+        "hit_rate": 0.01702553830746119
+      },
+      {
+        "number": "4476",
+        "total_hits": 33,
+        "hit_rate": 0.016524787180771158
+      },
+      {
+        "number": "7698",
+        "total_hits": 33,
+        "hit_rate": 0.016524787180771158
+      },
+      {
+        "number": "1808",
+        "total_hits": 32,
+        "hit_rate": 0.01602403605408112
+      },
+      {
+        "number": "2983",
+        "total_hits": 32,
+        "hit_rate": 0.01602403605408112
+      },
+      {
+        "number": "3688",
+        "total_hits": 32,
+        "hit_rate": 0.01602403605408112
+      },
+      {
+        "number": "8887",
+        "total_hits": 32,
+        "hit_rate": 0.01602403605408112
+      },
+      {
+        "number": "2715",
+        "total_hits": 30,
+        "hit_rate": 0.015022533800701052
+      },
+      {
+        "number": "5191",
+        "total_hits": 25,
+        "hit_rate": 0.012518778167250876
+      }
+    ]
+  },
+  "digit_positions": {
+    "position_1": {
+      "chi_square": 495.9849185229891,
+      "degrees_of_freedom": 9,
+      "p_value": 4.1618036539132256e-101,
+      "expected_per_category": 58323.2
+    },
+    "position_2": {
+      "chi_square": 685.9547418522989,
+      "degrees_of_freedom": 9,
+      "p_value": 7.228476874658753e-142,
+      "expected_per_category": 58323.2
+    },
+    "position_3": {
+      "chi_square": 640.0766350268847,
+      "degrees_of_freedom": 9,
+      "p_value": 5.20532671418755e-132,
+      "expected_per_category": 58323.2
+    },
+    "position_4": {
+      "chi_square": 312.4683419291123,
+      "degrees_of_freedom": 9,
+      "p_value": 5.898057791234393e-62,
+      "expected_per_category": 58323.2
+    }
+  },
+  "repeated_digit_structure": {
+    "chi_square": 3.0025228418818344,
+    "degrees_of_freedom": 3,
+    "p_value": 0.3912363672074925,
+    "categories": {
+      "0": {
+        "observed": 293761,
+        "expected": 293948.928
+      },
+      "1": {
+        "observed": 252200,
+        "expected": 251956.224
+      },
+      "2": {
+        "observed": 36727,
+        "expected": 36743.616
+      },
+      "3": {
+        "observed": 544,
+        "expected": 583.232
+      }
+    }
+  },
+  "frequency_stability": {
+    "first_half_draws": 998,
+    "second_half_draws": 999,
+    "first_half_second_half_frequency_correlation": 0.099003439324232,
+    "correlation_p_value": 3.290349387088609e-23,
+    "interpretation_note": "Correlation describes historical stability; it does not establish future predictive power."
+  },
+  "draw_size_stability": {
+    "first_half_mean": 257.2935871743487,
+    "second_half_mean": 326.7797797797798,
+    "first_half_std": 32.60334204795582,
+    "second_half_std": 90.54500730712901,
+    "mean_difference_second_minus_first": 69.48619260543109,
+    "minimum": 234,
+    "maximum": 768
+  },
+  "multiple_testing": {
+    "method": "Bonferroni",
+    "primary_test_count": 6,
+    "tests": {
+      "number_frequency_uniformity": {
+        "raw_p_value": 1.3264872529049284e-40,
+        "bonferroni_adjusted_p_value": 7.95892351742957e-40,
+        "significant_at_adjusted_0_05": true
+      },
+      "digit_position_1": {
+        "raw_p_value": 4.1618036539132256e-101,
+        "bonferroni_adjusted_p_value": 2.4970821923479354e-100,
+        "significant_at_adjusted_0_05": true
+      },
+      "digit_position_2": {
+        "raw_p_value": 7.228476874658753e-142,
+        "bonferroni_adjusted_p_value": 4.3370861247952515e-141,
+        "significant_at_adjusted_0_05": true
+      },
+      "digit_position_3": {
+        "raw_p_value": 5.20532671418755e-132,
+        "bonferroni_adjusted_p_value": 3.12319602851253e-131,
+        "significant_at_adjusted_0_05": true
+      },
+      "digit_position_4": {
+        "raw_p_value": 5.898057791234393e-62,
+        "bonferroni_adjusted_p_value": 3.538834674740636e-61,
+        "significant_at_adjusted_0_05": true
+      },
+      "repeated_digit_structure": {
+        "raw_p_value": 0.3912363672074925,
+        "bonferroni_adjusted_p_value": 1.0,
+        "significant_at_adjusted_0_05": false
+      }
+    }
+  },
+  "outputs": {
+    "number_frequency": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_audit_number_frequency.csv",
+    "digit_positions": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_audit_digit_positions.csv",
+    "period_stability": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_audit_period_stability.csv"
+  },
+  "elapsed_seconds": 1.85,
+  "caution": "These are exploratory diagnostics. Significant results can reflect data collection, prize structure, dependence, or chance. Confirm any candidate finding on untouched data before building a prediction model."
+}
