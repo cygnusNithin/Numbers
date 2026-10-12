@@ -33,5 +33,5 @@
     "Model scores are used for ranking, not calibrated probabilities.",
     "This is a first chronological holdout experiment, not proof of a durable edge."
   ],
-  "elapsed_seconds": 22.05
+  "elapsed_seconds": 21.4
 }

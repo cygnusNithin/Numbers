@@ -1,0 +1,39 @@
+{
+  "script": "ai_train_v1_validate.py",
+  "input_file": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v1_per_draw.csv",
+  "test_draws": 600,
+  "first_test_date": "22/01/2025",
+  "last_test_date": "26/09/2026",
+  "models_compared": [
+    "hist_gradient_boosting",
+    "logistic_regression",
+    "random"
+  ],
+  "baseline": "historical_frequency",
+  "top_k_values": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "comparison_count": 12,
+  "bootstrap_replicates": 5000,
+  "bootstrap_block_length": 20,
+  "period_block_size": 100,
+  "random_seed": 42,
+  "outputs": [
+    "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v1_paired_comparison.csv",
+    "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v1_period_comparison.csv",
+    "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v1_paired_draw_differences.csv"
+  ],
+  "elapsed_seconds": 3.03,
+  "interpretation_notes": [
+    "This script validates existing predictions; it does not train models.",
+    "Positive mean_hit_difference favors the compared model.",
+    "Bootstrap intervals use circular moving blocks and are approximate.",
+    "The sign test does not account for serial dependence.",
+    "Bonferroni adjustment covers the 12 model/top-K comparisons.",
+    "Chronological blocks are descriptive, not independent experiments.",
+    "A historical improvement does not guarantee future predictive value."
+  ]
+}
