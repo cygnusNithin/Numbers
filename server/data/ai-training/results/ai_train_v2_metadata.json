@@ -1,17 +1,29 @@
 {
   "version": 2,
-  "seed": 42,
-  "sklearn_version": "1.9.1",
+  "method": "expanding-window walk-forward backtest",
   "events": 1997,
-  "numbers": 10000,
-  "train_fraction": 0.7,
-  "train_end_index_exclusive": 1397,
-  "train_first_date": "11/07/2020",
-  "train_last_date": "21/01/2025",
-  "test_first_date": "22/01/2025",
+  "number_universe": 10000,
+  "first_test_index": 997,
+  "test_block_size": 200,
+  "fold_count": 5,
+  "total_test_draws": 1000,
+  "test_first_date": "14/12/2023",
   "test_last_date": "26/09/2026",
   "minimum_history_draws": 50,
   "negative_samples_per_training_draw": 300,
+  "top_k_values": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "model_parameters": {
+    "learning_rate": 0.08,
+    "max_iter": 100,
+    "max_leaf_nodes": 15,
+    "l2_regularization": 1.0,
+    "random_state": 42
+  },
   "features": [
     "hits_last_5",
     "hits_last_10",
@@ -28,7 +40,14 @@
     "even_digit_count",
     "repeated_digit_count"
   ],
-  "target": "Whether the number appeared at least once in the exported prize rows for a draw",
-  "warning": "This is an experiment. Sampled negatives change class prevalence, and observed performance does not guarantee future predictive value. Validate across multiple chronological periods and compare with baselines.",
-  "elapsed_seconds": 17.66
+  "target": "Number appeared at least once in exported prize rows for a draw.",
+  "caveats": [
+    "Negative sampling changes training class prevalence.",
+    "Model scores are rankings, not calibrated probabilities.",
+    "Each fold trains only on draws before its test block.",
+    "The sign test does not account for serial dependence.",
+    "Bonferroni adjustment covers eight ML/baseline/Top-K tests.",
+    "This historical backtest does not guarantee future accuracy."
+  ],
+  "elapsed_seconds": 39.67
 }
