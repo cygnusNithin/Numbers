@@ -1,0 +1,19 @@
+{
+  "validation": "paired circular moving-block bootstrap",
+  "input": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v2_per_draw.csv",
+  "unique_test_draws": 1000,
+  "bootstrap_replicates": 5000,
+  "block_length": 20,
+  "random_seed": 20261012,
+  "planned_comparisons": 8,
+  "multiple_testing_correction": "Bonferroni",
+  "alpha": 0.05,
+  "caveats": [
+    "Bootstrap intervals rely on approximate stationarity within the tested sequence.",
+    "Block bootstrap accounts for short-range dependence only approximately.",
+    "The model and features were selected using prior work; this is not a completely untouched final test.",
+    "A positive result does not guarantee future lottery prediction accuracy.",
+    "This script validates existing predictions; it does not train or save a new model."
+  ],
+  "elapsed_seconds": 4.22
+}
