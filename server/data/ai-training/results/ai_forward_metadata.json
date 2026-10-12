@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-10-12T18:59:45.708360+00:00",
+  "latest_event_order": 1997,
+  "latest_serialNumber": "BR-111",
+  "latest_date": "26/09/2026",
+  "model_file": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_train_v3_final.joblib",
+  "model_sha256": "5e91cd391c26745937cf20004083f6bcfc02dfccbed0070c5ddd351a1d4e72eb",
+  "predictions_file": "J:\\Reset\\downloads\\Music\\forth\\server\\data\\ai-training\\results\\ai_forward_predictions.csv",
+  "methods": [
+    "model",
+    "historical_frequency",
+    "random"
+  ],
+  "top_k_values": [
+    10,
+    25,
+    50,
+    100
+  ],
+  "important_note": "Predictions are frozen per cutoff. Do not edit old rows after the target draw becomes available. Model scores are ranking scores, not calibrated probabilities."
+}
