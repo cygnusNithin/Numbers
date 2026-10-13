@@ -1,0 +1,22 @@
+{
+  "focus_number": "7396",
+  "first_strict_lead_event_order": 1792,
+  "first_strict_lead_date": "01/03/2026",
+  "focus_cumulative_hits_at_lead": 82,
+  "highest_other_cumulative_hits_at_lead": 81,
+  "draw_events": 1997,
+  "post_lead_events": 205,
+  "post_lead_anchor_events": 9,
+  "post_lead_control_events": 196,
+  "horizons": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "top_k": 100,
+  "minimum_training_anchors": 3,
+  "minimum_training_controls": 20,
+  "method_note": "Descriptive anchor/control windows can overlap. Forward-test periods do not overlap, and training windows must end before the test anchor.",
+  "warning": "Exploratory association only; this cannot establish causation or guarantee future lottery results."
+}
