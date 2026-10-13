@@ -1,0 +1,15 @@
+{
+  "draw_count": 1997,
+  "number_universe": 10000,
+  "total_distinct_number_appearances": 583232,
+  "overall_hit_rate": 0.029205408112168253,
+  "lookback_draws": 200,
+  "block_size": 10,
+  "forward_horizon": 10,
+  "forward_step": 10,
+  "top_k": 25,
+  "first_test_index": 500,
+  "random_seed": 7396,
+  "elapsed_seconds": 12.66,
+  "warning": "Historical correlations are descriptive. Forward performance is exploratory and does not establish future predictability."
+}
