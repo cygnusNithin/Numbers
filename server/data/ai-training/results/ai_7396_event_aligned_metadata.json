@@ -1,0 +1,29 @@
+{
+  "events": 1997,
+  "valid_distinct_appearances": 583232,
+  "invalid_number_rows_ignored": 0,
+  "rows_with_unmatched_event_order": 0,
+  "unique_dates": 1995,
+  "first_event_order": 1,
+  "last_event_order": 1997,
+  "first_date": "11/07/2020",
+  "last_date": "26/09/2026",
+  "date_column": "date",
+  "leader_number": "7396",
+  "first_strict_lead_event_index": 1791,
+  "first_strict_lead_event_order": 1792,
+  "first_strict_lead_date": "01/03/2026",
+  "leader_hits_at_first_strict_lead": 82,
+  "highest_other_hits_at_first_strict_lead": 81,
+  "horizons": [
+    1,
+    5,
+    10,
+    20
+  ],
+  "forward_test_horizon": 10,
+  "forward_test_top_k": 100,
+  "7396_hit_anchors_after_first_lead": 10,
+  "non_7396_control_anchors_after_first_lead": 196,
+  "numbers_in_summary": 9999
+}
