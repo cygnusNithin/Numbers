@@ -1,0 +1,23 @@
+{
+  "script": "ai_three_hit_leader_tracker.py",
+  "draw_events": 1997,
+  "first_date": "2020-07-11",
+  "last_date": "2026-09-26",
+  "tracking_starts": "Day 2; Day 1 is baseline only",
+  "leader_rule": "A number activates when its cumulative hits first reach 3 on Day 2 or later.",
+  "replacement_rule": "The active leader is replaced when another number first reaches the threshold; if several qualify in the same draw, highest cumulative hits then lowest number wins.",
+  "watchlist_rule": "At activation and each extra hit by the active leader, snapshot up to 20 other numbers with at least 2 cumulative hits, ordered by hits descending, last-seen recency descending, then number ascending.",
+  "outputs": [
+    "leader_activations.csv",
+    "leader_watchlist_snapshots.csv",
+    "leader_watchlist_hits.csv",
+    "leader_cycles.csv",
+    "current_leader_state.csv"
+  ],
+  "caveats": [
+    "This is a descriptive tracking rule, not a proven lottery prediction method.",
+    "The watchlist is a snapshot; it refreshes when the active leader gets an extra hit.",
+    "A watched number's later appearance is recorded, but does not establish that the leader caused or predicted it.",
+    "If fewer than 20 other numbers have the minimum hit count, the watchlist contains fewer than 20."
+  ]
+}
