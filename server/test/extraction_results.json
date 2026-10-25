@@ -1,0 +1,28 @@
+{
+  "video": "Kerala Lottery Official Live - SAMRUDHI - SM-70 - 30.08.2026.mp4",
+  "numbers_roi": {
+    "x": 373,
+    "y": 58,
+    "width": 128,
+    "height": 59
+  },
+  "entries": [
+    {
+      "prize": "6th Prize",
+      "amount": "",
+      "frame": 31871,
+      "time": "00:17:42",
+      "numbers": [
+        "0214"
+      ]
+    }
+  ],
+  "by_prize": {
+    "6th Prize": {
+      "amount": "",
+      "numbers": [
+        "0214"
+      ]
+    }
+  }
+}

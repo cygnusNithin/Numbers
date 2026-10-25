@@ -1,0 +1,116 @@
+{
+  "timestamp": "00:17:42",
+  "video": "Kerala Lottery Official Live - SAMRUDHI - SM-70 - 30.08.2026.mp4",
+  "description": "Marked roller group areas for prize number extraction",
+  "total_rollers": 18,
+  "roller_groups": [
+    {
+      "x": 375,
+      "y": 70,
+      "width": 124,
+      "height": 60
+    },
+    {
+      "x": 375,
+      "y": 168,
+      "width": 122,
+      "height": 58
+    },
+    {
+      "x": 377,
+      "y": 260,
+      "width": 122,
+      "height": 64
+    },
+    {
+      "x": 375,
+      "y": 358,
+      "width": 128,
+      "height": 62
+    },
+    {
+      "x": 379,
+      "y": 452,
+      "width": 122,
+      "height": 62
+    },
+    {
+      "x": 377,
+      "y": 550,
+      "width": 126,
+      "height": 64
+    },
+    {
+      "x": 581,
+      "y": 66,
+      "width": 130,
+      "height": 68
+    },
+    {
+      "x": 581,
+      "y": 168,
+      "width": 126,
+      "height": 56
+    },
+    {
+      "x": 583,
+      "y": 262,
+      "width": 122,
+      "height": 62
+    },
+    {
+      "x": 583,
+      "y": 356,
+      "width": 124,
+      "height": 62
+    },
+    {
+      "x": 581,
+      "y": 452,
+      "width": 126,
+      "height": 62
+    },
+    {
+      "x": 581,
+      "y": 546,
+      "width": 126,
+      "height": 64
+    },
+    {
+      "x": 793,
+      "y": 65,
+      "width": 122,
+      "height": 66
+    },
+    {
+      "x": 791,
+      "y": 165,
+      "width": 124,
+      "height": 62
+    },
+    {
+      "x": 791,
+      "y": 261,
+      "width": 124,
+      "height": 60
+    },
+    {
+      "x": 793,
+      "y": 355,
+      "width": 120,
+      "height": 62
+    },
+    {
+      "x": 795,
+      "y": 453,
+      "width": 120,
+      "height": 60
+    },
+    {
+      "x": 791,
+      "y": 547,
+      "width": 126,
+      "height": 62
+    }
+  ]
+}

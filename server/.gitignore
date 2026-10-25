@@ -26,6 +26,9 @@ build/
 # Generated CSV & Data Analytics Outputs
 *.csv
 
+#Skip Video Files
+*.mp4
+
 # Logs
 *.log
 logs/

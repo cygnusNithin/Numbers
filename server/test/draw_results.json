@@ -1,0 +1,24 @@
+{
+  "video": "Kerala Lottery Official Live - SAMRUDHI - SM-70 - 30.08.2026.mp4",
+  "draws": [
+    {
+      "draw": 1,
+      "prize": "Draw 1",
+      "amount": "",
+      "start": "00:09:37",
+      "found": 1,
+      "rollers": {
+        "2": {
+          "number": "5240",
+          "votes": 2,
+          "reads": 4,
+          "confident": false,
+          "time": "00:09:40",
+          "alternatives": {
+            "5210": 2
+          }
+        }
+      }
+    }
+  ]
+}
