@@ -787,6 +787,7 @@ class ScanApp:
         self.beat = -1
         self.validation = None
         self.freeze_text = ""
+        self.scan_end_seconds = None
         self.build_ui()
         self.log("ROI: %s (%d tags)" % (ROI_FILE, len(self.boxes)))
         self.log("Fonts: %d samples in %s" % (self.fonts.count, FONT_DIR))
@@ -809,9 +810,11 @@ class ScanApp:
                                font=("Arial", 10, "bold"), width=8)
         self.play_btn.pack(side="left", padx=2)
         Label(top, text="Start", bg="#f0f0f0").pack(side="left", padx=(8, 2))
-        self.start_var = StringVar(value="00:09:30")
+        self.start_var = StringVar(value="00:09:37")
         Entry(top, textvariable=self.start_var, width=10, font=("Courier", 10)).pack(side="left")
-        Button(top, text="Set Start", command=self.set_start_here).pack(side="left", padx=3)
+        Label(top, text="End", bg="#f0f0f0").pack(side="left", padx=(6, 2))
+        self.end_var = StringVar(value="00:11:25")
+        Entry(top, textvariable=self.end_var, width=10, font=("Courier", 10)).pack(side="left")        Button(top, text="Set Start", command=self.set_start_here).pack(side="left", padx=3)
         self.scan_btn = Button(top, text="START SCAN", command=self.start_scan, bg="#2196F3", fg="white",
                                font=("Arial", 10, "bold"))
         self.scan_btn.pack(side="left", padx=3)
@@ -1128,13 +1131,17 @@ class ScanApp:
                 self.refresh_list()
         self.fonts.reload()
         self.refresh_font_label()
+        self.scan_end_seconds = parse_time(self.end_var.get())
+        if self.scan_end_seconds <= 0 or self.scan_end_seconds <= parse_time(self.start_var.get()):
+            messagebox.showwarning("Scan range", "End time must be after the start time.")
+            return
         if keep:
             start_f = self.frame_idx
             self.machine_seen = True
         else:
             start_f = min(self.total - 1, int(parse_time(self.start_var.get()) * self.fps))
-            self.machine_seen = False
-            self.gate_label.config(text="Machine: not seen yet", fg="#E65100")
+            self.machine_seen = True
+            self.gate_label.config(text="Range active: stopped close-ups only.", fg="#2E7D32")
         self.tracker.reset()
         self.cap.set(cv2.CAP_PROP_POS_FRAMES, start_f)
         self.frame_idx = max(0, start_f - 1)
@@ -1143,7 +1150,7 @@ class ScanApp:
         self.scan_btn.config(state=DISABLED)
         self.stop_btn.config(state=NORMAL)
         self.play_btn.config(state=DISABLED)
-        self.log("SCAN from %s at Play speed. Fonts: %d." % (fmt_hms(start_f / self.fps), self.fonts.count))
+        self.log("SCAN %s to %s. Fonts: %d. Reads require stopped close-ups." % (fmt_hms(start_f / self.fps), fmt_hms(self.scan_end_seconds), self.fonts.count))
         self.scan_tick()
 
     def stop_scan(self):
@@ -1172,6 +1179,9 @@ class ScanApp:
             if not self.read_current():
                 self.show_frame(self.analysis)
                 self.finish_scan("end of video")
+                return
+            if self.scan_end_seconds is not None and self.t_now() > self.scan_end_seconds:
+                self.finish_scan("end of requested range")
                 return
             self.process_sample()
             if not self.scanning:
