@@ -9,7 +9,7 @@ const PDF_FILE = "draw-72893.pdf";
 const SERIAL_NUMBER = "W-642";
 
 const API_URL =
-  "http://localhost:5000/api/absolute-v2/import-folder" +
+  "http://127.0.0.1:5000/api/absolute-v2/import-folder" +
   `?file=${encodeURIComponent(PDF_FILE)}&dryRun=true`;
 
 function normalizeSeries(series = []) {
@@ -57,13 +57,32 @@ async function main() {
       throw new Error(`Existing record ${SERIAL_NUMBER} was not found.`);
     }
 
-    const response = await fetch(API_URL);
+    const response = await fetch(API_URL, {
+  method: "POST",
+  headers: {
+    Accept: "application/json",
+  },
+});
 
-    if (!response.ok) {
-      throw new Error(`Dry-run API failed: HTTP ${response.status}`);
-    }
+const responseText = await response.text();
 
-    const payload = await response.json();
+if (!response.ok) {
+  throw new Error(
+    `Dry-run API failed: HTTP ${response.status}\n` +
+    `URL: ${API_URL}\n` +
+    `Response: ${responseText.slice(0, 1000)}`
+  );
+}
+
+let payload;
+
+try {
+  payload = JSON.parse(responseText);
+} catch {
+  throw new Error(
+    `API returned invalid JSON:\n${responseText.slice(0, 1000)}`
+  );
+}
     const dryRun = payload.results?.find(
       (item) => item.serialNumber === SERIAL_NUMBER
     );
