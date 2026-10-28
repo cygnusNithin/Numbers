@@ -10097,17 +10097,19 @@ function extractAbsoluteV2PrizeSection(text = "") {
   return text.slice(markerIndex + ABSOLUTE_V2_START_MARKER.length);
 }
 
+
 function parseAbsoluteV2PrizeNumbers(sectionText = "") {
-  const text = String(sectionText);
+  const text = String(sectionText || "");
+
   const headingRegex =
-    /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
+    /\b(\d+)(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)\s*\/?\s*-?/gi;
 
   const headings = [...text.matchAll(headingRegex)];
   const prizesByAmount = {};
 
   for (let i = 0; i < headings.length; i++) {
     const heading = headings[i];
-    const prizeAmount = Number(heading[1].replace(/,/g, ""));
+    const prizeAmount = Number(heading[2].replace(/,/g, ""));
 
     if (
       !Number.isInteger(prizeAmount) ||
@@ -10121,37 +10123,35 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
     const contentEnd =
       i + 1 < headings.length ? headings[i + 1].index : text.length;
 
-    const prizeContent = text.slice(contentStart, contentEnd);
-    const numbers = [];
+    let prizeContent = text.slice(contentStart, contentEnd);
 
-    for (const line of prizeContent.split(/\r?\n/)) {
-      const trimmed = line.trim();
+    // Remove page headers/footers and other non-number text.
+    // The prize section is already bounded by adjacent prize headings.
+    prizeContent = prizeContent
+      .replace(/Page\s+\d+/gi, " ")
+      .replace(/IT\s*Support\s*:\s*NIC\s*Kerala/gi, " ")
+      .replace(/\b\d{1,2}\/\d{1,2}\/\d{4}\b/g, " ")
+      .replace(/\b\d{1,2}:\d{2}:\d{2}\b/g, " ")
+      .replace(
+        /The prize winners are advised[\s\S]*$/i,
+        " ",
+      );
 
-      // Only process lines containing digits and whitespace.
-      // This excludes page footers and other text.
-      if (!trimmed || !/^[\d\s]+$/.test(trimmed)) {
-        continue;
-      }
-
-      const digits = trimmed.replace(/\s/g, "");
-
-      // Ignore malformed lines rather than extracting partial numbers.
-      if (!digits || digits.length % 4 !== 0) {
-        continue;
-      }
-
-      for (let offset = 0; offset < digits.length; offset += 4) {
-        numbers.push(digits.slice(offset, offset + 4));
-      }
-    }
+    // Keep only four-digit groups. The source has concatenated
+    // number lists, so newline-based parsing cannot be relied upon.
+    const numbers = prizeContent.match(/\d{4}/g) || [];
 
     prizesByAmount[prizeAmount] = [
-      ...new Set([...(prizesByAmount[prizeAmount] || []), ...numbers]),
+      ...new Set([
+        ...(prizesByAmount[prizeAmount] || []),
+        ...numbers,
+      ]),
     ];
   }
 
   return prizesByAmount;
 }
+
 
 function buildAbsoluteV2Series(prizesByAmount = {}) {
   return Object.entries(prizesByAmount)
@@ -10372,35 +10372,35 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
           }
 
           
-console.log("\n========== ABSOLUTE V2 DEBUG ==========");
-console.log("File:", fileName);
-console.log(
-  "Prize section preview:",
-  JSON.stringify(prizeSection.slice(0, 3000)),
-);
+// console.log("\n========== ABSOLUTE V2 DEBUG ==========");
+// console.log("File:", fileName);
+// console.log(
+//   "Prize section preview:",
+//   JSON.stringify(prizeSection.slice(0, 3000)),
+// );
 
-const debugHeadingRegex =
-  /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
+// const debugHeadingRegex =
+//   /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
 
-console.log(
-  "Matched prize headings:",
-  [...prizeSection.matchAll(debugHeadingRegex)].map((match) => ({
-    heading: match[0],
-    amount: match[1],
-    index: match.index,
-  })),
-);
+// console.log(
+//   "Matched prize headings:",
+//   [...prizeSection.matchAll(debugHeadingRegex)].map((match) => ({
+//     heading: match[0],
+//     amount: match[1],
+//     index: match.index,
+//   })),
+// );
 
-console.log(
-  "First 80 prize-section lines:",
-  prizeSection
-    .split(/\r?\n/)
-    .slice(0, 80)
-    .map((line, index) => `${index + 1}: ${JSON.stringify(line)}`)
-    .join("\n"),
-);
+// console.log(
+//   "First 80 prize-section lines:",
+//   prizeSection
+//     .split(/\r?\n/)
+//     .slice(0, 80)
+//     .map((line, index) => `${index + 1}: ${JSON.stringify(line)}`)
+//     .join("\n"),
+// );
 
-console.log("========== END V2 DEBUG ==========\n");
+// console.log("========== END V2 DEBUG ==========\n");
 
 
           const prizesByAmount = parseAbsoluteV2PrizeNumbers(prizeSection);
