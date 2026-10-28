@@ -10371,6 +10371,38 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             continue;
           }
 
+          
+console.log("\n========== ABSOLUTE V2 DEBUG ==========");
+console.log("File:", fileName);
+console.log(
+  "Prize section preview:",
+  JSON.stringify(prizeSection.slice(0, 3000)),
+);
+
+const debugHeadingRegex =
+  /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
+
+console.log(
+  "Matched prize headings:",
+  [...prizeSection.matchAll(debugHeadingRegex)].map((match) => ({
+    heading: match[0],
+    amount: match[1],
+    index: match.index,
+  })),
+);
+
+console.log(
+  "First 80 prize-section lines:",
+  prizeSection
+    .split(/\r?\n/)
+    .slice(0, 80)
+    .map((line, index) => `${index + 1}: ${JSON.stringify(line)}`)
+    .join("\n"),
+);
+
+console.log("========== END V2 DEBUG ==========\n");
+
+
           const prizesByAmount = parseAbsoluteV2PrizeNumbers(prizeSection);
 
           const series = buildAbsoluteV2Series(prizesByAmount);
