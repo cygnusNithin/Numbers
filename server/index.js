@@ -12,6 +12,7 @@ const LotteryData = require("./models/LotteryData");
 const LotteryDataNew = require("./models/LotteryDataNew");
 const FullLotteryData = require("./models/FullLotteryData");
 const AbsoluteData = require("./models/AbsoluteData");
+const AbsoluteDataV2 = require("./models/AbsoluteDataV2");
 
 const { buildCycleAnalysisByDay } = require("./routes/utils/cycleAnalysis");
 const forwardCyclesRouter = require("./routes/forwardCycles");
@@ -10073,3 +10074,476 @@ console.log("Reverse router type:", typeof reverseCyclesRouter);
 
 app.use("/api/forward-cycles", forwardCyclesRouter);
 app.use("/api/reverse-cycles", reverseCyclesRouter);
+
+//new model with category
+
+// ============================================================
+// ABSOLUTE DATA V2 API
+// Collection: absolute_data_v2
+// Does not modify the original absolute_data collection.
+// ============================================================
+
+const ABSOLUTE_V2_FILES_DIR = path.join(__dirname, "files");
+
+const ABSOLUTE_V2_START_MARKER =
+  "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
+
+// ------------------------------------------------------------
+// Helpers
+// ------------------------------------------------------------
+
+function classifyLotteryCategory(serialNumber = "") {
+  const serial = String(serialNumber).trim().toUpperCase();
+
+  if (serial.startsWith("BM-")) return "BM";
+  if (serial.startsWith("BR-")) return "BR";
+
+  return "OTHER";
+}
+
+function extractAbsoluteV2PrizeSection(text = "") {
+  const markerIndex = text.toUpperCase().indexOf(ABSOLUTE_V2_START_MARKER);
+
+  if (markerIndex === -1) {
+    return "";
+  }
+
+  return text.slice(markerIndex + ABSOLUTE_V2_START_MARKER.length);
+}
+
+function buildAbsoluteV2Series(prizesByAmount = {}) {
+  return Object.entries(prizesByAmount)
+    .map(([amount, numbers]) => ({
+      prize: Number(amount),
+      numbers: [...new Set(numbers)]
+        .filter((number) => /^\d{4}$/.test(String(number)))
+        .map((number) => ({
+          number: String(number),
+          count: 1,
+        })),
+    }))
+    .filter(
+      (series) =>
+        Number.isFinite(series.prize) &&
+        series.prize >= 1 &&
+        series.prize <= 5000 &&
+        series.numbers.length > 0,
+    )
+    .sort((a, b) => b.prize - a.prize);
+}
+
+// ------------------------------------------------------------
+// POST /api/absolute-v2/import-folder
+//
+// Imports PDFs from server/files into absolute_data_v2.
+//
+// Existing V2 serial numbers are skipped, not overwritten.
+// The original absolute_data collection is untouched.
+// ------------------------------------------------------------
+
+app.post("/api/absolute-v2/import-folder", async (req, res) => {
+  try {
+    if (!fs.existsSync(ABSOLUTE_V2_FILES_DIR)) {
+      return res.status(404).json({
+        success: false,
+        message: "PDF folder not found",
+        folder: ABSOLUTE_V2_FILES_DIR,
+      });
+    }
+
+    const files = fs
+      .readdirSync(ABSOLUTE_V2_FILES_DIR)
+      .filter((file) => /\.pdf$/i.test(file))
+      .sort((a, b) =>
+        a.localeCompare(b, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        }),
+      );
+
+    if (files.length === 0) {
+      return res.json({
+        success: true,
+        message: "No PDF files found",
+        folder: ABSOLUTE_V2_FILES_DIR,
+        totalFiles: 0,
+        imported: 0,
+        skipped: 0,
+        failed: 0,
+        results: [],
+      });
+    }
+
+    const summary = {
+      totalFiles: files.length,
+      imported: 0,
+      skipped: 0,
+      failed: 0,
+      results: [],
+    };
+
+    for (const fileName of files) {
+      const filePath = path.join(ABSOLUTE_V2_FILES_DIR, fileName);
+
+      try {
+        const buffer = fs.readFileSync(filePath);
+        const parser = new PdfParse.PDFParse({ data: buffer });
+
+        let parsedPdf;
+
+        try {
+          parsedPdf = await parser.getText();
+        } finally {
+          if (typeof parser.destroy === "function") {
+            await parser.destroy();
+          }
+        }
+
+        const rawText = cleanExtractedText(parsedPdf?.text || "");
+
+        if (!rawText) {
+          summary.skipped++;
+
+          summary.results.push({
+            fileName,
+            status: "skipped",
+            reason: "PDF contains no extractable text",
+          });
+
+          continue;
+        }
+
+        // PDFs can contain multiple draw blocks.
+        const upperText = rawText.toUpperCase();
+        const marker = ABSOLUTE_V2_START_MARKER;
+        const markerPositions = [];
+
+        let searchFrom = 0;
+
+        while (true) {
+          const index = upperText.indexOf(marker, searchFrom);
+
+          if (index === -1) break;
+
+          markerPositions.push(index);
+          searchFrom = index + marker.length;
+        }
+
+        if (markerPositions.length === 0) {
+          summary.skipped++;
+
+          summary.results.push({
+            fileName,
+            status: "skipped",
+            reason: "Prize section marker not found",
+          });
+
+          continue;
+        }
+
+        let importedFromFile = 0;
+
+        for (let i = 0; i < markerPositions.length; i++) {
+          const blockStart = markerPositions[i];
+
+          // Include the text before the marker so serial/date
+          // extraction can use the full draw context.
+          const blockEnd =
+            i + 1 < markerPositions.length
+              ? markerPositions[i + 1]
+              : rawText.length;
+
+          const drawBlock = rawText.slice(i === 0 ? 0 : blockStart, blockEnd);
+
+          const serialNumber = extractSerialNumber(drawBlock);
+
+          if (!serialNumber) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              status: "skipped",
+              reason: "Serial number not found",
+              block: i + 1,
+            });
+
+            continue;
+          }
+
+          // Do not overwrite an existing V2 record.
+          const existing = await AbsoluteDataV2.findOne({
+            serialNumber: serialNumber.trim(),
+          })
+            .select("_id serialNumber")
+            .lean();
+
+          if (existing) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber,
+              status: "skipped",
+              reason: "Serial number already exists in absolute_data_v2",
+            });
+
+            continue;
+          }
+
+          const date = extractDateFromText(drawBlock);
+
+          if (!date) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber,
+              status: "skipped",
+              reason: "Draw date not found",
+            });
+
+            continue;
+          }
+
+          const prizeSection = extractAbsoluteV2PrizeSection(drawBlock);
+
+          if (!prizeSection) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber,
+              status: "skipped",
+              reason: "Prize section could not be extracted",
+            });
+
+            continue;
+          }
+
+          // Strict mode avoids extracting a four-digit substring
+          // from a longer digit sequence.
+          const prizesByAmount = getPrizeNumbersByAmount(prizeSection, {
+            strictFourDigitNumbers: true,
+          });
+
+          const series = buildAbsoluteV2Series(prizesByAmount);
+
+          const totalNumbers = series.reduce(
+            (total, item) => total + item.numbers.length,
+            0,
+          );
+
+          // Safety check: don't save obviously incomplete records.
+          // Adjust this threshold only after validating your PDFs.
+          if (series.length < 2 || totalNumbers < 10) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber,
+              status: "skipped",
+              reason: "Extracted prize data appears incomplete",
+              prizeGroups: series.length,
+              totalNumbers,
+            });
+
+            continue;
+          }
+
+          const drawDate = ddmmyyyyToUTCDate(date);
+
+          if (!drawDate || Number.isNaN(drawDate.getTime())) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber,
+              status: "skipped",
+              reason: "Date could not be converted to a valid Date",
+              date,
+            });
+
+            continue;
+          }
+
+          const record = new AbsoluteDataV2({
+            serialNumber: serialNumber.trim(),
+            date,
+            drawDate,
+            drawCategory: classifyLotteryCategory(serialNumber),
+            fileName,
+            series,
+          });
+
+          await record.save();
+
+          summary.imported++;
+          importedFromFile++;
+
+          summary.results.push({
+            fileName,
+            serialNumber,
+            status: "imported",
+            recordNumber: record.recordNumber,
+            date: record.date,
+            prizeGroups: series.length,
+            totalNumbers,
+          });
+        }
+
+        // No additional action needed when a file has several draw blocks.
+        void importedFromFile;
+      } catch (error) {
+        summary.failed++;
+
+        summary.results.push({
+          fileName,
+          status: "failed",
+          reason: error.message,
+        });
+      }
+    }
+
+    return res.json({
+      success: true,
+      message: "Absolute Data V2 import completed",
+      folder: ABSOLUTE_V2_FILES_DIR,
+      ...summary,
+    });
+  } catch (error) {
+    console.error("Absolute V2 folder import failed:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Absolute Data V2 import failed",
+      error: error.message,
+    });
+  }
+});
+
+// ------------------------------------------------------------
+// GET /api/absolute-v2/stats
+// Register before /:serialNumber.
+// ------------------------------------------------------------
+
+app.get("/api/absolute-v2/stats", async (req, res) => {
+  try {
+    const [totalRecords, prizeStats] = await Promise.all([
+      AbsoluteDataV2.countDocuments(),
+
+      AbsoluteDataV2.aggregate([
+        { $unwind: "$series" },
+        {
+          $group: {
+            _id: "$series.prize",
+            drawCount: { $sum: 1 },
+            numberCount: {
+              $sum: { $size: "$series.numbers" },
+            },
+          },
+        },
+        { $sort: { _id: -1 } },
+        {
+          $project: {
+            _id: 0,
+            prize: "$_id",
+            drawCount: 1,
+            numberCount: 1,
+          },
+        },
+      ]),
+    ]);
+
+    return res.json({
+      success: true,
+      totalRecords,
+      prizeStats,
+    });
+  } catch (error) {
+    console.error("Absolute V2 stats failed:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to retrieve Absolute Data V2 statistics",
+      error: error.message,
+    });
+  }
+});
+
+// ------------------------------------------------------------
+// GET /api/absolute-v2?page=1&limit=20
+// Paginated V2 records.
+// ------------------------------------------------------------
+
+app.get("/api/absolute-v2", async (req, res) => {
+  try {
+    const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+
+    const requestedLimit = Number.parseInt(req.query.limit, 10) || 20;
+    const limit = Math.min(100, Math.max(1, requestedLimit));
+    const skip = (page - 1) * limit;
+
+    const [records, totalRecords] = await Promise.all([
+      AbsoluteDataV2.find({})
+        .sort({ recordNumber: 1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+
+      AbsoluteDataV2.countDocuments(),
+    ]);
+
+    return res.json({
+      success: true,
+      page,
+      limit,
+      totalRecords,
+      totalPages: Math.ceil(totalRecords / limit),
+      records,
+    });
+  } catch (error) {
+    console.error("Absolute V2 listing failed:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to retrieve Absolute Data V2 records",
+      error: error.message,
+    });
+  }
+});
+
+// ------------------------------------------------------------
+// GET /api/absolute-v2/:serialNumber
+// Must be registered after /stats and the collection route.
+// ------------------------------------------------------------
+
+app.get("/api/absolute-v2/:serialNumber", async (req, res) => {
+  try {
+    const serialNumber = String(req.params.serialNumber || "").trim();
+
+    const record = await AbsoluteDataV2.findOne({
+      serialNumber,
+    }).lean();
+
+    if (!record) {
+      return res.status(404).json({
+        success: false,
+        message: "Absolute Data V2 record not found",
+        serialNumber,
+      });
+    }
+
+    return res.json({
+      success: true,
+      record,
+    });
+  } catch (error) {
+    console.error("Absolute V2 record lookup failed:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: "Failed to retrieve Absolute Data V2 record",
+      error: error.message,
+    });
+  }
+});
