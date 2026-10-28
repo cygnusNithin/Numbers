@@ -10079,7 +10079,7 @@ app.use("/api/reverse-cycles", reverseCyclesRouter);
 //new model with category
 
 // ============================================================
-// ABSOLUTE DATA V2 API
+// ABSOLUTE DATA V2 API — PDF IMPORT
 // Collection: absolute_data_v2
 // Does not modify the original absolute_data collection.
 // ============================================================
@@ -10089,27 +10089,68 @@ const ABSOLUTE_V2_FILES_DIR = path.join(__dirname, "files");
 const ABSOLUTE_V2_START_MARKER =
   "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
 
-// ------------------------------------------------------------
-// Helpers
-// ------------------------------------------------------------
-
-function classifyLotteryCategory(serialNumber = "") {
-  const serial = String(serialNumber).trim().toUpperCase();
-
-  if (serial.startsWith("BM-")) return "BM";
-  if (serial.startsWith("BR-")) return "BR";
-
-  return "OTHER";
-}
-
 function extractAbsoluteV2PrizeSection(text = "") {
   const markerIndex = text.toUpperCase().indexOf(ABSOLUTE_V2_START_MARKER);
 
-  if (markerIndex === -1) {
-    return "";
-  }
+  if (markerIndex === -1) return "";
 
   return text.slice(markerIndex + ABSOLUTE_V2_START_MARKER.length);
+}
+
+function parseAbsoluteV2PrizeNumbers(sectionText = "") {
+  const text = String(sectionText);
+  const headingRegex =
+    /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
+
+  const headings = [...text.matchAll(headingRegex)];
+  const prizesByAmount = {};
+
+  for (let i = 0; i < headings.length; i++) {
+    const heading = headings[i];
+    const prizeAmount = Number(heading[1].replace(/,/g, ""));
+
+    if (
+      !Number.isInteger(prizeAmount) ||
+      prizeAmount < 1 ||
+      prizeAmount > 5000
+    ) {
+      continue;
+    }
+
+    const contentStart = heading.index + heading[0].length;
+    const contentEnd =
+      i + 1 < headings.length ? headings[i + 1].index : text.length;
+
+    const prizeContent = text.slice(contentStart, contentEnd);
+    const numbers = [];
+
+    for (const line of prizeContent.split(/\r?\n/)) {
+      const trimmed = line.trim();
+
+      // Only process lines containing digits and whitespace.
+      // This excludes page footers and other text.
+      if (!trimmed || !/^[\d\s]+$/.test(trimmed)) {
+        continue;
+      }
+
+      const digits = trimmed.replace(/\s/g, "");
+
+      // Ignore malformed lines rather than extracting partial numbers.
+      if (!digits || digits.length % 4 !== 0) {
+        continue;
+      }
+
+      for (let offset = 0; offset < digits.length; offset += 4) {
+        numbers.push(digits.slice(offset, offset + 4));
+      }
+    }
+
+    prizesByAmount[prizeAmount] = [
+      ...new Set([...(prizesByAmount[prizeAmount] || []), ...numbers]),
+    ];
+  }
+
+  return prizesByAmount;
 }
 
 function buildAbsoluteV2Series(prizesByAmount = {}) {
@@ -10136,10 +10177,14 @@ function buildAbsoluteV2Series(prizesByAmount = {}) {
 // ------------------------------------------------------------
 // POST /api/absolute-v2/import-folder
 //
-// Imports PDFs from server/files into absolute_data_v2.
+// Test one file without saving:
+// POST /api/absolute-v2/import-folder?file=draw-72893.pdf&dryRun=true
 //
-// Existing V2 serial numbers are skipped, not overwritten.
-// The original absolute_data collection is untouched.
+// Import the folder:
+// POST /api/absolute-v2/import-folder
+//
+// Import one file:
+// POST /api/absolute-v2/import-folder?file=draw-72893.pdf
 // ------------------------------------------------------------
 
 app.post("/api/absolute-v2/import-folder", async (req, res) => {
@@ -10152,7 +10197,23 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
       });
     }
 
-    const files = fs
+    const requestedFile = String(req.query.file || "").trim();
+    const dryRun = String(req.query.dryRun || "").toLowerCase() === "true";
+
+    // Prevent paths outside the PDF folder from being requested.
+    if (
+      requestedFile &&
+      (path.basename(requestedFile) !== requestedFile ||
+        !/\.pdf$/i.test(requestedFile))
+    ) {
+      return res.status(400).json({
+        success: false,
+        message:
+          "file must be a PDF filename located directly inside server/files",
+      });
+    }
+
+    let files = fs
       .readdirSync(ABSOLUTE_V2_FILES_DIR)
       .filter((file) => /\.pdf$/i.test(file))
       .sort((a, b) =>
@@ -10162,17 +10223,18 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
         }),
       );
 
-    if (files.length === 0) {
-      return res.json({
-        success: true,
-        message: "No PDF files found",
-        folder: ABSOLUTE_V2_FILES_DIR,
-        totalFiles: 0,
-        imported: 0,
-        skipped: 0,
-        failed: 0,
-        results: [],
-      });
+    if (requestedFile) {
+      files = files.filter(
+        (file) => file.toLowerCase() === requestedFile.toLowerCase(),
+      );
+
+      if (files.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: "Requested PDF was not found",
+          requestedFile,
+        });
+      }
     }
 
     const summary = {
@@ -10184,77 +10246,86 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
     };
 
     for (const fileName of files) {
-      const filePath = path.join(ABSOLUTE_V2_FILES_DIR, fileName);
-
       try {
+        const filePath = path.join(ABSOLUTE_V2_FILES_DIR, fileName);
         const buffer = fs.readFileSync(filePath);
-        const parser = new PdfParse.PDFParse({ data: buffer });
 
-        let parsedPdf;
-
-        try {
-          parsedPdf = await parser.getText();
-        } finally {
-          if (typeof parser.destroy === "function") {
-            await parser.destroy();
-          }
-        }
-
+        // pdf-parse@1.1.1 exports a function, not PDFParse class.
+        const parsedPdf = await PdfParse(buffer);
         const rawText = cleanExtractedText(parsedPdf?.text || "");
 
         if (!rawText) {
           summary.skipped++;
-
           summary.results.push({
             fileName,
             status: "skipped",
             reason: "PDF contains no extractable text",
           });
-
           continue;
         }
 
-        // PDFs can contain multiple draw blocks.
         const upperText = rawText.toUpperCase();
-        const marker = ABSOLUTE_V2_START_MARKER;
         const markerPositions = [];
-
         let searchFrom = 0;
 
         while (true) {
-          const index = upperText.indexOf(marker, searchFrom);
+          const index = upperText.indexOf(ABSOLUTE_V2_START_MARKER, searchFrom);
 
           if (index === -1) break;
 
           markerPositions.push(index);
-          searchFrom = index + marker.length;
+          searchFrom = index + ABSOLUTE_V2_START_MARKER.length;
         }
 
         if (markerPositions.length === 0) {
           summary.skipped++;
-
           summary.results.push({
             fileName,
             status: "skipped",
             reason: "Prize section marker not found",
           });
-
           continue;
         }
 
-        let importedFromFile = 0;
+        // A marker is associated with the nearest preceding LOTTERY NO.
+        // This preserves the draw header for each section.
+        const lotteryHeaderRegex = /LOTTERY\s+NO\.?\s*/gi;
+        const headerPositions = [];
+        let headerMatch;
+
+        while ((headerMatch = lotteryHeaderRegex.exec(rawText)) !== null) {
+          headerPositions.push(headerMatch.index);
+        }
+
+        let fileImported = 0;
 
         for (let i = 0; i < markerPositions.length; i++) {
-          const blockStart = markerPositions[i];
+          const markerPosition = markerPositions[i];
 
-          // Include the text before the marker so serial/date
-          // extraction can use the full draw context.
-          const blockEnd =
-            i + 1 < markerPositions.length
-              ? markerPositions[i + 1]
-              : rawText.length;
+          const headerPosition = headerPositions
+            .filter((position) => position <= markerPosition)
+            .at(-1);
 
-          const drawBlock = rawText.slice(i === 0 ? 0 : blockStart, blockEnd);
+          if (headerPosition === undefined) {
+            summary.skipped++;
+            summary.results.push({
+              fileName,
+              status: "skipped",
+              block: i + 1,
+              reason: "Lottery header not found before prize section",
+            });
+            continue;
+          }
+
+          // Stop at the next lottery header, if this PDF has another draw.
+          const nextHeaderPosition = headerPositions.find(
+            (position) => position > markerPosition,
+          );
+
+          const drawBlock = rawText.slice(
+            headerPosition,
+            nextHeaderPosition ?? rawText.length,
+          );
 
           const serialNumber = extractSerialNumber(drawBlock);
 
@@ -10263,49 +10334,26 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             serialNumber.trim().toLowerCase() === "unknown"
           ) {
             summary.skipped++;
-
             summary.results.push({
               fileName,
               status: "skipped",
-              reason: "Serial number not found",
               block: i + 1,
+              reason: "Serial number not found",
             });
-
-            continue;
-          }
-
-          // Do not overwrite an existing V2 record.
-          const existing = await AbsoluteDataV2.findOne({
-            serialNumber: serialNumber.trim(),
-          })
-            .select("_id serialNumber")
-            .lean();
-
-          if (existing) {
-            summary.skipped++;
-
-            summary.results.push({
-              fileName,
-              serialNumber,
-              status: "skipped",
-              reason: "Serial number already exists in absolute_data_v2",
-            });
-
             continue;
           }
 
           const date = extractDateFromText(drawBlock);
 
-          if (!date) {
+          if (!date || date === "Unknown") {
             summary.skipped++;
-
             summary.results.push({
               fileName,
               serialNumber,
               status: "skipped",
+              block: i + 1,
               reason: "Draw date not found",
             });
-
             continue;
           }
 
@@ -10313,22 +10361,17 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
           if (!prizeSection) {
             summary.skipped++;
-
             summary.results.push({
               fileName,
               serialNumber,
+              date,
               status: "skipped",
               reason: "Prize section could not be extracted",
             });
-
             continue;
           }
 
-          // Strict mode avoids extracting a four-digit substring
-          // from a longer digit sequence.
-          const prizesByAmount = getPrizeNumbersByAmount(prizeSection, {
-            strictFourDigitNumbers: true,
-          });
+          const prizesByAmount = parseAbsoluteV2PrizeNumbers(prizeSection);
 
           const series = buildAbsoluteV2Series(prizesByAmount);
 
@@ -10337,20 +10380,57 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             0,
           );
 
-          // Safety check: don't save obviously incomplete records.
-          // Adjust this threshold only after validating your PDFs.
-          if (series.length < 2 || totalNumbers < 10) {
-            summary.skipped++;
+          const prizeCounts = series.map((item) => ({
+            prize: item.prize,
+            count: item.numbers.length,
+          }));
 
+          // Dry run validates extraction but never writes to MongoDB.
+          if (dryRun) {
             summary.results.push({
               fileName,
-              serialNumber,
+              serialNumber: serialNumber.trim(),
+              date,
+              status: "dry-run",
+              prizeGroups: series.length,
+              totalNumbers,
+              prizeCounts,
+              series,
+            });
+            continue;
+          }
+
+          // Do not overwrite existing V2 records.
+          const existing = await AbsoluteDataV2.findOne({
+            serialNumber: serialNumber.trim(),
+          })
+            .select("_id serialNumber")
+            .lean();
+
+          if (existing) {
+            summary.skipped++;
+            summary.results.push({
+              fileName,
+              serialNumber: serialNumber.trim(),
+              status: "skipped",
+              reason: "Serial number already exists in absolute_data_v2",
+            });
+            continue;
+          }
+
+          // Conservative safety check: do not save suspiciously incomplete data.
+          if (series.length < 2 || totalNumbers < 10) {
+            summary.skipped++;
+            summary.results.push({
+              fileName,
+              serialNumber: serialNumber.trim(),
+              date,
               status: "skipped",
               reason: "Extracted prize data appears incomplete",
               prizeGroups: series.length,
               totalNumbers,
+              prizeCounts,
             });
-
             continue;
           }
 
@@ -10358,15 +10438,13 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
           if (!drawDate || Number.isNaN(drawDate.getTime())) {
             summary.skipped++;
-
             summary.results.push({
               fileName,
-              serialNumber,
+              serialNumber: serialNumber.trim(),
+              date,
               status: "skipped",
               reason: "Date could not be converted to a valid Date",
-              date,
             });
-
             continue;
           }
 
@@ -10382,24 +10460,24 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
           await record.save();
 
           summary.imported++;
-          importedFromFile++;
+          fileImported++;
 
           summary.results.push({
             fileName,
-            serialNumber,
+            serialNumber: serialNumber.trim(),
             status: "imported",
             recordNumber: record.recordNumber,
             date: record.date,
             prizeGroups: series.length,
             totalNumbers,
+            prizeCounts,
           });
         }
 
-        // No additional action needed when a file has several draw blocks.
-        void importedFromFile;
+        // Count skipped blocks separately; this field is informational.
+        void fileImported;
       } catch (error) {
         summary.failed++;
-
         summary.results.push({
           fileName,
           status: "failed",
@@ -10408,9 +10486,19 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
       }
     }
 
+    // Dry-run records are validation results, not imported/skipped database rows.
+    if (dryRun) {
+      summary.skipped = summary.results.filter(
+        (result) => result.status === "skipped",
+      ).length;
+    }
+
     return res.json({
       success: true,
-      message: "Absolute Data V2 import completed",
+      message: dryRun
+        ? "Absolute Data V2 dry run completed; no records were saved"
+        : "Absolute Data V2 import completed",
+      dryRun,
       folder: ABSOLUTE_V2_FILES_DIR,
       ...summary,
     });
@@ -10420,133 +10508,6 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Absolute Data V2 import failed",
-      error: error.message,
-    });
-  }
-});
-
-// ------------------------------------------------------------
-// GET /api/absolute-v2/stats
-// Register before /:serialNumber.
-// ------------------------------------------------------------
-
-app.get("/api/absolute-v2/stats", async (req, res) => {
-  try {
-    const [totalRecords, prizeStats] = await Promise.all([
-      AbsoluteDataV2.countDocuments(),
-
-      AbsoluteDataV2.aggregate([
-        { $unwind: "$series" },
-        {
-          $group: {
-            _id: "$series.prize",
-            drawCount: { $sum: 1 },
-            numberCount: {
-              $sum: { $size: "$series.numbers" },
-            },
-          },
-        },
-        { $sort: { _id: -1 } },
-        {
-          $project: {
-            _id: 0,
-            prize: "$_id",
-            drawCount: 1,
-            numberCount: 1,
-          },
-        },
-      ]),
-    ]);
-
-    return res.json({
-      success: true,
-      totalRecords,
-      prizeStats,
-    });
-  } catch (error) {
-    console.error("Absolute V2 stats failed:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Failed to retrieve Absolute Data V2 statistics",
-      error: error.message,
-    });
-  }
-});
-
-// ------------------------------------------------------------
-// GET /api/absolute-v2?page=1&limit=20
-// Paginated V2 records.
-// ------------------------------------------------------------
-
-app.get("/api/absolute-v2", async (req, res) => {
-  try {
-    const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
-
-    const requestedLimit = Number.parseInt(req.query.limit, 10) || 20;
-    const limit = Math.min(100, Math.max(1, requestedLimit));
-    const skip = (page - 1) * limit;
-
-    const [records, totalRecords] = await Promise.all([
-      AbsoluteDataV2.find({})
-        .sort({ recordNumber: 1 })
-        .skip(skip)
-        .limit(limit)
-        .lean(),
-
-      AbsoluteDataV2.countDocuments(),
-    ]);
-
-    return res.json({
-      success: true,
-      page,
-      limit,
-      totalRecords,
-      totalPages: Math.ceil(totalRecords / limit),
-      records,
-    });
-  } catch (error) {
-    console.error("Absolute V2 listing failed:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Failed to retrieve Absolute Data V2 records",
-      error: error.message,
-    });
-  }
-});
-
-// ------------------------------------------------------------
-// GET /api/absolute-v2/:serialNumber
-// Must be registered after /stats and the collection route.
-// ------------------------------------------------------------
-
-app.get("/api/absolute-v2/:serialNumber", async (req, res) => {
-  try {
-    const serialNumber = String(req.params.serialNumber || "").trim();
-
-    const record = await AbsoluteDataV2.findOne({
-      serialNumber,
-    }).lean();
-
-    if (!record) {
-      return res.status(404).json({
-        success: false,
-        message: "Absolute Data V2 record not found",
-        serialNumber,
-      });
-    }
-
-    return res.json({
-      success: true,
-      record,
-    });
-  } catch (error) {
-    console.error("Absolute V2 record lookup failed:", error);
-
-    return res.status(500).json({
-      success: false,
-      message: "Failed to retrieve Absolute Data V2 record",
       error: error.message,
     });
   }
