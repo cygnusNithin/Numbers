@@ -10078,11 +10078,12 @@ app.use("/api/reverse-cycles", reverseCyclesRouter);
 
 //new model with category
 
-// ============================================================
-// ABSOLUTE DATA V2 API — PDF IMPORT
-// Collection: absolute_data_v2
-// Does not modify the original absolute_data collection.
-// ============================================================
+
+/* ============================================================
+   ABSOLUTE DATA V2 API — PDF IMPORT
+   Collection: absolute_data_v2
+   Does not modify the original absolute_data collection.
+   ============================================================ */
 
 const ABSOLUTE_V2_FILES_DIR = path.join(__dirname, "files");
 
@@ -10090,28 +10091,68 @@ const ABSOLUTE_V2_START_MARKER =
   "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
 
 function extractAbsoluteV2PrizeSection(text = "") {
-  const markerIndex = text.toUpperCase().indexOf(ABSOLUTE_V2_START_MARKER);
+  const markerIndex = String(text)
+    .toUpperCase()
+    .indexOf(ABSOLUTE_V2_START_MARKER);
 
-  if (markerIndex === -1) return "";
+  if (markerIndex === -1) {
+    return "";
+  }
 
-  return text.slice(markerIndex + ABSOLUTE_V2_START_MARKER.length);
+  return String(text).slice(
+    markerIndex + ABSOLUTE_V2_START_MARKER.length,
+  );
 }
 
+function normalizeAbsoluteV2PrizeCategory(value = "") {
+  const category = String(value).trim().replace(/\s+/g, " ");
+
+  if (/^\d+st$/i.test(category)) return category.toLowerCase();
+  if (/^\d+nd$/i.test(category)) return category.toLowerCase();
+  if (/^\d+rd$/i.test(category)) return category.toLowerCase();
+  if (/^\d+th$/i.test(category)) return category.toLowerCase();
+
+  const namedCategories = {
+    consolation: "Consolation",
+    special: "Special",
+    supplementary: "Supplementary",
+    other: "Other",
+  };
+
+  return namedCategories[category.toLowerCase()] || category;
+}
 
 function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   const text = String(sectionText || "");
 
+  /*
+   * Supported examples:
+   * 1st Prize-Rs : 10000000/-
+   * 4th Prize-Rs :5000/-
+   * Consolation Prize-Rs : 5000/-
+   * Special Prize-Rs : 1000/-
+   *
+   * Captures the category and the numeric prize amount separately.
+   */
   const headingRegex =
-    /\b(\d+)(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)\s*\/?\s*-?/gi;
+    /\b(\d+(?:st|nd|rd|th)|Consolation|Special|Supplementary|Other)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)\s*\/?\s*-?/gi;
 
   const headings = [...text.matchAll(headingRegex)];
-  const prizesByAmount = {};
+  const prizeGroups = [];
 
   for (let i = 0; i < headings.length; i++) {
     const heading = headings[i];
-    const prizeAmount = Number(heading[2].replace(/,/g, ""));
+
+    const prizeCategory = normalizeAbsoluteV2PrizeCategory(
+      heading[1],
+    );
+
+    const prizeAmount = Number(
+      String(heading[2]).replace(/,/g, ""),
+    );
 
     if (
+      !prizeCategory ||
       !Number.isInteger(prizeAmount) ||
       prizeAmount < 1 ||
       prizeAmount > 5000
@@ -10121,70 +10162,97 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
 
     const contentStart = heading.index + heading[0].length;
     const contentEnd =
-      i + 1 < headings.length ? headings[i + 1].index : text.length;
+      i + 1 < headings.length
+        ? headings[i + 1].index
+        : text.length;
 
     let prizeContent = text.slice(contentStart, contentEnd);
 
-    // Remove page headers/footers and other non-number text.
-    // The prize section is already bounded by adjacent prize headings.
+    // Remove common PDF headers, footers, and date/time text.
     prizeContent = prizeContent
       .replace(/Page\s+\d+/gi, " ")
       .replace(/IT\s*Support\s*:\s*NIC\s*Kerala/gi, " ")
       .replace(/\b\d{1,2}\/\d{1,2}\/\d{4}\b/g, " ")
       .replace(/\b\d{1,2}:\d{2}:\d{2}\b/g, " ")
-      .replace(
-        /The prize winners are advised[\s\S]*$/i,
-        " ",
-      );
+      .replace(/The prize winners are advised[\s\S]*$/i, " ");
 
-    // Keep only four-digit groups. The source has concatenated
-    // number lists, so newline-based parsing cannot be relied upon.
+    /*
+     * Preserve the existing parser's approach of extracting
+     * four-digit winning numbers from the prize section.
+     */
     const numbers = prizeContent.match(/\d{4}/g) || [];
 
-    prizesByAmount[prizeAmount] = [
-      ...new Set([
-        ...(prizesByAmount[prizeAmount] || []),
-        ...numbers,
-      ]),
-    ];
+    const uniqueNumbers = [...new Set(numbers)].filter(
+      (number) => /^\d{4}$/.test(number),
+    );
+
+    if (uniqueNumbers.length === 0) {
+      continue;
+    }
+
+    prizeGroups.push({
+      prizeCategory,
+      prize: prizeAmount,
+      numbers: uniqueNumbers,
+    });
   }
 
-  return prizesByAmount;
+  return prizeGroups;
 }
 
+function buildAbsoluteV2Series(prizeGroups = []) {
+  return prizeGroups
+    .map((group) => ({
+      prizeCategory: normalizeAbsoluteV2PrizeCategory(
+        group.prizeCategory,
+      ),
 
-function buildAbsoluteV2Series(prizesByAmount = {}) {
-  return Object.entries(prizesByAmount)
-    .map(([amount, numbers]) => ({
-      prize: Number(amount),
-      numbers: [...new Set(numbers)]
-        .filter((number) => /^\d{4}$/.test(String(number)))
+      prize: Number(group.prize),
+
+      numbers: [
+        ...new Set(
+          (group.numbers || []).map((number) =>
+            String(number).trim(),
+          ),
+        ),
+      ]
+        .filter((number) => /^\d{4}$/.test(number))
         .map((number) => ({
-          number: String(number),
+          number,
           count: 1,
         })),
     }))
     .filter(
       (series) =>
-        Number.isFinite(series.prize) &&
+        Boolean(series.prizeCategory) &&
+        Number.isInteger(series.prize) &&
         series.prize >= 1 &&
         series.prize <= 5000 &&
         series.numbers.length > 0,
     )
-    .sort((a, b) => b.prize - a.prize);
+    .sort((a, b) => {
+      if (b.prize !== a.prize) {
+        return b.prize - a.prize;
+      }
+
+      return a.prizeCategory.localeCompare(b.prizeCategory);
+    });
 }
 
 // ------------------------------------------------------------
 // POST /api/absolute-v2/import-folder
 //
-// Test one file without saving:
-// POST /api/absolute-v2/import-folder?file=draw-72893.pdf&dryRun=true
+// Dry-run one PDF:
+// POST /api/absolute-v2/import-folder?file=draw-72014.pdf&dryRun=true
 //
-// Import the folder:
-// POST /api/absolute-v2/import-folder
+// Dry-run all PDFs:
+// POST /api/absolute-v2/import-folder?dryRun=true
 //
-// Import one file:
-// POST /api/absolute-v2/import-folder?file=draw-72893.pdf
+// Import one PDF without replacing existing records:
+// POST /api/absolute-v2/import-folder?file=draw-72014.pdf
+//
+// Replace matching existing records after validating the dry run:
+// POST /api/absolute-v2/import-folder?replaceExisting=true
 // ------------------------------------------------------------
 
 app.post("/api/absolute-v2/import-folder", async (req, res) => {
@@ -10198,9 +10266,15 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
     }
 
     const requestedFile = String(req.query.file || "").trim();
-    const dryRun = String(req.query.dryRun || "").toLowerCase() === "true";
 
-    // Prevent paths outside the PDF folder from being requested.
+    const dryRun =
+      String(req.query.dryRun || "").toLowerCase() === "true";
+
+    const replaceExisting =
+      String(req.query.replaceExisting || "").toLowerCase() ===
+      "true";
+
+    // Only accept a PDF filename directly inside server/files.
     if (
       requestedFile &&
       (path.basename(requestedFile) !== requestedFile ||
@@ -10225,7 +10299,8 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
     if (requestedFile) {
       files = files.filter(
-        (file) => file.toLowerCase() === requestedFile.toLowerCase(),
+        (file) =>
+          file.toLowerCase() === requestedFile.toLowerCase(),
       );
 
       if (files.length === 0) {
@@ -10240,6 +10315,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
     const summary = {
       totalFiles: files.length,
       imported: 0,
+      updated: 0,
       skipped: 0,
       failed: 0,
       results: [],
@@ -10247,20 +10323,29 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
     for (const fileName of files) {
       try {
-        const filePath = path.join(ABSOLUTE_V2_FILES_DIR, fileName);
+        const filePath = path.join(
+          ABSOLUTE_V2_FILES_DIR,
+          fileName,
+        );
+
         const buffer = fs.readFileSync(filePath);
 
-        // pdf-parse@1.1.1 exports a function, not PDFParse class.
+        // Uses the existing pdf-parse@1.1.1 function import.
         const parsedPdf = await PdfParse(buffer);
-        const rawText = cleanExtractedText(parsedPdf?.text || "");
+
+        const rawText = cleanExtractedText(
+          parsedPdf?.text || "",
+        );
 
         if (!rawText) {
           summary.skipped++;
+
           summary.results.push({
             fileName,
             status: "skipped",
             reason: "PDF contains no extractable text",
           });
+
           continue;
         }
 
@@ -10269,55 +10354,67 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
         let searchFrom = 0;
 
         while (true) {
-          const index = upperText.indexOf(ABSOLUTE_V2_START_MARKER, searchFrom);
+          const markerIndex = upperText.indexOf(
+            ABSOLUTE_V2_START_MARKER,
+            searchFrom,
+          );
 
-          if (index === -1) break;
+          if (markerIndex === -1) break;
 
-          markerPositions.push(index);
-          searchFrom = index + ABSOLUTE_V2_START_MARKER.length;
+          markerPositions.push(markerIndex);
+
+          searchFrom =
+            markerIndex + ABSOLUTE_V2_START_MARKER.length;
         }
 
         if (markerPositions.length === 0) {
           summary.skipped++;
+
           summary.results.push({
             fileName,
             status: "skipped",
             reason: "Prize section marker not found",
           });
+
           continue;
         }
 
-        // A marker is associated with the nearest preceding LOTTERY NO.
-        // This preserves the draw header for each section.
+        // Locate each lottery header.
         const lotteryHeaderRegex = /LOTTERY\s+NO\.?\s*/gi;
         const headerPositions = [];
         let headerMatch;
 
-        while ((headerMatch = lotteryHeaderRegex.exec(rawText)) !== null) {
+        while (
+          (headerMatch = lotteryHeaderRegex.exec(rawText)) !==
+          null
+        ) {
           headerPositions.push(headerMatch.index);
         }
-
-        let fileImported = 0;
 
         for (let i = 0; i < markerPositions.length; i++) {
           const markerPosition = markerPositions[i];
 
-          const headerPosition = headerPositions
-            .filter((position) => position <= markerPosition)
-            .at(-1);
+          const precedingHeaders = headerPositions.filter(
+            (position) => position <= markerPosition,
+          );
+
+          const headerPosition = precedingHeaders.at(-1);
 
           if (headerPosition === undefined) {
             summary.skipped++;
+
             summary.results.push({
               fileName,
               status: "skipped",
               block: i + 1,
-              reason: "Lottery header not found before prize section",
+              reason:
+                "Lottery header not found before prize section",
             });
+
             continue;
           }
 
-          // Stop at the next lottery header, if this PDF has another draw.
+          // Stop this draw block at the next lottery header.
           const nextHeaderPosition = headerPositions.find(
             (position) => position > markerPosition,
           );
@@ -10334,78 +10431,57 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             serialNumber.trim().toLowerCase() === "unknown"
           ) {
             summary.skipped++;
+
             summary.results.push({
               fileName,
               status: "skipped",
               block: i + 1,
               reason: "Serial number not found",
             });
+
             continue;
           }
 
+          const normalizedSerialNumber = serialNumber.trim();
           const date = extractDateFromText(drawBlock);
 
           if (!date || date === "Unknown") {
             summary.skipped++;
+
             summary.results.push({
               fileName,
-              serialNumber,
+              serialNumber: normalizedSerialNumber,
               status: "skipped",
               block: i + 1,
               reason: "Draw date not found",
             });
+
             continue;
           }
 
-          const prizeSection = extractAbsoluteV2PrizeSection(drawBlock);
+          const prizeSection =
+            extractAbsoluteV2PrizeSection(drawBlock);
 
           if (!prizeSection) {
             summary.skipped++;
+
             summary.results.push({
               fileName,
-              serialNumber,
+              serialNumber: normalizedSerialNumber,
               date,
               status: "skipped",
               reason: "Prize section could not be extracted",
             });
+
             continue;
           }
 
-          
-// console.log("\n========== ABSOLUTE V2 DEBUG ==========");
-// console.log("File:", fileName);
-// console.log(
-//   "Prize section preview:",
-//   JSON.stringify(prizeSection.slice(0, 3000)),
-// );
+          const parsedPrizeGroups =
+            parseAbsoluteV2PrizeNumbers(prizeSection);
 
-// const debugHeadingRegex =
-//   /\d+(?:st|nd|rd|th)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)/gi;
-
-// console.log(
-//   "Matched prize headings:",
-//   [...prizeSection.matchAll(debugHeadingRegex)].map((match) => ({
-//     heading: match[0],
-//     amount: match[1],
-//     index: match.index,
-//   })),
-// );
-
-// console.log(
-//   "First 80 prize-section lines:",
-//   prizeSection
-//     .split(/\r?\n/)
-//     .slice(0, 80)
-//     .map((line, index) => `${index + 1}: ${JSON.stringify(line)}`)
-//     .join("\n"),
-// );
-
-// console.log("========== END V2 DEBUG ==========\n");
-
-
-          const prizesByAmount = parseAbsoluteV2PrizeNumbers(prizeSection);
-
-          const series = buildAbsoluteV2Series(prizesByAmount);
+          const series = buildAbsoluteV2Series(
+            parsedPrizeGroups,
+          );
 
           const totalNumbers = series.reduce(
             (total, item) => total + item.numbers.length,
@@ -10413,15 +10489,16 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
           );
 
           const prizeCounts = series.map((item) => ({
+            prizeCategory: item.prizeCategory,
             prize: item.prize,
             count: item.numbers.length,
           }));
 
-          // Dry run validates extraction but never writes to MongoDB.
+          // Dry run never writes to MongoDB.
           if (dryRun) {
             summary.results.push({
               fileName,
-              serialNumber: serialNumber.trim(),
+              serialNumber: normalizedSerialNumber,
               date,
               status: "dry-run",
               prizeGroups: series.length,
@@ -10429,40 +10506,26 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
               prizeCounts,
               series,
             });
+
             continue;
           }
 
-          // Do not overwrite existing V2 records.
-          const existing = await AbsoluteDataV2.findOne({
-            serialNumber: serialNumber.trim(),
-          })
-            .select("_id serialNumber")
-            .lean();
-
-          if (existing) {
-            summary.skipped++;
-            summary.results.push({
-              fileName,
-              serialNumber: serialNumber.trim(),
-              status: "skipped",
-              reason: "Serial number already exists in absolute_data_v2",
-            });
-            continue;
-          }
-
-          // Conservative safety check: do not save suspiciously incomplete data.
+          // Avoid saving obviously incomplete extraction results.
           if (series.length < 2 || totalNumbers < 10) {
             summary.skipped++;
+
             summary.results.push({
               fileName,
-              serialNumber: serialNumber.trim(),
+              serialNumber: normalizedSerialNumber,
               date,
               status: "skipped",
-              reason: "Extracted prize data appears incomplete",
+              reason:
+                "Extracted prize data appears incomplete",
               prizeGroups: series.length,
               totalNumbers,
               prizeCounts,
             });
+
             continue;
           }
 
@@ -10470,33 +10533,83 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
           if (!drawDate || Number.isNaN(drawDate.getTime())) {
             summary.skipped++;
+
             summary.results.push({
               fileName,
-              serialNumber: serialNumber.trim(),
+              serialNumber: normalizedSerialNumber,
               date,
               status: "skipped",
-              reason: "Date could not be converted to a valid Date",
+              reason:
+                "Date could not be converted to a valid Date",
             });
+
             continue;
           }
 
-          const record = new AbsoluteDataV2({
-            serialNumber: serialNumber.trim(),
+          const recordData = {
+            serialNumber: normalizedSerialNumber,
             date,
             drawDate,
-            drawCategory: classifyLotteryCategory(serialNumber),
+            drawCategory: classifyLotteryCategory(
+              normalizedSerialNumber,
+            ),
             fileName,
             series,
-          });
+          };
 
+          const existing = await AbsoluteDataV2.findOne({
+            serialNumber: normalizedSerialNumber,
+          }).select("_id serialNumber");
+
+          if (existing && !replaceExisting) {
+            summary.skipped++;
+
+            summary.results.push({
+              fileName,
+              serialNumber: normalizedSerialNumber,
+              status: "skipped",
+              reason:
+                "Serial number already exists in absolute_data_v2",
+              hint:
+                "Use replaceExisting=true only after validating the dry-run output",
+            });
+
+            continue;
+          }
+
+          if (existing && replaceExisting) {
+            // Keep the existing document and recordNumber; replace
+            // the parsed fields, including the new series schema.
+            await AbsoluteDataV2.updateOne(
+              { _id: existing._id },
+              { $set: recordData },
+              { runValidators: true },
+            );
+
+            summary.updated++;
+
+            summary.results.push({
+              fileName,
+              serialNumber: normalizedSerialNumber,
+              status: "updated",
+              recordNumber: undefined,
+              date,
+              prizeGroups: series.length,
+              totalNumbers,
+              prizeCounts,
+            });
+
+            continue;
+          }
+
+          const record = new AbsoluteDataV2(recordData);
           await record.save();
 
           summary.imported++;
-          fileImported++;
 
           summary.results.push({
             fileName,
-            serialNumber: serialNumber.trim(),
+            serialNumber: normalizedSerialNumber,
             status: "imported",
             recordNumber: record.recordNumber,
             date: record.date,
@@ -10505,11 +10618,9 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             prizeCounts,
           });
         }
-
-        // Count skipped blocks separately; this field is informational.
-        void fileImported;
       } catch (error) {
         summary.failed++;
+
         summary.results.push({
           fileName,
           status: "failed",
@@ -10518,7 +10629,6 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
       }
     }
 
-    // Dry-run records are validation results, not imported/skipped database rows.
     if (dryRun) {
       summary.skipped = summary.results.filter(
         (result) => result.status === "skipped",
@@ -10531,11 +10641,15 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
         ? "Absolute Data V2 dry run completed; no records were saved"
         : "Absolute Data V2 import completed",
       dryRun,
+      replaceExisting,
       folder: ABSOLUTE_V2_FILES_DIR,
       ...summary,
     });
   } catch (error) {
-    console.error("Absolute V2 folder import failed:", error);
+    console.error(
+      "Absolute V2 folder import failed:",
+      error,
+    );
 
     return res.status(500).json({
       success: false,

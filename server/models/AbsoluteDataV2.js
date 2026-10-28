@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 
@@ -21,6 +22,15 @@ const WinningNumberSchema = new mongoose.Schema(
 
 const SeriesSchema = new mongoose.Schema(
   {
+    // Prize rank/category, separate from the numeric prize amount.
+    // Examples: "1st", "2nd", "3rd", "4th", "5th",
+    // "Consolation", "Special".
+    prizeCategory: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
     prize: {
       type: Number,
       required: true,
@@ -59,7 +69,9 @@ const AbsoluteDataV2Schema = new mongoose.Schema(
         validator: function (value) {
           if (
             typeof value !== "string" ||
-            !/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(value)
+            !/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/.test(
+              value,
+            )
           ) {
             return false;
           }
@@ -83,6 +95,7 @@ const AbsoluteDataV2Schema = new mongoose.Schema(
       index: true,
     },
 
+    // This is the lottery/draw type, not the prize rank.
     drawCategory: {
       type: String,
       enum: ["BM", "BR", "OTHER", "UNKNOWN"],
