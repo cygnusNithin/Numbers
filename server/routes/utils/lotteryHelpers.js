@@ -71,7 +71,10 @@ function cleanPrizeSection(text = "") {
  *   400: ["3333", "4444"]
  * }
  */
-function getPrizeNumbersByAmount(sectionText = "") {
+function getPrizeNumbersByAmount(
+  sectionText = "",
+  { strictFourDigitNumbers = false } = {},
+) {
   const normalized = cleanPrizeSection(sectionText);
   const results = {};
 
@@ -128,7 +131,11 @@ function getPrizeNumbersByAmount(sectionText = "") {
     chunk = chunk.replace(/IT\s*Support.*?Kerala/gi, " ");
 
     // Extract only 4-digit numbers.
-    const numbers = (chunk.match(/\d{4}/g) || []).map((number) =>
+    const numberPattern = strictFourDigitNumbers
+      ? /(?<!\d)\d{4}(?!\d)/g
+      : /\d{4}/g;
+
+    const numbers = (chunk.match(numberPattern) || []).map((number) =>
       number.padStart(4, "0"),
     );
 

@@ -20,6 +20,7 @@ const reverseCyclesRouter = require("./routes/reverseCycles");
 
 // Import all helper functions
 const {
+  cleanExtractedText,
   extractSerialNumber,
   getPrizeNumbersByAmount,
 } = require("./routes/utils/lotteryHelpers");
@@ -10257,7 +10258,10 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
 
           const serialNumber = extractSerialNumber(drawBlock);
 
-          if (!serialNumber) {
+          if (
+            !serialNumber ||
+            serialNumber.trim().toLowerCase() === "unknown"
+          ) {
             summary.skipped++;
 
             summary.results.push({
