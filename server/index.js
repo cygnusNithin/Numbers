@@ -10657,13 +10657,6 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
       }
     }
 
-    summary.skipped += summary.results.filter(
-      (result) =>
-        result.status === "skipped" ||
-        result.status === "dry-run-invalid",
-    ).length - (dryRun ? 0 : summary.results.filter(
-      (result) => result.status === "skipped",
-    ).length);
 
     return res.json({
       success: summary.failed === 0,
