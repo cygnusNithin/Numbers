@@ -10124,8 +10124,22 @@ function normalizeAbsoluteV2PrizeCategory(value = "") {
 }
 
 
+
+
 function parseAbsoluteV2PrizeNumbers(sectionText = "") {
-  const text = String(sectionText || "");
+  let text = String(sectionText || "");
+
+  // Remove complete page footers BEFORE extracting any four-digit
+  // numbers. PDF text may join the footer date directly to "Lotteries".
+  text = text
+    .replace(
+      /Page\s*\d+\s*Modernization\s*&\s*IT\s*Software\s*Division\s*:\s*Department\s*of\s*State\s*Lotteries\s*\d{1,2}\/\d{1,2}\/\d{4}\s*\d{1,2}:\d{2}:\d{2}/gi,
+      " "
+    )
+    .replace(
+      /Page\s*\d+\s*IT\s*Support\s*:\s*NIC\s*Kerala\s*\d{1,2}\/\d{1,2}\/\d{4}(?:\s*\d{1,2}:\d{2}:\d{2})?/gi,
+      " "
+    );
 
   const headingRegex =
     /\b(\d+(?:st|nd|rd|th)|Consolation|Special|Supplementary|Other)\s*Prize\s*-\s*Rs\s*[:.]?\s*([\d,]+)\s*\/?\s*-?/gi;
@@ -10137,11 +10151,11 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
     const heading = headings[i];
 
     const prizeCategory = normalizeAbsoluteV2PrizeCategory(
-      heading[1],
+      heading[1]
     );
 
     const prizeAmount = Number(
-      String(heading[2]).replace(/,/g, ""),
+      String(heading[2]).replace(/,/g, "")
     );
 
     if (
@@ -10161,14 +10175,17 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
 
     let prizeContent = text.slice(contentStart, contentEnd);
 
+    // Remove remaining standalone page labels, dates and timestamps.
     prizeContent = prizeContent
-      .replace(/Page\s+\d+/gi, " ")
-      .replace(/IT\s*Support\s*:\s*NIC\s*Kerala/gi, " ")
+      .replace(/Page\s*\d+/gi, " ")
       .replace(/\b\d{1,2}\/\d{1,2}\/\d{4}\b/g, " ")
-      .replace(/\b\d{1,2}:\d{2}:\d{2}\b/g, " ")
-      .replace(/The prize winners are advised[\s\S]*$/i, " ");
+      .replace(/\b\d{1,2}:\d{2}(?::\d{2})?\b/g, " ")
+      .replace(
+        /The prize winners are advised[\s\S]*$/i,
+        " "
+      );
 
-    const numbers = prizeContent.match(/\d{4}/g) || [];
+    const numbers = prizeContent.match(/\b\d{4}\b/g) || [];
     const uniqueNumbers = [...new Set(numbers)];
 
     if (uniqueNumbers.length === 0) continue;
@@ -10182,6 +10199,8 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
 
   return prizeGroups;
 }
+
+
 
 function buildAbsoluteV2Series(prizeGroups = []) {
   return prizeGroups
