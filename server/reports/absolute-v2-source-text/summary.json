@@ -1,0 +1,34 @@
+{
+  "filesFolder": "J:\\Reset\\downloads\\Music\\forth\\server\\files",
+  "totalPdfFiles": 1997,
+  "matchedFiles": 3,
+  "failedFiles": 0,
+  "targets": [
+    "KN-543",
+    "KR-676",
+    "NR-402"
+  ],
+  "matches": [
+    {
+      "serials": "KN-543",
+      "file": "draw-74695.pdf",
+      "extractedCharacters": 2755,
+      "fullText": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\KN-543_draw-74695.txt",
+      "context": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\KN-543_draw-74695_context.txt"
+    },
+    {
+      "serials": "NR-402",
+      "file": "draw-74696.pdf",
+      "extractedCharacters": 2738,
+      "fullText": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\NR-402_draw-74696.txt",
+      "context": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\NR-402_draw-74696_context.txt"
+    },
+    {
+      "serials": "KR-676",
+      "file": "draw-74697.pdf",
+      "extractedCharacters": 2709,
+      "fullText": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\KR-676_draw-74697.txt",
+      "context": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-source-text\\KR-676_draw-74697_context.txt"
+    }
+  ]
+}
