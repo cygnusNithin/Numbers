@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-29T08:28:46.315Z",
+  "database": "numbergrid",
+  "originalCollection": "absolute_data",
+  "v2Collection": "absolute_data_v2",
+  "originalRecordCount": 1997,
+  "v2RecordCount": 1997,
+  "serialsMatchedExactly": 1300,
+  "mismatchedRecords": 697,
+  "missingInV2": 0,
+  "missingInOriginal": 0,
+  "duplicateOriginalSerials": [],
+  "duplicateV2Serials": []
+}

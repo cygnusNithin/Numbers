@@ -10123,6 +10123,7 @@ function normalizeAbsoluteV2PrizeCategory(value = "") {
   return namedCategories[category.toLowerCase()] || category;
 }
 
+
 function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   const text = String(sectionText || "");
 
