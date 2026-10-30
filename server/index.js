@@ -10078,7 +10078,6 @@ app.use("/api/reverse-cycles", reverseCyclesRouter);
 
 //new model with category
 
-
 /* ============================================================
    ABSOLUTE DATA V2 API — PDF IMPORT
    Collection: absolute_data_v2
@@ -10092,21 +10091,15 @@ const ABSOLUTE_V2_START_MARKER =
 
 function extractAbsoluteV2PrizeSection(text = "") {
   const source = String(text || "");
-  const markerIndex = source
-    .toUpperCase()
-    .indexOf(ABSOLUTE_V2_START_MARKER);
+  const markerIndex = source.toUpperCase().indexOf(ABSOLUTE_V2_START_MARKER);
 
   if (markerIndex === -1) return "";
 
-  return source.slice(
-    markerIndex + ABSOLUTE_V2_START_MARKER.length,
-  );
+  return source.slice(markerIndex + ABSOLUTE_V2_START_MARKER.length);
 }
 
 function normalizeAbsoluteV2PrizeCategory(value = "") {
-  const category = String(value)
-    .trim()
-    .replace(/\s+/g, " ");
+  const category = String(value).trim().replace(/\s+/g, " ");
 
   if (/^\d+st$/i.test(category)) return category.toLowerCase();
   if (/^\d+nd$/i.test(category)) return category.toLowerCase();
@@ -10123,9 +10116,6 @@ function normalizeAbsoluteV2PrizeCategory(value = "") {
   return namedCategories[category.toLowerCase()] || category;
 }
 
-
-
-
 function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   let text = String(sectionText || "");
 
@@ -10134,11 +10124,11 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   text = text
     .replace(
       /Page\s*\d+\s*Modernization\s*&\s*IT\s*Software\s*Division\s*:\s*Department\s*of\s*State\s*Lotteries\s*\d{1,2}\/\d{1,2}\/\d{4}\s*\d{1,2}:\d{2}:\d{2}/gi,
-      " "
+      " ",
     )
     .replace(
       /Page\s*\d+\s*IT\s*Support\s*:\s*NIC\s*Kerala\s*\d{1,2}\/\d{1,2}\/\d{4}(?:\s*\d{1,2}:\d{2}:\d{2})?/gi,
-      " "
+      " ",
     );
 
   const headingRegex =
@@ -10150,13 +10140,9 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   for (let i = 0; i < headings.length; i++) {
     const heading = headings[i];
 
-    const prizeCategory = normalizeAbsoluteV2PrizeCategory(
-      heading[1]
-    );
+    const prizeCategory = normalizeAbsoluteV2PrizeCategory(heading[1]);
 
-    const prizeAmount = Number(
-      String(heading[2]).replace(/,/g, "")
-    );
+    const prizeAmount = Number(String(heading[2]).replace(/,/g, ""));
 
     if (
       !prizeCategory ||
@@ -10169,9 +10155,7 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
 
     const contentStart = heading.index + heading[0].length;
     const contentEnd =
-      i + 1 < headings.length
-        ? headings[i + 1].index
-        : text.length;
+      i + 1 < headings.length ? headings[i + 1].index : text.length;
 
     let prizeContent = text.slice(contentStart, contentEnd);
 
@@ -10180,12 +10164,9 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
       .replace(/Page\s*\d+/gi, " ")
       .replace(/\b\d{1,2}\/\d{1,2}\/\d{4}\b/g, " ")
       .replace(/\b\d{1,2}:\d{2}(?::\d{2})?\b/g, " ")
-      .replace(
-        /The prize winners are advised[\s\S]*$/i,
-        " "
-      );
+      .replace(/The prize winners are advised[\s\S]*$/i, " ");
 
-    const numbers = prizeContent.match(/\b\d{4}\b/g) || [];
+    const numbers = prizeContent.match(/\d{4}/g) || [];
     const uniqueNumbers = [...new Set(numbers)];
 
     if (uniqueNumbers.length === 0) continue;
@@ -10200,20 +10181,14 @@ function parseAbsoluteV2PrizeNumbers(sectionText = "") {
   return prizeGroups;
 }
 
-
-
 function buildAbsoluteV2Series(prizeGroups = []) {
   return prizeGroups
     .map((group) => ({
-      prizeCategory: normalizeAbsoluteV2PrizeCategory(
-        group.prizeCategory,
-      ),
+      prizeCategory: normalizeAbsoluteV2PrizeCategory(group.prizeCategory),
       prize: Number(group.prize),
       numbers: [
         ...new Set(
-          (group.numbers || []).map((number) =>
-            String(number).trim(),
-          ),
+          (group.numbers || []).map((number) => String(number).trim()),
         ),
       ]
         .filter((number) => /^\d{4}$/.test(number))
@@ -10242,12 +10217,7 @@ function buildAbsoluteV2Series(prizeGroups = []) {
  * This deliberately checks structural validity rather than
  * requiring every draw to have the same number of groups.
  */
-function validateAbsoluteV2Record({
-  serialNumber,
-  date,
-  drawDate,
-  series,
-}) {
+function validateAbsoluteV2Record({ serialNumber, date, drawDate, series }) {
   const errors = [];
 
   if (
@@ -10283,20 +10253,14 @@ function validateAbsoluteV2Record({
       errors.push("A prize group has no category");
     }
 
-    if (
-      !Number.isSafeInteger(prize) ||
-      prize < 1 ||
-      prize > 5000
-    ) {
+    if (!Number.isSafeInteger(prize) || prize < 1 || prize > 5000) {
       errors.push(`Invalid prize amount in category "${category}"`);
     }
 
     const categoryKey = `${category.toLowerCase()}|${prize}`;
 
     if (seenCategories.has(categoryKey)) {
-      errors.push(
-        `Duplicate prize group: ${category} / ${prize}`,
-      );
+      errors.push(`Duplicate prize group: ${category} / ${prize}`);
     }
     seenCategories.add(categoryKey);
 
@@ -10311,16 +10275,12 @@ function validateAbsoluteV2Record({
       const number = String(item.number || "").trim();
 
       if (!/^\d{4}$/.test(number)) {
-        errors.push(
-          `Invalid winning number "${number}" in "${category}"`,
-        );
+        errors.push(`Invalid winning number "${number}" in "${category}"`);
         continue;
       }
 
       if (seenNumbers.has(number)) {
-        errors.push(
-          `Duplicate number ${number} within "${category}"`,
-        );
+        errors.push(`Duplicate number ${number} within "${category}"`);
       }
 
       seenNumbers.add(number);
@@ -10331,9 +10291,7 @@ function validateAbsoluteV2Record({
   // Basic sanity floor only. Do not impose a universal total because
   // the verified lottery formats have different legitimate totals.
   if (totalNumbers < 10) {
-    errors.push(
-      `Only ${totalNumbers} numbers extracted; minimum is 10`,
-    );
+    errors.push(`Only ${totalNumbers} numbers extracted; minimum is 10`);
   }
 
   return {
@@ -10370,8 +10328,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
     }
 
     const requestedFile = String(req.query.file || "").trim();
-    const dryRun =
-      String(req.query.dryRun || "").toLowerCase() === "true";
+    const dryRun = String(req.query.dryRun || "").toLowerCase() === "true";
     const replaceExisting =
       String(req.query.replaceExisting || "").toLowerCase() === "true";
 
@@ -10451,8 +10408,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
           if (markerIndex === -1) break;
 
           markerPositions.push(markerIndex);
-          searchFrom =
-            markerIndex + ABSOLUTE_V2_START_MARKER.length;
+          searchFrom = markerIndex + ABSOLUTE_V2_START_MARKER.length;
         }
 
         if (markerPositions.length === 0) {
@@ -10469,9 +10425,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
         const headerPositions = [];
         let headerMatch;
 
-        while (
-          (headerMatch = lotteryHeaderRegex.exec(rawText)) !== null
-        ) {
+        while ((headerMatch = lotteryHeaderRegex.exec(rawText)) !== null) {
           headerPositions.push(headerMatch.index);
         }
 
@@ -10505,10 +10459,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
           const serialNumber = extractSerialNumber(drawBlock)?.trim();
           const date = extractDateFromText(drawBlock);
 
-          if (
-            !serialNumber ||
-            serialNumber.toLowerCase() === "unknown"
-          ) {
+          if (!serialNumber || serialNumber.toLowerCase() === "unknown") {
             summary.skipped++;
             summary.results.push({
               fileName,
@@ -10531,8 +10482,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             continue;
           }
 
-          const prizeSection =
-            extractAbsoluteV2PrizeSection(drawBlock);
+          const prizeSection = extractAbsoluteV2PrizeSection(drawBlock);
 
           if (!prizeSection) {
             summary.skipped++;
@@ -10546,8 +10496,7 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
             continue;
           }
 
-          const parsedPrizeGroups =
-            parseAbsoluteV2PrizeNumbers(prizeSection);
+          const parsedPrizeGroups = parseAbsoluteV2PrizeNumbers(prizeSection);
           const series = buildAbsoluteV2Series(parsedPrizeGroups);
           const drawDate = ddmmyyyyToUTCDate(date);
 
@@ -10618,10 +10567,8 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
               fileName,
               serialNumber,
               status: "skipped",
-              reason:
-                "Serial number already exists in absolute_data_v2",
-              hint:
-                "Review dry-run output before using replaceExisting=true",
+              reason: "Serial number already exists in absolute_data_v2",
+              hint: "Review dry-run output before using replaceExisting=true",
             });
             continue;
           }
@@ -10676,7 +10623,6 @@ app.post("/api/absolute-v2/import-folder", async (req, res) => {
         });
       }
     }
-
 
     return res.json({
       success: summary.failed === 0,
