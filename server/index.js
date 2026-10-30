@@ -10084,7 +10084,10 @@ app.use("/api/reverse-cycles", reverseCyclesRouter);
    Does not modify the original absolute_data collection.
    ============================================================ */
 
-const ABSOLUTE_V2_FILES_DIR = path.join(__dirname, "files");
+const ABSOLUTE_V2_FILES_DIR = path.resolve(
+  __dirname,
+  process.env.ABSOLUTE_V2_FILES_DIR || "files",
+);
 
 const ABSOLUTE_V2_START_MARKER =
   "FOR THE TICKETS ENDING WITH THE FOLLOWING NUMBERS";
