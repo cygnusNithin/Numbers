@@ -1,5 +1,5 @@
 """
-font_capture.py
+digit_capture_v2.py
 Capture the 0-9 digit font from a stopped one-roller close-up.
 
 Mark a digit and the check runs at the same time: saved fonts and OCR.
@@ -10,7 +10,7 @@ The full board is rejected. Digits there are too small.
 Saved to digit_fonts/0 .. digit_fonts/9.
 
 No threading. No cv2.imshow. No debug images outside digit_fonts.
-Run: python font_capture.py
+Run: python digit_capture_v2.py
 """
 import csv
 from itertools import combinations
