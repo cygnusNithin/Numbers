@@ -1,0 +1,5015 @@
+{
+  "generatedAt": "2026-11-01T23:08:42.051Z",
+  "sourceCollection": "absolute_data",
+  "targetCollection": "absolute_data_v2",
+  "dryRun": true,
+  "dryRunReport": "J:\\Reset\\downloads\\Music\\forth\\server\\reports\\absolute-v2-100-pdf-dry-run.json",
+  "passed": true,
+  "summary": {
+    "expectedFiles": 100,
+    "reportFiles": 100,
+    "dryRunResults": 100,
+    "originalRecordsFound": 100,
+    "exactMatches": 100,
+    "mismatches": 0,
+    "invalidDryRunResults": 0,
+    "missingOriginalRecords": 0,
+    "skippedResults": 0,
+    "duplicateSerialNumbers": 0,
+    "prizeGroupsChecked": 486,
+    "prizeGroupsMatched": 486,
+    "prizeGroupsMismatched": 0,
+    "totalMissingNumbers": 0,
+    "totalExtraNumbers": 0,
+    "comparisons": [
+      {
+        "fileName": "draw-72014.pdf",
+        "serialNumber": "KR-456",
+        "date": "11/07/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72015.pdf",
+        "serialNumber": "KR-457",
+        "date": "18/07/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72016.pdf",
+        "serialNumber": "KR-458",
+        "date": "25/07/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72017.pdf",
+        "serialNumber": "KR-459",
+        "date": "01/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72018.pdf",
+        "serialNumber": "W-576",
+        "date": "03/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72019.pdf",
+        "serialNumber": "AK-457",
+        "date": "05/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72020.pdf",
+        "serialNumber": "NR-185",
+        "date": "07/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72021.pdf",
+        "serialNumber": "SS-222",
+        "date": "11/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72022.pdf",
+        "serialNumber": "KN-329",
+        "date": "13/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 32,
+            "parsedCount": 32,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 76,
+            "parsedCount": 76,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72023.pdf",
+        "serialNumber": "W-578",
+        "date": "17/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72024.pdf",
+        "serialNumber": "AK-459",
+        "date": "19/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72025.pdf",
+        "serialNumber": "NR-187",
+        "date": "21/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72026.pdf",
+        "serialNumber": "SS-224",
+        "date": "25/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72027.pdf",
+        "serialNumber": "KN-331",
+        "date": "27/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 32,
+            "parsedCount": 32,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 76,
+            "parsedCount": 76,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72028.pdf",
+        "serialNumber": "KR-462",
+        "date": "29/08/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72029.pdf",
+        "serialNumber": "AK-461",
+        "date": "02/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72030.pdf",
+        "serialNumber": "NR-189",
+        "date": "04/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72031.pdf",
+        "serialNumber": "SS-226",
+        "date": "08/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72032.pdf",
+        "serialNumber": "KN-333",
+        "date": "10/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 32,
+            "parsedCount": 32,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 76,
+            "parsedCount": 76,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72033.pdf",
+        "serialNumber": "KR-464",
+        "date": "12/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72035.pdf",
+        "serialNumber": "W-581",
+        "date": "14/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72036.pdf",
+        "serialNumber": "AK-463",
+        "date": "16/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72037.pdf",
+        "serialNumber": "NR-191",
+        "date": "18/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72038.pdf",
+        "serialNumber": "BR-75",
+        "date": "20/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 30,
+            "parsedCount": 30,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 3000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 50,
+            "parsedCount": 50,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 252,
+            "parsedCount": 252,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72039.pdf",
+        "serialNumber": "SS-228",
+        "date": "22/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72040.pdf",
+        "serialNumber": "KN-335",
+        "date": "24/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 32,
+            "parsedCount": 32,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 76,
+            "parsedCount": 76,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72041.pdf",
+        "serialNumber": "KR-466",
+        "date": "26/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72042.pdf",
+        "serialNumber": "W-583",
+        "date": "28/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72043.pdf",
+        "serialNumber": "AK-465",
+        "date": "30/09/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72044.pdf",
+        "serialNumber": "KR-467",
+        "date": "03/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72045.pdf",
+        "serialNumber": "W-584",
+        "date": "05/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72046.pdf",
+        "serialNumber": "AK-466",
+        "date": "07/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72047.pdf",
+        "serialNumber": "NR-193",
+        "date": "09/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72048.pdf",
+        "serialNumber": "KR-468",
+        "date": "10/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72049.pdf",
+        "serialNumber": "W-585",
+        "date": "12/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72050.pdf",
+        "serialNumber": "AK-467",
+        "date": "14/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72051.pdf",
+        "serialNumber": "NR-194",
+        "date": "16/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72052.pdf",
+        "serialNumber": "W-586",
+        "date": "19/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72053.pdf",
+        "serialNumber": "AK-468",
+        "date": "21/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72054.pdf",
+        "serialNumber": "NR-195",
+        "date": "23/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72055.pdf",
+        "serialNumber": "W-587",
+        "date": "26/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72059.pdf",
+        "serialNumber": "AK-469",
+        "date": "28/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72060.pdf",
+        "serialNumber": "NR-196",
+        "date": "30/10/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72061.pdf",
+        "serialNumber": "W-588",
+        "date": "02/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72062.pdf",
+        "serialNumber": "AK-470",
+        "date": "04/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72063.pdf",
+        "serialNumber": "NR-197",
+        "date": "06/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72064.pdf",
+        "serialNumber": "W-589",
+        "date": "09/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72066.pdf",
+        "serialNumber": "AK-471",
+        "date": "11/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72067.pdf",
+        "serialNumber": "NR-198",
+        "date": "13/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72068.pdf",
+        "serialNumber": "BR-76",
+        "date": "15/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 30,
+            "parsedCount": 30,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 30,
+            "parsedCount": 30,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 100,
+            "parsedCount": 100,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 100,
+            "parsedCount": 100,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72069.pdf",
+        "serialNumber": "W-590",
+        "date": "16/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72070.pdf",
+        "serialNumber": "AK-472",
+        "date": "18/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72071.pdf",
+        "serialNumber": "NR-199",
+        "date": "20/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72072.pdf",
+        "serialNumber": "W-591",
+        "date": "23/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72073.pdf",
+        "serialNumber": "AK-473",
+        "date": "25/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72074.pdf",
+        "serialNumber": "NR-200",
+        "date": "27/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72075.pdf",
+        "serialNumber": "W-592",
+        "date": "30/11/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72076.pdf",
+        "serialNumber": "SS-238",
+        "date": "01/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72077.pdf",
+        "serialNumber": "AK-474",
+        "date": "02/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72079.pdf",
+        "serialNumber": "NR-201",
+        "date": "04/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72080.pdf",
+        "serialNumber": "KR-476",
+        "date": "05/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72081.pdf",
+        "serialNumber": "BM-1",
+        "date": "06/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 24,
+            "parsedCount": 24,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 16,
+            "parsedCount": 16,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 30,
+            "parsedCount": 30,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 300,
+            "originalCount": 144,
+            "parsedCount": 144,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72082.pdf",
+        "serialNumber": "W-593",
+        "date": "07/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72083.pdf",
+        "serialNumber": "AK-475",
+        "date": "09/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72084.pdf",
+        "serialNumber": "SS-239",
+        "date": "08/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72085.pdf",
+        "serialNumber": "NR-202",
+        "date": "11/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72086.pdf",
+        "serialNumber": "KR-477",
+        "date": "12/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72087.pdf",
+        "serialNumber": "W-594",
+        "date": "14/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72096.pdf",
+        "serialNumber": "SS-240",
+        "date": "15/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72097.pdf",
+        "serialNumber": "AK-476",
+        "date": "16/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72098.pdf",
+        "serialNumber": "NR-203",
+        "date": "18/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72099.pdf",
+        "serialNumber": "KR-478",
+        "date": "19/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72100.pdf",
+        "serialNumber": "W-595",
+        "date": "21/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72101.pdf",
+        "serialNumber": "SS-241",
+        "date": "22/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72102.pdf",
+        "serialNumber": "AK-477",
+        "date": "23/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72103.pdf",
+        "serialNumber": "NR-204",
+        "date": "25/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72104.pdf",
+        "serialNumber": "KR-479",
+        "date": "26/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72105.pdf",
+        "serialNumber": "W-596",
+        "date": "28/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72106.pdf",
+        "serialNumber": "SS-242",
+        "date": "29/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72107.pdf",
+        "serialNumber": "AK-478",
+        "date": "30/12/2020",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72108.pdf",
+        "serialNumber": "NR-205",
+        "date": "01/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72109.pdf",
+        "serialNumber": "KR-480",
+        "date": "02/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72110.pdf",
+        "serialNumber": "BM-2",
+        "date": "03/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 24,
+            "parsedCount": 24,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 16,
+            "parsedCount": 16,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 30,
+            "parsedCount": 30,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 300,
+            "originalCount": 144,
+            "parsedCount": 144,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72111.pdf",
+        "serialNumber": "W-597",
+        "date": "04/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72112.pdf",
+        "serialNumber": "SS-243",
+        "date": "05/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72113.pdf",
+        "serialNumber": "AK-479",
+        "date": "06/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72115.pdf",
+        "serialNumber": "NR-206",
+        "date": "08/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72116.pdf",
+        "serialNumber": "KR-481",
+        "date": "09/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72117.pdf",
+        "serialNumber": "W-598",
+        "date": "11/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72118.pdf",
+        "serialNumber": "SS-244",
+        "date": "12/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72119.pdf",
+        "serialNumber": "AK-480",
+        "date": "13/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72120.pdf",
+        "serialNumber": "NR-207",
+        "date": "15/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72121.pdf",
+        "serialNumber": "KR-482",
+        "date": "16/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72122.pdf",
+        "serialNumber": "W-599",
+        "date": "18/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72123.pdf",
+        "serialNumber": "SS-245",
+        "date": "19/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 6,
+        "parsedPrizeGroups": 6,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 48,
+            "parsedCount": 48,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 200,
+            "originalCount": 45,
+            "parsedCount": 45,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72124.pdf",
+        "serialNumber": "AK-481",
+        "date": "20/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72125.pdf",
+        "serialNumber": "NR-208",
+        "date": "22/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 4,
+        "parsedPrizeGroups": 4,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 36,
+            "parsedCount": 36,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 70,
+            "parsedCount": 70,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72126.pdf",
+        "serialNumber": "KR-483",
+        "date": "23/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 14,
+            "parsedCount": 14,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 72,
+            "parsedCount": 72,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72127.pdf",
+        "serialNumber": "W-600",
+        "date": "25/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 10,
+            "parsedCount": 10,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 12,
+            "parsedCount": 12,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 78,
+            "parsedCount": 78,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      },
+      {
+        "fileName": "draw-72128.pdf",
+        "serialNumber": "AK-482",
+        "date": "27/01/2021",
+        "status": "EXACT_MATCH",
+        "originalPrizeGroups": 5,
+        "parsedPrizeGroups": 5,
+        "prizeComparisons": [
+          {
+            "prize": 5000,
+            "originalCount": 18,
+            "parsedCount": 18,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 2000,
+            "originalCount": 7,
+            "parsedCount": 7,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 1000,
+            "originalCount": 26,
+            "parsedCount": 26,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 500,
+            "originalCount": 64,
+            "parsedCount": 64,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          },
+          {
+            "prize": 100,
+            "originalCount": 120,
+            "parsedCount": 120,
+            "exactMatch": true,
+            "missingNumbers": [],
+            "extraNumbers": []
+          }
+        ],
+        "differences": []
+      }
+    ]
+  }
+}
